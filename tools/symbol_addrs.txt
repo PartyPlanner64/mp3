@@ -1,0 +1,62 @@
+// heap.c
+MakeHeap = 0x800360D0;
+Malloc = 0x800360F0;
+Free = 0x80036188;
+Realloc = 0x80036248;
+GetAllocatedHeapSize = 0x80036310;
+GetUsedMemoryBlockCount = 0x80036344;
+GetMemoryAllocSize = 0x8003636C;
+
+// heap_permanent.c
+MakePermHeap = 0x80035840;
+MallocPerm = 0x80035864;
+FreePerm = 0x80035888;
+ReallocPerm = 0x800358A4;
+GetAllocatedPermHeapSize = 0x800358D0;
+GetUsedMemoryBlockCountPerm = 0x800358F0;
+
+// heap_temporary.c
+MakeTempHeap = 0x80035910;
+MallocTemp = 0x80035934;
+FreeTemp = 0x80035958;
+ReallocTemp = 0x80035974;
+GetAllocatedTempHeapSize = 0x800359A0;
+GetUsedMemoryBlockCountTemp = 0x800359C0;
+
+// process.c
+InitProcessSys = 0x8004EB20;
+LinkProcess = 0x8004EB34;
+UnlinkProcess = 0x8004EBC8;
+CreateProcess = 0x8004EC04;
+LinkChildProcess = 0x8004ED30;
+UnlinkChildProcess = 0x8004ED84;
+CreateChildProcess = 0x8004EDD4;
+WaitForChildProcess = 0x8004EE18;
+GetCurrentProcess = 0x8004EE68;
+GetChildProcess = 0x8004EE74;
+SetKillStatusProcess = 0x8004EE94;
+KillProcess = 0x8004EED8;
+KillChildProcess = 0x8004EF0C;
+TerminateProcess = 0x8004EF6C;
+ExitProcess = 0x8004EFD4;
+SleepProcess = 0x8004F010;
+SleepVProcess = 0x8004F074;
+WakeupProcess = 0x8004F090;
+SetProcessDestructor = 0x8004F098;
+SetCurrentProcessDestructor = 0x8004F0A0;
+CallProcess = 0x8004F0D0;
+AllocProcessMemory = 0x8004F23C;
+FreeProcessMemory = 0x8004F26C;
+
+setjmp = 0x80066500;
+longjmp = 0x80066564;
+
+bcopy = 0x8007B970;
+
+// overlay128_105D50
+GetCurrentPlayerIndex = 0x800F2130;
+GetPlayerStruct = 0x800F213C;
+PlayerIsCurrent = 0x800F217C;
+PlayerIsCPU = 0x800F2198;
+AdjustPlayerCoins = 0x800F21C0;
+PlayerHasCoins = 0x800F2230;

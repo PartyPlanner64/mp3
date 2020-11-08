@@ -1,0 +1,1347 @@
+name: Mario Party 3 (North America)
+crc1: 7C3829D9
+crc2: 6E8247CE
+basename: marioparty3
+options:
+  find-file-boundaries: False
+  compiler: "GCC"
+  mnemonic_ljust: 10
+
+segments:
+  - [0x000000, "bin", "header"]
+  - [0x000040, "bin", "boot"]
+  - type: code
+    start: 0x1000
+    vram: 0x80000400
+    files:
+    - [0x1000, "asm"]
+    - [0x1060, "asm"]
+    - [0x8F20, "asm"]
+    - [0xA480, "asm"]
+    - [0xAE30, "asm"]
+    - [0xBCA0, "asm"]
+    - [0xE560, "asm"]
+    - [0xEFB0, "asm"]
+    - [0xEFC0, "asm"]
+    - [0x12E20, "asm"]
+    - [0x13F90, "asm"]
+    - [0x19C30, "asm"]
+    - [0x1A580, "asm"]
+    - [0x20A20, "asm"]
+    - [0x22EB0, "asm"]
+    - [0x32160, "asm"]
+    - [0x34DD0, "asm"]
+    - [0x360A0, "c", "thread3_main"]
+    - [0x36440, "c", "heap_permanent"]
+    - [0x36510, "c", "heap_temporary"]
+    - [0x365E0, "asm"]
+    - [0x36CD0, "c", "heap"]
+    - [0x36F80, "asm"]
+    - [0x37210, "asm"]
+    - [0x45F50, "asm"]
+    - [0x471D0, "asm"]
+    - [0x4BF40, "asm"]
+    - [0x4E5A0, "asm"]
+    - [0x4E800, "asm"]
+    - [0x4F720, "c", "process"]
+    - [0x4FE90, "asm"]
+    - [0x51B50, "asm"]
+    - [0x52350, "asm"]
+    - [0x52F30, "asm"]
+    - [0x58000, "asm"]
+    - [0x5ACF0, "asm"]
+    - [0x62750, "asm"]
+    - [0x66E70, "asm"]
+    - [0x67000, "asm"]
+    - [0x67100, "asm"]
+    - [0x671E0, "asm"]
+    - [0x6B050, "asm"]
+    - [0x6BA20, "asm"]
+    - [0x6C140, "asm"]
+    - [0x6C9F0, "asm"]
+    - [0x6DBD0, "asm"]
+    - [0x6DC10, "asm"]
+    - [0x6DC30, "asm"]
+    - [0x6DC50, "asm"]
+    - [0x6DCE0, "asm"]
+    - [0x6DD10, "asm"]
+    - [0x6DF20, "asm"]
+    - [0x6DFA0, "asm"]
+    - [0x6E6B0, "asm"]
+    - [0x6E780, "asm"]
+    - [0x6E7E0, "asm"]
+    - [0x6E840, "asm"]
+    - [0x6E880, "asm"]
+    - [0x6E8E0, "asm"]
+    - [0x6E940, "asm"]
+    - [0x6F470, "asm"]
+    - [0x70420, "asm"]
+    - [0x707B0, "asm"]
+    - [0x70850, "asm"]
+    - [0x70940, "asm"]
+    - [0x709E0, "asm"]
+    - [0x70A70, "asm"]
+    - [0x70B20, "asm"]
+    - [0x70BB0, "asm"]
+    - [0x70C30, "asm"]
+    - [0x72740, "asm"]
+    - [0x72750, "asm"]
+    - [0x7288C, "bin"]
+    - [0x72C20, "asm"]
+    - [0x7C570, "asm"]
+    - [0x7CB30, "asm"]
+    - [0x7CC70, "asm"]
+    - [0x7CDA0, "asm"]
+    - [0x7D320, "asm"]
+    - [0x7D410, "asm"]
+    - [0x7D510, "asm"]
+    - [0x7D5F0, "asm"]
+    - [0x7D6E0, "asm"]
+    - [0x7D800, "asm"]
+    - [0x7D840, "asm"]
+    - [0x7D890, "asm"]
+    - [0x7D920, "asm"]
+    - [0x7DA50, "asm"]
+    - [0x7DED0, "asm"]
+    - [0x7DF10, "asm"]
+    # more here likely
+    - [0x7E860, "asm"]
+    - [0x7E8C0, "asm"]
+    - [0x7E920, "asm"]
+    - [0x7E9A0, "asm"]
+    - [0x7EA20, "asm"]
+    - [0x7EB20, "asm"]
+    - [0x7EBE0, "asm"]
+    - [0x7EC40, "asm"]
+    - [0x7ECC0, "asm"]
+    - [0x7EFA0, "asm"]
+    - [0x7F3A0, "asm"]
+    - [0x7F590, "asm"]
+    - [0x7F800, "asm"]
+    - [0x7FCD0, "asm"]
+    - [0x800A0, "asm"]
+    - [0x80460, "asm"]
+    - [0x804E0, "asm"]
+    - [0x815D0, "asm"]
+    - [0x81660, "asm"]
+    - [0x818C0, "asm"]
+    - [0x81A30, "asm"]
+    - [0x81A80, "asm"]
+    - [0x81AD0, "asm"]
+    - [0x81AF0, "asm"]
+    - [0x81DB0, "asm"]
+    - [0x81E50, "asm"]
+    - [0x81F20, "asm"]
+    - [0x824C0, "asm"]
+    # more here
+    - [0x8A6B0, "asm"]
+    - [0x8A6F0, "asm"]
+    - [0x8A770, "asm"]
+  - [0x8FCF0, "bin"]
+  - [0x98310, "bin"]
+
+  - name: overlays/overlay130
+    type: code
+    overlay: True
+    start: 0xA96F0
+    vram: 0x800D6B70
+    files:
+      - [0xA96F0, "asm"]
+      - [0xBE2A0, "bin"] # rodata
+
+  - name: overlays/overlay129
+    type: code
+    overlay: True
+    start: 0xBE940
+    vram: 0x800D6B70
+    files:
+      - [0xBE940, "asm"]
+      - [0xBF4A0, "asm"]
+      - [0xE8BE0, "bin"] # rodata
+
+  - name: overlays/overlay128
+    type: code
+    overlay: True
+    start: 0xEA790
+    vram: 0x800D6B70
+    files:
+      - [0xEA790, "asm"]
+      - [0xEB2F0, "asm"]
+      - [0xEE3B0, "asm"]
+      - [0xEE660, "asm"]
+      - [0x1006F0, "asm"]
+      - [0x105D50, "c"]
+      - [0x1063F0, "asm"]
+      - [0x1143C0, "bin"] # rodata
+
+  - name: overlays/overlay0
+    type: code
+    overlay: True
+    start: 0x116320
+    vram: 0x801059A0
+    files:
+      - [0x116320, "asm"]
+      - [0x119560, "bin"] # rodata
+
+  - name: overlays/overlay1
+    type: code
+    overlay: True
+    start: 0x11A480
+    vram: 0x801059A0
+    files:
+      - [0x11A480, "asm"]
+      - [0x1209E0, "bin"] # rodata
+
+  - name: overlays/overlay2
+    type: code
+    overlay: True
+    start: 0x120BC0
+    vram: 0x801059A0
+    files:
+      - [0x120BC0, "asm"]
+      - [0x126180, "bin"] # rodata
+
+  - name: overlays/overlay3
+    type: code
+    overlay: True
+    start: 0x1263E0
+    vram: 0x801059A0
+    files:
+      - [0x1263E0, "asm"]
+      - [0x12D700, "bin"] # rodata
+
+  - name: overlays/overlay4
+    type: code
+    overlay: True
+    start: 0x12DD30
+    vram: 0x801059A0
+    files:
+      - [0x12DD30, "asm"]
+      - [0x131A90, "bin"] # rodata
+
+  - name: overlays/overlay5
+    type: code
+    overlay: True
+    start: 0x131C10
+    vram: 0x801059A0
+    files:
+      - [0x131C10, "asm"]
+      - [0x137A80, "bin"] # rodata
+
+  - name: overlays/overlay6
+    type: code
+    overlay: True
+    start: 0x137C00
+    vram: 0x801059A0
+    files:
+      - [0x137C00, "asm"]
+      - [0x13E5D0, "bin"] # rodata
+
+  - name: overlays/overlay7
+    type: code
+    overlay: True
+    start: 0x13E9C0
+    vram: 0x801059A0
+    files:
+      - [0x13E9C0, "asm"]
+      - [0x149CD0, "bin"] # rodata
+
+  - name: overlays/overlay8
+    type: code
+    overlay: True
+    start: 0x14A810
+    vram: 0x801059A0
+    files:
+      - [0x14A810, "asm"]
+      - [0x153BD0, "bin"] # rodata
+
+  - name: overlays/overlay9
+    type: code
+    overlay: True
+    start: 0x1542E0
+    vram: 0x801059A0
+    files:
+      - [0x1542E0, "asm"]
+      - [0x15BCF0, "bin"] # rodata
+
+  - name: overlays/overlay10
+    type: code
+    overlay: True
+    start: 0x15C310
+    vram: 0x801059A0
+    files:
+      - [0x15C310, "asm"]
+      - [0x1613E0, "bin"] # rodata
+
+  - name: overlays/overlay11
+    type: code
+    overlay: True
+    start: 0x161750
+    vram: 0x801059A0
+    files:
+      - [0x161750, "asm"]
+      - [0x164EB0, "bin"] # rodata
+
+  - name: overlays/overlay12
+    type: code
+    overlay: True
+    start: 0x165010
+    vram: 0x801059A0
+    files:
+      - [0x165010, "asm"]
+      - [0x16F3D0, "bin"] # rodata
+
+  - name: overlays/overlay13
+    type: code
+    overlay: True
+    start: 0x16F670
+    vram: 0x801059A0
+    files:
+      - [0x16F670, "asm"]
+      - [0x17AB40, "bin"] # rodata
+
+  - name: overlays/overlay14
+    type: code
+    overlay: True
+    start: 0x17B3B0
+    vram: 0x801059A0
+    files:
+      - [0x17B3B0, "asm"]
+      - [0x1817F0, "bin"] # rodata
+
+  - name: overlays/overlay15
+    type: code
+    overlay: True
+    start: 0x181950
+    vram: 0x801059A0
+    files:
+      - [0x181950, "asm"]
+      - [0x18A560, "bin"] # rodata
+
+  - name: overlays/overlay16
+    type: code
+    overlay: True
+    start: 0x18ABD0
+    vram: 0x801059A0
+    files:
+      - [0x18ABD0, "asm"]
+      - [0x190D60, "bin"] # rodata
+
+  - name: overlays/overlay17
+    type: code
+    overlay: True
+    start: 0x191240
+    vram: 0x801059A0
+    files:
+      - [0x191240, "asm"]
+      - [0x19CAC0, "bin"] # rodata
+
+  - name: overlays/overlay18
+    type: code
+    overlay: True
+    start: 0x19CEF0
+    vram: 0x801059A0
+    files:
+      - [0x19CEF0, "asm"]
+      - [0x1A3BF0, "bin"] # rodata
+
+  - name: overlays/overlay19
+    type: code
+    overlay: True
+    start: 0x1A3D80
+    vram: 0x801059A0
+    files:
+      - [0x1A3D80, "asm"]
+      - [0x1AC270, "bin"] # rodata
+
+  - name: overlays/overlay20
+    type: code
+    overlay: True
+    start: 0x1AC970
+    vram: 0x801059A0
+    files:
+      - [0x1AC970, "asm"]
+      - [0x1B47C0, "bin"] # rodata
+
+  - name: overlays/overlay21
+    type: code
+    overlay: True
+    start: 0x1B4F10
+    vram: 0x801059A0
+    files:
+      - [0x1B4F10, "asm"]
+      - [0x1BA4F0, "bin"] # rodata
+
+  - name: overlays/overlay22
+    type: code
+    overlay: True
+    start: 0x1BA850
+    vram: 0x801059A0
+    files:
+      - [0x1BA850, "asm"]
+      - [0x1C3C50, "bin"] # rodata
+
+  - name: overlays/overlay23
+    type: code
+    overlay: True
+    start: 0x1C4280
+    vram: 0x801059A0
+    files:
+      - [0x1C4280, "asm"]
+      - [0x1CC420, "bin"] # rodata
+
+  - name: overlays/overlay24
+    type: code
+    overlay: True
+    start: 0x1CC730
+    vram: 0x801059A0
+    files:
+      - [0x1CC730, "asm"]
+      - [0x1D1940, "bin"] # rodata
+
+  - name: overlays/overlay25
+    type: code
+    overlay: True
+    start: 0x1D1C40
+    vram: 0x801059A0
+    files:
+      - [0x1D1C40, "asm"]
+      - [0x1D47F0, "bin"] # rodata
+
+  - name: overlays/overlay26
+    type: code
+    overlay: True
+    start: 0x1D4970
+    vram: 0x801059A0
+    files:
+      - [0x1D4970, "asm"]
+      - [0x1D90E0, "bin"] # rodata
+
+  - name: overlays/overlay27
+    type: code
+    overlay: True
+    start: 0x1D9550
+    vram: 0x801059A0
+    files:
+      - [0x1D9550, "asm"]
+      - [0x1DE3D0, "bin"] # rodata
+
+  - name: overlays/overlay28
+    type: code
+    overlay: True
+    start: 0x1DE610
+    vram: 0x801059A0
+    files:
+      - [0x1DE610, "asm"]
+      - [0x1E3510, "bin"] # rodata
+
+  - name: overlays/overlay29
+    type: code
+    overlay: True
+    start: 0x1E37C0
+    vram: 0x801059A0
+    files:
+      - [0x1E37C0, "asm"]
+      - [0x1EEDE0, "bin"] # rodata
+
+  - name: overlays/overlay30
+    type: code
+    overlay: True
+    start: 0x1EF420
+    vram: 0x801059A0
+    files:
+      - [0x1EF420, "asm"]
+      - [0x1F3A60, "bin"] # rodata
+
+  - name: overlays/overlay31
+    type: code
+    overlay: True
+    start: 0x1F3B90
+    vram: 0x801059A0
+    files:
+      - [0x1F3B90, "asm"]
+      - [0x1FE270, "bin"] # rodata
+
+  - name: overlays/overlay32
+    type: code
+    overlay: True
+    start: 0x1FE4D0
+    vram: 0x801059A0
+    files:
+      - [0x1FE4D0, "asm"]
+      - [0x204DB0, "bin"] # rodata
+
+  - name: overlays/overlay33
+    type: code
+    overlay: True
+    start: 0x204F90
+    vram: 0x801059A0
+    files:
+      - [0x204F90, "asm"]
+      - [0x20BC70, "bin"] # rodata
+
+  - name: overlays/overlay34
+    type: code
+    overlay: True
+    start: 0x20BFA0
+    vram: 0x801059A0
+    files:
+      - [0x20BFA0, "asm"]
+      - [0x2116C0, "bin"] # rodata
+
+  - name: overlays/overlay35
+    type: code
+    overlay: True
+    start: 0x211AB0
+    vram: 0x801059A0
+    files:
+      - [0x211AB0, "asm"]
+      - [0x216270, "bin"] # rodata
+
+  - name: overlays/overlay36
+    type: code
+    overlay: True
+    start: 0x216670
+    vram: 0x801059A0
+    files:
+      - [0x216670, "asm"]
+      - [0x21DBF0, "bin"] # rodata
+
+  - name: overlays/overlay37
+    type: code
+    overlay: True
+    start: 0x21E010
+    vram: 0x801059A0
+    files:
+      - [0x21E010, "asm"]
+      - [0x2251D0, "bin"] # rodata
+
+  - name: overlays/overlay38
+    type: code
+    overlay: True
+    start: 0x225740
+    vram: 0x801059A0
+    files:
+      - [0x225740, "asm"]
+      - [0x22DDB0, "bin"] # rodata
+
+  - name: overlays/overlay39
+    type: code
+    overlay: True
+    start: 0x22E100
+    vram: 0x801059A0
+    files:
+      - [0x22E100, "asm"]
+      - [0x232620, "bin"] # rodata
+
+  - name: overlays/overlay40
+    type: code
+    overlay: True
+    start: 0x232A10
+    vram: 0x801059A0
+    files:
+      - [0x232A10, "asm"]
+      - [0x23C5C0, "bin"] # rodata
+
+  - name: overlays/overlay41
+    type: code
+    overlay: True
+    start: 0x23C8F0
+    vram: 0x801059A0
+    files:
+      - [0x23C8F0, "asm"]
+      - [0x240880, "bin"] # rodata
+
+  - name: overlays/overlay42
+    type: code
+    overlay: True
+    start: 0x240A10
+    vram: 0x801059A0
+    files:
+      - [0x240A10, "asm"]
+      - [0x24A300, "bin"] # rodata
+
+  - name: overlays/overlay43
+    type: code
+    overlay: True
+    start: 0x24A760
+    vram: 0x801059A0
+    files:
+      - [0x24A760, "asm"]
+      - [0x251AD0, "bin"] # rodata
+
+  - name: overlays/overlay44
+    type: code
+    overlay: True
+    start: 0x251FF0
+    vram: 0x801059A0
+    files:
+      - [0x251FF0, "asm"]
+      - [0x25D530, "bin"] # rodata
+
+  - name: overlays/overlay45
+    type: code
+    overlay: True
+    start: 0x25E110
+    vram: 0x801059A0
+    files:
+      - [0x25E110, "asm"]
+      - [0x2648B0, "bin"] # rodata
+
+  - name: overlays/overlay46
+    type: code
+    overlay: True
+    start: 0x264B80
+    vram: 0x801059A0
+    files:
+      - [0x264B80, "asm"]
+      - [0x269880, "bin"] # rodata
+
+  - name: overlays/overlay47
+    type: code
+    overlay: True
+    start: 0x269BF0
+    vram: 0x801059A0
+    files:
+      - [0x269BF0, "asm"]
+      - [0x270B00, "bin"] # rodata
+
+  - name: overlays/overlay48
+    type: code
+    overlay: True
+    start: 0x270EF0
+    vram: 0x801059A0
+    files:
+      - [0x270EF0, "asm"]
+      - [0x276160, "bin"] # rodata
+
+  - name: overlays/overlay49
+    type: code
+    overlay: True
+    start: 0x276470
+    vram: 0x801059A0
+    files:
+      - [0x276470, "asm"]
+      - [0x282620, "bin"] # rodata
+
+  - name: overlays/overlay50
+    type: code
+    overlay: True
+    start: 0x283060
+    vram: 0x801059A0
+    files:
+      - [0x283060, "asm"]
+      - [0x289C50, "bin"] # rodata
+
+  - name: overlays/overlay51
+    type: code
+    overlay: True
+    start: 0x28A290
+    vram: 0x801059A0
+    files:
+      - [0x28A290, "asm"]
+      - [0x290E90, "bin"] # rodata
+
+  - name: overlays/overlay52
+    type: code
+    overlay: True
+    start: 0x291020
+    vram: 0x801059A0
+    files:
+      - [0x291020, "asm"]
+      - [0x29A7D0, "bin"] # rodata
+
+  - name: overlays/overlay53
+    type: code
+    overlay: True
+    start: 0x29B1D0
+    vram: 0x801059A0
+    files:
+      - [0x29B1D0, "asm"]
+      - [0x2A0C30, "bin"] # rodata
+
+  - name: overlays/overlay54
+    type: code
+    overlay: True
+    start: 0x2A1430
+    vram: 0x801059A0
+    files:
+      - [0x2A1430, "asm"]
+      - [0x2ACFE0, "bin"] # rodata
+
+  - name: overlays/overlay55
+    type: code
+    overlay: True
+    start: 0x2AF250
+    vram: 0x801059A0
+    files:
+      - [0x2AF250, "asm"]
+      - [0x2B56D0, "bin"] # rodata
+
+  - name: overlays/overlay56
+    type: code
+    overlay: True
+    start: 0x2B5830
+    vram: 0x801059A0
+    files:
+      - [0x2B5830, "asm"]
+      - [0x2BC550, "bin"] # rodata
+
+  - name: overlays/overlay57
+    type: code
+    overlay: True
+    start: 0x2BCE10
+    vram: 0x801059A0
+    files:
+      - [0x2BCE10, "asm"]
+      - [0x2C5910, "bin"] # rodata
+
+  - name: overlays/overlay58
+    type: code
+    overlay: True
+    start: 0x2C5B50
+    vram: 0x801059A0
+    files:
+      - [0x2C5B50, "asm"]
+      - [0x2CE950, "bin"] # rodata
+
+  - name: overlays/overlay59
+    type: code
+    overlay: True
+    start: 0x2CF3B0
+    vram: 0x801059A0
+    files:
+      - [0x2CF3B0, "asm"]
+      - [0x2D3C70, "bin"] # rodata
+
+  - name: overlays/overlay60
+    type: code
+    overlay: True
+    start: 0x2D3E70
+    vram: 0x801059A0
+    files:
+      - [0x2D3E70, "asm"]
+      - [0x2D8030, "bin"] # rodata
+
+  - name: overlays/overlay61
+    type: code
+    overlay: True
+    start: 0x2D8370
+    vram: 0x801059A0
+    files:
+      - [0x2D8370, "asm"]
+      - [0x2DC0F0, "bin"] # rodata
+
+  - name: overlays/overlay62
+    type: code
+    overlay: True
+    start: 0x2DC4D0
+    vram: 0x801059A0
+    files:
+      - [0x2DC4D0, "asm"]
+      - [0x2E0B70, "bin"] # rodata
+
+  - name: overlays/overlay63
+    type: code
+    overlay: True
+    start: 0x2E0D20
+    vram: 0x801059A0
+    files:
+      - [0x2E0D20, "asm"]
+      - [0x2E6060, "bin"] # rodata
+
+  - name: overlays/overlay64
+    type: code
+    overlay: True
+    start: 0x2E6BE0
+    vram: 0x801059A0
+    files:
+      - [0x2E6BE0, "asm"]
+      - [0x2ECF70, "bin"] # rodata
+
+  - name: overlays/overlay65
+    type: code
+    overlay: True
+    start: 0x2ED2D0
+    vram: 0x801059A0
+    files:
+      - [0x2ED2D0, "asm"]
+      - [0x2FB5E0, "bin"] # rodata
+
+  - name: overlays/overlay66
+    type: code
+    overlay: True
+    start: 0x2FC270
+    vram: 0x801059A0
+    files:
+      - [0x2FC270, "asm"]
+      - [0x300F10, "bin"] # rodata
+
+  - name: overlays/overlay67
+    type: code
+    overlay: True
+    start: 0x3010E0
+    vram: 0x801059A0
+    files:
+      - [0x3010E0, "asm"]
+      - [0x308890, "bin"] # rodata
+
+  - name: overlays/overlay68
+    type: code
+    overlay: True
+    start: 0x308D10
+    vram: 0x801059A0
+    files:
+      - [0x308D10, "asm"]
+      - [0x30F550, "bin"] # rodata
+
+  - name: overlays/overlay69
+    type: code
+    overlay: True
+    start: 0x30F940
+    vram: 0x801059A0
+    files:
+      - [0x30F940, "asm"]
+      - [0x316B10, "bin"] # rodata
+
+  - name: overlays/overlay70
+    type: code
+    overlay: True
+    start: 0x316DF0
+    vram: 0x801059A0
+    files:
+      - [0x316DF0, "asm"]
+      - [0x31AB90, "bin"] # rodata
+
+  - name: overlays/overlay71
+    type: code
+    overlay: True
+    start: 0x31B3B0
+    vram: 0x801059A0
+    files:
+      - [0x31B3B0, "asm"]
+      - [0x31B4F0, "bin"] # rodata
+
+  # Chilly Waters
+  - name: overlays/overlay72
+    type: code
+    overlay: True
+    start: 0x31B510
+    vram: 0x801059A0
+    files:
+      - [0x31B510, "asm"]
+      - [0x31B540, "asm"]
+      - [0x332DC0, "bin"] # rodata
+
+  - name: overlays/overlay73
+    type: code
+    overlay: True
+    start: 0x3355E0
+    vram: 0x801059A0
+    files:
+      - [0x3355E0, "asm"]
+      - [0x34C270, "bin"] # rodata
+
+  - name: overlays/overlay74
+    type: code
+    overlay: True
+    start: 0x34E810
+    vram: 0x801059A0
+    files:
+      - [0x34E810, "asm"]
+      - [0x364F50, "bin"] # rodata
+
+  - name: overlays/overlay75
+    type: code
+    overlay: True
+    start: 0x367930
+    vram: 0x801059A0
+    files:
+      - [0x367930, "asm"]
+      - [0x37D6A0, "bin"] # rodata
+
+  - name: overlays/overlay76
+    type: code
+    overlay: True
+    start: 0x37FF80
+    vram: 0x801059A0
+    files:
+      - [0x37FF80, "asm"]
+      - [0x3975F0, "bin"] # rodata
+
+  - name: overlays/overlay77
+    type: code
+    overlay: True
+    start: 0x39AD20
+    vram: 0x801059A0
+    files:
+      - [0x39AD20, "asm"]
+      - [0x3B08D0, "bin"] # rodata
+
+  - name: overlays/overlay78
+    type: code
+    overlay: True
+    start: 0x3B35F0
+    vram: 0x801059A0
+    files:
+      - [0x3B35F0, "asm"]
+      - [0x3B9420, "bin"] # rodata
+
+  - name: overlays/overlay79
+    type: code
+    overlay: True
+    start: 0x3B9670
+    vram: 0x801059A0
+    files:
+      - [0x3B9670, "asm"]
+      - [0x3C20B0, "bin"] # rodata
+
+  - name: overlays/overlay80
+    type: code
+    overlay: True
+    start: 0x3C27C0
+    vram: 0x801059A0
+    files:
+      - [0x3C27C0, "asm"]
+      - [0x3C6170, "bin"] # rodata
+
+  - name: overlays/overlay81
+    type: code
+    overlay: True
+    start: 0x3C6310
+    vram: 0x801059A0
+    files:
+      - [0x3C6310, "asm"]
+      - [0x3C7DF0, "bin"] # rodata
+
+  - name: overlays/overlay82
+    type: code
+    overlay: True
+    start: 0x3C7EC0
+    vram: 0x801059A0
+    files:
+      - [0x3C7EC0, "asm"]
+      - [0x3CA5F0, "bin"] # rodata
+
+  - name: overlays/overlay83
+    type: code
+    overlay: True
+    start: 0x3CA800
+    vram: 0x801059A0
+    files:
+      - [0x3CA800, "asm"]
+      - [0x3CDBD0, "bin"] # rodata
+
+  - name: overlays/overlay84
+    type: code
+    overlay: True
+    start: 0x3CDEC0
+    vram: 0x801059A0
+    files:
+      - [0x3CDEC0, "asm"]
+      - [0x3CFAE0, "bin"] # rodata
+
+  - name: overlays/overlay85
+    type: code
+    overlay: True
+    start: 0x3CFC80
+    vram: 0x801059A0
+    files:
+      - [0x3CFC80, "asm"]
+      - [0x3D3A90, "bin"] # rodata
+
+  # Character Animation Test
+  - name: overlays/overlay86
+    type: code
+    overlay: True
+    start: 0x3D3C80
+    vram: 0x801059A0
+    files:
+      - [0x3D3C80, "asm"]
+      - [0x3D5160, "bin"] # rodata
+
+  - name: overlays/overlay87
+    type: code
+    overlay: True
+    start: 0x3D5C30
+    vram: 0x801059A0
+    files:
+      - [0x3D5C30, "asm"]
+      - [0x3D7040, "bin"] # rodata
+
+  - name: overlays/overlay88
+    type: code
+    overlay: True
+    start: 0x3D7150
+    vram: 0x801059A0
+    files:
+      - [0x3D7150, "asm"]
+      - [0x3D7690, "bin"] # rodata
+
+  - name: overlays/overlay89
+    type: code
+    overlay: True
+    start: 0x3D76C0
+    vram: 0x801059A0
+    files:
+      - [0x3D76C0, "asm"]
+      - [0x3D8680, "bin"] # rodata
+
+  - name: overlays/overlay90
+    type: code
+    overlay: True
+    start: 0x3D8930
+    vram: 0x801059A0
+    files:
+      - [0x3D8930, "asm"]
+      - [0x3D8A70, "bin"] # rodata
+
+  - name: overlays/overlay91
+    type: code
+    overlay: True
+    start: 0x3D8A90
+    vram: 0x801059A0
+    files:
+      - [0x3D8A90, "asm"]
+      - [0x3EB7D0, "bin"] # rodata
+
+  - name: overlays/overlay92
+    type: code
+    overlay: True
+    start: 0x3EC560
+    vram: 0x801059A0
+    files:
+      - [0x3EC560, "asm"]
+      - [0x3FD130, "bin"] # rodata
+
+  - name: overlays/overlay93
+    type: code
+    overlay: True
+    start: 0x3FE1C0
+    vram: 0x801059A0
+    files:
+      - [0x3FE1C0, "asm"]
+      - [0x40FC20, "bin"] # rodata
+
+  - name: overlays/overlay94
+    type: code
+    overlay: True
+    start: 0x4108E0
+    vram: 0x801059A0
+    files:
+      - [0x4108E0, "asm"]
+      - [0x424BB0, "bin"] # rodata
+
+  - name: overlays/overlay95
+    type: code
+    overlay: True
+    start: 0x426420
+    vram: 0x801059A0
+    files:
+      - [0x426420, "asm"]
+      - [0x436100, "bin"] # rodata
+
+  - name: overlays/overlay96
+    type: code
+    overlay: True
+    start: 0x436E20
+    vram: 0x801059A0
+    files:
+      - [0x436E20, "asm"]
+      - [0x445900, "bin"] # rodata
+
+  - name: overlays/overlay97
+    type: code
+    overlay: True
+    start: 0x4461B0
+    vram: 0x801059A0
+    files:
+      - [0x4461B0, "asm"]
+      - [0x4551C0, "bin"] # rodata
+
+  - name: overlays/overlay98
+    type: code
+    overlay: True
+    start: 0x4554C0
+    vram: 0x801059A0
+    files:
+      - [0x4554C0, "asm"]
+      - [0x45CDB0, "bin"] # rodata
+
+  - name: overlays/overlay99
+    type: code
+    overlay: True
+    start: 0x45D380
+    vram: 0x801059A0
+    files:
+      - [0x45D380, "asm"]
+      - [0x460610, "bin"] # rodata
+
+  - name: overlays/overlay100
+    type: code
+    overlay: True
+    start: 0x460790
+    vram: 0x801059A0
+    files:
+      - [0x460790, "asm"]
+      - [0x463FF0, "bin"] # rodata
+
+  - name: overlays/overlay101
+    type: code
+    overlay: True
+    start: 0x464360
+    vram: 0x801059A0
+    files:
+      - [0x464360, "asm"]
+      - [0x4672F0, "bin"] # rodata
+
+  - name: overlays/overlay102
+    type: code
+    overlay: True
+    start: 0x4675D0
+    vram: 0x801059A0
+    files:
+      - [0x4675D0, "asm"]
+      - [0x468310, "bin"] # rodata
+
+  - name: overlays/overlay103
+    type: code
+    overlay: True
+    start: 0x4684F0
+    vram: 0x801059A0
+    files:
+      - [0x4684F0, "asm"]
+      - [0x468A70, "bin"] # rodata
+
+  - name: overlays/overlay104
+    type: code
+    overlay: True
+    start: 0x468A90
+    vram: 0x801059A0
+    files:
+      - [0x468A90, "asm"]
+      - [0x46CB70, "bin"] # rodata
+
+  - name: overlays/overlay105
+    type: code
+    overlay: True
+    start: 0x46CC10
+    vram: 0x801059A0
+    files:
+      - [0x46CC10, "asm"]
+      - [0x480120, "bin"] # rodata
+
+  - name: overlays/overlay106
+    type: code
+    overlay: True
+    start: 0x481970
+    vram: 0x801059A0
+    files:
+      - [0x481970, "asm"]
+      - [0x48BAB0, "bin"] # rodata
+
+  - name: overlays/overlay107
+    type: code
+    overlay: True
+    start: 0x48BE30
+    vram: 0x801059A0
+    files:
+      - [0x48BE30, "asm"]
+      - [0x49AF10, "bin"] # rodata
+
+  - name: overlays/overlay108
+    type: code
+    overlay: True
+    start: 0x49BD40
+    vram: 0x801059A0
+    files:
+      - [0x49BD40, "asm"]
+      - [0x4B1CC0, "bin"] # rodata
+
+  - name: overlays/overlay109
+    type: code
+    overlay: True
+    start: 0x4B29E0
+    vram: 0x801059A0
+    files:
+      - [0x4B29E0, "asm"]
+      - [0x4C22A0, "bin"] # rodata
+
+  - name: overlays/overlay110
+    type: code
+    overlay: True
+    start: 0x4C2BD0
+    vram: 0x801059A0
+    files:
+      - [0x4C2BD0, "asm"]
+      - [0x4CECF0, "bin"] # rodata
+
+  - name: overlays/overlay111
+    type: code
+    overlay: True
+    start: 0x4CF350
+    vram: 0x801059A0
+    files:
+      - [0x4CF350, "asm"]
+      - [0x4DE0E0, "bin"] # rodata
+
+  - name: overlays/overlay112
+    type: code
+    overlay: True
+    start: 0x4DEB60
+    vram: 0x801059A0
+    files:
+      - [0x4DEB60, "asm"]
+      - [0x4E65C0, "bin"] # rodata
+
+  - name: overlays/overlay113
+    type: code
+    overlay: True
+    start: 0x4E6DC0
+    vram: 0x801059A0
+    files:
+      - [0x4E6DC0, "asm"]
+      - [0x4EBF10, "bin"] # rodata
+
+  - name: overlays/overlay114
+    type: code
+    overlay: True
+    start: 0x4EC1B0
+    vram: 0x801059A0
+    files:
+      - [0x4EC1B0, "asm"]
+      - [0x4F00D0, "bin"] # rodata
+
+  - name: overlays/overlay115
+    type: code
+    overlay: True
+    start: 0x4F01F0
+    vram: 0x801059A0
+    files:
+      - [0x4F01F0, "asm"]
+      - [0x4F36C0, "bin"] # rodata
+
+  - name: overlays/overlay116
+    type: code
+    overlay: True
+    start: 0x4F3780
+    vram: 0x801059A0
+    files:
+      - [0x4F3780, "asm"]
+      - [0x4F66B0, "bin"] # rodata
+
+  - name: overlays/overlay117
+    type: code
+    overlay: True
+    start: 0x4F6810
+    vram: 0x801059A0
+    files:
+      - [0x4F6810, "asm"]
+      - [0x4F69B0, "bin"] # rodata
+
+  # Message Check
+  - name: overlays/overlay118
+    type: code
+    overlay: True
+    start: 0x4F69F0
+    vram: 0x801059A0
+    files:
+      - [0x4F69F0, "c"]
+      - [0x4F7550, "bin"] # rodata
+
+  - name: overlays/overlay119
+    type: code
+    overlay: True
+    start: 0x4F7E90
+    vram: 0x801059A0
+    files:
+      - [0x4F7E90, "asm"]
+      - [0x501760, "bin"] # rodata
+
+  - name: overlays/overlay120
+    type: code
+    overlay: True
+    start: 0x501C00
+    vram: 0x801059A0
+    files:
+      - [0x501C00, "asm"]
+      - [0x515670, "bin"] # rodata
+
+  - name: overlays/overlay121
+    type: code
+    overlay: True
+    start: 0x516AE0
+    vram: 0x801059A0
+    files:
+      - [0x516AE0, "asm"]
+      - [0x5238E0, "bin"] # rodata
+
+  - name: overlays/overlay122
+    type: code
+    overlay: True
+    start: 0x523FD0
+    vram: 0x801059A0
+    files:
+      - [0x523FD0, "asm"]
+      - [0x533180, "bin"] # rodata
+
+  - name: overlays/overlay123
+    type: code
+    overlay: True
+    start: 0x5334D0
+    vram: 0x801059A0
+    files:
+      - [0x5334D0, "asm"]
+      - [0x540FE0, "bin"] # rodata
+
+  - name: overlays/overlay124
+    type: code
+    overlay: True
+    start: 0x542220
+    vram: 0x801059A0
+    files:
+      - [0x542220, "asm"]
+      - [0x54CDB0, "bin"] # rodata
+
+  - name: overlays/overlay125
+    type: code
+    overlay: True
+    start: 0x54DD10
+    vram: 0x801059A0
+    files:
+      - [0x54DD10, "asm"]
+      - [0x552C80, "bin"] # rodata
+
+  # - name: overlays/overlay126
+  #   type: code
+  #   overlay: True
+  #   start: 0x552F50
+  #   vram: 0x801059A0
+  #   files:
+  #     - [0x552F50, "asm"]
+  #     - [0x552F50, "bin"] # rodata
+
+  - name: overlays/overlay127
+    type: code
+    overlay: True
+    start: 0x552F50
+    vram: 0x801059A0
+    files:
+      - [0x552F50, "asm"]
+      - [0x556240, "bin"] # rodata
+
+  - [0x00557620, "bin", "bin_557620"]
+
+  - [0x00557E20, "bin", "bin_mainfs"]
+
+  - [0x01209850, "bin", "bin_strings_jp"]
+  - [0x0121CAA0, "bin", "bin_strings_en"]
+  - [0x012355C0, "bin", "bin_strings_de"]
+  - [0x0124D440, "bin", "bin_strings_fr"]
+  - [0x01261F90, "bin", "bin_strings_it"]
+  - [0x012765F0, "bin", "bin_strings_es"]
+
+  - [0x0128CC60, "bin", "bin_hvq"]
+
+  - [0x01881C40, "bin", "bin_audio"]
+  - [0x02000000]
