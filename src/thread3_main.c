@@ -130,8 +130,6 @@ INCLUDE_ASM(void, "thread3_main", func_800354A0);
 //     while (TRUE) {}
 // }
 
-// INCLUDE_ASM(s32, "thread3_main", func_800357AC);
-
 void func_800357AC(s16 count) {
     s16 i = 0;
     for (i = 0; i < count; i++) {
