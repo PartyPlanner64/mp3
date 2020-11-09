@@ -157,6 +157,11 @@ segments:
     files:
       - [0xBE940, "asm"]
       - [0xBF4A0, "asm"]
+      - [0xBFB40, "asm"]
+      - [0xC1580, "asm"]
+      - [0xC1BA0, "asm"]
+      - [0xC1D60, "asm"]
+      - [0xE3CD0, "asm"]
       - [0xE8BE0, "bin"] # rodata
 
   - name: overlays/overlay128
@@ -169,6 +174,7 @@ segments:
       - [0xEB2F0, "asm"]
       - [0xEE3B0, "asm"]
       - [0xEE660, "asm"]
+      - [0xFFB10, "c"]
       - [0x1006F0, "asm"]
       - [0x105D50, "c"]
       - [0x1063F0, "asm"]
