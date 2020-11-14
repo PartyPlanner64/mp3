@@ -1,5 +1,10 @@
 #include "common.h"
 
+struct struct_func_800EC70C_10032C
+{
+    u8 unk;
+};
+
 struct struct_D_800CC69C
 {
     u8 unk0[32];
@@ -18,7 +23,14 @@ extern s32 func_8005B6BC(s32, char *, s32);
 extern void func_800EDC74_101894(s16);
 extern void func_800EE2C0_101EE0(s16);
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EBEF0_FFB10);
+void func_800EBEF0_FFB10(s16 arg0) {
+    if (D_800CD067 == 4 || D_80101482 != 0) {
+        func_800EE2A4_101EC4(arg0);
+        return;
+    }
+
+    func_800EDC58_101878(arg0, D_800CD067);
+}
 
 void func_800EBF48_FFB68(s16 arg0, s8 player_index) {
     if (D_800CD067 == 4 || D_80101482 != 0) {
@@ -29,7 +41,14 @@ void func_800EBF48_FFB68(s16 arg0, s8 player_index) {
     func_800EDC74_101894(arg0);
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EBF98_FFBB8);
+void func_800EBF98_FFBB8(s16 arg0) {
+    if (D_800CD067 == 4 || D_80101482 != 0) {
+        func_800EE2A4_101EC4(arg0);
+        return;
+    }
+
+    func_800EDC58_101878(arg0);
+}
 
 INCLUDE_ASM(s16, "overlays/overlay128_FFB10", func_800EBFE8_FFC08);
 
@@ -53,20 +72,28 @@ INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC5B4_1001D4);
 
 INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC5EC_10020C);
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC628_100248);
+void func_800EC628_100248(s16 arg0, char *arg1) {
+    s16 temp_s0;
+    struct struct_func_800EC70C_10032C some_struct;
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC6A8_1002C8);
+    func_80060394(1, &some_struct, arg1);
+    temp_s0 = func_800EBFE8_FFC08(arg0, &some_struct, -1);
+    D_80105702 = temp_s0;
+    func_8005B43C(temp_s0, arg1, -1, -1);
+    func_80061388(temp_s0);
+}
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC6C8_1002E8);
+void func_800EC6A8_1002C8() {
+    func_80061388(D_80105702);
+}
+
+void func_800EC6C8_1002E8() {
+    func_80061A5C(D_80105702, 0);
+}
 
 void func_800EC6EC_10030C() {
     func_8005F364(D_80105702);
 }
-
-struct struct_func_800EC70C_10032C
-{
-    u8 unk;
-};
 
 // Show message
 void func_800EC70C_10032C(s16 arg0, char *arg1, char *arg2, char *arg3, char *arg4, char *arg5, char *arg6, s16 arg7) {
