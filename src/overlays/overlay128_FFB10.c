@@ -2,8 +2,11 @@
 
 struct struct_func_800EC70C_10032C
 {
-    u8 unk;
+    s16 unk0;
+    s16 unk2;
 };
+
+extern u8 D_800CB99C;
 
 struct struct_D_800CC69C
 {
@@ -18,6 +21,7 @@ extern s8 D_800CD067;
 extern s16 D_80101480;
 extern s16 D_80101482;
 extern s16 D_80105702; // window id
+extern s16 D_80105714;
 
 extern s32 func_8005B6BC(s32, char *, s32);
 extern void func_800EDC74_101894(s16);
@@ -52,7 +56,22 @@ void func_800EBF98_FFBB8(s16 arg0) {
 
 INCLUDE_ASM(s16, "overlays/overlay128_FFB10", func_800EBFE8_FFC08);
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC134_FFD54);
+void func_800EC134_FFD54(s32 arg0) {
+    s16 temp_a0;
+    s16 temp_s0;
+    struct struct_func_800EC70C_10032C some_struct;
+
+    func_80060394(1, &some_struct, arg0);
+    temp_a0 = func_80061188(-1, 0, 0, some_struct.unk0, some_struct.unk2, 2);
+    temp_s0 = temp_a0;
+    D_80105714 = temp_s0;
+    if (D_800CB99C == 0) {
+        func_8005B63C(temp_a0, 0x40, 0x40);
+    }
+    temp_s0 = temp_s0;
+    func_8005B43C(temp_s0, arg0, -1, -1);
+    func_80061388(temp_s0);
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC1E8_FFE08);
 
