@@ -130,7 +130,11 @@ void func_800EC92C_10054C(s16 arg0, char *arg1, char *arg2, char *arg3, char *ar
     D_80101482 = 0;
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC980_1005A0);
+void func_800EC980_1005A0(s16 arg0, char *arg1, char *arg2, char *arg3, char *arg4, char *arg5, char *arg6, s16 arg7) {
+    D_80101482 = 1;
+    func_800EC70C_10032C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+    D_80101482 = 0;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC9DC_1005FC);
 
