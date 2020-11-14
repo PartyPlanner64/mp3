@@ -1,5 +1,13 @@
 #include "common.h"
 
+struct struct_D_800CC69C
+{
+    u8 unk0[32];
+    u8 unk32;
+    u8 unk21[604];
+};
+
+extern struct struct_D_800CC69C *D_800CC69C;
 extern s8 D_800CD067;
 
 extern s16 D_80101480;
@@ -51,7 +59,9 @@ INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC6A8_1002C8);
 
 INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC6C8_1002E8);
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC6EC_10030C);
+void func_800EC6EC_10030C() {
+    func_8005F364(D_80105702);
+}
 
 struct struct_func_800EC70C_10032C
 {
@@ -137,9 +147,26 @@ void func_800EC980_1005A0(s16 arg0, char *arg1, char *arg2, char *arg3, char *ar
 }
 
 INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC9DC_1005FC);
+// void func_800EC9DC_1005FC() {
+//     D_800CC69C[D_80105702].unk32 = 1;
+//     SleepVProcess();
+//     func_800EBF48_FFB68(D_80105702, D_800CD067);
+// }
 
 INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800ECA38_100658);
+// void func_800ECA38_100658() {
+//     D_80101482 = 1;
+//     D_800CC69C[D_80105702].unk32 = 1;
+//     SleepVProcess();
+//     func_800EBF48_FFB68(D_80105702, D_800CD067);
+//     D_80101482 = 0;
+// }
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800ECAA8_1006C8);
+void func_800ECAA8_1006C8(s16 arg0) {
+    D_80101480 = arg0;
+}
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800ECAB4_1006D4);
+void func_800ECAB4_1006D4() {
+    D_80101480 = 0;
+    D_80101482 = 0;
+}
