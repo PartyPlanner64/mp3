@@ -1,17 +1,57 @@
 #include "common.h"
+#include "../../process.h"
+#include "../../object.h"
 
 extern u8 D_800CD059;
 extern s8 D_800CD05A;
 extern s8 D_800CD05B;
+extern s8 D_800CD067;
 extern u16 D_800CD0B4[];
 extern u16 D_800CE198;
+extern u8 D_800D03F8[];
 
 extern void *D_8011E2CC;
 extern void *D_8011E718;
 extern void *D_8011A8D8;
+extern s16 D_8011D2C0[];
+extern void *D_8011D31C;
+extern void *D_8011D320;
 extern void *D_8011E344;
 extern void *D_8011E4D8;
 extern void *D_8011E8B8;
+extern f64 D_8011F968;
+extern s32 D_8011FB68;
+
+extern void func_80089A10(void *, f32, f32, f32);
+extern f32 func_800D8790(struct coords_3d *);
+extern f32 func_800EA660(f32);
+extern f32 func_800EEF80(f32);
+extern void func_800F68E0(s8, s32, s16);
+
+extern s32 func_8010DE7C_3239EC();
+extern s32 func_8010F2FC_324E6C();
+extern s32 func_8010F6C4_325234();
+extern s32 func_8010F730_3252A0();
+extern s32 func_80117C60_32D7D0();
+extern s32 func_8011093C_3264AC();
+extern s32 func_80110BC8_326738();
+extern s32 func_8010FC24_325794();
+extern s32 func_80110194_325D04();
+extern s32 func_801104E0_326050();
+extern s32 func_80116F5C_32CACC();
+extern s32 func_801177DC_32D34C();
+extern s32 func_80111018_326B88();
+extern s32 func_801112D8_326E48();
+extern s32 func_80111678_3271E8();
+extern s32 func_80112074_327BE4();
+extern void func_80112BCC_32873C();
+extern s32 func_801138E4_329454();
+extern s32 func_80114B80_32A6F0();
+extern s32 func_80115B80_32B6F0();
+extern s32 func_80116DAC_32C91C();
+extern s32 func_801176A4_32D214();
+extern s32 func_8011C88C_3323FC();
+extern s32 func_80118B7C_32E6EC();
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_801059D0_31B540);
 
@@ -91,7 +131,76 @@ void func_80107C2C_31D79C(void) {
     func_8004819C(1);
 }
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80107CC4_31D834);
+// setup routine
+void func_80107CC4_31D834(void) {
+    s32 temp_s0;
+    s32 temp_s0_2;
+    s32 temp_s0_3;
+    struct coords_3d subroutine_arg4;
+
+    func_80047160(0xA0, 0x28);
+    func_80019514(1, 0xFF, 0xFF, 0xFF);
+    func_80019514(2, 0xC8, 0xC8, 0xC8);
+    func_800F89D0(3, 0x23A, 5, 0);
+    func_800EBCFC(&D_8011D31C);
+    func_800EBD54(&D_8011D320);
+    temp_s0 = func_800EB160(0x77);
+    func_800ECB58(temp_s0 + 8, func_800EB160(0x73) + 8, &subroutine_arg4);
+    func_800EA660(func_800D8790(&subroutine_arg4) + 180.0f);
+    temp_s0_2 = func_800EB160(0x7C);
+    func_800ECB58(temp_s0_2 + 8, func_800EB160(0x6E) + 8, &subroutine_arg4);
+    func_800EA660(func_800D8790(&subroutine_arg4) + 180.0f);
+    temp_s0_3 = func_800EB160(0x8F);
+    func_800ECB58(temp_s0_3 + 8, func_800EB160(0x80) + 8, &subroutine_arg4);
+    func_800EA660(func_800D8790(&subroutine_arg4) + 180.0f);
+
+    func_800E2960(0, func_8010DE7C_3239EC);
+    func_800E2960(1, func_8010F2FC_324E6C);
+    func_800E2960(9, func_8010F6C4_325234);
+    func_800E2960(2, func_8010F730_3252A0);
+    func_800E2960(3, func_80117C60_32D7D0);
+    func_800E2960(4, func_8011093C_3264AC);
+    func_800E2960(5, func_80110BC8_326738);
+    func_800E2960(6, func_8010FC24_325794);
+    func_800E2960(7, func_80110194_325D04);
+    func_800E2960(8, func_801104E0_326050);
+    func_800E2960(0xA, func_80116F5C_32CACC);
+    func_800E2960(0xB, func_801177DC_32D34C);
+    func_800E2960(0xE, func_80111018_326B88);
+    func_800E2960(0xF, func_801112D8_326E48);
+    func_800E2960(0x10, func_80111678_3271E8);
+    func_800E2960(0x11, func_80112074_327BE4);
+    func_800E2960(0x12, func_80112BCC_32873C);
+    func_800E2960(0x13, func_801138E4_329454);
+    func_800E2960(0x14, func_80114B80_32A6F0);
+    func_800E2960(0x15, func_80115B80_32B6F0);
+    func_800E2960(0xC, func_80116DAC_32C91C);
+    func_800E2960(0xD, func_801176A4_32D214);
+    func_800DA748(func_8011C88C_3323FC);
+
+    {
+        s32 i = 0;
+        for (i = 0; i < 8; i++) {
+            func_800EA6E0(i, D_8011D2C0[i]);
+        }
+    }
+
+    if (func_80035F98(0xE) != 0) {
+        func_8003602C(0xE);
+        func_80105FB0_31BB20();
+    }
+
+    func_8010603C_31BBAC();
+    func_80108250_31DDC0();
+    func_8010841C_31DF8C();
+    func_801086E0_31E250();
+    func_801088B4_31E424();
+    func_80108B24_31E694();
+    func_80108BA4_31E714();
+    func_80116AA0_32C610();
+    func_800EBDAC();
+    func_80047EA0(func_80118B7C_32E6EC, 0x4800, 0, 0);
+}
 
 // entrypoint 2
 void func_80108014_31DB84(void) {
@@ -283,6 +392,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010DCEC_32385
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010DE40_3239B0);
 
+// boo event
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010DE7C_3239EC);
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010F050_324BC0);
@@ -333,9 +443,53 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_801125BC_32812
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_801127D8_328348);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80112BCC_32873C);
+void func_80112BCC_32873C(void) {
+    s32 i;
+
+    SleepProcess(10);
+    for (i = 1; i < 64; i++) {
+        func_800F68E0(D_800CD067, func_800E4A7C(), 255.0f - (i * 3.984f));
+        SleepVProcess();
+    }
+
+    func_800F68E0(D_800CD067, func_800E4A7C(), 0);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80112C88_3287F8);
+// void func_80112C88_3287F8() {
+//     f32 temp_f0;
+//     f32 temp_f20;
+//     f64 temp_f22;
+//     struct object *temp_s0;
+//     struct object *temp_s1;
+//     f32 phi_f20;
+
+//     temp_s1 = GetCurrentProcess()->user_data;
+//     temp_s0 = func_800D975C(D_8011FB68);
+//     func_80089A20(&temp_s0->coords, &temp_s1->coords);
+//     func_80089A10(&temp_s0->unk36, 2.0f, 2.0f, 2.0f);
+//     temp_s0->unk48 = temp_s1->unk48 + 10.0f;
+//     func_800D9AA4(temp_s0);
+//     temp_f22 = D_8011F968;
+//     phi_f20 = func_800EEF80(360.0f);
+
+//     while (TRUE) {
+//         SleepVProcess();
+//         temp_f0 = temp_s0->unk48 + temp_f22;
+//         temp_s0->unk48 = temp_f0;
+
+//         if ((!((temp_s1->unk48 + 35.0f) <= temp_f0))) {
+//             temp_f20 = phi_f20 + 40.0f;
+//             func_8008A2A0((temp_s0->unk60->unk60 * 0xC0) + D_800D03F8 + 0x74, temp_f20);
+//             phi_f20 = temp_f20;
+//             continue;
+//         }
+//         break;
+//     }
+
+//     func_800D9B54(temp_s0);
+//     func_80048008(0);
+// }
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80112DDC_32894C);
 
