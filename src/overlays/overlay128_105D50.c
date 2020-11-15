@@ -5,6 +5,10 @@
 
 extern s8 D_800CD067; // current player index
 
+extern struct object *D_801011FC; // bowser suit model?
+
+extern void func_8001C92C(void *, f32);
+
 /**
  * Returns the index of the current player in the turn.
  */
@@ -62,7 +66,19 @@ u32 PlayerHasCoins(s32 index, s32 count) {
     return player->coins >= count;
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2260_105E80);
+void func_800F2260_105E80(s32 player_index, f32 arg1) {
+    struct player *player;
+    struct object *obj;
+
+    player = GetPlayerStruct(player_index);
+    if (player->bowser_suit_flag != 0) {
+        obj = D_801011FC;
+    }
+    else {
+        obj = player->obj;
+    }
+    func_8001C92C(obj->unk60->unk64->unk0, arg1);
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F22C0_105EE0);
 
