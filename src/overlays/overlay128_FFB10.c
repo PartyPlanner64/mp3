@@ -36,7 +36,7 @@ void func_800EBEF0_FFB10(s16 arg0) {
     func_800EDC58_101878(arg0, D_800CD067);
 }
 
-void func_800EBF48_FFB68(s16 arg0, s8 player_index) {
+void func_800EBF48_FFB68(s16 arg0, s32 player_index) {
     if (D_800CD067 == 4 || D_80101482 != 0) {
         func_800EE2C0_101EE0(arg0);
         return;
@@ -45,7 +45,7 @@ void func_800EBF48_FFB68(s16 arg0, s8 player_index) {
     func_800EDC74_101894(arg0);
 }
 
-void func_800EBF98_FFBB8(s16 arg0) {
+void func_800EBF98_FFBB8(s16 arg0, s32 player_index) {
     if (D_800CD067 == 4 || D_80101482 != 0) {
         func_800EE2A4_101EC4(arg0);
         return;
@@ -123,21 +123,67 @@ void func_800EC1E8_FFE08(char *arg0, char *arg1, char *arg2, char *arg3, char *a
     func_80061388(temp_s0);
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC39C_FFFBC);
+void func_800EC39C_FFFBC(s32 arg0) {
+    func_800EBF48_FFB68(D_80105714, arg0);
+}
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC3C0_FFFE0);
+void func_800EC3C0_FFFE0(s32 arg0) {
+    func_800EBF98_FFBB8(D_80105714, arg0);
+}
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC3E4_100004);
+void func_800EC3E4_100004() {
+    func_80061A5C(D_80105714, 0);
+    func_8005F364(D_80105714);
+}
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC414_100034);
+void func_800EC414_100034(s32 arg0) {
+    s16 temp_a0;
+    s16 temp_s0;
+    struct struct_func_800EC70C_10032C some_struct;
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC4E4_100104);
+    func_80060394(1, &some_struct, arg0);
+    temp_a0 = func_80061188(-1, 0, 0, some_struct.unk0, some_struct.unk2, 2);
+    temp_s0 = temp_a0;
+    D_80105702 = temp_s0;
+    if (D_800CB99C == 0) {
+        func_8005B63C(temp_a0, 0x40, 0x40);
+    }
+    func_8005B43C(temp_s0, arg0, -1, -1);
+    func_80061388(temp_s0);
+    func_800EBEF0_FFB10(temp_s0);
+    func_80061A5C(temp_s0, 0);
+    func_8005F364(temp_s0);
+}
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC590_1001B0);
+void func_800EC4E4_100104(s16 arg0, char *arg1, s16 arg2) {
+    s16 temp_s0;
+    struct struct_func_800EC70C_10032C some_struct;
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC5B4_1001D4);
+    func_80060394(1, &some_struct, arg1);
+    temp_s0 = func_800EBFE8_FFC08(arg0, &some_struct, arg2);
+    D_80105702 = temp_s0;
+    func_8005B43C(temp_s0, arg1, -1, -1);
+    func_80061388(temp_s0);
+    func_800EBEF0_FFB10(temp_s0);
+    func_80061A5C(temp_s0, 0);
+    func_8005F364(temp_s0);
+}
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC5EC_10020C);
+void func_800EC590_1001B0(s16 arg0, char *arg1) {
+    func_800EC4E4_100104(arg0, arg1, -1);
+}
+
+void func_800EC5B4_1001D4(s16 arg0, char *arg1) {
+    D_80101482 = 1;
+    func_800EC4E4_100104(arg0, arg1, -1);
+    D_80101482 = 0;
+}
+
+void func_800EC5EC_10020C(s16 arg0, char *arg1, s16 arg2) {
+    D_80101482 = 1;
+    func_800EC4E4_100104(arg0, arg1, arg2);
+    D_80101482 = 0;
+}
 
 void func_800EC628_100248(s16 arg0, char *arg1) {
     s16 temp_s0;
