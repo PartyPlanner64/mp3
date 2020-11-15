@@ -46,8 +46,9 @@ struct player {
     s8 bowser_suit_flag; // 27 (0x1B)
     u8 turn_color_status; // 28 (0x1C)
 
-    s8 pad1[7]; // 29 - 35
+    s8 pad1[3]; // 29 - 31
 
+    void *unk20; // 32 (0x20)
     struct object *obj; // 36 (0x24)
     s16 minigame_star; // 40 (0x28)
     s16 max_coins; // 42 (0x2A)

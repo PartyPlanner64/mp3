@@ -158,7 +158,25 @@ u8 func_800F2660_106280(s16 arg0) {
     return D_8010175C[GetPlayerStruct(arg0)->character];
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2690_1062B0);
+void *func_800F2690_1062B0(s16 arg0) {
+    void *temp_a0;
+    void *ret;
+    s32 temp_v0_2;
+    struct player *player;
+    struct object *obj;
+
+    player = GetPlayerStruct(arg0);
+    obj = ret = player->obj;
+    if (obj != NULL) {
+        temp_a0 = player->unk20;
+        if (temp_a0 != NULL) {
+            func_80048008(temp_a0);
+        }
+        ret = func_800D9B54_ED774(player->obj);
+        player->obj = NULL;
+    }
+    return ret;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F26E8_106308);
 
