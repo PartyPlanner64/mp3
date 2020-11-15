@@ -80,6 +80,8 @@ O_FILES := $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
 
 ### Targets ###
 
+build/src/libultra/os/%.o: CFLAGS := -O2
+
 clean:
 	rm -rf $(BUILD_DIR)
 

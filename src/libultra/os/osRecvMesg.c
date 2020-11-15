@@ -3,34 +3,31 @@
 
 extern OSThread *D_800A2DC0; // __osRunningThread
 
-INCLUDE_ASM(s32, "libultra/os/osRecvMesg", osRecvMesg, OSMesgQueue *mq, OSMesg *msg, s32 flag);
+s32 osRecvMesg(OSMesgQueue *mq, OSMesg *msg, s32 flag) {
+    register u32 int_disabled;
 
-// Need ido compiler to match this?
-// s32 osRecvMesg(OSMesgQueue *mq, OSMesg *msg, s32 flag) {
-//     register u32 int_disabled;
+    int_disabled = __osDisableInt();
 
-//     int_disabled = __osDisableInt();
+    while (!mq->validCount) {
+        if (!flag) {
+            __osRestoreInt(int_disabled);
+            return -1;
+        }
+        D_800A2DC0->state = OS_STATE_WAITING;
+        __osEnqueueAndYield(&mq->mtqueue);
+    }
 
-//     while (!mq->validCount) {
-//         if (!flag) {
-//             __osRestoreInt(int_disabled);
-//             return -1;
-//         }
-//         D_800A2DC0->state = OS_STATE_WAITING;
-//         __osEnqueueAndYield(&mq->mtqueue);
-//     }
+    if (msg != NULL) {
+        *msg = *(mq->first + mq->msg);
+    }
 
-//     if (msg != NULL) {
-//         *msg = *(mq->first + mq->msg);
-//     }
+    mq->first = (mq->first + 1) % mq->msgCount;
+    mq->validCount--;
 
-//     mq->first = (mq->first + 1) % mq->msgCount;
-//     mq->validCount--;
+    if (mq->fullqueue->next != NULL) {
+        osStartThread(__osPopThread(&mq->fullqueue));
+    }
 
-//     if (mq->fullqueue->next != NULL) {
-//         osStartThread(__osPopThread(&mq->fullqueue));
-//     }
-
-//     __osRestoreInt(int_disabled);
-//     return 0;
-// }
+    __osRestoreInt(int_disabled);
+    return 0;
+}
