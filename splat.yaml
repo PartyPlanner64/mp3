@@ -3,7 +3,7 @@ crc1: 7C3829D9
 crc2: 6E8247CE
 basename: marioparty3
 options:
-  find-file-boundaries: False
+  find-file-boundaries: True
   compiler: "GCC"
   mnemonic_ljust: 10
 
@@ -88,14 +88,52 @@ segments:
     - [0x72750, "asm"]
     - [0x7288C, "bin"]
     - [0x72C20, "asm"]
+    - [0x73020, "asm"]
+    - [0x730A0, "asm"]
+    - [0x73190, "asm"]
+    - [0x73550, "asm"]
+    - [0x737E0, "asm"]
+    - [0x73960, "asm"]
+    - [0x73D20, "asm"]
+    - [0x73E10, "asm"]
+    - [0x73F40, "asm"]
+    - [0x73FE0, "asm"]
+    - [0x75320, "asm"]
+    - [0x76700, "asm"]
+    - [0x776E0, "asm"]
+    - [0x77DA0, "asm"]
+    - [0x77E50, "asm"]
+    - [0x77E90, "asm"]
+    - [0x77EE0, "asm"]
+    - [0x77F20, "asm"]
+    - [0x79030, "asm"]
+    - [0x79420, "asm"]
+    - [0x79570, "asm"]
+    - [0x79740, "asm"]
+    - [0x797A0, "asm"]
+    - [0x798D0, "asm"]
+    - [0x79950, "asm"]
+    - [0x79980, "asm"]
+    - [0x79F30, "asm"]
+    - [0x7A790, "asm"]
+    - [0x7B1F0, "asm"]
+    - [0x7B7E0, "asm"]
+    - [0x7BDE0, "asm"]
+    - [0x7C130, "asm"]
+    - [0x7C4F0, "asm"]
     - [0x7C570, "asm"]
     - [0x7CB30, "asm"]
     - [0x7CC70, "asm"]
     - [0x7CDA0, "asm"]
+    - [0x7CF90, "asm"]
+    - [0x7CFA0, "asm"]
+    - [0x7CFB0, "asm"]
+    - [0x7D200, "asm"]
     - [0x7D320, "asm"]
     - [0x7D410, "asm"]
     - [0x7D510, "asm"]
     - [0x7D5F0, "asm"]
+    - [0x7D610, "asm"]
     - [0x7D6E0, "asm"]
     - [0x7D800, "asm"]
     - [0x7D840, "asm"]
@@ -104,7 +142,12 @@ segments:
     - [0x7DA50, "asm"]
     - [0x7DED0, "asm"]
     - [0x7DF10, "asm"]
-    # more here likely
+    - [0x7DF50, "asm"]
+    - [0x7E290, "asm"]
+    - [0x7E2F0, "asm"]
+    - [0x7E4B0, "asm"]
+    - [0x7E500, "asm"]
+    - [0x7E550, "asm"]
     - [0x7E860, "asm"]
     - [0x7E8C0, "asm"]
     - [0x7E920, "asm"]
@@ -130,13 +173,29 @@ segments:
     - [0x81AD0, "asm"]
     - [0x81AF0, "asm"]
     - [0x81DB0, "asm"]
+    - [0x81E40, "asm"]
     - [0x81E50, "asm"]
     - [0x81F20, "asm"]
     - [0x824C0, "asm"]
-    # more here
     - [0x8A6B0, "asm"]
     - [0x8A6F0, "asm"]
     - [0x8A770, "asm"]
+    - [0x8A830, "asm"]
+    - [0x8A860, "asm"]
+    - [0x8A890, "asm"]
+    - [0x8AA90, "asm"]
+    - [0x8AC30, "asm"]
+    - [0x8AC70, "asm"]
+    - [0x8ACD0, "asm"]
+    - [0x8AD20, "asm"]
+    - [0x8ADB0, "asm"]
+    - [0x8AEA0, "asm"]
+    - [0x8AF30, "asm"]
+    - [0x8B030, "asm"]
+    - [0x8B0C0, "asm"]
+    - [0x8B1C0, "asm"]
+    - [0x8B3F0, "asm"]
+    # more
   - [0x8FCF0, "bin"]
   - [0x98310, "bin"]
 
@@ -176,6 +235,7 @@ segments:
       - [0xEE660, "asm"]
       - [0xFFB10, "c"]
       - [0x1006F0, "asm"]
+      - [0x101840, "asm"]
       - [0x105D50, "c"]
       - [0x1063F0, "asm"]
       - [0x1143C0, "bin"] # rodata
@@ -829,15 +889,16 @@ segments:
       - [0x31B4F0, "bin"] # rodata
 
   # Chilly Waters
-  - name: overlays/overlay72
+  - name: overlays/board_chillywaters
     type: code
     overlay: True
     start: 0x31B510
     vram: 0x801059A0
     files:
-      - [0x31B510, "asm"]
-      - [0x31B540, "asm"]
-      - [0x332DC0, "bin"] # rodata
+      - [0x31B510, "c", "overlays/board_chillywaters/chillywaters_main"]
+      - [0x31B540, "c", "overlays/board_chillywaters/chillywaters"]
+      - [0x332DC0, ".data", "overlays/board_chillywaters/chillywaters_main"]
+      - [0x332DF0, "bin"] # rodata
 
   - name: overlays/overlay73
     type: code
