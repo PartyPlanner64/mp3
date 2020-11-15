@@ -80,7 +80,18 @@ void func_800F2260_105E80(s32 player_index, f32 arg1) {
     func_8001C92C(obj->unk60->unk64->unk0, arg1);
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F22C0_105EE0);
+void func_800F22C0_105EE0(s32 player_index) {
+    struct player *player;
+    struct object *obj;
+
+    player = GetPlayerStruct(player_index);
+    if (player->bowser_suit_flag != 0) {
+        func_800EE97C_10259C(D_801011FC);
+    }
+    else {
+        func_800EE97C_10259C(player->obj);
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2304_105F24);
 
