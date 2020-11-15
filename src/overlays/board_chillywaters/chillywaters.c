@@ -20,6 +20,8 @@ extern void *D_8011E344;
 extern void *D_8011E4D8;
 extern void *D_8011E8B8;
 extern f64 D_8011F968;
+extern void *D_8011FB10;
+extern void *D_8011FB18[];
 extern s32 D_8011FB68;
 
 extern void func_80089A10(void *, f32, f32, f32);
@@ -236,9 +238,20 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010841C_31DF8
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80108478_31DFE8);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80108574_31E0E4);
+INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80108574_31E0E4, s16 arg0);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_801086E0_31E250);
+// draw bank coins
+void func_801086E0_31E250(void) {
+    s32 i;
+
+    D_8011FB10 = NULL;
+    for (i = 0; i < 10; i++) {
+        D_8011FB18[i] = NULL;
+        func_80108574_31E0E4(i);
+    }
+
+    func_80108478_31DFE8();
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80108748_31E2B8);
 
