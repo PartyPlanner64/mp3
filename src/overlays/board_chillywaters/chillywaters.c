@@ -31,7 +31,7 @@ extern void *D_8011FB10;
 extern void *D_8011FB18[];
 extern void *D_8011FB58;
 extern s32 D_8011FB68;
-extern s32 D_80121D80[]
+extern s32 D_80121D80[];
 
 extern void func_80089A10(void *, f32, f32, f32);
 extern f32 func_8008EF20(f32);
