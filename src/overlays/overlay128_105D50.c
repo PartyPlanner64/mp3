@@ -9,6 +9,7 @@ extern struct object *D_801011FC; // bowser suit model?
 extern s8 D_80101630[]; // difficulty data
 
 extern void func_8001C92C(void *, f32);
+extern void func_80089A10(void *, f32, f32, f32);
 
 extern void func_800D9CE8_ED908(struct object *, s32, u16);
 
@@ -118,11 +119,23 @@ void func_800F244C_10606C(s32 player_index, u8 difficulty) {
     GetPlayerStruct(player_index)->cpu_difficulty = D_80101630[difficulty];
 }
 
-//INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2484_1060A4);
 void func_800F2484_1060A4() {
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F248C_1060AC);
+void func_800F248C_1060AC(void) {
+    struct player *player;
+
+    player = (struct player *)GetCurrentProcess()->user_data;
+    while (TRUE) {
+        SleepVProcess();
+
+        if ((player->flags & 4) != 0) {
+            continue;
+        }
+
+        func_80089A10(&player->obj->unk36, 1.0f, 1.0f, 1.0f);
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F24FC_10611C);
 
