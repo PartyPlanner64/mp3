@@ -12,7 +12,8 @@ struct coords_3d {
 struct object {
     /*0x00*/ struct object *prev; // may be NULL
     /*0x04*/ struct object *next;
-    /*0x08*/ s8 pad1[2];
+    /*0x08*/ u8 unk8;
+    /*0x09*/ s8 unk9;
     /*0x0A*/ u16 unka;
 
     /*0x0C*/ struct coords_3d coords;

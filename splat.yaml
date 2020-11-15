@@ -206,6 +206,13 @@ segments:
     vram: 0x800D6B70
     files:
       - [0xA96F0, "asm"]
+      - [0xAB1C0, "asm"]
+      - [0xB3CE0, "asm"]
+      - [0xB63A0, "asm"]
+      - [0xB88C0, "asm"]
+      - [0xB8A20, "asm"]
+      - [0xBC7A0, "asm"]
+      - [0xBD210, "asm"]
       - [0xBE2A0, "bin"] # rodata
 
   - name: overlays/overlay129
@@ -220,9 +227,21 @@ segments:
       - [0xC1580, "asm"]
       - [0xC1BA0, "asm"]
       - [0xC1D60, "asm"]
+      - [0xC4430, "asm"]
+      - [0xC45D0, "asm"]
+      - [0xCCD20, "asm"]
+      - [0xD1190, "asm"]
+      - [0xD28F0, "asm"]
+      - [0xD3450, "asm"]
+      - [0xDBE50, "asm"]
+      - [0xDC0D0, "asm"]
+      - [0xDC4E0, "asm"]
+      - [0xDFD60, "asm"]
       - [0xE3CD0, "asm"]
+      - [0xE7AE0, "asm"]
       - [0xE8BE0, "bin"] # rodata
 
+  # Board play overlay
   - name: overlays/overlay128
     type: code
     overlay: True
@@ -231,13 +250,22 @@ segments:
     files:
       - [0xEA790, "asm"]
       - [0xEB2F0, "asm"]
+      - [0xECA50, "c"]
       - [0xEE3B0, "asm"]
       - [0xEE660, "asm"]
+      - [0xF2910, "asm"]
+      - [0xF5070, "asm"]
       - [0xFFB10, "c"]
       - [0x1006F0, "asm"]
       - [0x101840, "asm"]
       - [0x105D50, "c"]
       - [0x1063F0, "asm"]
+      - [0x106640, "asm"]
+      - [0x106A50, "asm"]
+      - [0x10AD50, "asm"]
+      - [0x10C230, "asm"]
+      - [0x113520, "asm"]
+      - [0x113750, "asm"]
       - [0x1143C0, "bin"] # rodata
 
   - name: overlays/overlay0
