@@ -180,4 +180,5 @@ void *func_800F2690_1062B0(s16 arg0) {
 
 INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F26E8_106308);
 
-INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F27C4_1063E4);
+void func_800F27C4_1063E4() {
+}
