@@ -1,6 +1,8 @@
 #include "common.h"
 
 extern u8 D_800CD059;
+extern s8 D_800CD05A;
+extern s8 D_800CD05B;
 extern u16 D_800CD0B4[];
 extern u16 D_800CE198;
 
@@ -456,7 +458,19 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8011C5E0_33215
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8011C68C_3321FC);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8011C750_3322C0);
+s32 func_8011C750_3322C0() {
+    s32 temp_s0;
+    s32 phi_v1;
+
+    temp_s0 = D_800CD05A - D_800CD05B + 1;
+
+    phi_v1 = func_800E49DC(-1);
+    if (phi_v1 == -1) {
+        phi_v1 = 3;
+    }
+
+    return (phi_v1 < temp_s0) ? 0 : 1;
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8011C7A4_332314);
 
