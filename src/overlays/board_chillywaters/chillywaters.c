@@ -9,6 +9,7 @@ extern void *D_8011E718;
 extern void *D_8011A8D8;
 extern void *D_8011E344;
 extern void *D_8011E4D8;
+extern void *D_8011E8B8;
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_801059D0_31B540);
 
@@ -67,7 +68,7 @@ void func_80107BF4_31D764() {
     func_80048228(0x47, 0, 0x192);
 }
 
-// entrypoin 1
+// entrypoint 1
 void func_80107C2C_31D79C(void) {
     func_80047160(0xA, 0);
 
@@ -90,6 +91,7 @@ void func_80107C2C_31D79C(void) {
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80107CC4_31D834);
 
+// entrypoint 2
 void func_80108014_31DB84(void) {
     func_8004A520(0x18);
     D_800CE198 = 0x18;
@@ -104,7 +106,12 @@ void func_80108014_31DB84(void) {
     func_800FF41C(0);
 }
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80108098_31DC08);
+// entrypoint 3
+void func_80108098_31DC08() {
+    func_80012220(1);
+    func_80107CC4_31D834();
+    func_800FF41C(1);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_801080C4_31DC34);
 
@@ -436,7 +443,14 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8011BF3C_331AA
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8011C470_331FE0);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8011C58C_3320FC);
+// entrypoint 4
+void func_8011C58C_3320FC() {
+    func_80012220(2);
+    func_800124BC(1, &D_8011E8B8);
+    func_80107CC4_31D834();
+    func_800FF41C(2);
+    func_80047EA0(func_801065D0_31C140, 0x1005, 0x1000, 0);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8011C5E0_332150);
 
