@@ -7,6 +7,7 @@ extern s8 D_800CD067; // current player index
 
 extern struct object *D_801011FC; // bowser suit model?
 extern s8 D_80101630[]; // difficulty data
+extern void *D_80101734[];
 
 extern void func_8001C92C(void *, f32);
 extern void func_80089A10(void *, f32, f32, f32);
@@ -143,7 +144,9 @@ void func_800F25B4_1061D4(s16 arg0, s32 arg1) {
     func_800F24FC_10611C(arg0, arg1, 0);
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F25D8_1061F8);
+void func_800F25D8_1061F8(s16 player_index) {
+    func_800F24FC_10611C(player_index, D_80101734[GetPlayerStruct(player_index)->character], 0);
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2624_106244);
 

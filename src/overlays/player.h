@@ -16,6 +16,7 @@ struct player {
     /**
      * Miscellaneous flags.
      * 1: Is CPU player
+     * 4: ?
      */
     u8 flags;
     s8 pad5[1];
