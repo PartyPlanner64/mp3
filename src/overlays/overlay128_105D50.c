@@ -6,8 +6,11 @@
 extern s8 D_800CD067; // current player index
 
 extern struct object *D_801011FC; // bowser suit model?
+extern s8 D_80101630[]; // difficulty data
 
 extern void func_8001C92C(void *, f32);
+
+extern void func_800D9CE8_ED908(struct object *, s32, u16);
 
 /**
  * Returns the index of the current player in the turn.
@@ -94,10 +97,26 @@ void func_800F22C0_105EE0(s32 player_index) {
 }
 
 INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2304_105F24);
+// s8 func_800F2304_105F24(s32 player_index, s32 arg2) {
+//     struct player *player;
+//     s8 ret;
+
+//     player = GetPlayerStruct(player_index);
+//     if (player == GetPlayerStruct(-1)) {
+//         func_800D9CE8_ED908(player->obj, player_index, arg2);
+//         ret = (player->bowser_suit_flag != 0) & (player_index < 7);
+//         if (ret != 0) {
+//             ret = func_800E6420_FA040(player_index, arg2);
+//         }
+//     }
+//     return ret;
+// }
 
 INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2388_105FA8);
 
-INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F244C_10606C);
+void func_800F244C_10606C(s32 player_index, u8 difficulty) {
+    GetPlayerStruct(player_index)->cpu_difficulty = D_80101630[difficulty];
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2484_1060A4);
 
