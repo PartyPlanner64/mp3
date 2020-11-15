@@ -1,6 +1,14 @@
 #include "common.h"
 
 extern u8 D_800CD059;
+extern u16 D_800CD0B4[];
+extern u16 D_800CE198;
+
+extern void *D_8011E2CC;
+extern void *D_8011E718;
+extern void *D_8011A8D8;
+extern void *D_8011E344;
+extern void *D_8011E4D8;
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_801059D0_31B540);
 
@@ -59,11 +67,42 @@ void func_80107BF4_31D764() {
     func_80048228(0x47, 0, 0x192);
 }
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80107C2C_31D79C);
+// entrypoin 1
+void func_80107C2C_31D79C(void) {
+    func_80047160(0xA, 0);
+
+    func_800ED91C(0, 0, 0);
+    func_800ED91C(1, 0, 0);
+    func_800ED91C(2, 0, 0);
+    func_800ED91C(3, 0, 0);
+
+    func_80035FDC(3);
+    func_80105EA8_31BA18();
+    func_8003602C(0x12);
+
+    D_800CD0B4[0] = 0;
+    D_800CD0B4[-3] = 0;
+    D_800CD0B4[-4] = 0;
+    D_800CD0B4[-14] = 0;
+
+    func_8004819C(1);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80107CC4_31D834);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80108014_31DB84);
+void func_80108014_31DB84(void) {
+    func_8004A520(0x18);
+    D_800CE198 = 0x18;
+    func_800F8D6C(0x18);
+    func_80012220(2);
+    func_80107CC4_31D834();
+    func_800EBA60(&D_8011E2CC);
+    func_800EBA60(&D_8011E718);
+    func_800F8D48(&D_8011A8D8);
+    func_800EBA60(&D_8011E344);
+    func_800EBA60(&D_8011E4D8);
+    func_800FF41C(0);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80108098_31DC08);
 
