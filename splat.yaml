@@ -125,7 +125,7 @@ segments:
     - [0x7C9C0, "asm"]
     - [0x7CA50, "asm"]
     - [0x7CB30, "asm"]
-    - [0x7CC70, "asm"]
+    - [0x7CC70, "c", "libultra/os/osRecvMesg"]
     - [0x7CDA0, "asm"]
     - [0x7CF90, "asm"]
     - [0x7CFA0, "asm"]

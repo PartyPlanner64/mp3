@@ -52,6 +52,13 @@ setjmp = 0x80066500;
 longjmp = 0x80066564;
 
 bcopy = 0x8007B970;
+osRecvMesg = 0x8007C070;
+osStartThread = 0x8007CAE0;
+
+__osEnqueueAndYield = 0x8008061C;
+__osPopThread = 0x80080774;
+__osDisableInt = 0x80080940;
+__osRestoreInt = 0x800809B0;
 
 // overlay128_105D50
 GetCurrentPlayerIndex = 0x800F2130;
