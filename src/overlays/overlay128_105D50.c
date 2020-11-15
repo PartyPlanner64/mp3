@@ -148,7 +148,10 @@ void func_800F25D8_1061F8(s16 player_index) {
     func_800F24FC_10611C(player_index, D_80101734[GetPlayerStruct(player_index)->character], 0);
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2624_106244);
+void func_800F2624_106244(s16 player_index) {
+    GetPlayerStruct(player_index); // TODO: is this returned?
+    func_800F24FC_10611C(player_index, 0, 0);
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2660_106280);
 
