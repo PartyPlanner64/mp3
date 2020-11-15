@@ -118,7 +118,9 @@ void func_800F244C_10606C(s32 player_index, u8 difficulty) {
     GetPlayerStruct(player_index)->cpu_difficulty = D_80101630[difficulty];
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2484_1060A4);
+//INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2484_1060A4);
+void func_800F2484_1060A4() {
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F248C_1060AC);
 
