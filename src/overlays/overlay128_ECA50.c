@@ -27,6 +27,7 @@ INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D8FC4_ECBE4);
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9004_ECC24);
 
+// creates model object
 struct object *func_800D90C8_ECCE8(u8 arg0, void *arg1) {
     struct object *ret;
 
@@ -63,6 +64,7 @@ INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9AD0_ED6F0);
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9B24_ED744);
 
+// frees model object from func_800D912C_ECD4C
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9B54_ED774);
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9CB0_ED8D0);
