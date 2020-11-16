@@ -53,6 +53,7 @@ longjmp = 0x80066564;
 
 bcopy = 0x8007B970;
 osRecvMesg = 0x8007C070;
+osSendMesg = 0x8007C1A0;
 osStartThread = 0x8007CAE0;
 
 __osEnqueueAndYield = 0x8008061C;

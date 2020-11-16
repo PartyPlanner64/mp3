@@ -40,6 +40,7 @@ process_count = 0x800BBA94;
 
 osCreateMesgQueue = 0x8007BF00;
 osRecvMesg = 0x8007C070;
+osSendMesg = 0x8007C1A0;
 osStartThread = 0x8007CAE0;
 
 __osEnqueueAndYield = 0x8008061C;

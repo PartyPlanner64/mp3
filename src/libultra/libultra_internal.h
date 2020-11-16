@@ -2,6 +2,8 @@
 #define _LIBULTRA_INTERNAL_H_
 #include <ultra64.h>
 
+extern OSThread *D_800A2DC0; // __osRunningThread
+
 typedef struct {
     u32 initialized; // probably something like initialized?
     OSThread *mgrThread;
