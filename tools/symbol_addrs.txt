@@ -52,6 +52,9 @@ setjmp = 0x80066500;
 longjmp = 0x80066564;
 
 bcopy = 0x8007B970;
+
+osCreateMesgQueue = 0x8007BF00;
+osJamMesg = 0x8007BF30;
 osRecvMesg = 0x8007C070;
 osSendMesg = 0x8007C1A0;
 osStartThread = 0x8007CAE0;
