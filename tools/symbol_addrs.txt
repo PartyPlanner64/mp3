@@ -51,6 +51,14 @@ FreeProcessMemory = 0x8004F26C;
 setjmp = 0x80066500;
 longjmp = 0x80066564;
 
+osEepromWrite = 0x80072020;
+__osPackEepWriteData = 0x800721D4;
+__osEepStatus = 0x8007227C;
+
+osVirtualToPhysical = 0x800792D0;
+cosf = 0x80079330;
+sinf = 0x8007B530;
+
 bcopy = 0x8007B970;
 
 osCreateMesgQueue = 0x8007BF00;
@@ -59,10 +67,14 @@ osRecvMesg = 0x8007C070;
 osSendMesg = 0x8007C1A0;
 osStartThread = 0x8007CAE0;
 
+__osProbeTLB = 0x8007D210;
+
 __osEnqueueAndYield = 0x8008061C;
 __osPopThread = 0x80080774;
 __osDisableInt = 0x80080940;
 __osRestoreInt = 0x800809B0;
+
+sqrtf = 0x80081240;
 
 // overlay128_105D50
 GetCurrentPlayerIndex = 0x800F2130;

@@ -4,11 +4,11 @@
 #define M_PI 3.14159265358979323846
 
 // TODO: Where are these in libultra, if anywhere?
-//float sinf(float);
+float sinf(float);
 //double sin(double);
-//float cosf(float);
+float cosf(float);
 //double cos(double);
 
-//float sqrtf(float);
+float sqrtf(float);
 
 #endif

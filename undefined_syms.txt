@@ -39,16 +39,28 @@ top_process = 0x800BBA8C;
 current_process = 0x800BBA90;
 process_count = 0x800BBA94;
 
+osEepromWrite = 0x80072020;
+__osPackEepWriteData = 0x800721D4;
+__osEepStatus = 0x8007227C;
+
+osVirtualToPhysical = 0x800792D0;
+cosf = 0x80079330;
+sinf = 0x8007B530;
+
 osCreateMesgQueue = 0x8007BF00;
 osJamMesg = 0x8007BF30;
 osRecvMesg = 0x8007C070;
 osSendMesg = 0x8007C1A0;
 osStartThread = 0x8007CAE0;
 
+__osProbeTLB = 0x8007D210;
+
 __osEnqueueAndYield = 0x8008061C;
 __osPopThread = 0x80080774;
 __osDisableInt = 0x80080940;
 __osRestoreInt = 0x800809B0;
+
+sqrtf = 0x80081240;
 
 gPlayers = 0x800D1108;
 
