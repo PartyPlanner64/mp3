@@ -2,6 +2,7 @@
 #include "../spaces.h"
 
 extern struct space_data *D_80105214;
+extern struct chain_data *D_80105218;
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E1450_F5070);
 
@@ -375,7 +376,9 @@ struct space_data *GetSpaceData(s16 index) {
     return &D_80105214[index];
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB184_FEDA4);
+s16 GetAbsSpaceIndexFromChainSpaceIndex(u16 chain_index, u16 space_index) {
+    return D_80105218[chain_index].space_indices[space_index];
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB1B0_FEDD0);
 

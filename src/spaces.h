@@ -30,6 +30,11 @@ struct space_data {
     struct event_list_entry *event_list;
 };
 
+struct chain_data {
+    u16 len;
+    s16 *space_indices;
+};
+
 extern struct space_data *GetSpaceData(s16 index);
 
 #endif /* _SPACES_H */
