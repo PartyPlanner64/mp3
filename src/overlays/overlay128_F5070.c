@@ -1,6 +1,8 @@
 #include "common.h"
 #include "../spaces.h"
 
+extern s8 D_800CD069;
+
 extern struct space_data *D_80105214;
 extern struct chain_data *D_80105218;
 
@@ -425,9 +427,13 @@ INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EBAC8_FF6E8);
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EBCB0_FF8D0);
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EBCBC_FF8DC);
+void SetCurrentSpaceIndex(s16 space_index) {
+    D_800CD069 = space_index;
+}
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EBCC8_FF8E8);
+s16 GetCurrentSpaceIndex() {
+    return D_800CD069;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EBCD4_FF8F4);
 

@@ -82,6 +82,8 @@ GetAbsSpaceIndexFromChainSpaceIndex = 0x800EB184;
 GetChainLength = 0x800EB1B0;
 GetChainSpaceIndexFromAbsSpaceIndex = 0x800EB1CC;
 SetSpaceType = 0x800EB7F0;
+SetCurrentSpaceIndex = 0x800EBCBC;
+GetCurrentSpaceIndex = 0x800EBCC8;
 
 // overlay128_105D50
 GetCurrentPlayerIndex = 0x800F2130;
