@@ -404,7 +404,12 @@ INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB4F0_FF110);
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB5DC_FF1FC);
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB7F0_FF410);
+void SetSpaceType(s16 space_index, s32 space_type) {
+    struct space_data *space;
+
+    space = GetSpaceData(space_index);
+    space->space_type = space_type;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB820_FF440);
 
