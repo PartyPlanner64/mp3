@@ -3,11 +3,15 @@
 
 extern s8 D_800CD069;
 
+extern void *D_80102C58[]; // function pointers given by board.
+
 extern struct space_data *D_80105214;
 extern struct chain_data *D_80105218;
 
-extern f32 D_80105290[];
-extern s32 D_801052B0;
+extern f32 D_80105290[]; // arrow angles
+extern s32 D_801052B0; // arrow angle count
+
+extern s16 D_80105540[];
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E1450_F5070);
 
@@ -49,7 +53,9 @@ INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E2904_F6524);
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E2954_F6574);
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E2960_F6580);
+void func_800E2960_F6580(s32 arg0, void *arg1) {
+    D_80102C58[arg0] = arg1;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E2974_F6594);
 
@@ -362,7 +368,6 @@ INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA5A4_FE1C4);
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA60C_FE22C);
 
 // Set arrow angle
-//INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA660_FE280);
 void func_800EA660_FE280(f32 angle) {
     if (D_801052B0 != 8) {
         D_80105290[D_801052B0++] = angle;
@@ -373,7 +378,9 @@ INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA694_FE2B4);
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA6B0_FE2D0);
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA6E0_FE300);
+void func_800EA6E0_FE300(s32 arg0, s16 arg1) {
+    D_80105540[arg0] = arg1;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA6F4_FE314);
 
