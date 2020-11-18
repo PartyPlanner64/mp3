@@ -80,6 +80,7 @@ sqrtf = 0x80081240;
 GetSpaceData = 0x800EB160;
 GetAbsSpaceIndexFromChainSpaceIndex = 0x800EB184;
 GetChainLength = 0x800EB1B0;
+GetChainSpaceIndexFromAbsSpaceIndex = 0x800EB1CC;
 
 // overlay128_105D50
 GetCurrentPlayerIndex = 0x800F2130;

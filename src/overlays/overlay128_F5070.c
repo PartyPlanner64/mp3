@@ -384,7 +384,15 @@ s16 GetChainLength(u16 chain_index) {
     return D_80105218[chain_index].len;
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB1CC_FEDEC);
+s16 GetChainSpaceIndexFromAbsSpaceIndex(s16 abs_space_index, s32 chain_index) {
+    s32 i;
+    for (i = 0; i < GetChainLength(chain_index); i++) {
+        if (GetAbsSpaceIndexFromChainSpaceIndex(chain_index, i) == abs_space_index) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB24C_FEE6C);
 
