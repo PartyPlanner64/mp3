@@ -6,6 +6,9 @@ extern s8 D_800CD069;
 extern struct space_data *D_80105214;
 extern struct chain_data *D_80105218;
 
+extern f32 D_80105290[];
+extern s32 D_801052B0;
+
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E1450_F5070);
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E17B0_F53D0);
@@ -358,7 +361,13 @@ INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA5A4_FE1C4);
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA60C_FE22C);
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA660_FE280);
+// Set arrow angle
+//INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA660_FE280);
+void func_800EA660_FE280(f32 angle) {
+    if (D_801052B0 != 8) {
+        D_80105290[D_801052B0++] = angle;
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA694_FE2B4);
 
@@ -435,7 +444,6 @@ s16 GetCurrentSpaceIndex() {
     return D_800CD069;
 }
 
-//INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EBCD4_FF8F4);
 s16 func_800EBCD4_FF8F4(s32 arg0) {
     return func_800EB5DC_FF1FC(2, arg0);
 }
