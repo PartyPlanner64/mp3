@@ -374,9 +374,14 @@ void func_800EA660_FE280(f32 angle) {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA694_FE2B4);
+void func_800EA694_FE2B4() {
+    func_800EA5A4_FE1C4();
+}
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA6B0_FE2D0);
+void func_800EA6B0_FE2D0(s16 arg0) {
+    func_800EA5A4_FE1C4();
+    func_800EA4F0_FE110(arg0);
+}
 
 void func_800EA6E0_FE300(s32 arg0, s16 arg1) {
     D_80105540[arg0] = arg1;
