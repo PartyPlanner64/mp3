@@ -404,7 +404,7 @@ INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB3C0_FEFE0);
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB4F0_FF110);
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB5DC_FF1FC);
+INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB5DC_FF1FC, s32 arg0, u8 arg1);
 
 void SetSpaceType(s16 space_index, s32 space_type) {
     struct space_data *space;
@@ -435,7 +435,10 @@ s16 GetCurrentSpaceIndex() {
     return D_800CD069;
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EBCD4_FF8F4);
+//INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EBCD4_FF8F4);
+s16 func_800EBCD4_FF8F4(s32 arg0) {
+    return func_800EB5DC_FF1FC(2, arg0);
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EBCFC_FF91C);
 
