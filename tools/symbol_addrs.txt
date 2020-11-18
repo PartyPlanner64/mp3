@@ -76,6 +76,9 @@ __osRestoreInt = 0x800809B0;
 
 sqrtf = 0x80081240;
 
+// overlay128_F5070
+GetSpaceData = 0x800EB160;
+
 // overlay128_105D50
 GetCurrentPlayerIndex = 0x800F2130;
 GetPlayerStruct = 0x800F213C;

@@ -259,7 +259,8 @@ segments:
       - [0xEE3B0, "asm"]
       - [0xEE660, "asm"]
       - [0xF2910, "asm"]
-      - [0xF5070, "asm"]
+      - [0xF5070, "c"]
+      # - [0xFE110, "asm"] suspected based on mp1 spaces.c
       - [0xFFB10, "c"]
       - [0x1006F0, "asm"]
       - [0x101840, "asm"]

@@ -30,4 +30,6 @@ struct space_data {
     struct event_list_entry *event_list;
 };
 
+extern struct space_data *GetSpaceData(s16 index);
+
 #endif /* _SPACES_H */

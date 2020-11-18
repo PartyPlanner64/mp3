@@ -147,9 +147,7 @@ void func_80107C2C_31D79C(void) {
 
 // setup routine
 void func_80107CC4_31D834(void) {
-    s32 temp_s0;
-    s32 temp_s0_2;
-    s32 temp_s0_3;
+    struct space_data *spacedata;
     struct coords_3d subroutine_arg4;
 
     func_80047160(0xA0, 0x28);
@@ -158,14 +156,14 @@ void func_80107CC4_31D834(void) {
     func_800F89D0(3, 0x23A, 5, 0);
     func_800EBCFC(&D_8011D31C);
     func_800EBD54(&D_8011D320);
-    temp_s0 = func_800EB160(0x77);
-    func_800ECB58(temp_s0 + 8, func_800EB160(0x73) + 8, &subroutine_arg4);
+    spacedata = GetSpaceData(0x77);
+    func_800ECB58(&(spacedata->coords), &(GetSpaceData(0x73)->coords), &subroutine_arg4);
     func_800EA660(func_800D8790(&subroutine_arg4) + 180.0f);
-    temp_s0_2 = func_800EB160(0x7C);
-    func_800ECB58(temp_s0_2 + 8, func_800EB160(0x6E) + 8, &subroutine_arg4);
+    spacedata = GetSpaceData(0x7C);
+    func_800ECB58(&(spacedata->coords), &(GetSpaceData(0x6E)->coords), &subroutine_arg4);
     func_800EA660(func_800D8790(&subroutine_arg4) + 180.0f);
-    temp_s0_3 = func_800EB160(0x8F);
-    func_800ECB58(temp_s0_3 + 8, func_800EB160(0x80) + 8, &subroutine_arg4);
+    spacedata = GetSpaceData(0x8F);
+    func_800ECB58(&(spacedata->coords), &(GetSpaceData(0x80)->coords), &subroutine_arg4);
     func_800EA660(func_800D8790(&subroutine_arg4) + 180.0f);
 
     func_800E2960(0, func_8010DE7C_3239EC);
@@ -441,12 +439,12 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010DE7C_3239E
 //     if (space_index != 0x92) {
 //         func_800D9B24(&obj, func_800D975C(D_8011FB08, -1, (u16)-1));
 //         obj->unk48 = 30.0f;
-//         spacedata = func_800EB160(space_index); // GetSpaceData
+//         spacedata = GetSpaceData(space_index); // GetSpaceData
 //         func_80089A10(&obj->coords, spacedata->coords->x, spacedata->coords->y + 10.0f, spacedata->coords->z);
 //         phi_s4 = NULL;
 //     }
 //     else {
-//         spacedata = func_800EB160(0x6A);
+//         spacedata = GetSpaceData(0x6A);
 //         func_8004AA88(0x125, D_8011FB0C);
 //         obj = func_800D90C8(0x33, NULL);
 //         if (D_80121D80[D_800CD058] != 0) {
@@ -454,7 +452,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010DE7C_3239E
 //         }
 //         func_8001C448(obj->unk60->unk64->unk0);
 //         func_800D9714(obj);
-//         func_80089AB0(&subroutine_arg1A, &(func_800EB160(space_index)->coords), spacedata);
+//         func_80089AB0(&subroutine_arg1A, &(GetSpaceData(space_index)->coords), spacedata);
 //         func_800D88E8(&subroutine_arg1A);
 //         func_80089A20(&obj->rot1, &subroutine_arg1A);
 //         obj->unk40 = 0.0f;
@@ -508,7 +506,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010DE7C_3239E
 //     func_8004AA88(0x257);
 //     func_8010C914_322484(subroutine_arg23);
 //     if (/*temp_s0_3*/ space_index != -1) {
-//         func_800D9F5C(subroutine_arg23, &(func_800EB160(space_index)->coords), 5);
+//         func_800D9F5C(subroutine_arg23, &(GetSpaceData(space_index)->coords), 5);
 //         func_800ED20C(-1, 5, temp_s0_3);
 //         SleepProcess(5);
 //         temp_s0_4_process = GetCurrentProcess();
