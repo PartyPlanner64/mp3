@@ -380,7 +380,9 @@ s16 GetAbsSpaceIndexFromChainSpaceIndex(u16 chain_index, u16 space_index) {
     return D_80105218[chain_index].space_indices[space_index];
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB1B0_FEDD0);
+s16 GetChainLength(u16 chain_index) {
+    return D_80105218[chain_index].len;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB1CC_FEDEC);
 
