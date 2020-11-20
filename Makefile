@@ -51,9 +51,11 @@ CPP := cpp -P
 LD := $(CROSS)ld
 OBJCOPY := $(CROSS)objcopy
 
+CFLAGSCOMMON = -G 0 -quiet -mcpu=r4300 -mips2
+
 ASFLAGS    := -G 0 -I include -mips3 -mabi=32 $(GRUCODE_ASFLAGS)
 OLDASFLAGS := -G 0 -I include -mips2 $(GRUCODE_ASFLAGS)
-CFLAGS     := -O1 -G 0 -quiet -mcpu=r4300 -mips2
+CFLAGS     := -O1 $(CFLAGSCOMMON)
 LDFLAGS    := -T undefined_syms.txt -T undefined_funcs.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(LD_MAP) --no-check-sections
 
 # Check code syntax with host compiler
@@ -80,7 +82,7 @@ O_FILES := $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
 
 ### Targets ###
 
-build/src/libultra/os/%.o: CFLAGS := -O2
+build/src/libultra/os/%.o: CFLAGS := -O2 $(CFLAGSCOMMON)
 
 clean:
 	rm -rf $(BUILD_DIR)

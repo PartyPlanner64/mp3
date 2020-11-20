@@ -3,6 +3,7 @@
 
 extern s8 D_800CD069;
 
+extern void *D_801012C0;
 extern u32 D_801012C8[];
 extern u32 D_80101318[];
 extern void *D_80102C58[]; // function pointers given by board.
@@ -14,6 +15,8 @@ extern void *D_80105220[];
 extern s16 D_80105260;
 extern f32 D_80105290[]; // arrow angles
 extern s32 D_801052B0; // arrow angle count
+
+extern void *D_80105500[];
 
 extern s16 D_80105540[];
 
@@ -402,7 +405,17 @@ void func_800EA5A4_FE1C4() {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA60C_FE22C);
+void func_800EA60C_FE22C() {
+    s32 i;
+
+    func_800EA4F0_FE110(0);
+    D_801012C0 = 0;
+    D_801052B0 = 0;
+
+    for (i = 0; i < 16; i++) {
+        D_80105500[i] = NULL;
+    }
+}
 
 // Set arrow angle
 void func_800EA660_FE280(f32 angle) {
