@@ -1,3 +1,6 @@
+ReadMainFS = 0x80009C10;
+FreeMainFS = 0x80009E6C;
+
 // heap.c
 MakeHeap = 0x800360D0;
 Malloc = 0x800360F0;

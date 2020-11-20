@@ -387,7 +387,7 @@ s32 func_800EA4F0_FE110(s16 param_1) {
 
     for (i = 0; i < 16; i++) {
         if (ptr[i] != 0) {
-            D_80105220[i] = func_80009C10(ptr[i]); // ReadMainFS
+            D_80105220[i] = ReadMainFS(ptr[i]);
         }
         else {
             D_80105220[i] = NULL;
@@ -399,7 +399,7 @@ void func_800EA5A4_FE1C4() {
     s32 i;
     for (i = 0; i < 16; i++) {
         if (D_80105220[i] != NULL) {
-            func_80009E6C(D_80105220[i]); // FreeMainFS
+            FreeMainFS(D_80105220[i]);
         }
         D_80105220[i] = NULL;
     }
