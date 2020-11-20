@@ -3,11 +3,15 @@
 
 extern s8 D_800CD069;
 
+extern u32 D_801012C8[];
+extern u32 D_80101318[];
 extern void *D_80102C58[]; // function pointers given by board.
 
 extern struct space_data *D_80105214;
 extern struct chain_data *D_80105218;
 
+extern void *D_80105220[];
+extern s16 D_80105260;
 extern f32 D_80105290[]; // arrow angles
 extern s32 D_801052B0; // arrow angle count
 
@@ -361,9 +365,42 @@ INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA4CC_FE0EC);
 
 // File break?
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA4F0_FE110);
+s32 func_800EA4F0_FE110(s16 param_1) {
+    s32 i;
+    u32 *ptr;
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA5A4_FE1C4);
+    D_80105260 = param_1;
+
+    switch (param_1) {
+        case 0:
+        default:
+            ptr = D_801012C8;
+            break;
+
+        case 1:
+            ptr = D_80101318;
+            break;
+    }
+
+    for (i = 0; i < 16; i++) {
+        if (ptr[i] != 0) {
+            D_80105220[i] = func_80009C10(ptr[i]); // ReadMainFS
+        }
+        else {
+            D_80105220[i] = NULL;
+        }
+    }
+}
+
+void func_800EA5A4_FE1C4() {
+    s32 i;
+    for (i = 0; i < 16; i++) {
+        if (D_80105220[i] != NULL) {
+            func_80009E6C(D_80105220[i]); // FreeMainFS
+        }
+        D_80105220[i] = NULL;
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA60C_FE22C);
 
