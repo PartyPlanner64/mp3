@@ -13,6 +13,7 @@ extern f32 D_800D6AC0;
 extern u16 D_80106500;
 
 extern void func_80019568(s32, f32, f32, f32);
+extern void func_8001C0C4(s32, s32, s32, f32);
 extern void func_8004819C(s32);
 extern void func_8004B340();
 extern s32 func_800620BC();
@@ -74,3 +75,32 @@ void func_80106390_4F73E0(void) {
 }
 
 INCLUDE_ASM(s32, "overlays/overlay118_4F69F0", func_801063BC_4F740C);
+// void func_801063BC_4F740C() {
+//     s16 temp_s0;
+//     s32 temp_s3;
+//     s16 phi_s1;
+
+//     temp_s2 = func_8000B108(0x000700A0, 0x2A9);
+//     temp_s0 = func_8000B108(0x00070001, 8);
+//     temp_s1 = temp_s2;
+//     func_8001C5B4(temp_s1, temp_s0);
+//     func_8001C0C4(temp_s1, 0, 0, 100.0f);
+//     temp_s3 = func_80016784(temp_s1, 2);
+//     phi_s1 = (u16)0;
+
+//     while (1) {
+//         SleepVProcess();
+//         if (D_80106500 == 0) {
+//             temp_s0_2 = phi_s1;
+//             func_80016FB4(temp_s2, temp_s3, temp_s0_2);
+//             phi_s1 = (-(s32) ((s32) temp_s0_2 < (s32) ((((temp_s0 * 0xC0) + D_800D03F8)->unk2 * 0x18) + D_800CCF58)->unk2) & phi_s1) + 2;
+//             continue;
+//         }
+//         break;
+//     }
+
+//     func_80017320(temp_s3);
+//     while (1) {
+//         SleepVProcess();
+//     }
+// }

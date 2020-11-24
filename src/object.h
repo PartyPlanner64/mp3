@@ -32,7 +32,7 @@ struct object {
 
     struct object_indirect *unk60;
     void *unk64;
-    s8 pad5[2];
+    s16 unk44;
     s16 unk70;
 };
 
