@@ -121,14 +121,14 @@ $(BUILD_DIR)/src/%.s: $(BUILD_DIR)/src/%.i
 	$(CC) $(CFLAGS) -o $@ $<
 
 # Run a separate assembler for src and asm .s files.
-$(BUILD_DIR)/asm/%.o: asm/%.s
+$(BUILD_DIR)/asm/%.o: asm/%.s $(BUILD_DIR)
 	$(AS) $(ASFLAGS) -o $@ $<
 
 $(BUILD_DIR)/src/%.o: $(BUILD_DIR)/src/%.s
 	$(OLD_AS) $(OLDASFLAGS) -o $@ $<
 
 # Create .o files from .bin files.
-$(BUILD_DIR)/%.o: %.bin
+$(BUILD_DIR)/%.o: %.bin $(BUILD_DIR)
 	$(LD) -r -b binary -o $@ $<
 
 # Continue the rest of the build...
