@@ -54,14 +54,25 @@ struct object_indirect {
 
     u16 unk3C;
     struct object_indirect2 *unk40;
-    s16 unk68;
-    s16 pad70;
-    s32 pad72;
-    u8 unk76;
+    s16 unk44;
+    s16 pad46;
+    s32 pad48;
+    u8 pad4C;
+    u8 pad4D;
+    u16 pad4E;
+    s32 pad50;
+    s32 pad54;
+    s32 pad58;
+    struct object_indirect3 *unk5C;
 };
 
 struct object_indirect2 {
     s16 unk0;
+};
+
+struct object_indirect3 {
+    struct object *unk0;
+    f32 unk4;
 };
 
 
