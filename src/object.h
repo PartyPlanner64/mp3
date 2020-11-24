@@ -22,21 +22,21 @@ struct object {
     f32 rot2;
     f32 rot3;
 
-    /*0x24*/ f32 unk36;
-    f32 unk40;
-    f32 unk44;
+    /*0x24*/ f32 unk24;
+    f32 unk28;
+    f32 unk2C;
 
-    /*0x30*/ f32 unk48;
-    f32 funk52;
-    f32 funk56;
+    /*0x30*/ f32 unk30;
+    f32 unk34;
+    f32 unk38;
 
-    struct object_indirect *unk60;
-    void *unk64;
+    struct object_indirect *unk3C;
+    void *unk40;
     s16 unk44;
-    s16 unk70;
+    s16 unk46;
 };
 
-// Is this really just object? What is up with unk60?
+// Is this really just object? What is up with unk3C?
 struct object_indirect {
     s8 pad[24];
 
@@ -44,16 +44,16 @@ struct object_indirect {
     f32 rot2;
     f32 rot3;
 
-    /*0x24*/ f32 unk36;
-    f32 unk40;
-    f32 unk44;
+    /*0x24*/ f32 unk24;
+    f32 unk28;
+    f32 unk2C;
 
-    /*0x30*/ f32 unk48;
-    f32 funk52;
-    f32 funk56;
+    /*0x30*/ f32 unk30;
+    f32 unk34;
+    f32 unk38;
 
-    u16 unk60;
-    struct object_indirect2 *unk64;
+    u16 unk3C;
+    struct object_indirect2 *unk40;
     s16 unk68;
     s16 pad70;
     s32 pad72;

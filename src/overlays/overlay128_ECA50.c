@@ -46,11 +46,11 @@ INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9004_ECC24);
 //         func_80089A10(temp_s0 + 0xC, 0, 0, 0);
 //         func_80089A10(temp_s0 + 0x18, 0, 0, 0x3F800000);
 //         func_80089A10(temp_s0 + 0x24, 0x3F800000, 0x3F800000, 0x3F800000);
-//         temp_s0->unk48 = 0;
-//         temp_s0->funk52 = 0;
-//         temp_s0->funk56 = 0;
+//         temp_s0->unk30 = 0;
+//         temp_s0->unk34 = 0;
+//         temp_s0->unk38 = 0;
 //         temp_s0->unk44 = -1;
-//         temp_s0->unk70 = -1;
+//         temp_s0->unk46 = -1;
 //     }
 //     return temp_s0;
 // }
@@ -119,7 +119,7 @@ INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D912C_ECD4C);
 //         if ((phi_s4 << 0x10) > 0) {
 //             phi_s0 = (u16)0;
 // loop_7:
-//             *(((s32) (phi_s0 << 0x10) >> 0xF) + temp_v0_2->unk48) = func_800D8E88_ECAA8(*phi_s2);
+//             *(((s32) (phi_s0 << 0x10) >> 0xF) + temp_v0_2->unk30) = func_800D8E88_ECAA8(*phi_s2);
 //             temp_v0_4 = phi_s0 + 1;
 //             temp_s0_2 = temp_v0_4;
 //             phi_s2 = phi_s2 + 4;

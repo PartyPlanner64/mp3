@@ -441,7 +441,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010DE7C_3239E
 
 //     if (space_index != 0x92) {
 //         func_800D9B24(&obj, func_800D975C(D_8011FB08, -1, (u16)-1));
-//         obj->unk48 = 30.0f;
+//         obj->unk30 = 30.0f;
 //         spacedata = GetSpaceData(space_index); // GetSpaceData
 //         func_80089A10(&obj->coords, spacedata->coords->x, spacedata->coords->y + 10.0f, spacedata->coords->z);
 //         phi_s4 = NULL;
@@ -451,14 +451,14 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010DE7C_3239E
 //         func_8004AA88(0x125, D_8011FB0C);
 //         obj = func_800D90C8(0x33, NULL);
 //         if (D_80121D80[D_800CD058] != 0) {
-//             func_8001ED54(obj->unk60->unk64->unk0);
+//             func_8001ED54(obj->unk3C->unk40->unk0);
 //         }
-//         func_8001C448(obj->unk60->unk64->unk0);
+//         func_8001C448(obj->unk3C->unk40->unk0);
 //         func_800D9714(obj);
 //         func_80089AB0(&subroutine_arg1A, &(GetSpaceData(space_index)->coords), spacedata);
 //         func_800D88E8(&subroutine_arg1A);
 //         func_80089A20(&obj->rot1, &subroutine_arg1A);
-//         obj->unk40 = 0.0f;
+//         obj->unk28 = 0.0f;
 //         func_80089A20(&obj->coords, spacedata);
 //         func_800D9CE8(obj, -1, 1);
 //         func_800D9AA4(obj);
@@ -466,11 +466,11 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010DE7C_3239E
 
 //         phi_f20 = 0.0f;
 //         do {
-//             obj->unk40 = func_8008EF20(phi_f20) * temp_f22;
-//             obj->unk36 = (func_8008EF20(phi_f20) * temp_f22 * 0.99f) + 0.01f;
-//             obj->unk44 = (func_8008EF20(phi_f20) * temp_f22 * 0.99f) + 0.01f;
+//             obj->unk28 = func_8008EF20(phi_f20) * temp_f22;
+//             obj->unk24 = (func_8008EF20(phi_f20) * temp_f22 * 0.99f) + 0.01f;
+//             obj->unk2C = (func_8008EF20(phi_f20) * temp_f22 * 0.99f) + 0.01f;
 //             if (D_8011E280[D_800CD058] != 0) {
-//                 obj->unk36 = -obj->unk36;
+//                 obj->unk24 = -obj->unk24;
 //             }
 //             SleepVProcess();
 //             phi_f20 += 11.25f;
@@ -478,25 +478,25 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010DE7C_3239E
 //         while (temp_f20 < 90.0f);
 
 //         while (50.0f < phi_f20) {
-//             obj->unk40 = func_8008EF20(phi_f20) * temp_f22;
-//             obj->unk36 = (func_8008EF20(phi_f20) * temp_f22 * 0.99f) + 0.01f;
-//             obj->unk44 = (func_8008EF20(phi_f20) * temp_f22 * 0.99f) + 0.01f;
+//             obj->unk28 = func_8008EF20(phi_f20) * temp_f22;
+//             obj->unk24 = (func_8008EF20(phi_f20) * temp_f22 * 0.99f) + 0.01f;
+//             obj->unk2C = (func_8008EF20(phi_f20) * temp_f22 * 0.99f) + 0.01f;
 //             if (D_8011E280[D_800CD058] != 0) {
-//                 obj->unk36 = -obj->unk36;
+//                 obj->unk24 = -obj->unk24;
 //             }
 //             SleepVProcess();
 //             phi_f20 -= 11.25f;
 //         }
 
-//         obj->unk40 = 1.0f;
-//         obj->unk36 = 1.0f;
-//         obj->unk44 = 1.0f;
+//         obj->unk28 = 1.0f;
+//         obj->unk24 = 1.0f;
+//         obj->unk2C = 1.0f;
 
 //         if (D_80121D80[D_800CD058] != 0) {
-//             obj->unk36 = -1.0f;
+//             obj->unk24 = -1.0f;
 //         }
 //         func_800D9CE8(obj, -1, 0);
-//         func_8001C92C(obj->unk60->unk64->unk0, 1.2f); //0x3F99999A, 1.20000004768
+//         func_8001C92C(obj->unk3C->unk40->unk0, 1.2f); //0x3F99999A, 1.20000004768
 
 //         while (TRUE) {
 //             if (func_800D9E0C(obj) == 0) {
@@ -902,8 +902,8 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010DE7C_3239E
 //     if ((s16) subroutine_arg29 != -1) {
 //         func_8004AA88(0x126);
 //         func_800D9CE8(phi_s4, -1, 4);
-//         func_8001C92C(*phi_s4->unk3C->unk40, 1.2f); // 0x3F99999A
-//         temp_a0_2 = *phi_s4->unk3C->unk40;
+//         func_8001C92C(*phi_s4->unk3C->unk28, 1.2f); // 0x3F99999A
+//         temp_a0_2 = *phi_s4->unk3C->unk28;
 //         func_8001C6A8(temp_a0_2,
 //             (f32) ((((temp_a0_2 * 0xC0) + D_800D03F8)->unk2 * 0x18) + D_800CCF58)->unk2);
 
@@ -1043,20 +1043,20 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80112C88_3287F
 //     temp_s1 = GetCurrentProcess()->user_data;
 //     temp_s0 = func_800D975C(D_8011FB68);
 //     func_80089A20(&temp_s0->coords, &temp_s1->coords);
-//     func_80089A10(&temp_s0->unk36, 2.0f, 2.0f, 2.0f);
-//     temp_s0->unk48 = temp_s1->unk48 + 10.0f;
+//     func_80089A10(&temp_s0->unk24, 2.0f, 2.0f, 2.0f);
+//     temp_s0->unk30 = temp_s1->unk30 + 10.0f;
 //     func_800D9AA4(temp_s0);
 //     temp_f22 = D_8011F968;
 //     phi_f20 = func_800EEF80(360.0f);
 
 //     while (TRUE) {
 //         SleepVProcess();
-//         temp_f0 = temp_s0->unk48 + temp_f22;
-//         temp_s0->unk48 = temp_f0;
+//         temp_f0 = temp_s0->unk30 + temp_f22;
+//         temp_s0->unk30 = temp_f0;
 
-//         if ((!((temp_s1->unk48 + 35.0f) <= temp_f0))) {
+//         if ((!((temp_s1->unk30 + 35.0f) <= temp_f0))) {
 //             temp_f20 = phi_f20 + 40.0f;
-//             func_8008A2A0((temp_s0->unk60->unk60 * 0xC0) + D_800D03F8 + 0x74, temp_f20);
+//             func_8008A2A0((temp_s0->unk3C->unk3C * 0xC0) + D_800D03F8 + 0x74, temp_f20);
 //             phi_f20 = temp_f20;
 //             continue;
 //         }
@@ -1150,8 +1150,8 @@ struct object *func_80118D6C_32E8DC() {
         temp_a0 = D_8011D318;
         temp_a0->coords.x = temp_a0->coords.x + 1.0f;
         temp_a0->coords.z = temp_a0->coords.z - 20.0f;
-        temp_a0->unk36 = 1.2f;
-        temp_a0->unk44 = 1.2f;
+        temp_a0->unk24 = 1.2f;
+        temp_a0->unk2C = 1.2f;
         func_800D9AA4(temp_a0);
         temp_ret = func_800D9B54(D_8011D314);
         D_8011D314 = NULL;
@@ -1175,8 +1175,8 @@ void *func_80118E2C_32E99C() {
         temp_a0 = D_8011D314;
         temp_a0->coords.x = temp_a0->coords.x + 1.0f;
         temp_a0->coords.z = temp_a0->coords.z - 20.0f;
-        temp_a0->unk36 = 1.2f;
-        temp_a0->unk44 = 1.2f;
+        temp_a0->unk24 = 1.2f;
+        temp_a0->unk2C = 1.2f;
         func_800D9AA4(temp_a0);
         temp_ret = func_800D9B54(D_8011D318);
         D_8011D318 = NULL;
