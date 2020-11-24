@@ -13,18 +13,21 @@ extern u16 D_800CE198;
 extern u16 D_800D037C;
 extern u8 D_800D03F8[];
 
-extern void *D_8011E2CC;
-extern void *D_8011E718;
 extern void *D_8011A8D8;
 extern s32 D_8011E280[];
 extern s16 D_8011D2C0[];
 extern s32 D_8011D308;
+extern struct object *D_8011D314;
+extern struct object *D_8011D318;
 extern void *D_8011D31C;
 extern void *D_8011D320;
+extern void *D_8011E2CC;
 extern void *D_8011E344;
 extern void *D_8011E4D8;
+extern void *D_8011E718;
 extern void *D_8011E8B8;
 extern f64 D_8011F968;
+extern void *D_8011FAEC;
 extern void *D_8011FB08;
 extern void *D_8011FB0C;
 extern void *D_8011FB10;
@@ -1132,15 +1135,66 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80118AE8_32E65
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80118B7C_32E6EC);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80118D6C_32E8DC);
+struct object *func_80118D6C_32E8DC() {
+    struct object *temp_a0;
+    struct object *temp_ret;
+    struct object *temp_v0;
+    struct object *temp_v0_2;
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80118E2C_32E99C);
+    temp_v0 = D_8011D318;
+    if (temp_v0 == NULL) {
+        temp_v0_2 = func_800D90C8(0x2E, 0);
+        D_8011D318 = temp_v0_2;
+        func_800D9714(temp_v0_2);
+        func_80089A20(&(D_8011D318->coords), &(GetSpaceData(0x81)->coords));
+        temp_a0 = D_8011D318;
+        temp_a0->coords.x = temp_a0->coords.x + 1.0f;
+        temp_a0->coords.z = temp_a0->coords.z - 20.0f;
+        temp_a0->unk36 = 1.2f;
+        temp_a0->unk44 = 1.2f;
+        func_800D9AA4(temp_a0);
+        temp_ret = func_800D9B54(D_8011D314);
+        D_8011D314 = NULL;
+        return temp_ret;
+    }
+    return temp_v0;
+}
+
+void *func_80118E2C_32E99C() {
+    struct object *temp_a0;
+    struct object *temp_ret;
+    struct object *temp_v0;
+    struct object *temp_v0_2;
+
+    temp_v0 = D_8011D314;
+    if (temp_v0 == NULL) {
+        temp_v0_2 = func_800D90C8(0x2D, 0);
+        D_8011D314 = temp_v0_2;
+        func_800D9714(temp_v0_2);
+        func_80089A20(&(D_8011D314->coords), &(GetSpaceData(0x81)->coords));
+        temp_a0 = D_8011D314;
+        temp_a0->coords.x = temp_a0->coords.x + 1.0f;
+        temp_a0->coords.z = temp_a0->coords.z - 20.0f;
+        temp_a0->unk36 = 1.2f;
+        temp_a0->unk44 = 1.2f;
+        func_800D9AA4(temp_a0);
+        temp_ret = func_800D9B54(D_8011D318);
+        D_8011D318 = NULL;
+        return temp_ret;
+    }
+    return temp_v0;
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80118EEC_32EA5C);
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80119924_32F494);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80119A20_32F590);
+s32 func_80119A20_32F590(s32 arg0) {
+    s32 temp_s1;
+
+    temp_s1 = func_80119924_32F494(arg0++);
+    return temp_s1 + func_80119924_32F494(arg0);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80119A60_32F5D0);
 
@@ -1150,13 +1204,21 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80119C54_32F7C
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_80119D08_32F878);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8011A764_3302D4);
+void func_8011A764_3302D4() {
+    s32 temp_v0;
+
+    temp_v0 = func_800D90C8(0x36, 0);
+    D_8011FAEC = temp_v0;
+    func_800D9B24(temp_v0);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8011A794_330304);
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8011A838_3303A8);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8011A8B8_330428);
+void func_8011A8B8_330428() {
+    func_800D9B54(D_8011FAEC);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8011A8D8_330448);
 
