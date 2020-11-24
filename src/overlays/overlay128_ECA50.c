@@ -11,7 +11,10 @@ struct strfunc_800D90C8_ECCE8 {
 
 extern struct strfunc_800D90C8_ECCE8 D_80100850[]; // model info
 
+extern struct object *D_80102AB0;
 extern u16 D_80102AB4;
+
+extern void func_80089A10(void *, f32, f32, f32);
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D8E30_ECA50);
 
@@ -27,33 +30,32 @@ INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D8F80_ECBA0);
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D8FC4_ECBE4);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9004_ECC24);
-// void *func_800D9004_ECC24() {
-//     void *temp_s0;
-//     void *temp_v0;
+struct object *func_800D9004_ECC24() {
+    struct object *obj;
+    struct object *lastobj;
 
-//     temp_s0 = MallocTemp(0x48);
-//     if (temp_s0 != NULL) {
-//         D_80102AB4 = D_0x80102AB4 + 1;
-//         temp_v0 = D_80102AB0;
-//         temp_s0->unk0 = temp_v0;
-//         temp_s0->unk4 = 0;
-//         if (temp_v0 != 0) {
-//             temp_v0->unk4 = temp_s0;
-//         }
-//         D_80102AB0 = temp_s0;
-//         temp_s0->unkA = (u16)8;
-//         func_80089A10(temp_s0 + 0xC, 0, 0, 0);
-//         func_80089A10(temp_s0 + 0x18, 0, 0, 0x3F800000);
-//         func_80089A10(temp_s0 + 0x24, 0x3F800000, 0x3F800000, 0x3F800000);
-//         temp_s0->unk30 = 0;
-//         temp_s0->unk34 = 0;
-//         temp_s0->unk38 = 0;
-//         temp_s0->unk44 = -1;
-//         temp_s0->unk46 = -1;
-//     }
-//     return temp_s0;
-// }
+    obj = (struct object *)MallocTemp(sizeof(struct object));
+    if (obj != NULL) {
+        D_80102AB4++;
+        lastobj = D_80102AB0;
+        obj->prev = lastobj;
+        obj->next = NULL;
+        if (lastobj != NULL) {
+            lastobj->next = obj;
+        }
+        D_80102AB0 = obj;
+        obj->unkA = 8;
+        func_80089A10(&(obj->coords), 0, 0, 0);
+        func_80089A10(&(obj->rot1), 0, 0, 1.0f);
+        func_80089A10(&(obj->unk24), 1.0f, 1.0f, 1.0f);
+        obj->unk30 = 0;
+        obj->unk34 = 0;
+        obj->unk38 = 0;
+        obj->unk44 = -1;
+        obj->unk46 = -1;
+    }
+    return obj;
+}
 
 // creates model object
 struct object *func_800D90C8_ECCE8(u8 arg0, void *arg1) {
