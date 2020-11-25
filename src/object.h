@@ -38,7 +38,14 @@ struct object {
 
 // Is this really just object? What is up with unk3C?
 struct object_indirect {
-    s8 pad[24];
+    s16 unk0;
+    s16 unk2;
+    u16 unk4;
+    u16 unk6;
+
+    s8 pad[12];
+
+    void *unk14;
 
     /*0x18*/ f32 rot1;
     f32 rot2;

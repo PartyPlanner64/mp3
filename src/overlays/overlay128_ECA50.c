@@ -3,21 +3,103 @@
 #include "../heap_temporary.h"
 
 struct strD_800D03F8 {
-    s16 unk0;
-    s16 unk2;
+    s8 unk0;
+    s8 unk1;
+    s8 unk2;
+    s8 unk3;
     s32 padC0[0xBC];
 };
 
-extern struct strD_800D03F8 D_800D03F8[];
+extern struct strD_800D03F8 *D_800D03F8[];
 
 struct strfunc_800D90C8_ECCE8 {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unk12;
+    s32 file;
+    s32 shadowFile;
+    f32 unk8;
+    f32 unk12;
 };
 
 extern struct strfunc_800D90C8_ECCE8 D_80100850[]; // model info
+
+// 000200A2 00000009 3F666666 3F4CCCCD
+// 000300A2 00000009 3F666666 3F4CCCCD
+// 000700A2 00000009 3F666666 3F8CCCCD
+// 000400A2 00000009 3F666666 3F800000
+// 000500A2 00000009 3F666666 3F800000
+// 000600A2 00000009 3F666666 3FB33333
+// 000800A2 00000009 3F666666 3F4CCCCD
+// 00090003 00000009 3F666666 3F8CCCCD
+// 000A002D 00000009 3F333333 3FB33333
+// 000A0000 00000009 3F800000 3F800000
+// 000A00C4 00000009 3F800000 3FC00000
+// 000A00CE 00000009 3F000000 00000000
+// 000A00A5 00000009 3F800000 3F800000
+// 000A00E7 0013025F 3F800000 40000000
+// 000200A0 00000009 3F800000 3F666666
+// 000300A0 00000009 3F800000 3F666666
+// 000700A0 00000009 3F800000 3F99999A
+// 000400A0 00000009 3F800000 3F8CCCCD
+// 000500A0 00000009 3F800000 3F8CCCCD
+// 000600A0 00000009 3F800000 3FC00000
+// 000800A0 00000009 3F800000 3F666666
+// 00090000 00000009 3F800000 3F99999A
+// 00130145 00000009 3F800000 00000000
+// 001301CB 00000009 3F800000 00000000
+// 000A0022 00000009 3F99999A 3F333333
+// 001301CA 00000009 3E800000 00000000
+// 001301CC 00000009 3F800000 00000000
+// 000A0000 00000009 3F800000 00000000
+// 000B000D 00000009 3F800000 00000000
+// 000A00FF 00000009 3F99999A 3F333333
+// 00130158 00000009 3F800000 00000000
+// 00130200 00000009 3F800000 00000000
+// 001301ED 00000009 3F800000 00000000
+// 001301EE 00000009 3F800000 00000000
+// 000B0026 00000009 3F800000 00000000
+// 000A004B 00000009 3F333333 3FB33333
+// 001301F9 00000009 3F800000 00000000
+// 001301F4 00000009 3F800000 00000000
+// 00130162 00000009 3F800000 00000000
+// 00130167 00000009 3F800000 00000000
+// 0013016E 00000009 3F800000 00000000
+// 00130175 00000009 3F800000 00000000
+// 0013017F 00000009 3F800000 00000000
+// 00130183 00000009 3F800000 00000000
+// 000A005B 00000009 3F800000 3F800000
+// 00130161 00000009 3F800000 00000000
+// 00130166 00000009 3F800000 00000000
+// 00130164 00000009 3F800000 40000000
+// 00130157 00000009 3F800000 00000000
+// 0013015A 00000009 3F800000 00000000
+// 00130155 00000009 3F800000 00000000
+// 00130159 00000009 3F800000 00000000
+// 00130156 00000009 3F800000 00000000
+// 000A008E 00000009 3F800000 00000000
+// 00330008 00000009 40A00000 00000000
+// 00000083 00000009 40000000 00000000
+// 00000084 00000009 40000000 00000000
+// 000A00EE 00000009 3F800000 3F800000
+// 000A0122 00000009 40000000 40400000
+// 000A0075 00000009 3F800000 00000000
+// 001301F5 00000009 3F800000 40400000
+// 001301FA 00000009 3F800000 00000000
+// 000A0063 00000009 3FC00000 00000000
+// 001301F0 00000009 3F800000 00000000
+// 001301F1 00000009 3F800000 00000000
+// 00130201 00000009 3F000000 00000000
+// 00130202 00000009 3F000000 00000000
+// 001301F2 00000009 3F800000 00000000
+// 001301F3 00000009 3F800000 00000000
+// 000B0006 00000009 40A00000 00000000
+// 000B003A 00000009 3F800000 00000000
+// 00130172 00000009 3F800000 00000000
+// 00130173 00000009 3F800000 00000000
+// 00130174 00000009 3F800000 00000000
+// 00130170 00000009 3F666666 00000000
+// 00130171 00000009 3F666666 00000000
+// 00130181 00000009 3F800000 00000000
+// 00130182 00000009 3F800000 00000000
+// 0013018D 00000009 3F800000 00000000
 
 extern struct object *D_80102AB0;
 extern u16 D_80102AB4;
@@ -86,8 +168,8 @@ struct object *func_800D90C8_ECCE8(u8 arg0, void *arg1) {
     struct object *ret;
 
     ret = func_800D912C_ECD4C(
-        D_80100850[arg0].unk0,
-        D_80100850[arg0].unk4,
+        D_80100850[arg0].file,
+        D_80100850[arg0].shadowFile,
         D_80100850[arg0].unk8,
         D_80100850[arg0].unk12,
         arg1
@@ -97,7 +179,8 @@ struct object *func_800D90C8_ECCE8(u8 arg0, void *arg1) {
 }
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D912C_ECD4C);
-// struct object *func_800D912C_ECD4C(s32 arg0, ? arg1, f32 arg2, f32 arg3, void *arg4) {
+// Loads a model from a given file. Also creates a shadow if given.
+// struct object *func_800D912C_ECD4C(s32 file, s32 shadowFile, f32 arg2, f32 arg3, void *arg4) {
 //     s16 temp_s0;
 //     s16 temp_s0_2;
 //     s16 temp_s0_3;
@@ -108,26 +191,25 @@ INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D912C_ECD4C);
 //     void *temp_v0_2;
 //     struct object_indirect3 *temp_v0_3;
 //     void *temp_v0_5;
-//     void *temp_v0_6;
+//     struct object_indirect3 *temp_v0_6;
 //     s16 phi_s4;
-//     void *phi_s2;
+//     u32 *phi_s2;
 //     s16 phi_s0;
 //     s32 phi_v1;
 
 //     temp_v0 = func_800D9004_ECC24();
 //     if (temp_v0 != NULL) {
 //         temp_v0->unk8 = 0xFF;
-//         phi_s4 = (u16)0;
+//         phi_s4 = 0;
 //         phi_s2 = arg4;
-//         if (arg4 != 0) {
-//             temp_s4 = arg4->unk2;
-//             phi_s4 = (s16) temp_s4;
+//         if (arg4 != NULL) {
+//             phi_s4 = arg4->unk2;
 //             phi_s2 = arg4 + 4;
 //         }
 //         temp_v0_2 = func_80047620(0x4000, 1, phi_s4 & 0xFFFF, -1, func_800D93C0_ECFE0);
 //         temp_v0->unk3C = temp_v0_2;
-//         temp_s0 = func_8000B108(arg0, 0x6A9);
-//         func_80047B38(temp_v0_2, 0x80);
+//         temp_s0 = func_8000B108(file, 0x6A9);
+//         func_80047B38(temp_v0_2, 0x80); // ORs arg 2 into temp_v0_2->unk0
 //         *temp_v0_2->unk40 = temp_s0;
 //         func_80047BEC(temp_v0_2, 0, 0, 0);
 //         func_8001C814(temp_s0, 2, 2);
@@ -137,10 +219,11 @@ INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D912C_ECD4C);
 //         if (temp_a0->unk2 != 0xFF) {
 //             temp_v0->unk44 = func_800D8E60_ECA80(temp_a0->unk2);
 //         }
-//         temp_v0_3 = (struct object_indirect3 *)MallocTemp(8);
+//         temp_v0_3 = (struct object_indirect3 *)MallocTemp(sizeof(struct object_indirect3));
 //         temp_v0_2->unk5C = temp_v0_3;
 //         temp_v0_3->unk0 = temp_v0;
 //         temp_v0_3->unk4 = arg2;
+
 //         if ((phi_s4 << 0x10) > 0) {
 //             phi_s0 = (u16)0;
 // loop_7:
@@ -149,7 +232,7 @@ INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D912C_ECD4C);
 //             temp_s0_2 = temp_v0_4;
 //             phi_s2 = phi_s2 + 4;
 //             phi_s0 = temp_s0_2;
-//             if ((s32) temp_v0_4 < (s32) phi_s4) {
+//             if ((s32) temp_v0_4 < phi_s4) {
 //                 goto loop_7;
 //             }
 //         }
@@ -157,17 +240,16 @@ INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D912C_ECD4C);
 //         if (!(0.0f < arg3)) {
 //             phi_v1 = 0;
 //         }
-//         if ((((u32) ~arg1 >> 0x1F) & phi_v1) != 0) {
+//         if ((((u32) ~shadowFile >> 0x1F) & phi_v1) != 0) {
 //             temp_v0_5 = func_80047620(0x4000, 1, 0, -1, func_800D95D0_ED1F0);
 //             temp_v0->unk40 = temp_v0_5;
-//             temp_s0_3 = func_8000B108(arg1, 0x229);
+//             temp_s0_3 = func_8000B108(shadowFile, 0x229);
 //             func_80047B38(temp_v0_5, 0x80);
 //             *temp_v0_5->unk40 = temp_s0_3;
 //             func_80047BEC(temp_v0_5, 0, 0, 0);
-//             temp_s0_3 = temp_s0_3;
 //             func_8001C8A8(temp_s0_3, 1);
 //             func_8001C1A0(temp_s0_3, 0, 0, 0);
-//             temp_v0_6 = MallocTemp(8);
+//             temp_v0_6 = (struct object_indirect3 *)MallocTemp(sizeof(struct object_indirect3));
 //             temp_v0_5->unk5C = temp_v0_6;
 //             temp_v0_6->unk0 = temp_v0;
 //             temp_v0_6->unk4 = arg3;
