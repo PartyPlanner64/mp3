@@ -1,3 +1,5 @@
+GetRandomByte = 0x8000B16C;
+
 ReadMainFS = 0x80009C10;
 FreeMainFS = 0x80009E6C;
 
