@@ -107,6 +107,8 @@ extern u16 D_80102AB8[];
 
 extern void func_80089A10(void *, f32, f32, f32);
 
+extern struct object *func_800D912C_ECD4C(s32 file, s32 shadowFile, f32 arg2, f32 arg3, void *arg4);
+
 void func_800D8E30_ECA50() {
     s32 i;
 
@@ -178,7 +180,7 @@ struct object *func_800D90C8_ECCE8(u8 arg0, void *arg1) {
     return ret;
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D912C_ECD4C);
+INCLUDE_ASM(struct object *, "overlays/overlay128_ECA50", func_800D912C_ECD4C, s32 file, s32 shadowFile, f32 arg2, f32 arg3, void *arg4);
 // Loads a model from a given file. Also creates a shadow if given.
 // struct object *func_800D912C_ECD4C(s32 file, s32 shadowFile, f32 arg2, f32 arg3, void *arg4) {
 //     s16 temp_s0;
