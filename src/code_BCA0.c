@@ -1,6 +1,16 @@
 #include "common.h"
 
+struct str8000B364 {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+};
+extern struct str8000B364 D_800975F0[];
+
 extern s32 D_80097650;
+
+extern void func_800124BC(u8, struct str8000B364 *);
 
 s32 func_8000B0A0(s32 arg0, s32 arg1) {
     return func_8001A150(ReadMainFS(arg0), arg1) & 0xFFFF;
@@ -31,7 +41,16 @@ INCLUDE_ASM(s32, "code_BCA0", func_8000B1A0);
 
 INCLUDE_ASM(s32, "code_BCA0", func_8000B2C4);
 
-INCLUDE_ASM(s32, "code_BCA0", func_8000B364);
+void func_8000B364(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+    u8 i;
+
+    i = arg0;
+    D_800975F0[i].unk0 = arg1;
+    D_800975F0[i].unk4 = arg2;
+    D_800975F0[i].unk8 = arg3;
+    D_800975F0[i].unkC = arg4;
+    func_800124BC(arg0, &D_800975F0[i]);
+}
 
 INCLUDE_ASM(s32, "code_BCA0", func_8000B3C8);
 
