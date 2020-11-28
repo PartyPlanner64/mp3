@@ -1,3 +1,6 @@
+DecodeNone = 0x8000A230;
+DecodeFile = 0x8000B000;
+
 GetRandomByte = 0x8000B16C;
 
 ReadMainFS = 0x80009C10;
