@@ -23,112 +23,116 @@ extern void func_8000E3C0();
 extern s32 func_8004D6AC(s32, s32, s32);
 extern void func_800639F8(void *, OSMesgQueue *, s32);
 
-INCLUDE_ASM(void, "thread3_main", func_800354A0);
+void func_800354A0() {
+    s32 iVar5;
+    s32 stopLooping;
 
-// void func_800354A0() {
-//     s32 iVar5;
-//     s32 stopLooping;
+    OSMesg msg;
+    OSMesg intrMesgBuf[INTR_MESG_BUF_SIZE + 4];
+    OSMesg otherMesgBuf[OTHER_MESG_BUF_SIZE + 4];
+    OSMesg *msgTempVar;
 
-//     OSMesg msg;
-//     OSMesg intrMesgBuf[INTR_MESG_BUF_SIZE + 4];
+    iVar5 = 0;
+    stopLooping = FALSE;
 
-//     OSMesg otherMsg;
-//     OSMesg otherMesgBuf[OTHER_MESG_BUF_SIZE + 4];
+    if (osTvType == TV_TYPE_NTSC) {
+        func_80050F90(2, 1);
+    }
+    else if (osTvType != TV_TYPE_NTSC) {
+        stopLooping = FALSE;
+        func_80050F90(0x1E, 1);
+    }
+    else {
+        goto spinloop;
+    }
 
-//     iVar5 = 0;
-//     stopLooping = FALSE;
+    // This is all that MP1 did:
+    //func_80050F90(osTvType == TV_TYPE_NTSC ? 2 : 0x1E, 1);
 
-//     if (osTvType == TV_TYPE_NTSC) {
-//         func_80050F90(2, 1);
-//     }
-//     else if (osTvType != TV_TYPE_NTSC) {
-//         stopLooping = FALSE;
-//         func_80050F90(0x1E, 1);
-//     }
-//     else {
-//         goto spinloop; // FIXME: This jump cannot be reached, but it is present in the ROM.
-//     }
+    MakePermHeap((void *)0x80140000, 0x1A0000);
+    MakeTempHeap((void *)0x80128000, 0x18000);
 
-//     // This is all that MP1 did:
-//     //func_80050F90(osTvType == TV_TYPE_NTSC ? 2 : 0x1E, 1);
+    D_800CCF52 = 3;
 
-//     MakePermHeap((void *)0x80140000, 0x1A0000);
-//     MakeTempHeap((void *)0x80128000, 0x18000);
+    func_8000EA10(&D_800A1240, 3, 2, &D_800A124C, &D_800A125C);
 
-//     D_800CCF52 = 3;
+    if (osTvType == TV_TYPE_PAL) {
+        while (TRUE) {}
+    }
 
-//     func_8000EA10(&D_800A1240, 3, 2, &D_800A124C, &D_800A125C);
+    func_8004D410(0, 0x20, 0xD2, 0x20, 0xD4);
+    func_80051750();
+    func_80008F3C(4, 1);
+    func_8005A3C0();
+    func_80009880();
+    func_8004D9A0();
 
-//     if (osTvType == TV_TYPE_PAL) {
-//         while (TRUE) {}
-//     }
+    func_80009AC0(&data_557E20_ROM_START);
 
-//     func_8004D410(0, 0x20, 0xD2, 0x20, 0xD4);
-//     func_80051750();
-//     func_80008F3C(4, 1);
-//     func_8005A3C0();
-//     func_80009880();
-//     func_8004D9A0();
+    InitProcessSys();
 
-//     func_80009AC0(&data_557E20_ROM_START);
+    msgTempVar = &intrMesgBuf[4];
+    osCreateMesgQueue(&D_800CCF38, msgTempVar, INTR_MESG_BUF_SIZE);
+    func_800511C4(&intrMesgBuf, &D_800CCF38, 1);
+    msgTempVar = &otherMesgBuf[4];
+    osCreateMesgQueue(&D_800CCF60, msgTempVar, OTHER_MESG_BUF_SIZE);
+    func_800511C4(&otherMesgBuf, &D_800CCF60, 2);
 
-//     InitProcessSys();
+    func_800094E4();
+    func_8007D740(2);
+    func_8000F094(2);
+    CreateProcess(func_8000E3C0, 1, 0, 0);
 
-//     osCreateMesgQueue(&D_800CCF38, &intrMesgBuf[4], INTR_MESG_BUF_SIZE);
-//     func_800511C4(&intrMesgBuf, &D_800CCF38, 1);
-//     osCreateMesgQueue(&D_800CCF60, &otherMesgBuf[4], OTHER_MESG_BUF_SIZE);
-//     func_800511C4(&otherMesgBuf, &D_800CCF60, 2);
+    while (!stopLooping) {
+        if (osRecvMesg(&D_800CCF60, &msg, OS_MESG_NOBLOCK) != -1) {
 
-//     func_800094E4();
-//     func_8007D740(2);
-//     func_8000F094(2);
-//     CreateProcess(func_8000E3C0, 1, 0, 0);
+            if (D_800D2094) // Mysteriously helpful, courtesy permuter.
+            {
+            }
 
-//     while (!stopLooping) {
-//         if (osRecvMesg(&D_800CCF60, &otherMsg, 0) != -1) {
-//             break;
-//         }
+            break;
+        }
 
-//         osRecvMesg(&D_800CCF38, &msg, OS_MESG_BLOCK);
-//         switch ((s32)msg) {
-//             case 1:
-//                 {
-//                     s32 temp_s0;
-//                     s16 temp_s1;
+        osRecvMesg(&D_800CCF38, &msg, OS_MESG_BLOCK);
+        switch ((s32)msg) {
+            case 1:
+                {
+                    s32 temp_s0;
+                    s16 temp_s1;
 
-//                     if (D_800D2094 - iVar5 >= 2) {
-//                         iVar5 = D_800D2094;
-//                         if (D_800A12A0 < D_800CCF52) {
-//                             func_8004D7D8();
-//                             temp_s1 = func_8004D6AC(0xC8, 0, 0);
-//                             func_800094E4();
-//                             func_800098FC();
-//                             temp_s0 = D_800A08B0;
-//                             CallProcess(1);
-//                             if (temp_s0 != D_800A08B0) {
-//                                 D_800A12A0++;
-//                             }
-//                             func_8004D6E8(temp_s1);
-//                             func_8004D814();
-//                         }
-//                     }
-//                 }
-//                 break;
+                    if (D_800D2094 - iVar5 >= 2) {
+                        iVar5 = D_800D2094;
+                        if (D_800A12A0 < D_800CCF52) {
+                            func_8004D7D8();
+                            temp_s1 = func_8004D6AC(0xC8, 0, 0);
+                            func_800094E4();
+                            func_800098FC();
+                            temp_s0 = D_800A08B0;
+                            CallProcess(1);
+                            if (temp_s0 != D_800A08B0) {
+                                D_800A12A0++;
+                            }
+                            func_8004D6E8(temp_s1);
+                            func_8004D814();
+                        }
+                    }
+                }
+                break;
 
-//             case 777:
-//                 D_800A12A0--;
-//                 D_800D1F70++;
-//                 break;
+            case 777:
+                D_800A12A0--;
+                D_800D1F70++;
+                break;
 
-//             case 2:
-//                 stopLooping = TRUE;
-//                 break;
-//         }
-//     }
+            case 2:
+                stopLooping = TRUE;
+                break;
+        }
+    }
 
-// spinloop:
-//     while (TRUE) {}
-// }
+spinloop:
+    while (TRUE) {}
+}
 
 void func_800357AC(s16 count) {
     s16 i = 0;
