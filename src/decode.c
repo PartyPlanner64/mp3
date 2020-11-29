@@ -52,7 +52,9 @@ INCLUDE_ASM(s32, "decode", DecodeLZ);
 //                 decode->src += 1024;
 //                 decode->chunkLen = 0;
 //             }
-//             flag = 0xFF00 | D_800ABFF0[decode->chunkLen++];
+//             byte1 = D_800ABFF0[decode->chunkLen++];
+
+//             flag = 0xFF00 | (byte1 & 0xFF);
 //         }
 //         if ((flag & 0x1)) {
 //             if (decode->chunkLen >= 1024) {
@@ -60,11 +62,12 @@ INCLUDE_ASM(s32, "decode", DecodeLZ);
 //                 decode->src += 1024;
 //                 decode->chunkLen = 0;
 //             }
+//             byte1 = D_800ABFF0[decode->chunkLen++];
 
-//             temp = D_800ABFF0[decode->chunkLen++];
-//             winTemp = windowPos++;
-//             *(decode->dest++) = temp;
-//             D_800AC3F0[winTemp] = temp;
+//             len = windowPos++;
+//             winTemp = len;
+//             *(decode->dest++) = byte1;
+//             D_800AC3F0[winTemp] = byte1;
 //             windowPos &= 0x3FF;
 //             decode->len--;
 //         }
@@ -81,7 +84,8 @@ INCLUDE_ASM(s32, "decode", DecodeLZ);
 //                 decode->src += 1024;
 //                 decode->chunkLen = 0;
 //             }
-//             byte2 = D_800ABFF0[decode->chunkLen++];
+//             len = D_800ABFF0[decode->chunkLen++];
+//             byte2 = len;
 
 //             copyPos = byte1 | ((byte2 & 0xC0) << 2);
 //             len = 3 + (byte2 & 0x3F);
@@ -94,7 +98,7 @@ INCLUDE_ASM(s32, "decode", DecodeLZ);
 //                     windowPos &= 0x3FF;
 //                 }
 //             }
-//             decode->len -= len;
+//             decode->len -= i;
 //         }
 //     }
 // }
