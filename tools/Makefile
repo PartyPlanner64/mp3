@@ -5,6 +5,7 @@ PROGRAMS := n64cksum
 n64cksum_SOURCES := n64cksum.c libmio0.c libsm64.c utils.c
 
 all: $(PROGRAMS)
+	cp asm-differ/diff.py ../diff.py
 
 clean:
 	$(RM) $(PROGRAMS)
