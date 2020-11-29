@@ -1,4 +1,5 @@
 DecodeNone = 0x8000A230;
+DecodeLZ = 0x8000A2CC;
 DecodeFile = 0x8000B000;
 
 GetRandomByte = 0x8000B16C;
@@ -68,6 +69,7 @@ cosf = 0x80079330;
 sinf = 0x8007B530;
 
 bcopy = 0x8007B970;
+bzero = 0x8007BC90;
 
 osCreateMesgQueue = 0x8007BF00;
 osJamMesg = 0x8007BF30;
