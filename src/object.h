@@ -31,7 +31,7 @@ struct object {
     f32 unk38;
 
     struct object_indirect *unk3C;
-    void *unk40;
+    struct object_indirect *unk40; // is type right?
     s16 unk44;
     s16 unk46;
 };
