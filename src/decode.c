@@ -106,8 +106,6 @@ INCLUDE_ASM(s32, "decode", DecodeLZ);
 void func_8000A53C(struct decode_struct *decode) {
     s32 codeWordBitsRemaining;
     s32 curCodeWord;
-    u32 back, back2, count;
-    u8 *ptr;
     u8 *destOrig;
 
     // Advance past the first 4 bytes.
@@ -196,50 +194,55 @@ void func_8000A53C(struct decode_struct *decode) {
             }
         }
         else {
-            // Interpret the next two bytes as a distance to travel backwards and a
-            // a length to read.
-            if (decode->chunkLen >= 1024) {
-                func_8004DA40(decode->src, &D_800ABFF0, 1024);
-                decode->src += 1024;
-                decode->chunkLen = 0;
-            }
-            back = D_800ABFF0[decode->chunkLen++];
+            {
+                u32 back, back2, count;
+                u8 *ptr;
 
-            if (decode->chunkLen >= 1024) {
-                func_8004DA40(decode->src, &D_800ABFF0, 1024);
-                decode->src += 1024;
-                decode->chunkLen = 0;
-            }
-            back2 = D_800ABFF0[decode->chunkLen++];
-
-            back2 = (back << 8) + (back2 & 0xFFFFFFFFFFFFFFFF); // Unlikely, but matching.
-            count = (back << 8) >> 12;
-            back2 &= 0xFFF;
-            ptr = decode->dest - back2;
-            if (count == 0) {
+                // Interpret the next two bytes as a distance to travel backwards and a
+                // a length to read.
                 if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
+                back = D_800ABFF0[decode->chunkLen++];
 
-                count = 0x12;
-                count += D_800ABFF0[decode->chunkLen++];
-            }
-            else {
-                count += 2;
-            }
-            decode->len -= count;
+                if (decode->chunkLen >= 1024) {
+                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    decode->src += 1024;
+                    decode->chunkLen = 0;
+                }
+                back2 = D_800ABFF0[decode->chunkLen++];
 
-            while (count != 0) {
-                if (ptr - 1 < destOrig) {
-                    *(decode->dest++) = 0;
+                back2 = (back << 8) + (back2 & 0xFFFFFFFFFFFFFFFF); // Unlikely, but matching.
+                count = (back << 8) >> 12;
+                back2 &= 0xFFF;
+                ptr = decode->dest - back2;
+                if (count == 0) {
+                    if (decode->chunkLen >= 1024) {
+                        func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                        decode->src += 1024;
+                        decode->chunkLen = 0;
+                    }
+
+                    count = 0x12;
+                    count += D_800ABFF0[decode->chunkLen++];
                 }
                 else {
-                    *(decode->dest++) = *(ptr - 1);
+                    count += 2;
                 }
-                count--;
-                ptr++;
+                decode->len -= count;
+
+                while (count != 0) {
+                    if (ptr - 1 < destOrig) {
+                        *(decode->dest++) = 0;
+                    }
+                    else {
+                        *(decode->dest++) = *(ptr - 1);
+                    }
+                    count--;
+                    ptr++;
+                }
             }
         }
 
