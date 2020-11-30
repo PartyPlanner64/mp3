@@ -18,15 +18,15 @@ struct object {
 
     /*0x0C*/ struct coords_3d coords;
 
-    /*0x18*/ f32 rot1;
-    f32 rot2;
-    f32 rot3;
+    f32 unk18; // Rotation?
+    f32 unk1C;
+    f32 unk20;
 
-    /*0x24*/ f32 unk24;
+    f32 unk24; // Scale?
     f32 unk28;
     f32 unk2C;
 
-    /*0x30*/ f32 unk30;
+    f32 unk30;
     f32 unk34;
     f32 unk38;
 
@@ -47,15 +47,16 @@ struct object_indirect {
 
     void *unk14;
 
-    /*0x18*/ f32 rot1;
-    f32 rot2;
-    f32 rot3;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
 
-    /*0x24*/ f32 unk24;
+    // Rotation?
+    f32 unk24;
     f32 unk28;
     f32 unk2C;
 
-    /*0x30*/ f32 unk30;
+    f32 unk30;
     f32 unk34;
     f32 unk38;
 

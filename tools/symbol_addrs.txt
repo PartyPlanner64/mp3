@@ -71,6 +71,7 @@ sinf = 0x8007B530;
 bcopy = 0x8007B970;
 bzero = 0x8007BC90;
 
+osInitRdb = 0x8007B8F0;
 osCreateMesgQueue = 0x8007BF00;
 osJamMesg = 0x8007BF30;
 osRecvMesg = 0x8007C070;

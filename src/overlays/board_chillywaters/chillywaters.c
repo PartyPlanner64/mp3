@@ -457,7 +457,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010DE7C_3239E
 //         func_800D9714(obj);
 //         func_80089AB0(&subroutine_arg1A, &(GetSpaceData(space_index)->coords), spacedata);
 //         func_800D88E8(&subroutine_arg1A);
-//         func_80089A20(&obj->rot1, &subroutine_arg1A);
+//         func_80089A20(&obj->unk18, &subroutine_arg1A);
 //         obj->unk28 = 0.0f;
 //         func_80089A20(&obj->coords, spacedata);
 //         func_800D9CE8(obj, -1, 1);
@@ -847,7 +847,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters", func_8010DE7C_3239E
 //                                 func_800FFAEC(func_800FFA4C(phi_s2_2, 3, 5));
 //                                 SleepProcess(0x14);
 //                                 func_800D9B54(D_8011FB58);
-//                                 func_800ECC0C(&(GetPlayerStruct(-1)->obj->rot1));
+//                                 func_800ECC0C(&(GetPlayerStruct(-1)->obj->unk18));
 //                                 func_800F2304(-1, 5, 0);
 //                                 SleepProcess(5);
 //                                 func_8004ACE0(0x274, D_800CD067);

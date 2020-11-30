@@ -154,7 +154,7 @@ struct object *func_800D9004_ECC24() {
         D_80102AB0 = obj;
         obj->unkA = 8;
         func_80089A10(&(obj->coords), 0, 0, 0);
-        func_80089A10(&(obj->rot1), 0, 0, 1.0f);
+        func_80089A10(&(obj->unk18), 0, 0, 1.0f);
         func_80089A10(&(obj->unk24), 1.0f, 1.0f, 1.0f);
         obj->unk30 = 0;
         obj->unk34 = 0;
