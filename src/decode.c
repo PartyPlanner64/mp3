@@ -62,7 +62,9 @@ INCLUDE_ASM(s32, "decode", DecodeLZ);
 //                 decode->src += 1024;
 //                 decode->chunkLen = 0;
 //             }
-//             byte1 = D_800ABFF0[decode->chunkLen++];
+//             i = decode->chunkLen++;
+//             i = D_800ABFF0[i];
+//             byte1 = i;
 
 //             len = windowPos++;
 //             winTemp = len;
