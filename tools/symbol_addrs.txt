@@ -86,6 +86,7 @@ __osDisableInt = 0x80080940;
 __osRestoreInt = 0x800809B0;
 
 sqrtf = 0x80081240;
+_Printf = 0x80081A40;
 
 // overlay128_F5070
 GetSpaceData = 0x800EB160;
