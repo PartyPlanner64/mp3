@@ -77,6 +77,8 @@ osJamMesg = 0x8007BF30;
 osRecvMesg = 0x8007C070;
 osSendMesg = 0x8007C1A0;
 osStartThread = 0x8007CAE0;
+osGetTime = 0x8007CC90;
+osSetTimer = 0x8007CD20;
 
 __osProbeTLB = 0x8007D210;
 
@@ -87,6 +89,7 @@ __osRestoreInt = 0x800809B0;
 
 sqrtf = 0x80081240;
 _Printf = 0x80081A40;
+osGetCount = 0x800830A0;
 
 // overlay128_F5070
 GetSpaceData = 0x800EB160;
