@@ -85,15 +85,14 @@ INCLUDE_ASM(s32, "decode", DecodeLZ);
 //                 decode->chunkLen = 0;
 //             }
 //             len = D_800ABFF0[decode->chunkLen++];
-//             byte2 = len;
 
-//             copyPos = byte1 | ((byte2 & 0xC0) << 2);
-//             len = 3 + (byte2 & 0x3F);
+//             byte1 = byte1 | ((len & 0xC0) << 2);
+//             len = 3 + (len & 0x3F);
 
 //             for (i = 0; i < len; i++) {
 //                 {
 //                     winTemp = windowPos++;
-//                     *(decode->dest++) = (copyVal = D_800AC3F0[(copyPos + i) & 0x3FF]);
+//                     *(decode->dest++) = (copyVal = D_800AC3F0[(byte1 + i) & 0x3FF]);
 //                     D_800AC3F0[winTemp] = copyVal;
 //                     windowPos &= 0x3FF;
 //                 }
