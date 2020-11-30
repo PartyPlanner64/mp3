@@ -273,7 +273,9 @@ INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9714_ED334);
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D975C_ED37C);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9A40_ED660);
+void func_800D9A40_ED660(struct object *obj) {
+    obj->unkA |= 8;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9A50_ED670);
 
