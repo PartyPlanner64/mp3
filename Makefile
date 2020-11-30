@@ -66,7 +66,7 @@ CC_CHECK := gcc -fsyntax-only -fsigned-char -nostdinc -fno-builtin -I include -I
 ### Sources ###
 
 # Directories containing source files
-SRC_DIRS := src src/libultra src/libultra/os src/overlays src/overlays/board_chillywaters
+SRC_DIRS := src src/libultra src/libultra/os src/libultra/libc src/overlays src/overlays/board_chillywaters
 ASM_DIRS := asm asm/overlays
 DATA_DIRS := bin bin/overlays
 
@@ -83,6 +83,7 @@ O_FILES := $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
 ### Targets ###
 
 build/src/libultra/os/%.o: CFLAGS := -O2 $(CFLAGSCOMMON)
+build/src/libultra/libc/%.o: CFLAGS := -O2 $(CFLAGSCOMMON)
 
 clean:
 	rm -rf $(BUILD_DIR)
