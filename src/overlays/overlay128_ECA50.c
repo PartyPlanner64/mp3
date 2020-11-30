@@ -290,7 +290,10 @@ struct object_indirect *func_800D9A50_ED670(struct object *obj) {
     return phi_return;
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9AA4_ED6C4);
+void func_800D9AA4_ED6C4(struct object *obj) {
+    func_800D9A50_ED670(obj);
+    func_800D9A40_ED660(obj);
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9AD0_ED6F0);
 
