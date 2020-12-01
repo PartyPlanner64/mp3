@@ -402,7 +402,6 @@ INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9D84_ED9A4);
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9E0C_EDA2C);
 
-//INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9E80_EDAA0);
 s32 func_800D9E80_EDAA0(struct object *obj) {
     s32 ret;
 
