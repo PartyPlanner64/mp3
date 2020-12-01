@@ -7,8 +7,13 @@ struct strD_800D03F8 {
     s8 unk1;
     s8 unk2;
     s8 unk3;
-    s32 padC0[0xBC];
-};
+
+    s8 fill4[0x3C];
+
+    f32 unk40;
+
+    s8 fillC0[0x7C];
+}; // sizeof = 0xC0
 
 extern struct strD_800D03F8 *D_800D03F8[];
 
@@ -397,7 +402,16 @@ INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9D84_ED9A4);
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9E0C_EDA2C);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9E80_EDAA0);
+//INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9E80_EDAA0);
+s32 func_800D9E80_EDAA0(struct object *obj) {
+    s32 ret;
+
+    ret = 0;
+    if ((*D_800D03F8)[obj->unk3C->unk40->unk0].unk40 == 0.0f) {
+        ret = 1;
+    }
+    return ret & 0xFFFF;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9ED0_EDAF0);
 
