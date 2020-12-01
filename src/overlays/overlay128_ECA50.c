@@ -101,6 +101,7 @@ extern struct strfunc_800D90C8_ECCE8 D_80100850[]; // model info
 // 00130182 00000009 3F800000 00000000
 // 0013018D 00000009 3F800000 00000000
 
+extern f32 D_80100D40;
 extern struct object *D_80102AB0;
 extern u16 D_80102AB4;
 extern u16 D_80102AB8[];
@@ -278,7 +279,9 @@ INCLUDE_ASM(struct object *, "overlays/overlay128_ECA50", func_800D912C_ECD4C, s
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D93C0_ECFE0);
 
-INCLUDE_ASM(void, "overlays/overlay128_ECA50", func_800D95C4_ED1E4, f32 arg0);
+void func_800D95C4_ED1E4(f32 arg0) {
+    D_80100D40 = arg0;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D95D0_ED1F0);
 
