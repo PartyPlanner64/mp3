@@ -104,8 +104,10 @@ extern struct strfunc_800D90C8_ECCE8 D_80100850[]; // model info
 extern struct object *D_80102AB0;
 extern u16 D_80102AB4;
 extern u16 D_80102AB8[];
+extern u16 D_80105706;
 
 extern void func_80089A10(void *, f32, f32, f32);
+extern void func_800D95C4_ED1E4(f32);
 
 extern struct object *func_800D912C_ECD4C(s32 file, s32 shadowFile, f32 arg2, f32 arg3, void *arg4);
 
@@ -134,7 +136,13 @@ INCLUDE_ASM(void, "overlays/overlay128_ECA50", func_800D8ED4_ECAF4, s16 arg0);
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D8F30_ECB50);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D8F80_ECBA0);
+void func_800D8F80_ECBA0() {
+    D_80102AB0 = NULL;
+    D_80102AB4 = 0;
+    D_80105706 = 1;
+    func_800D8E30_ECA50();
+    func_800D95C4_ED1E4(100.0f);
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D8FC4_ECBE4);
 
@@ -265,7 +273,7 @@ INCLUDE_ASM(struct object *, "overlays/overlay128_ECA50", func_800D912C_ECD4C, s
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D93C0_ECFE0);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D95C4_ED1E4);
+INCLUDE_ASM(void, "overlays/overlay128_ECA50", func_800D95C4_ED1E4, f32 arg0);
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D95D0_ED1F0);
 
