@@ -422,7 +422,9 @@ INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800DA09C_EDCBC);
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800DA190_EDDB0);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800DA748_EE368);
+void func_800DA748_EE368(void *(*arg0)()) {
+    D_80102BC4 = arg0;
+}
 
 void func_800DA754_EE374() {
     D_80102BC4();
