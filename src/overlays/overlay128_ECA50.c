@@ -285,7 +285,18 @@ void func_800D95C4_ED1E4(f32 arg0) {
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D95D0_ED1F0);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9714_ED334);
+struct object_indirect *func_800D9714_ED334(struct object *obj) {
+    struct object_indirect *temp_v0;
+    struct object_indirect *phi_return;
+
+    func_8001C514(obj->unk3C->unk40->unk0);
+    temp_v0 = obj->unk40;
+    phi_return = temp_v0;
+    if (temp_v0 != NULL) {
+        phi_return = func_8001C514(temp_v0->unk40->unk0);
+    }
+    return phi_return;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D975C_ED37C);
 
