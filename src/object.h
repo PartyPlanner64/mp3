@@ -62,9 +62,9 @@ struct object_indirect {
 
     u16 unk3C;
     struct object_indirect2 *unk40;
-    s16 unk44;
+    u16 unk44; // count of unk48
     s16 pad46;
-    s32 pad48;
+    s16 *unk48;
     u8 pad4C;
     u8 pad4D;
     u16 pad4E;

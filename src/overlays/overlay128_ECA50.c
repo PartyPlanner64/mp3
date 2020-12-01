@@ -130,7 +130,7 @@ s16 func_800D8E88_ECAA8(s32 mainfs_df) {
     return temp_v0;
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D8ED4_ECAF4);
+INCLUDE_ASM(void, "overlays/overlay128_ECA50", func_800D8ED4_ECAF4, s16 arg0);
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D8F30_ECB50);
 
@@ -314,7 +314,53 @@ void func_800D9B24_ED744(struct object *obj) {
 }
 
 // frees model object from func_800D912C_ECD4C
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9B54_ED774);
+void func_800D9B54_ED774(struct object *obj) {
+    s32 phi_s0;
+
+    if (D_80102AB0 != NULL) {
+        if (obj->prev != NULL) {
+            obj->prev->next = obj->next;
+        }
+        if (obj->next != NULL) {
+            obj->next->prev = obj->prev;
+        }
+        else {
+            D_80102AB0 = obj->prev;
+        }
+
+        func_8001F304(obj->unk3C->unk40->unk0, -1);
+        func_8001ACDC(obj->unk3C->unk40->unk0);
+
+        if (obj->unk40 != NULL) {
+            func_8001ACDC(obj->unk40->unk40->unk0);
+        }
+
+        {
+            s32 i;
+            for (i = 0; i < obj->unk3C->unk44; i++) {
+                func_800D8ED4_ECAF4(obj->unk3C->unk48[i]);
+            }
+        }
+
+        if (obj->unk44 != -1) {
+            func_800D8ED4_ECAF4(obj->unk44);
+        }
+
+        FreeTemp(obj->unk3C->unk5C);
+        obj->unk3C->unk5C = NULL;
+
+        func_800479AC(obj->unk3C);
+
+        if (obj->unk40 != NULL) {
+            FreeTemp(obj->unk40->unk5C);
+            obj->unk40->unk5C = NULL;
+            func_800479AC(obj->unk40);
+        }
+
+        FreeTemp(obj);
+        D_80102AB4--;
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9CB0_ED8D0);
 
