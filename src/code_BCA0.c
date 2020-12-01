@@ -9,6 +9,8 @@ struct str8000B364 {
 extern struct str8000B364 D_800975F0[];
 
 extern s32 D_80097650;
+extern u8 D_800962F0;
+extern s16 D_800D1FA2;
 
 extern void func_800124BC(u8, struct str8000B364 *);
 
@@ -58,8 +60,26 @@ INCLUDE_ASM(s32, "code_BCA0", func_8000B460);
 
 INCLUDE_ASM(s32, "code_BCA0", func_8000B4B4);
 
-INCLUDE_ASM(s32, "code_BCA0", func_8000B4F8);
+s32 func_8000B4F8(s32 arg0, s32 arg1, s32 arg2) {
+    s32 temp_s0;
+    s32 temp_s1;
 
-INCLUDE_ASM(s32, "code_BCA0", func_8000B554);
+    temp_s1 = ReadMainFS(arg0);
+    temp_s0 = func_8001443C(temp_s1, arg1, arg2 & 0xFF);
+    FreePerm(temp_s1);
+    return temp_s0 & 0xFFFF;
+}
 
-INCLUDE_ASM(s32, "code_BCA0", func_8000B5BC);
+s16 func_8000B554(s32 arg0, s32 arg1, s32 arg2) {
+    s16 temp_s0;
+    s32 temp_s1;
+
+    temp_s1 = ReadMainFS(arg1);
+    temp_s0 = func_800323CC(arg0, temp_s1, 0, arg2);
+    FreePerm(temp_s1);
+    return temp_s0;
+}
+
+s16 func_8000B5BC(s32 arg0) {
+    return func_8001A150(func_80009CD8(arg0, 0x7918), 0);
+}
