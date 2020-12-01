@@ -144,7 +144,12 @@ void func_800D8F80_ECBA0() {
     func_800D95C4_ED1E4(100.0f);
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D8FC4_ECBE4);
+// frees all models
+void func_800D8FC4_ECBE4() {
+    while (D_80102AB0 != NULL) {
+        func_800D9B54_ED774(D_80102AB0);
+    }
+}
 
 struct object *func_800D9004_ECC24() {
     struct object *obj;
