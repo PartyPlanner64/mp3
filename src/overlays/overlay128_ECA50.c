@@ -110,6 +110,7 @@ extern f32 D_80100D40;
 extern struct object *D_80102AB0;
 extern u16 D_80102AB4;
 extern u16 D_80102AB8[];
+extern *(*D_80102BC4)();
 extern u16 D_80105706;
 
 extern void func_80089A10(void *, f32, f32, f32);
@@ -422,6 +423,8 @@ INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800DA190_EDDB0);
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800DA748_EE368);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800DA754_EE374);
+void func_800DA754_EE374() {
+    D_80102BC4();
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800DA778_EE398);
