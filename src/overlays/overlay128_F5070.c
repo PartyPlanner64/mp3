@@ -13,6 +13,7 @@ extern struct chain_data *D_80105218;
 
 extern void *D_80105220[];
 extern s16 D_80105260;
+extern s16 D_80105262;
 extern f32 D_80105290[]; // arrow angles
 extern s32 D_801052B0; // arrow angle count
 
@@ -518,6 +519,10 @@ INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EBDAC_FF9CC);
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EBEAC_FFACC);
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EBEC8_FFAE8);
+void func_800EBEC8_FFAE8() {
+    D_80105262 = 1;
+}
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EBED8_FFAF8);
+void func_800EBED8_FFAF8() {
+    D_80105262 = 0;
+}
