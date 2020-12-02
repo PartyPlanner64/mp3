@@ -27,7 +27,8 @@ segments:
     - [0xD7A0, "asm"]
     - [0xE560, "asm"]
     - [0xEFB0, "asm"]
-    - [0xEFC0, "asm"]
+    - [0xEFC0, "c"]
+    - [0xF610, "asm"]
     - [0x12E20, "asm"]
     - [0x13F90, "asm"]
     - [0x19C30, "asm"]
@@ -1486,5 +1487,7 @@ segments:
 
   - [0x0128CC60, "bin", "bin_hvq"]
 
-  - [0x01881C40, "bin", "bin_audio"]
+  - [0x01881C40, "bin", "bin_audio_mbf0"]
+  - [0x01A56870, "bin", "bin_audio_sbf0"]
+  - [0x01EFD040, "bin", "bin_audio_fxd0"]
   - [0x02000000]
