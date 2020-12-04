@@ -47,6 +47,7 @@ segments:
     - [0x45F50, "asm"]
     - [0x471D0, "asm"]
     - [0x47D60, "asm"]
+    - [0x4B120, "asm"]
     - [0x4BF40, "asm"]
     - [0x4E5A0, "asm"]
     - [0x4E800, "asm"]
