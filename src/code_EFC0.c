@@ -20,7 +20,7 @@ extern u8 D_800D09A8;
 struct str800D138C {
     f32 unk0;
     f32 unk4;
-    s32 unk8;
+    f32 unk8;
 };
 extern struct str800D138C D_800D138C;
 
@@ -49,6 +49,12 @@ struct str800D5298 {
     s32 unk68;
 };
 extern struct str800D5298 D_800D5298;
+
+struct triplefloat {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+};
 
 struct str800D54F8 {
     f32 unk0;
@@ -84,6 +90,7 @@ extern void func_8000E978();
 INCLUDE_ASM(s32, "code_EFC0", func_8000E3C0);
 // void func_8000E3C0() {
 //     s32 i;
+//     f32 zero;
 
 //     SleepVProcess();
 
@@ -91,7 +98,7 @@ INCLUDE_ASM(s32, "code_EFC0", func_8000E3C0);
 
 //     D_800D138C.unk0 = 325.0f;
 //     D_800D138C.unk4 = 0.0f;
-//     D_800D138C.unk8 = 0;
+//     D_800D138C.unk8 = 0.0f;
 
 //     D_800CE1C8 = 2250.0f;
 
@@ -101,14 +108,14 @@ INCLUDE_ASM(s32, "code_EFC0", func_8000E3C0);
 
 //     for (i = 0; i < 4; i++) {
 //         D_800D6AE0[i].unk0 = 325.0f;
-//         D_800D6AE0[i].unk8 = 0.0f;
-//         D_800D6AE0[i].unk4 = 0.0f;
+//         (*(D_800D6AE0 + i)).unk8 = (zero = 0.0f);
+//         D_800D6AE0[i].unk4 = zero;
 
 //         D_800CD288[i] = 2250.0f;
 
-//         D_800D54F8[i].unk8 = D_800D138C.unk4;
-//         D_800D54F8[i].unk4 = D_800D138C.unk4;
-//         D_800D54F8[i].unk0 = 0.0f;
+//         (*(D_800D54F8 + i)).unk8 = zero;
+//         (*(D_800D54F8 + i)).unk4 = zero;
+//         D_800D54F8[i].unk0 = zero;
 //     }
 
 //     D_800D1710 = 3;
