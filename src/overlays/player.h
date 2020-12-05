@@ -63,7 +63,7 @@ struct player {
     s8 game_guy_space_count; // 52 (0x34)
 
     // s8 pad2[3];
-}; // sizeof == 56
+}; // sizeof == 56 | 0x38
 
 extern struct player gPlayers[4];
 

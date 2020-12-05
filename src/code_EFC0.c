@@ -1,6 +1,7 @@
 #include "common.h"
 #include "heap_permanent.h"
 #include "process.h"
+#include "overlays/player.h"
 
 extern void *data_1209850_ROM_START; // strings
 extern void *data_1881C40_ROM_START;
@@ -11,6 +12,7 @@ extern u16 D_800A190C;
 extern u16 D_800A190E;
 
 extern void *D_800CCF38;
+extern u8 D_800CCF78[];
 extern f32 D_800CD288[];
 extern u16 D_800CD2F4;
 extern s32 D_800CDD50;
@@ -81,6 +83,8 @@ struct str800D6AE0 {
 };
 
 extern struct str800D6AE0 D_800D6AE0[];
+
+extern s32 func_8000985C(s16);
 
 extern void func_8000E740();
 extern void func_8000E78C();
@@ -222,7 +226,32 @@ void func_8000E7B8() {
     }
 }
 
-INCLUDE_ASM(void, "code_EFC0", func_8000E804);
+//INCLUDE_ASM(void, "code_EFC0", func_8000E804);
+void func_8000E804() {
+    s32 i;
+
+    for (i = 0; i < 4; i++) {
+        func_80087A40(&gPlayers[i], 0, sizeof(struct player));
+        if (func_8000985C(i) != 0) {
+            D_800CCF78[i] = 0;
+            gPlayers[i].flags &= 0xFE;
+        }
+        else {
+            D_800CCF78[i] = 1;
+            gPlayers[i].flags |= 0x01;
+        }
+        gPlayers[i].controller = i;
+        gPlayers[i].coins = 10;
+        gPlayers[i].bonus_coins = 0;
+        gPlayers[i].id = i;
+        gPlayers[i].cpu_difficulty = 0;
+        gPlayers[i].stars = 0;
+        gPlayers[i].minigame_star = 0;
+        gPlayers[i].blue_space_count = 0;
+        gPlayers[i].red_space_count = 0;
+        gPlayers[i].happening_space_count = 0;
+    }
+}
 
 void func_8000E978() {
     func_8000E804();
