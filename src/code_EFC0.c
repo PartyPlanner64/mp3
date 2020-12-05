@@ -224,4 +224,16 @@ void func_8000E7B8() {
 
 INCLUDE_ASM(void, "code_EFC0", func_8000E804);
 
-INCLUDE_ASM(void, "code_EFC0", func_8000E978);
+void func_8000E978() {
+    func_8000E804();
+    func_80035C20(0, 0x64);
+    func_80035C20(1, 0xE10);
+    func_80035C20(2, 0xE10);
+    func_80035C20(3, 0x708);
+    func_80035C20(4, 0x3E8);
+    func_80035C20(5, 0xE10);
+    func_80035C20(6, 0xE10);
+    func_80035C20(7, 0xE10);
+    func_80035C20(8, 0);
+    func_80035C20(9, 0x1518);
+}
