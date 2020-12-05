@@ -204,7 +204,12 @@ void func_8000E740() {
     }
 }
 
-INCLUDE_ASM(void, "code_EFC0", func_8000E78C);
+void func_8000E78C() {
+    while (TRUE) {
+        SleepVProcess();
+        func_80048504();
+    }
+}
 
 INCLUDE_ASM(void, "code_EFC0", func_8000E7B8);
 
