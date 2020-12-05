@@ -10,6 +10,7 @@ extern void *data_1EFD040_ROM_START;
 extern u16 D_800A190C;
 extern u16 D_800A190E;
 
+extern void *D_800CCF38;
 extern f32 D_800CD288[];
 extern u16 D_800CD2F4;
 extern s32 D_800CDD50;
@@ -211,7 +212,15 @@ void func_8000E78C() {
     }
 }
 
-INCLUDE_ASM(void, "code_EFC0", func_8000E7B8);
+void func_8000E7B8() {
+    while (TRUE) {
+        SleepVProcess();
+        GetRandomByte();
+        func_8000BA30();
+        func_80014A3C(2);
+        func_8001B0B4(&D_800CCF38, 2);
+    }
+}
 
 INCLUDE_ASM(void, "code_EFC0", func_8000E804);
 
