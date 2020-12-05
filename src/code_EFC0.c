@@ -87,111 +87,112 @@ extern void func_8000E7B8();
 extern void func_8000E804();
 extern void func_8000E978();
 
-INCLUDE_ASM(s32, "code_EFC0", func_8000E3C0);
-// void func_8000E3C0() {
-//     s32 i;
-//     f32 zero;
+void func_8000E3C0() {
+    s32 i;
+    f32 zero;
+    struct str800D6ABC *loc;
 
-//     SleepVProcess();
+    SleepVProcess();
 
-//     func_8004F290();
+    func_8004F290();
 
-//     D_800D138C.unk0 = 325.0f;
-//     D_800D138C.unk4 = 0.0f;
-//     D_800D138C.unk8 = 0.0f;
+    D_800D138C.unk0 = 325.0f;
+    D_800D138C.unk4 = 0.0f;
+    D_800D138C.unk8 = 0.0f;
 
-//     D_800CE1C8 = 2250.0f;
+    D_800CE1C8 = 2250.0f;
 
-//     D_800D6ABC.unk8 = D_800D138C.unk4;
-//     D_800D6ABC.unk4 = D_800D138C.unk4;
-//     D_800D6ABC.unk0 = D_800D138C.unk4;
+    loc = &D_800D6ABC;
+    D_800D6ABC.unk8 = D_800D138C.unk4;
+    D_800D6ABC.unk4 = D_800D138C.unk4;
+    loc->unk0 = D_800D138C.unk4;
 
-//     for (i = 0; i < 4; i++) {
-//         D_800D6AE0[i].unk0 = 325.0f;
-//         (*(D_800D6AE0 + i)).unk8 = (zero = 0.0f);
-//         D_800D6AE0[i].unk4 = zero;
+    for (i = 0; i < 4; i++) {
+        D_800D6AE0[i].unk0 = 325.0f;
+        (*(D_800D6AE0 + i)).unk8 = (zero = 0.0f);
+        D_800D6AE0[i].unk4 = zero;
 
-//         D_800CD288[i] = 2250.0f;
+        D_800CD288[i] = 2250.0f;
 
-//         (*(D_800D54F8 + i)).unk8 = zero;
-//         (*(D_800D54F8 + i)).unk4 = zero;
-//         D_800D54F8[i].unk0 = zero;
-//     }
+        (*(D_800D54F8 + i)).unk8 = zero;
+        (*(D_800D54F8 + i)).unk4 = zero;
+        D_800D54F8[i].unk0 = zero;
+    }
 
-//     D_800D1710 = 3;
-//     D_800D4082 = 0x1000;
-//     D_800CD2F4 = 0x2004;
-//     D_800D6A56 = 0x180;
-//     func_80061B50();
-//     func_8001A070(&MallocPerm, &FreePerm, D_800D4082, D_800CD2F4, D_800D6A56, D_800D1710);
-//     func_80012220(1);
-//     func_8004DC00();
-//     func_80036380(&data_1209850_ROM_START); // strings
-//     D_800D1F36 = 0;
+    D_800D1710 = 3;
+    D_800D4082 = 0x1000;
+    D_800CD2F4 = 0x2004;
+    D_800D6A56 = 0x180;
+    func_80061B50();
+    func_8001A070(&MallocPerm, &FreePerm, D_800D4082, D_800CD2F4, D_800D6A56, D_800D1710);
+    func_80012220(1);
+    func_8004DC00();
+    func_80036380(&data_1209850_ROM_START); // strings
+    D_800D1F36 = 0;
 
-// loop_3:
-//     if (func_8000985C(D_800D1F36) == 0) {
-//         if (++D_800D1F36 < 4) {
-//             goto loop_3;
-//         }
-//     }
+loop_3:
+    if (func_8000985C(D_800D1F36) == 0) {
+        if (++D_800D1F36 < 4) {
+            goto loop_3;
+        }
+    }
 
-//     if (D_800D1F36 == 4) {
-//         D_800D1F36 = -1;
-//     }
+    if (D_800D1F36 == 4) {
+        D_800D1F36 = -1;
+    }
 
-//     GetAllocatedPermHeapSize();
-//     D_800D0448 = CreateProcess(&func_8000E740, 0xF000, 0x3000, 0);
-//     CreateProcess(&func_8000E78C, 0x4000, 0x3000, 0);
-//     D_800D170C = CreateProcess(&func_8000E7B8, 0x1000, 0x3000, 0);
+    GetAllocatedPermHeapSize();
+    D_800D0448 = CreateProcess(&func_8000E740, 0xF000, 0x3000, 0);
+    CreateProcess(&func_8000E78C, 0x4000, 0x3000, 0);
+    D_800D170C = CreateProcess(&func_8000E7B8, 0x1000, 0x3000, 0);
 
-//     {
-//         s32 temp_s0;
+    {
+        s32 temp_s0;
 
-//         temp_s0 = func_8004FDC0();
-//         func_80035A50();
-//         func_8000E978();
-//         func_80000EA8(&D_800D5298);
-//         func_80050E78(0);
-//         func_80050800();
-//         if (temp_s0 != 0) {
-//             func_80048128(0x67, 0, 0x82);
-//         }
-//         else {
-//             func_80048128(0x58, 0, 0x84);
-//         }
-//     }
+        temp_s0 = func_8004FDC0();
+        func_80035A50();
+        func_8000E978();
+        func_80000EA8(&D_800D5298);
+        func_80050E78(0);
+        func_80050800();
+        if (temp_s0 != 0) {
+            func_80048128(0x67, 0, 0x82);
+        }
+        else {
+            func_80048128(0x58, 0, 0x84);
+        }
+    }
 
-//     D_800D5298.unk8 = &data_1881C40_ROM_START;
-//     D_800D5298.unkC = &data_1A56870_ROM_START;
-//     D_800A190E = 0;
-//     D_800A190C = 0;
-//     D_800D5298.unk0 = 0x70418F;
-//     D_800D5298.unk10 = &data_1EFD040_ROM_START;
-//     D_800D5298.unk28 = 1;
-//     D_800D5298.unk2C = 0;
-//     D_800D5298.unk14 = (void *)0x802E0000;
-//     D_800D5298.unk18 = 0x80000;
-//     D_800D5298.unk5C = 0x6E;
-//     D_800D5298.unk60 = 0;
-//     D_800D5298.unk64 = 0;
-//     D_800D5298.unk68 = D_800CDD50;
-//     D_800D5298.unk44 = 0x3C;
-//     func_800007FC(&D_800D5298);
+    D_800D5298.unk8 = &data_1881C40_ROM_START;
+    D_800D5298.unkC = &data_1A56870_ROM_START;
+    D_800A190E = 0;
+    D_800A190C = 0;
+    D_800D5298.unk0 = 0x70418F;
+    D_800D5298.unk10 = &data_1EFD040_ROM_START;
+    D_800D5298.unk28 = 1;
+    D_800D5298.unk2C = 0;
+    D_800D5298.unk14 = (void *)0x802E0000;
+    D_800D5298.unk18 = 0x80000;
+    D_800D5298.unk5C = 0x6E;
+    D_800D5298.unk60 = 0;
+    D_800D5298.unk64 = 0;
+    D_800D5298.unk68 = D_800CDD50;
+    D_800D5298.unk44 = 0x3C;
+    func_800007FC(&D_800D5298);
 
-//     if ((D_800D09A8 & 1) != 0) {
-//         func_80000F30(1);
-//     }
-//     else {
-//         func_80000F30(0);
-//     }
+    if ((D_800D09A8 & 1) != 0) {
+        func_80000F30(1);
+    }
+    else {
+        func_80000F30(0);
+    }
 
-//     KillProcess(GetCurrentProcess());
+    KillProcess(GetCurrentProcess());
 
-//     while (TRUE) {
-//         SleepVProcess();
-//     }
-// }
+    while (TRUE) {
+        SleepVProcess();
+    }
+}
 
 INCLUDE_ASM(void, "code_EFC0", func_8000E740);
 
