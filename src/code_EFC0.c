@@ -226,7 +226,6 @@ void func_8000E7B8() {
     }
 }
 
-//INCLUDE_ASM(void, "code_EFC0", func_8000E804);
 void func_8000E804() {
     s32 i;
 
