@@ -477,7 +477,10 @@ void func_800EA6E0_FE300(s32 arg0, s16 arg1) {
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EA6F4_FE314);
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EAE00_FEA20);
+u16 *func_800EAE00_FEA20(u8 *arr, s32 index) {
+    u16 offset = *((u16 *)(arr + index));
+    return (u16 *)(arr + offset);
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EAE10_FEA30);
 
