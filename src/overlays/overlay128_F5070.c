@@ -20,6 +20,7 @@ extern void *D_80102DCC; // ? size 0x300
 extern struct space_data *D_80105214;
 extern struct chain_data *D_80105218;
 
+extern u16 D_80105212; // chain count
 extern void *D_80105220[];
 extern s16 D_80105260;
 extern s16 D_80105262;
@@ -498,7 +499,7 @@ s16 GetChainLength(u16 chain_index) {
     return D_80105218[chain_index].len;
 }
 
-s16 GetChainSpaceIndexFromAbsSpaceIndex(s16 abs_space_index, s32 chain_index) {
+s16 GetChainSpaceIndexFromAbsSpaceIndex(s16 abs_space_index, s16 chain_index) {
     s32 i;
     for (i = 0; i < GetChainLength(chain_index); i++) {
         if (GetAbsSpaceIndexFromChainSpaceIndex(chain_index, i) == abs_space_index) {
@@ -510,7 +511,22 @@ s16 GetChainSpaceIndexFromAbsSpaceIndex(s16 abs_space_index, s32 chain_index) {
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB24C_FEE6C);
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB310_FEF30);
+s32 func_800EB310_FEF30(s16 absSpaceIndex, s8 *arg1, s8 *arg2) {
+    s16 chainSpaceIndex;
+    s32 i;
+
+    for (i = 0; i < D_80105212; i++) {
+        if (*arg1 != i) {
+            chainSpaceIndex = GetChainSpaceIndexFromAbsSpaceIndex(absSpaceIndex, i);
+            if (chainSpaceIndex != -1) {
+                *arg1 = (s8)i;
+                *arg2 = (s8)chainSpaceIndex;
+                return 0;
+            }
+        }
+    }
+    return -1;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800EB3C0_FEFE0);
 
