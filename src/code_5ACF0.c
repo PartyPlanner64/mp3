@@ -71,6 +71,7 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8005A6B0);
 //         D_800D6B62 = 0x2710;
 //         D_800A2151 = D_800CC0C9;
 //         temp_v0_4 = D_800A2151 & 0xFF;
+// TODO: contains jtbl in here
 //         if ((((temp_v0_4 < 7U) ^ 1) | (temp_v0_4 == 0)) != 0) {
 //             D_800A2151 = 2;
 //         }
