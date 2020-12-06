@@ -5,10 +5,17 @@ extern void *data_128CC60_ROM_START; // hvq rom
 
 extern s8 D_800CD069;
 
+extern void *D_80101240; // pointer to hvq dir offsets
+extern s32 D_80101248;
+
 extern void *D_801012C0;
 extern u32 D_801012C8[];
 extern u32 D_80101318[];
 extern void *D_80102C58[]; // function pointers given by board.
+
+extern void *D_80102DB0; // hvq rom offset copied here
+extern s32 D_80102DB4; // hvq directory count
+extern void *D_80102DCC; // ? size 0x300
 
 extern struct space_data *D_80105214;
 extern struct chain_data *D_80105218;
@@ -22,6 +29,11 @@ extern s32 D_801052B0; // arrow angle count
 extern void *D_80105500[];
 
 extern s16 D_80105540[];
+
+struct hvq_rom_initial {
+    u32 dirCount;
+    u32 dirOffsets[3];
+};
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E1450_F5070);
 
@@ -215,7 +227,28 @@ INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E6538_FA158);
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E6564_FA184);
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E6630_FA250);
+// reads in hvq table info from ROM.
+void func_800E6630_FA250(void *hvqRomOffset) {
+    s32 dirsSize;
+    s32 temp_v0;
+    s32 *hvqDirs;
+    struct hvq_rom_initial *hvqInitial;
+
+    D_80102DB0 = hvqRomOffset;
+
+    hvqInitial = MallocTemp(sizeof(struct hvq_rom_initial));
+    func_8004DA40(hvqRomOffset, hvqInitial, sizeof(struct hvq_rom_initial));
+    D_80102DB4 = hvqInitial->dirCount;
+    FreeTemp(hvqInitial);
+
+    dirsSize = D_80102DB4 * 4;
+    hvqDirs = MallocTemp(dirsSize);
+    D_80101240 = hvqDirs;
+    func_8004DA40(hvqRomOffset + 4, hvqDirs, dirsSize);
+
+    D_80102DCC = MallocTemp(0x300);
+    D_80101248 = 0;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E66D4_FA2F4);
 
@@ -333,7 +366,6 @@ INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E9AE0_FD700);
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E9AF0_FD710);
 
-//INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E9BB0_FD7D0);
 void func_800E9BB0_FD7D0() {
     func_800E6630_FA250(&data_128CC60_ROM_START);
 }
