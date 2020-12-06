@@ -1,4 +1,5 @@
 #include "common.h"
+#include "object.h"
 
 extern u8 D_800962F0;
 
@@ -92,7 +93,14 @@ void func_8000B364(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 INCLUDE_ASM(s32, "code_BCA0", func_8000B3C8);
 
-INCLUDE_ASM(s32, "code_BCA0", func_8000B460);
+void func_8000B460(struct object_indirect *arg0, u16 arg1, s32 arg2) {
+    s16 temp_v0;
+
+    temp_v0 = func_8000B13C(arg2);
+    if (temp_v0 >= 0) {
+        arg0->unk48[arg1] = temp_v0;
+    }
+}
 
 s8 func_8000B4B4() {
     s8 ret;
