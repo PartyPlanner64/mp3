@@ -1,6 +1,8 @@
 #include "common.h"
 #include "../spaces.h"
 
+extern void *data_128CC60_ROM_START; // hvq rom
+
 extern s8 D_800CD069;
 
 extern void *D_801012C0;
@@ -331,7 +333,10 @@ INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E9AE0_FD700);
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E9AF0_FD710);
 
-INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E9BB0_FD7D0);
+//INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E9BB0_FD7D0);
+void func_800E9BB0_FD7D0() {
+    func_800E6630_FA250(&data_128CC60_ROM_START);
+}
 
 INCLUDE_ASM(s32, "overlays/overlay128_F5070", func_800E9BD0_FD7F0);
 
