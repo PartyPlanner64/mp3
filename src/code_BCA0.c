@@ -1,5 +1,20 @@
 #include "common.h"
 
+extern u8 D_800962F0;
+
+struct overlay_info {
+    u32 rom_start;
+    u32 rom_end;
+    u32 ram_start;
+    u32 code_start;
+    u32 code_end;
+    u32 data_start;
+    u32 data_end;
+    u32 bss_start;
+    u32 bss_end;
+}; // sizeof 0x24
+extern struct overlay_info D_800962F4[];
+
 struct str8000B364 {
     f32 unk0;
     f32 unk4;
@@ -9,7 +24,6 @@ struct str8000B364 {
 extern struct str8000B364 D_800975F0[];
 
 extern s32 D_80097650;
-extern u8 D_800962F0;
 extern s16 D_800D1FA2;
 
 extern void func_800124BC(u8, struct str8000B364 *);
@@ -41,7 +55,29 @@ INCLUDE_ASM(u8, "code_BCA0", GetRandomByte);
 
 INCLUDE_ASM(s32, "code_BCA0", func_8000B1A0);
 
-INCLUDE_ASM(s32, "code_BCA0", func_8000B2C4);
+// copies in an overlay and clears bss region.
+void func_8000B2C4(s32 overlayIndex) {
+    s32 rom_start;
+    s32 rom_end;
+    s8 *bss_start;
+    s8 *bss_end;
+    s8 *temp;
+
+    rom_start = D_800962F4[overlayIndex].rom_start;
+    rom_end = D_800962F4[overlayIndex].rom_end;
+    bss_start = D_800962F4[overlayIndex].bss_start;
+    bss_end = D_800962F4[overlayIndex].bss_end;
+
+    func_8004DB14(rom_start, D_800962F4[overlayIndex].ram_start, rom_end - rom_start);
+
+    temp = bss_start;
+    while (bss_start < bss_end) {
+        *(temp++) = 0;
+        bss_start++;
+    }
+
+    D_800962F0 = 0;
+}
 
 void func_8000B364(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     u8 i;
@@ -58,7 +94,16 @@ INCLUDE_ASM(s32, "code_BCA0", func_8000B3C8);
 
 INCLUDE_ASM(s32, "code_BCA0", func_8000B460);
 
-INCLUDE_ASM(s32, "code_BCA0", func_8000B4B4);
+s8 func_8000B4B4() {
+    s8 ret;
+    if (D_800D1FA2 > D_800962F0) {
+        ret = D_800962F0++;
+    }
+    else {
+        ret = -1;
+    }
+    return ret;
+}
 
 s32 func_8000B4F8(s32 arg0, s32 arg1, s32 arg2) {
     s32 temp_s0;
