@@ -57,7 +57,7 @@ segments:
     - [0x52350, "asm"]
     - [0x52F30, "asm"]
     - [0x58000, "asm"]
-    - [0x5ACF0, "asm"]
+    - [0x5ACF0, "c"]
     - [0x62750, "asm"]
     - [0x66E70, "asm"]
     - [0x67000, "asm"]
