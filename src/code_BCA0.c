@@ -35,7 +35,7 @@ struct str8000B364 {
 };
 extern struct str8000B364 D_800975F0[];
 
-extern s32 D_80097650;
+extern u32 D_80097650; // = 0xD9ED;
 extern s16 D_800D1FA2;
 
 extern void func_800124BC(u8, struct str8000B364 *);
@@ -58,14 +58,20 @@ s16 func_8000B13C(s32 arg0) {
     return func_8001A150(ReadMainFS(arg0), 0x1D);
 }
 
-INCLUDE_ASM(u8, "code_BCA0", GetRandomByte);
-// u8 GetRandomByte() {
-//     u32 x;
+u8 GetRandomByte() {
+    u32 x;
+    s32 x1;
+    u32 x2;
 
-//     x = D_80097650 * 0x41C64E6D; // FIXME: reg alloc
-//     D_80097650 = x + 0x3039;
-//     return ((x + 0x303A) >> 0x10);
-// }
+    // Obviously a little rough...
+    x1 = D_80097650;
+    x1 = 0x41C64E6D * x1;
+    x2 = x1;
+    x = x2;
+    x1 = 0x303A;
+    D_80097650 = x2 + 0x3039;
+    return (x + x1) >> 16;
+}
 
 void func_8000B1A0(s32 overlayIndex, u8 flags) {
     u32 rom_start;
