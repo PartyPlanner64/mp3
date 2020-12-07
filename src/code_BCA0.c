@@ -16,6 +16,15 @@ struct overlay_info {
 }; // sizeof 0x24
 extern struct overlay_info D_800962F4[];
 
+struct str80097560 {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+};
+extern struct str80097560 D_80097560[];
+
+extern struct str80097560 D_800975A8[];
+
 struct str8000B364 {
     f32 unk0;
     f32 unk4;
@@ -28,6 +37,7 @@ extern s32 D_80097650;
 extern s16 D_800D1FA2;
 
 extern void func_800124BC(u8, struct str8000B364 *);
+extern void func_80012508(u8, struct str80097560 *, struct str80097560 *);
 
 s32 func_8000B0A0(s32 arg0, s32 arg1) {
     return func_8001A150(ReadMainFS(arg0), arg1) & 0xFFFF;
@@ -91,7 +101,18 @@ void func_8000B364(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     func_800124BC(arg0, &D_800975F0[i]);
 }
 
-INCLUDE_ASM(s32, "code_BCA0", func_8000B3C8);
+void func_8000B3C8(u32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
+    u8 i;
+
+    i = arg0;
+    D_80097560[i].unk0 = arg1;
+    D_80097560[i].unk4 = arg2;
+    D_80097560[i].unk8 = arg3;
+    D_800975A8[i].unk0 = arg4;
+    D_800975A8[i].unk4 = arg5;
+    D_800975A8[i].unk8 = arg6;
+    func_80012508(arg0, &D_80097560[i], &D_800975A8[i]);
+}
 
 void func_8000B460(struct object_indirect *arg0, u16 arg1, s32 arg2) {
     s16 temp_v0;
