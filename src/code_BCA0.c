@@ -16,6 +16,8 @@ struct overlay_info {
 }; // sizeof 0x24
 extern struct overlay_info D_800962F4[];
 
+extern struct overlay_info D_800974F4[];
+
 struct str80097560 {
     f32 unk0;
     f32 unk4;
@@ -38,6 +40,7 @@ extern s16 D_800D1FA2;
 
 extern void func_800124BC(u8, struct str8000B364 *);
 extern void func_80012508(u8, struct str80097560 *, struct str80097560 *);
+extern void func_8004DB14(void *, void *, u32);
 
 s32 func_8000B0A0(s32 arg0, s32 arg1) {
     return func_8001A150(ReadMainFS(arg0), arg1) & 0xFFFF;
@@ -64,7 +67,43 @@ INCLUDE_ASM(u8, "code_BCA0", GetRandomByte);
 //     return ((x + 0x303A) >> 0x10);
 // }
 
-INCLUDE_ASM(s32, "code_BCA0", func_8000B1A0);
+void func_8000B1A0(s32 overlayIndex, u8 flags) {
+    u32 rom_start;
+    u32 code_start;
+    u32 code_end;
+    u32 data_start;
+    u32 data_end;
+    u32 bss_start;
+    u32 bss_end;
+    u32 ram_start;
+    u8 *bssStartTemp;
+    u32 bss_start_counter;
+
+    rom_start = D_800974F4[overlayIndex].rom_start;
+    code_start = D_800974F4[overlayIndex].code_start;
+    code_end = D_800974F4[overlayIndex].code_end;
+    data_start = D_800974F4[overlayIndex].data_start;
+    data_end = D_800974F4[overlayIndex].data_end;
+    bss_start = D_800974F4[overlayIndex].bss_start;
+    bss_end = D_800974F4[overlayIndex].bss_end;
+    ram_start = D_800974F4[overlayIndex].ram_start;
+
+    if ((flags & 1) != 0) {
+        func_8004DB14(rom_start, ram_start, code_end - code_start);
+    }
+    if ((flags & 2) != 0) {
+        func_8004DB14(rom_start + (code_end - code_start), data_start, data_end - data_start);
+    }
+    if ((flags & 4) != 0) {
+        bss_start_counter = bss_start;
+        bssStartTemp = bss_start;
+        while (bss_start_counter < bss_end) {
+            *(bssStartTemp) = 0;
+            bss_start_counter++;
+            bssStartTemp = bssStartTemp + 1;
+        }
+    }
+}
 
 // copies in an overlay and clears bss region.
 void func_8000B2C4(s32 overlayIndex) {
