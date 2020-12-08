@@ -164,7 +164,9 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF788_1133A8);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF794_1133B4);
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF7C4_1133E4);
+void func_800FF7C4_1133E4(s32 arg1, s16 arg2, s16 arg3) {
+    func_800FF794_1133B4(arg1, arg2, arg3, 0);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF7F0_113410);
 
