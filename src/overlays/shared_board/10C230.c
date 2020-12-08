@@ -1,6 +1,48 @@
 #include "common.h"
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8610_10C230);
+extern s16 D_800A1768;
+extern s8 D_800CD059;
+extern s16 D_800D4196;
+
+struct str800D2010 {
+    s32 unk0;
+    s16 unk4;
+    s16 unk6;
+};
+extern struct str800D2010 D_800D2010[];
+extern struct str800D2010 D_800D20F0[];
+
+extern s16 D_800D6B60;
+
+extern u32 D_80101B40[];
+
+void func_800F8610_10C230(s32 arg0, s16 arg1, s16 arg2) {
+    struct str800D2010 *str;
+    s32 temp;
+
+    str = &D_800D20F0[D_800D6B60++];
+
+    switch (arg0) {
+        case -1:
+            temp = D_800D2010[D_800A1768].unk0;
+            break;
+
+        case -2:
+            temp = D_80101B40[D_800CD059];
+            break;
+
+        default:
+            temp = arg0;
+            break;
+    }
+
+    str->unk0 = temp;
+    str->unk4 = arg1;
+    str->unk6 = arg2;
+    if (D_800D6B60 >= 5) {
+        D_800D6B60 = 4;
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F86B4_10C2D4);
 
@@ -8,7 +50,9 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8774_10C394);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F884C_10C46C);
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8858_10C478);
+s16 func_800F8858_10C478() {
+    return D_800D4196;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8864_10C484);
 
