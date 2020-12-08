@@ -36,6 +36,7 @@ struct str8000B364 {
 extern struct str8000B364 D_800975F0[];
 
 extern u32 D_80097650; // = 0xD9ED;
+
 extern s16 D_800D1FA2;
 
 extern void func_800124BC(u8, struct str8000B364 *);

@@ -32,6 +32,10 @@ ReallocTemp = 0x80035974;
 GetAllocatedTempHeapSize = 0x800359A0;
 GetUsedMemoryBlockCountTemp = 0x800359C0;
 
+// 47D60.c
+InitProcess = 0x80047EA0;
+EndProcess = 0x80048008;
+
 // process.c
 InitProcessSys = 0x8004EB20;
 LinkProcess = 0x8004EB34;

@@ -48,8 +48,8 @@ void func_801059A0_4F69F0() {
     func_80019568(1, -100.0f, 100.0f, 100.0f);
     func_80019514(2, 0, 0, 0);
     func_80019514(3, 0, 0, 0);
-    func_80047EA0(func_80105B50_4F6BA0, 0x3F00, 0x800, 0);
-    func_80047EA0(func_801063BC_4F740C, 0x3F00, 0x800, 0);
+    InitProcess(func_80105B50_4F6BA0, 0x3F00, 0x800, 0);
+    InitProcess(func_801063BC_4F740C, 0x3F00, 0x800, 0);
     func_80061FE8(0, 0);
     D_800CD280 = 1;
     func_8001F38C(0xFF, 0xFF, 0xFF);

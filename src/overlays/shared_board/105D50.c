@@ -159,7 +159,7 @@ u8 func_800F2660_106280(s16 arg0) {
 }
 
 void *func_800F2690_1062B0(s16 arg0) {
-    void *temp_a0;
+    struct process *process;
     void *ret;
     s32 temp_v0_2;
     struct player *player;
@@ -168,9 +168,9 @@ void *func_800F2690_1062B0(s16 arg0) {
     player = GetPlayerStruct(arg0);
     obj = ret = player->obj;
     if (obj != NULL) {
-        temp_a0 = player->unk20;
-        if (temp_a0 != NULL) {
-            func_80048008(temp_a0);
+        process = player->process;
+        if (process != NULL) {
+            EndProcess(process);
         }
         ret = func_800D9B54_ED774(player->obj);
         player->obj = NULL;

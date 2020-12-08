@@ -206,7 +206,7 @@ void func_80107CC4_31D834(void) {
     func_80108BA4_31E714();
     func_80116AA0_32C610();
     func_800EBDAC();
-    func_80047EA0(func_80118B7C_32E6EC, 0x4800, 0, 0);
+    InitProcess(func_80118B7C_32E6EC, 0x4800, 0, 0);
 }
 
 // entrypoint 2
@@ -1056,7 +1056,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80112C88_3287
 //     }
 
 //     func_800D9B54(temp_s0);
-//     func_80048008(0);
+//     EndProcess(NULL);
 // }
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80112DDC_32894C);
@@ -1232,7 +1232,7 @@ void func_8011C58C_3320FC() {
     func_800124BC(1, &D_8011E8B8);
     func_80107CC4_31D834();
     func_800FF41C(2);
-    func_80047EA0(func_801065D0_31C140, 0x1005, 0x1000, 0);
+    InitProcess(func_801065D0_31C140, 0x1005, 0x1000, 0);
 }
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8011C5E0_332150);

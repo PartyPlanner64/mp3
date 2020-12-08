@@ -88,7 +88,7 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8005A6B0);
 //             }
 //         }
 
-//         temp_v0_5 = func_80047EA0(&D_8005DDDC, 0x1001, 0x800, 0);
+//         temp_v0_5 = InitProcess(&D_8005DDDC, 0x1001, 0x800, 0);
 //         D_800D040C = temp_v0_5;
 //         func_80047B80(temp_v0_5, 0xA0);
 //         D_800A2150 = 1;
