@@ -1,7 +1,7 @@
 #include "common.h"
 #include "heap_permanent.h"
 #include "process.h"
-#include "overlays/player.h"
+#include "player.h"
 
 extern void *data_1209850_ROM_START; // strings
 extern void *data_1881C40_ROM_START;

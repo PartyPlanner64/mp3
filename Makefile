@@ -66,9 +66,19 @@ CC_CHECK := gcc -fsyntax-only -fsigned-char -nostdinc -fno-builtin -I include -I
 ### Sources ###
 
 # Directories containing source files
-SRC_DIRS := src src/libultra src/libultra/os src/libultra/libc src/overlays src/overlays/board_chillywaters
-ASM_DIRS := asm asm/overlays
-DATA_DIRS := bin bin/overlays
+SRC_DIRS := src \
+	src/libultra \
+	src/libultra/os \
+	src/libultra/libc \
+	src/overlays \
+	src/overlays/board_chillywaters \
+	src/overlays/shared_board
+ASM_DIRS := asm \
+	asm/overlays \
+	asm/overlays/shared_board
+DATA_DIRS := bin \
+	bin/overlays \
+	bin/overlays/shared_board
 
 # Source code files
 C_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))

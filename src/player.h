@@ -2,8 +2,8 @@
 #define _PLAYER_H
 
 #include <ultra64.h>
-#include "../object.h"
-#include "../process.h"
+#include "object.h"
+#include "process.h"
 
 /**
  * Represents a player's state during a game.

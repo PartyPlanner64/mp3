@@ -1,6 +1,6 @@
 #include "common.h"
-#include "../object.h"
-#include "../heap_temporary.h"
+#include "../../object.h"
+#include "../../heap_temporary.h"
 
 struct strD_800D03F8 {
     s8 unk0;
@@ -140,9 +140,9 @@ s16 func_800D8E88_ECAA8(s32 mainfs_df) {
     return temp_v0;
 }
 
-INCLUDE_ASM(void, "overlays/overlay128_ECA50", func_800D8ED4_ECAF4, s16 arg0);
+INCLUDE_ASM(void, "overlays/shared_board/ECA50", func_800D8ED4_ECAF4, s16 arg0);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D8F30_ECB50);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D8F30_ECB50);
 
 void func_800D8F80_ECBA0() {
     D_80102AB0 = NULL;
@@ -201,7 +201,7 @@ struct object *func_800D90C8_ECCE8(u8 arg0, void *arg1) {
     return ret;
 }
 
-INCLUDE_ASM(struct object *, "overlays/overlay128_ECA50", func_800D912C_ECD4C, s32 file, s32 shadowFile, f32 arg2, f32 arg3, void *arg4);
+INCLUDE_ASM(struct object *, "overlays/shared_board/ECA50", func_800D912C_ECD4C, s32 file, s32 shadowFile, f32 arg2, f32 arg3, void *arg4);
 // Loads a model from a given file. Also creates a shadow if given.
 // struct object *func_800D912C_ECD4C(s32 file, s32 shadowFile, f32 arg2, f32 arg3, void *arg4) {
 //     s16 temp_s0;
@@ -284,13 +284,13 @@ INCLUDE_ASM(struct object *, "overlays/overlay128_ECA50", func_800D912C_ECD4C, s
 //     return temp_v0;
 // }
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D93C0_ECFE0);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D93C0_ECFE0);
 
 void func_800D95C4_ED1E4(f32 arg0) {
     D_80100D40 = arg0;
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D95D0_ED1F0);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D95D0_ED1F0);
 
 struct object_indirect *func_800D9714_ED334(struct object *obj) {
     struct object_indirect *temp_v0;
@@ -305,7 +305,7 @@ struct object_indirect *func_800D9714_ED334(struct object *obj) {
     return phi_return;
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D975C_ED37C);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D975C_ED37C);
 
 void func_800D9A40_ED660(struct object *obj) {
     obj->unkA |= 8;
@@ -396,13 +396,13 @@ void func_800D9B54_ED774(struct object *obj) {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9CB0_ED8D0);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D9CB0_ED8D0);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9CE8_ED908);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D9CE8_ED908);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9D84_ED9A4);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D9D84_ED9A4);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9E0C_EDA2C);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D9E0C_EDA2C);
 
 s32 func_800D9E80_EDAA0(struct object *obj) {
     s32 ret;
@@ -414,13 +414,13 @@ s32 func_800D9E80_EDAA0(struct object *obj) {
     return ret & 0xFFFF;
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9ED0_EDAF0);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D9ED0_EDAF0);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800D9F5C_EDB7C);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D9F5C_EDB7C);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800DA09C_EDCBC);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800DA09C_EDCBC);
 
-INCLUDE_ASM(s32, "overlays/overlay128_ECA50", func_800DA190_EDDB0);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800DA190_EDDB0);
 
 void func_800DA748_EE368(void *(*arg0)()) {
     D_80102BC4 = arg0;

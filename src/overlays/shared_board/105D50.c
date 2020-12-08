@@ -1,5 +1,5 @@
 #include "common.h"
-#include "player.h"
+#include "../../player.h"
 
 // most likely similar to player.c from mp1.
 
@@ -99,7 +99,7 @@ void func_800F22C0_105EE0(s32 player_index) {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2304_105F24);
+INCLUDE_ASM(s32, "overlays/shared_board/105D50", func_800F2304_105F24);
 // s8 func_800F2304_105F24(s32 player_index, s32 arg2) {
 //     struct player *player;
 //     s8 ret;
@@ -115,7 +115,7 @@ INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2304_105F24);
 //     return ret;
 // }
 
-INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F2388_105FA8);
+INCLUDE_ASM(s32, "overlays/shared_board/105D50", func_800F2388_105FA8);
 
 void func_800F244C_10606C(s32 player_index, u8 difficulty) {
     GetPlayerStruct(player_index)->cpu_difficulty = D_80101630[difficulty];
@@ -139,7 +139,7 @@ void func_800F248C_1060AC(void) {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F24FC_10611C);
+INCLUDE_ASM(s32, "overlays/shared_board/105D50", func_800F24FC_10611C);
 
 void func_800F25B4_1061D4(s16 arg0, s32 arg1) {
     func_800F24FC_10611C(arg0, arg1, 0);
@@ -178,7 +178,7 @@ void *func_800F2690_1062B0(s16 arg0) {
     return ret;
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_105D50", func_800F26E8_106308);
+INCLUDE_ASM(s32, "overlays/shared_board/105D50", func_800F26E8_106308);
 
 void func_800F27C4_1063E4() {
 }

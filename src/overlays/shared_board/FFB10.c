@@ -54,7 +54,7 @@ void func_800EBF98_FFBB8(s16 arg0, s32 player_index) {
     func_800EDC58_101878(arg0);
 }
 
-INCLUDE_ASM(s16, "overlays/overlay128_FFB10", func_800EBFE8_FFC08);
+INCLUDE_ASM(s16, "overlays/shared_board/FFB10", func_800EBFE8_FFC08);
 
 void func_800EC134_FFD54(s32 arg0) {
     s16 temp_a0;
@@ -286,14 +286,14 @@ void func_800EC980_1005A0(s16 arg0, char *arg1, char *arg2, char *arg3, char *ar
     D_80101482 = 0;
 }
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800EC9DC_1005FC);
+INCLUDE_ASM(s32, "overlays/shared_board/FFB10", func_800EC9DC_1005FC);
 // void func_800EC9DC_1005FC() {
 //     D_800CC69C[D_80105702].unk32 = 1;
 //     SleepVProcess();
 //     func_800EBF48_FFB68(D_80105702, D_800CD067);
 // }
 
-INCLUDE_ASM(s32, "overlays/overlay128_FFB10", func_800ECA38_100658);
+INCLUDE_ASM(s32, "overlays/shared_board/FFB10", func_800ECA38_100658);
 // void func_800ECA38_100658() {
 //     D_80101482 = 1;
 //     D_800CC69C[D_80105702].unk32 = 1;
