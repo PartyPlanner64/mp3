@@ -3,7 +3,7 @@ crc1: 7C3829D9
 crc2: 6E8247CE
 basename: marioparty3
 options:
-  find-file-boundaries: True
+  # find-file-boundaries: True
   compiler: "GCC"
   mnemonic_ljust: 10
 
@@ -1023,6 +1023,7 @@ segments:
     files:
       - [0x31B510, "c", "overlays/board_chillywaters/chillywaters_main"]
       - [0x31B540, "c", "overlays/board_chillywaters/chillywaters"]
+      - [0x31B9F0, "c", "overlays/board_chillywaters/chillywaters2"]
       - [0x332DC0, ".data", "overlays/board_chillywaters/chillywaters_main"]
       - [0x332DF0, "bin"] # rodata
 
