@@ -1,5 +1,9 @@
 #include "common.h"
 
+extern s8 D_800CD066;
+
+extern s16 func_800F8858_10C478();
+
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECAD0_1006F0);
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECB14_100734);
@@ -60,7 +64,27 @@ INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED998_1015B8);
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED9F8_101618);
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800EDA58_101678);
+s32 func_800EDA58_101678() {
+    s32 ret;
+
+    ret = 0;
+    func_80035FDC(D_800CD066);
+    func_80035FDC(0xE);
+
+    if (func_800F8858_10C478() == 1) {
+        if (func_80035F98(3) != 0) {
+            func_800F8610_10C230(-2, 4, 0x192);
+            ret = 1;
+        }
+    }
+    else {
+        if (func_80035F98(3) != 0) {
+            func_800FF7C4_1133E4(-2, 4, 2);
+            ret = 1;
+        }
+    }
+    return ret;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800EDAF0_101710);
 
