@@ -16,6 +16,12 @@ extern s16 D_800D6B60;
 
 extern u32 D_80101B40[];
 
+extern s32 D_80105668;
+extern s16 D_8010566C;
+extern s16 D_80105664;
+extern s16 D_800D1380;
+extern s16 D_80105666;
+
 void func_800F8610_10C230(s32 arg0, s16 arg1, s16 arg2) {
     struct str800D2010 *str;
     s32 temp;
@@ -162,7 +168,13 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF75C_11337C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF788_1133A8);
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF794_1133B4);
+void func_800FF794_1133B4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
+    D_80105668 = arg0;
+    D_8010566C = arg1;
+    D_80105664 = 8;
+    D_800D1380 = arg2;
+    D_80105666 = arg3;
+}
 
 void func_800FF7C4_1133E4(s32 arg1, s16 arg2, s16 arg3) {
     func_800FF794_1133B4(arg1, arg2, arg3, 0);
