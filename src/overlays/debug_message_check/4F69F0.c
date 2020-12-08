@@ -1,5 +1,5 @@
 #include "common.h"
-#include "../process.h"
+#include "../../process.h"
 
 /* Message Check */
 
@@ -64,9 +64,9 @@ void func_80105B50_4F6BA0() {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/overlay118_4F69F0", func_80105B8C_4F6BDC);
+INCLUDE_ASM(s32, "overlays/debug_message_check/4F69F0", func_80105B8C_4F6BDC);
 
-INCLUDE_ASM(s32, "overlays/overlay118_4F69F0", func_80106334_4F7384);
+INCLUDE_ASM(s32, "overlays/debug_message_check/4F69F0", func_80106334_4F7384);
 
 void func_80106390_4F73E0(void) {
     if (func_800620BC() == 0) {
@@ -74,7 +74,7 @@ void func_80106390_4F73E0(void) {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/overlay118_4F69F0", func_801063BC_4F740C);
+INCLUDE_ASM(s32, "overlays/debug_message_check/4F69F0", func_801063BC_4F740C);
 // void func_801063BC_4F740C() {
 //     s16 temp_s0;
 //     s32 temp_s3;

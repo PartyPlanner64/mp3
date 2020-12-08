@@ -1385,7 +1385,7 @@ segments:
       - [0x4F69B0, "bin"] # rodata
 
   # Message Check
-  - name: overlays/overlay118
+  - name: overlays/debug_message_check/
     type: code
     overlay: True
     start: 0x4F69F0

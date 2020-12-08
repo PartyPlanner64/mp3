@@ -72,12 +72,14 @@ SRC_DIRS := src \
 	src/libultra/libc \
 	src/overlays \
 	src/overlays/board_chillywaters \
+	src/overlays/debug_message_check \
 	src/overlays/shared_board
 ASM_DIRS := asm \
 	asm/overlays \
 	asm/overlays/shared_board
 DATA_DIRS := bin \
 	bin/overlays \
+	bin/overlays/debug_message_check \
 	bin/overlays/shared_board
 
 # Source code files
