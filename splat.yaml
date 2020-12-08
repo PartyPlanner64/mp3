@@ -41,6 +41,7 @@ segments:
     - [0x36440, "c", "heap_permanent"]
     - [0x36510, "c", "heap_temporary"]
     - [0x365E0, "asm"]
+    - [0x36650, "asm"]
     - [0x36CD0, "c", "heap"]
     - [0x36F80, "asm"]
     - [0x37210, "asm"]
@@ -215,6 +216,21 @@ segments:
     - [0x84840, "asm"]
     - [0x85630, "asm"]
     - [0x856C0, "asm"]
+    - [0x87310, "asm"]
+    - [0x87750, "asm"]
+    - [0x87770, "asm"]
+    - [0x87830, "asm"]
+    - [0x87A00, "asm"]
+    - [0x88440, "asm"]
+    - [0x88460, "asm"]
+    - [0x88710, "asm"]
+    - [0x88830, "asm"]
+    - [0x88CE0, "asm"]
+    - [0x88D50, "asm"]
+    - [0x890B0, "asm"]
+    - [0x89120, "asm"]
+    - [0x89510, "asm"]
+    - [0x89FB0, "asm"]
     - [0x8A350, "asm"]
     - [0x8A3D0, "asm"]
     - [0x8A420, "asm"]
@@ -243,7 +259,25 @@ segments:
     - [0x8B0C0, "asm"]
     - [0x8B1C0, "asm"]
     - [0x8B3F0, "asm"]
-    # more
+    - [0x8B560, "asm"]
+    - [0x8B960, "asm"]
+    - [0x8D730, "asm"]
+    - [0x8D790, "asm"]
+    - [0x8D7F0, "asm"]
+    - [0x8D860, "asm"]
+    - [0x8D8C0, "asm"]
+    - [0x8E050, "asm"]
+    - [0x8E4A0, "asm"]
+    - [0x8E6B0, "asm"]
+    - [0x8EA10, "asm"]
+    - [0x8EFF0, "asm"]
+    - [0x8F320, "asm"]
+    - [0x8F480, "asm"]
+    - [0x8F620, "asm"]
+    - [0x8F760, "asm"]
+    - [0x8F7D0, "asm"]
+    - [0x8F830, "asm"]
+    - [0x8FB20, "asm"]
   - [0x8FCF0, "bin"]
   - [0x98310, "bin"]
   - [0xA7590, "bin"] # decode rodata
@@ -313,7 +347,7 @@ segments:
       - [0x106640, "asm"]
       - [0x106A50, "asm"]
       - [0x10AD50, "asm"]
-      - [0x10C230, "asm"]
+      - [0x10C230, "c"]
       - [0x113520, "asm"]
       - [0x113750, "asm"]
       - [0x1143C0, "bin"] # rodata
@@ -334,6 +368,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x11A480, "asm"]
+      - [0x120090, "asm"]
       - [0x1209E0, "bin"] # rodata
 
   - name: overlays/overlay2
@@ -433,6 +468,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x165010, "asm"]
+      - [0x169540, "asm"]
       - [0x16F3D0, "bin"] # rodata
 
   - name: overlays/overlay13
@@ -469,6 +505,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x18ABD0, "asm"]
+      - [0x18EB30, "asm"]
       - [0x190D60, "bin"] # rodata
 
   - name: overlays/overlay17
@@ -532,6 +569,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x1C4280, "asm"]
+      - [0x1CC400, "asm"]
       - [0x1CC420, "bin"] # rodata
 
   - name: overlays/overlay24
@@ -541,6 +579,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x1CC730, "asm"]
+      - [0x1D1920, "asm"]
       - [0x1D1940, "bin"] # rodata
 
   - name: overlays/overlay25
@@ -649,6 +688,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x216670, "asm"]
+      - [0x21CAC0, "asm"]
       - [0x21DBF0, "bin"] # rodata
 
   - name: overlays/overlay37
@@ -784,6 +824,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x28A290, "asm"]
+      - [0x290E70, "asm"]
       - [0x290E90, "bin"] # rodata
 
   - name: overlays/overlay52
@@ -811,6 +852,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x2A1430, "asm"]
+      - [0x2A9850, "asm"]
       - [0x2ACFE0, "bin"] # rodata
 
   - name: overlays/overlay55
@@ -820,6 +862,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x2AF250, "asm"]
+      - [0x2B4B20, "asm"]
       - [0x2B56D0, "bin"] # rodata
 
   - name: overlays/overlay56
@@ -838,6 +881,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x2BCE10, "asm"]
+      - [0x2C0E70, "asm"]
       - [0x2C5910, "bin"] # rodata
 
   - name: overlays/overlay58
@@ -928,6 +972,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x3010E0, "asm"]
+      - [0x306F70, "asm"]
       - [0x308890, "bin"] # rodata
 
   - name: overlays/overlay68
@@ -937,6 +982,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x308D10, "asm"]
+      - [0x30DC30, "asm"]
       - [0x30F550, "bin"] # rodata
 
   - name: overlays/overlay69
@@ -946,6 +992,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x30F940, "asm"]
+      - [0x3151F0, "asm"]
       - [0x316B10, "bin"] # rodata
 
   - name: overlays/overlay70
@@ -964,6 +1011,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x31B3B0, "asm"]
+      - [0x31B3E0, "asm"]
       - [0x31B4F0, "bin"] # rodata
 
   # Chilly Waters
@@ -985,6 +1033,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x3355E0, "asm"]
+      - [0x335610, "asm"]
       - [0x34C270, "bin"] # rodata
 
   - name: overlays/overlay74
@@ -994,6 +1043,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x34E810, "asm"]
+      - [0x34E840, "asm"]
       - [0x364F50, "bin"] # rodata
 
   - name: overlays/overlay75
@@ -1003,6 +1053,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x367930, "asm"]
+      - [0x367960, "asm"]
       - [0x37D6A0, "bin"] # rodata
 
   - name: overlays/overlay76
@@ -1012,6 +1063,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x37FF80, "asm"]
+      - [0x37FFB0, "asm"]
       - [0x3975F0, "bin"] # rodata
 
   - name: overlays/overlay77
@@ -1021,6 +1073,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x39AD20, "asm"]
+      - [0x39AD50, "asm"]
       - [0x3B08D0, "bin"] # rodata
 
   - name: overlays/overlay78
@@ -1030,6 +1083,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x3B35F0, "asm"]
+      - [0x3B3620, "asm"]
       - [0x3B9420, "bin"] # rodata
 
   - name: overlays/overlay79
@@ -1039,6 +1093,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x3B9670, "asm"]
+      - [0x3BFA00, "asm"]
       - [0x3C20B0, "bin"] # rodata
 
   - name: overlays/overlay80
@@ -1121,6 +1176,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x3D7150, "asm"]
+      - [0x3D7180, "asm"]
       - [0x3D7690, "bin"] # rodata
 
   - name: overlays/overlay89
@@ -1139,6 +1195,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x3D8930, "asm"]
+      - [0x3D8960, "asm"]
       - [0x3D8A70, "bin"] # rodata
 
   - name: overlays/overlay91
@@ -1148,6 +1205,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x3D8A90, "asm"]
+      - [0x3D8AC0, "asm"]
       - [0x3EB7D0, "bin"] # rodata
 
   - name: overlays/overlay92
@@ -1157,6 +1215,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x3EC560, "asm"]
+      - [0x3EC590, "asm"]
       - [0x3FD130, "bin"] # rodata
 
   - name: overlays/overlay93
@@ -1166,6 +1225,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x3FE1C0, "asm"]
+      - [0x3FE1F0, "asm"]
       - [0x40FC20, "bin"] # rodata
 
   - name: overlays/overlay94
@@ -1175,6 +1235,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4108E0, "asm"]
+      - [0x410910, "asm"]
       - [0x424BB0, "bin"] # rodata
 
   - name: overlays/overlay95
@@ -1184,6 +1245,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x426420, "asm"]
+      - [0x426450, "asm"]
       - [0x436100, "bin"] # rodata
 
   - name: overlays/overlay96
@@ -1193,6 +1255,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x436E20, "asm"]
+      - [0x436E50, "asm"]
       - [0x445900, "bin"] # rodata
 
   - name: overlays/overlay97
@@ -1202,6 +1265,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4461B0, "asm"]
+      - [0x4461E0, "asm"]
       - [0x4551C0, "bin"] # rodata
 
   - name: overlays/overlay98
@@ -1211,6 +1275,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4554C0, "asm"]
+      - [0x45A700, "asm"]
       - [0x45CDB0, "bin"] # rodata
 
   - name: overlays/overlay99
@@ -1247,6 +1312,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4675D0, "asm"]
+      - [0x467600, "asm"]
       - [0x468310, "bin"] # rodata
 
   - name: overlays/overlay103
@@ -1256,6 +1322,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4684F0, "asm"]
+      - [0x468520, "asm"]
       - [0x468A70, "bin"] # rodata
 
   - name: overlays/overlay104
@@ -1265,6 +1332,8 @@ segments:
     vram: 0x801059A0
     files:
       - [0x468A90, "asm"]
+      - [0x468AC0, "asm"]
+      - [0x46BB50, "asm"]
       - [0x46CB70, "bin"] # rodata
 
   - name: overlays/overlay105
@@ -1274,6 +1343,9 @@ segments:
     vram: 0x801059A0
     files:
       - [0x46CC10, "asm"]
+      - [0x479470, "asm"]
+      - [0x47D880, "asm"]
+      - [0x47DD90, "asm"]
       - [0x480120, "bin"] # rodata
 
   - name: overlays/overlay106
@@ -1283,6 +1355,8 @@ segments:
     vram: 0x801059A0
     files:
       - [0x481970, "asm"]
+      - [0x4822F0, "asm"]
+      - [0x4832D0, "asm"]
       - [0x48BAB0, "bin"] # rodata
 
   - name: overlays/overlay107
@@ -1292,6 +1366,9 @@ segments:
     vram: 0x801059A0
     files:
       - [0x48BE30, "asm"]
+      - [0x48D950, "asm"]
+      - [0x492250, "asm"]
+      - [0x496990, "asm"]
       - [0x49AF10, "bin"] # rodata
 
   - name: overlays/overlay108
@@ -1301,6 +1378,10 @@ segments:
     vram: 0x801059A0
     files:
       - [0x49BD40, "asm"]
+      - [0x49DF30, "asm"]
+      - [0x4A7540, "asm"]
+      - [0x4AC200, "asm"]
+      - [0x4B0E80, "asm"]
       - [0x4B1CC0, "bin"] # rodata
 
   - name: overlays/overlay109
@@ -1310,6 +1391,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4B29E0, "asm"]
+      - [0x4B9A30, "asm"]
       - [0x4C22A0, "bin"] # rodata
 
   - name: overlays/overlay110
@@ -1319,6 +1401,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4C2BD0, "asm"]
+      - [0x4C47E0, "asm"]
       - [0x4CECF0, "bin"] # rodata
 
   - name: overlays/overlay111
@@ -1337,6 +1420,10 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4DEB60, "asm"]
+      - [0x4E0630, "asm"]
+      - [0x4E2C50, "asm"]
+      - [0x4E3390, "asm"]
+      - [0x4E4B50, "asm"]
       - [0x4E65C0, "bin"] # rodata
 
   - name: overlays/overlay113
@@ -1346,6 +1433,10 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4E6DC0, "asm"]
+      - [0x4E8F60, "asm"]
+      - [0x4E9120, "asm"]
+      - [0x4EB420, "asm"]
+      - [0x4EBD50, "asm"]
       - [0x4EBF10, "bin"] # rodata
 
   - name: overlays/overlay114
@@ -1355,6 +1446,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4EC1B0, "asm"]
+      - [0x4ECDE0, "asm"]
       - [0x4F00D0, "bin"] # rodata
 
   - name: overlays/overlay115
@@ -1364,6 +1456,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4F01F0, "asm"]
+      - [0x4F1180, "asm"]
       - [0x4F36C0, "bin"] # rodata
 
   - name: overlays/overlay116
@@ -1373,6 +1466,8 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4F3780, "asm"]
+      - [0x4F4980, "asm"]
+      - [0x4F5AF0, "asm"]
       - [0x4F66B0, "bin"] # rodata
 
   - name: overlays/overlay117
@@ -1401,6 +1496,8 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4F7E90, "asm"]
+      - [0x4F7EC0, "asm"]
+      - [0x4F8140, "asm"]
       - [0x501760, "bin"] # rodata
 
   - name: overlays/overlay120
@@ -1410,6 +1507,9 @@ segments:
     vram: 0x801059A0
     files:
       - [0x501C00, "asm"]
+      - [0x506F20, "asm"]
+      - [0x508D50, "asm"]
+      - [0x5092C0, "asm"]
       - [0x515670, "bin"] # rodata
 
   - name: overlays/overlay121
@@ -1419,6 +1519,8 @@ segments:
     vram: 0x801059A0
     files:
       - [0x516AE0, "asm"]
+      - [0x516B10, "asm"]
+      - [0x516D30, "asm"]
       - [0x5238E0, "bin"] # rodata
 
   - name: overlays/overlay122
@@ -1428,6 +1530,9 @@ segments:
     vram: 0x801059A0
     files:
       - [0x523FD0, "asm"]
+      - [0x524000, "asm"]
+      - [0x5242B0, "asm"]
+      - [0x524820, "asm"]
       - [0x533180, "bin"] # rodata
 
   - name: overlays/overlay123
@@ -1437,6 +1542,8 @@ segments:
     vram: 0x801059A0
     files:
       - [0x5334D0, "asm"]
+      - [0x533500, "asm"]
+      - [0x53DCA0, "asm"]
       - [0x540FE0, "bin"] # rodata
 
   - name: overlays/overlay124
@@ -1446,6 +1553,8 @@ segments:
     vram: 0x801059A0
     files:
       - [0x542220, "asm"]
+      - [0x5436A0, "asm"]
+      - [0x543FC0, "asm"]
       - [0x54CDB0, "bin"] # rodata
 
   - name: overlays/overlay125
@@ -1455,6 +1564,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x54DD10, "asm"]
+      - [0x54F360, "asm"]
       - [0x552C80, "bin"] # rodata
 
   # - name: overlays/overlay126
