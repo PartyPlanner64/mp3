@@ -3,6 +3,7 @@ bin/*
 asm/*
 *.z64
 *.ld
+.splat_cache
 
 # Tools
 tools/n64cksum
