@@ -115,13 +115,13 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80107BD4_31D7
 // entrypoint 0
 void func_80107BF4_31D764() {
     D_800CD059 = 0;
-    func_80047160(0xA, 0);
+    InitObjSys(10, 0);
     func_80048228(0x47, 0, 0x192);
 }
 
 // entrypoint 1
 void func_80107C2C_31D79C(void) {
-    func_80047160(0xA, 0);
+    InitObjSys(10, 0);
 
     func_800ED91C(0, 0, 0);
     func_800ED91C(1, 0, 0);
@@ -145,7 +145,7 @@ void func_80107CC4_31D834(void) {
     struct space_data *spacedata;
     struct coords_3d subroutine_arg4;
 
-    func_80047160(0xA0, 0x28);
+    InitObjSys(0xA0, 0x28);
     func_80019514(1, 0xFF, 0xFF, 0xFF);
     func_80019514(2, 0xC8, 0xC8, 0xC8);
     func_800F89D0(3, 0x23A, 5, 0);

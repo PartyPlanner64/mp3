@@ -29,7 +29,7 @@ void func_801059A0_4F69F0() {
     func_80012220(1);
     func_8001FE20(1);
     func_800142A0(0x19);
-    func_80047160(0x33, 0xA);
+    InitObjSys(0x33, 10);
     func_8005A6B0();
     temp_v0 = func_80047620(0x7FDA, 0, 0, -1, func_8004B340);
     D_800D6AC0 = 100.0f;

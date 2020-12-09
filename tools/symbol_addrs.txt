@@ -33,6 +33,7 @@ GetAllocatedTempHeapSize = 0x800359A0;
 GetUsedMemoryBlockCountTemp = 0x800359C0;
 
 // 47D60.c
+InitObjSys = 0x80047160;
 InitProcess = 0x80047EA0;
 EndProcess = 0x80048008;
 

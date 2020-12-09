@@ -48,11 +48,10 @@ extern s16 D_800D6B40;
 
 extern void func_80048054();
 
-// InitObjSys
-void func_80047160(s32 arg0, s16 arg1) {
+void InitObjSys(s32 maxObjects, s16 maxProcesses) {
     s32 i;
 
-    D_800CCF50 = arg0 + 1;
+    D_800CCF50 = maxObjects + 1;
     D_800CCF8C = 0;
     D_800D6B40 = 0;
     D_800CC430 = -1;
@@ -109,7 +108,7 @@ void func_80047160(s32 arg0, s16 arg1) {
         D_800CD1E0[i].unk8 = 0;
     }
 
-    D_800A1774 = arg1 + 2;
+    D_800A1774 = maxProcesses + 2;
     D_800A1776 = 0;
     D_800A1778 = 0;
     D_800A177C = MallocTemp(D_800A1774 * sizeof(struct str800A177C));
