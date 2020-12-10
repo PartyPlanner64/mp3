@@ -33,7 +33,11 @@ struct str800CC69C {
     s16 unk60;
     s16 unk62;
     s16 unk64;
-    s8 unks66274[526];
+    s16 unk66;
+    s32 unk68;
+    s16 unk6C;
+    s16 unk6E;
+    s8 unks70274[516];
     s16 unk274;
     s16 unk276;
     s32 unk278;
@@ -48,6 +52,9 @@ extern s8 D_800D5206[];
 extern s32 D_800D5540;
 extern s8 D_800D6A26;
 extern u16 D_800D6B62;
+
+extern void func_80054904(s16, s16, s16, s16);
+extern void func_800551D8(s32, s32, f32, f32);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005A0F0);
 
@@ -298,13 +305,15 @@ INCLUDE_ASM(s32, "code_5ACF0", func_80060174);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_800601BC);
 
-void func_8006022C(s32 arg0, s16 arg1) {
+// Called to indicate that `str` should be the replacement at a
+// "replacement index" location in the main string.
+void func_8006022C(char *str, s16 index) {
     D_800BDA6A = 1;
     D_800BDA6E = 0;
     D_800BDA6C = 0;
-    func_800605A4(arg0);
+    func_800605A4(str);
     D_800CD2A4 = 0;
-    D_800D5206[arg1] = D_800BDA6D;
+    D_800D5206[index] = D_800BDA6D;
 }
 
 INCLUDE_ASM(s32, "code_5ACF0", func_80060290);
@@ -378,6 +387,20 @@ INCLUDE_ASM(s32, "code_5ACF0", func_80061388);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_800615B8);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_80061934);
+void func_80061934(s16 winId, s16 arg1) {
+    s16 temp_v0;
+    struct str800CC69C *temp_s0;
+
+    temp_s0 = &D_800CC69C[winId];
+    func_800600C0(winId, 1);
+    func_800615B8(winId, 0);
+    func_8005B8F8(winId, temp_s0->unk274);
+    temp_v0 = func_8005B7B8(winId, D_800A25D0[arg1], 0x18 - temp_s0->unk48, 0x18 - temp_s0->unk4A, 0);
+    temp_s0->unk274 = temp_v0;
+    func_80054904(temp_s0->unk6C, temp_v0, 0x18 - temp_s0->unk48, 0x18 - temp_s0->unk4A);
+    func_800551D8(temp_s0->unk6C, temp_s0->unk274, 1.0f, 1.0f);
+    func_800615B8(winId, 1);
+    func_800600C0(winId, 0);
+}
 
 INCLUDE_ASM(s32, "code_5ACF0", func_80061A5C);
