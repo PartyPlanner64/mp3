@@ -4,14 +4,34 @@
 
 extern s8 D_800A2150;
 extern s8 D_800A2151;
+
+extern s32 D_800A25D0[];
+
 extern s32 D_800CB99C;
 
 struct str800CC69C {
-    s8 unks5E[0x5E];
+    s8 unks03C[0x3C];
+    u16 unk3C;
+    u16 unk3E;
+    s32 unk40;
+    s32 unk44;
+    u16 unk48;
+    u16 unk4A;
+    s16 unk4C;
+    s16 unk4E;
+    s32 unk50;
+    s16 unk54;
+    s16 unk56;
+    s32 unk58;
+    s16 unk5C;
     s16 unk5E;
     s16 unk60;
     s16 unk62;
     s16 unk64;
+    s8 unks66274[526];
+    s16 unk274;
+    s16 unk276;
+    s32 unk278;
 }; // sizeof 0x27C
 
 extern struct str800CC69C *D_800CC69C;
@@ -130,7 +150,7 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8005A6B0);
 // }
 
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8005A968);
+INCLUDE_ASM(s16, "code_5ACF0", func_8005A968, s16 arg0, s16 arg1, s16 arg2, s16 arg3, s32 arg4, s32 arg5);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005B040);
 
@@ -148,7 +168,7 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8005B68C);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005B6BC);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8005B7B8);
+INCLUDE_ASM(s32, "code_5ACF0", func_8005B7B8, s16 winId, s32 arg1, s16 arg2, s16 arg3, s16 arg4);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005B8F8);
 
@@ -158,21 +178,21 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8005BA28);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005BA54);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8005BA90);
+INCLUDE_ASM(void, "code_5ACF0", func_8005BA90, s16 winId, s16 arg1, s16 arg2);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005BB18);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005BBC0);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8005BCA4);
+INCLUDE_ASM(void, "code_5ACF0", func_8005BCA4, s16 winId, s16 arg1, s16 arg2);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005BDA8);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8005BDFC);
+INCLUDE_ASM(void, "code_5ACF0", func_8005BDFC, s16 winId, s32 arg0);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005BE30);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8005BEE0);
+INCLUDE_ASM(void, "code_5ACF0", func_8005BEE0, s16 winId, s32 arg2);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005BF70);
 
@@ -304,7 +324,42 @@ INCLUDE_ASM(s32, "code_5ACF0", func_800610E0);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_80061100);
 
+// Obtains a window handle
 INCLUDE_ASM(s32, "code_5ACF0", func_80061188);
+// s16 func_80061188(s16 arg0, s16 arg1, s16 arg2, s32 arg3, s32 arg4, s16 arg5) {
+//     s32 temp_s0;
+//     s16 temp_s4;
+//     s16 winId;
+//     s16 temp_v1;
+//     s32 temp_s0_2;
+//     s32 temp_s1;
+//     struct str800CC69C *temp_s2;
+//     s32 phi_s3;
+
+//     temp_s0 = arg3 + 2;
+//     phi_s3 = arg4;
+//     if (((~arg0 != 0) & (arg4 < 0x30)) != 0) {
+//         phi_s3 = 0x30;
+//     }
+//     winId = func_8005A968(arg1, arg2, temp_s0, phi_s3, 0, arg5);
+//     func_8005BDFC(winId, 0);
+//     temp_s2 = &D_800CC69C[winId];
+//     func_8005BCA4(winId, temp_s0 / 2, phi_s3 / 2);
+//     func_8005BA90(winId, temp_s2->unk3C + (temp_s0 / 2), temp_s2->unk3E + (phi_s3 / 2));
+//     temp_s2->unk276 = arg0;
+//     if (arg0 != -1) {
+//         temp_s2->unk274 = func_8005B7B8(winId, D_800A25D0[arg0], 0x18 - temp_s2->unk48, 0x18 - temp_s2->unk4A, 0);
+//     }
+//     temp_s2->unk54 = 6;
+//     temp_s2->unk4C = 6;
+//     func_8005BEE0(winId, 0xD0);
+//     func_8005C060(winId, 1, 0x40, 0xF0, 0xFF);
+//     func_8005FBF8(winId, 0x40, 0x20, 0xB0);
+//     func_8005D294(winId);
+//     func_8005FE90(winId);
+//     func_8005F904();
+//     return winId;
+// }
 
 INCLUDE_ASM(s32, "code_5ACF0", func_80061388);
 
