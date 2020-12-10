@@ -7,6 +7,11 @@ extern s8 D_800A2151;
 
 extern s32 D_800A25D0[];
 
+extern s8 D_800BDA6A;
+extern s16 D_800BDA6C;
+extern s8 D_800BDA6D; // ? overlaps
+extern s16 D_800BDA6E;
+
 extern s32 D_800CB99C;
 
 struct str800CC69C {
@@ -36,9 +41,10 @@ struct str800CC69C {
 
 extern struct str800CC69C *D_800CC69C;
 
-extern s32 D_800CD2A4;
+extern s8 D_800CD2A4;
 extern s8 D_800D1F34;
 extern void *D_800D1FE4;
+extern s8 D_800D5206[];
 extern s32 D_800D5540;
 extern s8 D_800D6A26;
 extern u16 D_800D6B62;
@@ -292,7 +298,14 @@ INCLUDE_ASM(s32, "code_5ACF0", func_80060174);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_800601BC);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8006022C);
+void func_8006022C(s32 arg0, s16 arg1) {
+    D_800BDA6A = 1;
+    D_800BDA6E = 0;
+    D_800BDA6C = 0;
+    func_800605A4(arg0);
+    D_800CD2A4 = 0;
+    D_800D5206[arg1] = D_800BDA6D;
+}
 
 INCLUDE_ASM(s32, "code_5ACF0", func_80060290);
 
