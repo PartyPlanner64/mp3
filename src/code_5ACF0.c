@@ -55,6 +55,9 @@ extern u16 D_800D6B62;
 
 extern void func_80054904(s16, s16, s16, s16);
 extern void func_800551D8(s32, s32, f32, f32);
+extern void func_8005BB18(s16, f32, f32);
+
+extern f32 func_8008EF20(f32);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005A0F0);
 
@@ -193,7 +196,7 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8005BA54);
 
 INCLUDE_ASM(void, "code_5ACF0", func_8005BA90, s16 winId, s16 arg1, s16 arg2);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8005BB18);
+INCLUDE_ASM(void, "code_5ACF0", func_8005BB18, s16 arg0, f32 arg1, f32 arg2);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005BBC0);
 
@@ -235,7 +238,7 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8005CF94);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005CFE0);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8005D294);
+INCLUDE_ASM(void, "code_5ACF0", func_8005D294, s16);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005D2D4);
 
@@ -289,7 +292,7 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8005FBF8);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005FE54);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8005FE90);
+INCLUDE_ASM(void, "code_5ACF0", func_8005FE90, s16 arg0);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005FFA8);
 
@@ -403,4 +406,20 @@ void func_80061934(s16 winId, s16 arg1) {
     func_800600C0(winId, 0);
 }
 
-INCLUDE_ASM(s32, "code_5ACF0", func_80061A5C);
+void func_80061A5C(s16 arg0, s16 arg1) {
+    s16 i;
+
+    if (arg1 == 0) {
+        func_8005D294(arg0);
+
+        for (i = 0; i < 5; i++) {
+            func_8005BB18(arg0, 1.0f, 1.0f - func_8008EF20(i * 18.0f));
+            SleepVProcess();
+        }
+
+        func_8005FE90(arg0);
+        SleepVProcess();
+        return;
+    }
+    func_8005FE90(arg0);
+}
