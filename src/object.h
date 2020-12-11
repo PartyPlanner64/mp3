@@ -36,48 +36,6 @@ struct object {
     s16 unk46;
 };
 
-struct strA1770 {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-    s32 unk10;
-    s32 unk14;
-    f32 unk18;
-    f32 unk1C;
-    f32 unk20;
-    f32 unk24;
-    f32 unk28;
-    f32 unk2C;
-};
-
-// temp_v0_2->unk0 = (u16)1;
-// temp_v0_2->unk8 = (u16)-1;
-// temp_v0_2->unk6 = (u16)-1;
-// temp_v0_2->unk4 = (u16)-1;
-// temp_v0_2->unk10 = 0;
-// temp_v0_2->unk2C = 0.0f;
-// temp_v0_2->unk28 = 0.0f;
-// temp_v0_2->unk24 = 0.0f;
-// temp_v0_2->unk20 = 0.0f;
-// temp_v0_2->unk1C = 0.0f;
-// temp_v0_2->unk18 = 0.0f;
-// temp_v0_2->unk38 = 1.0f;
-// temp_v0_2->unk34 = 1.0f;
-// temp_v0_2->unk30 = 1.0f;
-// temp_v0_2->unk48 = 0;
-// temp_v0_2->unk40 = 0;
-// temp_v0_2->unk5C = 0;
-// temp_v0_2->unk14 = 0;
-// temp_v1_2 = phi_a0 + 1;
-// temp_v0_2->unkA = temp_v1_2;
-// temp_v0_2->unk44 = (u16)0;
-// temp_v0_2->unk48 = 0;
-
 // What is this, in relation to object?
 struct object_indirect {
     s16 unk0;
