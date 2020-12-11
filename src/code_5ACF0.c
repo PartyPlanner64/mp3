@@ -238,7 +238,7 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8005CF94);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005CFE0);
 
-INCLUDE_ASM(void, "code_5ACF0", func_8005D294, s16);
+INCLUDE_ASM(void, "code_5ACF0", func_8005D294, s16 winId);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005D2D4);
 

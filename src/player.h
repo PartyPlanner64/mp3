@@ -45,8 +45,9 @@ struct player {
     u8 items[3]; // 24 (0x18)
     s8 bowser_suit_flag; // 27 (0x1B)
     u8 turn_color_status; // 28 (0x1C)
+    s8 unk1D; // 29 (0x1D)
 
-    s8 pad1[3]; // 29 - 31
+    s8 unks1E1F[2]; // 20 - 31
 
     struct process *process; // 32 (0x20)
     struct object *obj; // 36 (0x24)
