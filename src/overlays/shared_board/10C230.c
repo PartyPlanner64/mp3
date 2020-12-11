@@ -130,7 +130,9 @@ void func_800F8774_10C394() {
     func_8004819C(1);
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F884C_10C46C);
+void func_800F884C_10C46C() {
+    D_800CD2A2 = 0;
+}
 
 s16 func_800F8858_10C478() {
     return D_800D4196;
