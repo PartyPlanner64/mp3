@@ -16,16 +16,18 @@ struct strCD058 {
     /* 0x0F - 800CD067 */ s8 current_player_index;
     /* 0x10 - 800CD068 */ s8 unk10;
     /* 0x11 - 800CD069 */ s8 current_space_index;
-    /* 0x12 - 800CD070 */ s8 unk12;
-    /* 0x13 - 800CD071 */ s8 unk13;
-    /* 0x14 - 800CD072 */ s8 unk14;
-    /* 0x15 - 800CD073 */ s8 unk15;
+    /* 0x12 - 800CD06A */ s8 unk12;
+    /* 0x13 - 800CD06B */ s8 unk13;
+    /* 0x14 - 800CD06C */ s8 unk14;
+    /* 0x15 - 800CD06D */ s8 unk15;
 
     // 800cd09c flag for re-roll
 };
 extern struct strCD058 D_800CD058;
 
 // is 800CD0B0 part of above struct?
+
+extern s16 D_800CD2A2;
 
 extern s16 D_800D4196;
 
@@ -37,6 +39,7 @@ struct str800D2010 {
 extern struct str800D2010 D_800D2010[];
 extern struct str800D2010 D_800D20F0[];
 
+extern s16 D_800D6A48;
 extern s16 D_800D6B60;
 
 extern u32 D_80101B40[];
@@ -75,7 +78,27 @@ void func_800F8610_10C230(s32 arg0, s16 arg1, s16 arg2) {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F86B4_10C2D4);
+void func_800F86B4_10C2D4() {
+    s32 phi_a0;
+
+    D_800CD2A2 = 1;
+    D_800D6B60 = 0;
+    if (func_80035F98(1) == 0) {
+        if ((D_800CD058.current_board_index != 6)
+            && (func_800F8610_10C230(-2, 4, 0x192), (D_800CD058.current_board_index != 6))) {
+            phi_a0 = 0x53;
+        }
+        else {
+            phi_a0 = 0x54;
+        }
+        func_800F8610_10C230(phi_a0, 0, 0x192);
+        func_800F8610_10C230(-2, 1, 0x192);
+    }
+    func_800F8D84_10C9A4();
+    func_800ECF9C_100BBC(D_800CD058.unk15);
+    func_80035F44(0xC);
+    D_800D6A48 = 0;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8774_10C394);
 
