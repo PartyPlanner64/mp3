@@ -40,7 +40,7 @@ segments:
     - [0x360A0, "c", "thread3_main"]
     - [0x36440, "c", "heap_permanent"]
     - [0x36510, "c", "heap_temporary"]
-    - [0x365E0, "asm"]
+    - [0x365E0, "c"]
     - [0x36650, "c"]
     - [0x36CD0, "c", "heap"]
     - [0x36F80, "asm"]

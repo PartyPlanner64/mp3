@@ -1,5 +1,6 @@
 #include "common.h"
 #include "../../board.h"
+#include "../../code_365E0.h"
 
 extern s16 D_800A1764;
 extern void func_80107BF4_31D764();
@@ -8,7 +9,7 @@ extern void func_80108014_31DB84();
 extern void func_80108098_31DC08();
 extern void func_8011C58C_3320FC();
 
-struct board_overlay_entrypoint chillywaters_entrypoints[] = {
+struct overlay_entrypoint chillywaters_entrypoints[] = {
     { 0, func_80107BF4_31D764 },
     { 1, func_80107C2C_31D79C },
     { 2, func_80108014_31DB84 },

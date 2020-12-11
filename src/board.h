@@ -3,11 +3,6 @@
 
 #include <ultra64.h>
 
-struct board_overlay_entrypoint {
-    s16 index;
-    void *fn;
-};
-
 struct event_list_entry {
     s16 activation_type;
     s16 execution_type;
