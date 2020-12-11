@@ -138,7 +138,20 @@ s16 func_800F8858_10C478() {
     return D_800D4196;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8864_10C484);
+void func_800F8864_10C484(s16 arg0) {
+    s16 temp_v0;
+    s16 temp_v0_2;
+
+    temp_v0 = D_800D6B60;
+    D_800D20F0[temp_v0].unk4 = arg0;
+    temp_v0_2 = temp_v0 + 1;
+    D_800D6B60 = temp_v0_2;
+    if (temp_v0_2 >= 5) {
+        D_800D6B60 = 4;
+    }
+    func_800F8610_10C230(-2, 3, 0x192);
+    func_8004819C(1);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F88D0_10C4F0);
 
