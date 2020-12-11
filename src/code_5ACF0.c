@@ -5,6 +5,8 @@
 extern s8 D_800A2150;
 extern s8 D_800A2151;
 
+extern s8 D_800A2154[];
+
 extern s32 D_800A25D0[];
 
 extern s8 D_800BDA6A;
@@ -14,7 +16,7 @@ extern s16 D_800BDA6E;
 
 extern s32 D_800CB99C;
 
-struct str800CC69C {
+struct window {
     s8 unks03C[0x3C];
     u16 unk3C;
     u16 unk3E;
@@ -43,7 +45,7 @@ struct str800CC69C {
     s32 unk278;
 }; // sizeof 0x27C
 
-extern struct str800CC69C *D_800CC69C;
+extern struct window *D_800CC69C; // pointer to array of window structs
 
 extern s8 D_800CD2A4;
 extern s8 D_800D1F34;
@@ -86,7 +88,7 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8005A674);
 INCLUDE_ASM(s32, "code_5ACF0", func_8005A6B0);
 // void func_8005A6B0() {
 //     s32 i;
-//     struct str800CC69C *tempst;
+//     struct window *tempst;
 
 //     if (D_800A2150 == 0) {
 //         D_800CC69C = MallocTemp(0x27C0);
@@ -167,6 +169,215 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8005A6B0);
 
 
 INCLUDE_ASM(s16, "code_5ACF0", func_8005A968, s16 arg0, s16 arg1, s16 arg2, s16 arg3, s32 arg4, s32 arg5);
+// s16 func_8005A968(s16 arg0, s16 arg1, s16 arg2, s16 arg3, u16 arg5) {
+//     s16 temp_fp;
+//     s16 temp_s0;
+//     s16 temp_s0_2;
+//     s16 temp_s0_3;
+//     s16 temp_s0_6;
+//     s16 temp_s0_7;
+//     s16 temp_s0_8;
+//     s16 temp_s3;
+//     s16 temp_s5;
+//     s16 temp_s6;
+//     s16 temp_v0;
+//     s16 temp_v0_4;
+//     s16 temp_v0_6;
+//     s16 temp_v0_8;
+//     s16 temp_v1;
+//     s32 temp_s0_4;
+//     s32 temp_s0_5;
+//     s32 temp_v0_7;
+//     s32 temp_v1_2;
+//     u16 temp_v0_9;
+//     u32 temp_lo;
+//     u32 temp_v0_2;
+//     u32 temp_v0_3;
+//     void *temp_s2;
+//     void *temp_v0_5;
+//     s32 phi_v0;
+//     s16 phi_fp;
+//     s16 phi_fp_2;
+//     s16 phi_s4;
+//     s16 phi_s0;
+//     s32 phi_v1;
+//     s16 phi_s0_2;
+//     s32 phi_s0_3;
+//     s16 phi_a0;
+//     s32 phi_a1;
+//     s16 phi_s0_4;
+
+//     s32 i;
+//     s16 winId;
+//     struct window *window;
+//     struct window *firstWindow; // temp_a0
+
+//     // First two windows are reserved for some reason.
+//     // Window 2 is (0x27C * 2) = 0x4F8 offset from start of struct array.
+//     winId = 2;
+//     while (winId < 16) {
+//         if (D_800CC69C[winId].unk5E != -1) {
+//             continue;
+//         }
+//         break;
+//     }
+//     if (winId == 16) {
+//         return -1;
+//     }
+
+//     phi_s4 = arg2;
+//     if ((arg2 & 1) != 0) {
+//         phi_s4 = arg2 + 1;
+//     }
+
+//     firstWindow = &D_800CC69C[0];
+//     window = &D_800CC69C[winId];
+//     window->unk64 = 1;
+//     window->unk62 = firstWindow->unk2DE;
+//     window->unk5E = 0x7D00;
+//     D_800CC69C[firstWindow->unk2DE].unk64 = winId;
+//     firstWindow->unk2DE = winId;
+//     window->unk40 = phi_s4;
+//     window->unk42 = arg3;
+//     if ((subroutine_arg7 & 2) != 0) {
+//         window->unk3C = (320 - phi_s4) / 2;
+//         window->unk3E = (240 - arg3) / 2;
+//     }
+//     else if ((subroutine_arg7 & 4) != 0) {
+//         window->unk3C = arg0;
+//         window->unk3E = arg1;
+//     }
+//     else {
+//         if ((arg0 + phi_s4) < 0x129) {
+//             window->unk3C = arg0;
+//         }
+//         else {
+//             window->unk3C = (0x128 - phi_s4);
+//         }
+//         if ((arg1 + arg3) >= 0xE1) {
+//             window->unk3E = (0xE0 - arg3);
+//         }
+//         else {
+//             window->unk3E = arg1;
+//         }
+//     }
+//     window->unk44 = ((phi_s4 + 0xF) & 0xFFF0);
+//     window->unk46 = (arg3 + 0x10);
+//     window->unkF0 = 1.0f;
+//     window->unkEC = 1.0f;
+//     window->unk56 = (u16)4;
+//     window->unk54 = (u16)4;
+//     window->unk4E = (u16)4;
+//     window->unk4C = (u16)4;
+//     window->unk50 = (s16) (phi_s4 - 8);
+//     window->unk52 = (s16) (arg3 - 8);
+//     window->unk20 = (u8)0;
+//     window->unk22 = (u8)7;
+//     window->unk23 = (u8)7;
+//     window->unk33 = (u8)0;
+//     window->unk26 = (u8)1;
+//     window->unk25 = (u8)1;
+//     window->unk27 = (u8)0xA;
+//     window->unk28 = (u8)0xC;
+//     window->unk29 = (u8)0;
+//     window->unk2A = (u8)2;
+//     window->unk58 = (window->unk40 - window->unk27) - 4);
+//     window->unk5A = window->unk42 - window->unk28;
+//     window->unk4A = (u16)0;
+//     window->unk48 = (u16)0;
+//     window->unk2D = D_800A2154[0];
+//     window->unk2E = D_800A2154[1];
+//     window->unk2F = D_800A2154[2];
+//     window->unk21 = (u8)0xF;
+//     window->unk32 = (u8)0;
+//     window->unk31 = (u8)0;
+//     window->unk38 = 0;
+//     window->unkD0 = 0;
+//     window->unkA6 = (u16)0;
+//     window->unkAC = (u8)-1;
+//     window->unk35 = (u8)0xCU;
+
+//     for (i = 0; i < 5; i++) {
+//         ((i * 4) + window)->unkB8 = 0;
+//         (window + i)->unkB2 = (u8)-1;
+//     }
+
+//     window->unkE0 = 0;
+//     window->unk6A = (u16)-1;
+//     window->unk24 = (u8)0;
+
+//     for (i = 0; i < 16; i++) {
+//         temp_v0_5 = (temp_v1_2 * 2) + window;
+//         if (temp_v1_2 >= 3) {
+//             temp_v0_5->unk6E = (u16)-1;
+//         }
+//         else {
+//             *(temp_v0_5 + 0x6E) = (u16)0;
+//         }
+//     }
+
+//     window->unk9A = (u16)0;
+//     window->unk66 = func_80055810(D_800D4084, (u16)-1, -1);
+//     window->unk68 = func_80055810(D_800CE2C4);
+//     temp_s3 = func_8005279C(0x16, 5);
+//     window->unk6C = temp_s3;
+//     temp_s0_3 = temp_s3;
+//     func_80055458(temp_s0_3, 0, 0x100);
+//     func_8005532C(temp_s0_3, 0, 0xFFFF);
+//     func_800553A8(temp_s0_3, 0, 0x1009000);
+//     func_80055024(temp_s0_3, 0, window->unk66, 0);
+//     func_800550F4(temp_s0_3, 0, 0);
+//     func_800554C4(temp_s0_3, 0, -1);
+//     func_80054904(temp_s0_3, 0, window->unk3C, window->unk3E);
+//     func_80055420(window->unk6C, 0, 0x40, 0x20, 0xB0);
+//     temp_s2 = func_80055520(temp_s0_3, 0);
+//     if ((subroutine_arg7 & 8) == 0) {
+//         (*temp_s2->unk84)->unk4 = phi_s4;
+//         (*temp_s2->unk84)->unk6 = arg3;
+//         func_80019A98(**temp_s2->unk84);
+//         temp_s6 = phi_s4;
+//         temp_s5 = arg3;
+//         temp_lo = temp_s6 * temp_s5;
+//         temp_s0_4 = (s32) (temp_lo + (temp_lo >> 0x1F)) >> 1;
+//         temp_v0_7 = func_800199F8(temp_s0_4);
+//         window->unkDC = temp_v0_7;
+//         **temp_s2->unk84 = temp_v0_7;
+//         func_80087A40(window->unkDC, 0xFF, temp_s0_4);
+//         if ((subroutine_arg7 & 1) == 0) {
+//             if ((subroutine_arg7 & 0x10) == 0) {
+//                 func_8005B040(window->unkDC, phi_s4, arg3);
+//             }
+//             else {
+//                 func_8005B238(window->unkDC, temp_s6, temp_s5);
+//             }
+//         }
+//         func_80055458(temp_s3, 0, 0x64);
+//         func_8005532C(temp_s3, 0, 0x8000);
+//     } else {
+//         func_80055458(temp_s3, 0, 0);
+//         func_800553A8(temp_s3, 0, 0x8000);
+//     }
+//     func_800550F4(temp_s3, 0, 0);
+//     func_80055458(temp_s3, 1, 0x100);
+//     func_8005532C(temp_s3, 1, 0xFFFF);
+//     func_800553A8(temp_s3, 1, 0x1009000);
+//     func_80055024(temp_s3, 1, window->unk68, 0);
+//     func_800550F4(temp_s3, 1, 0);
+//     func_80054904(temp_s3, 1, 0, 0);
+//     func_800554C4(temp_s3, 1, 0);
+//     bcopy(&D_800A2174, window, 0x20);
+
+//     for (i = 0; i < 0x16; i++) {
+//         func_80055294(temp_s3, i, D_800D6B62);
+//     }
+
+//     func_80055294(temp_s3, 2, (D_800D6B62 - 1) & 0xFFFF);
+//     temp_v0_9 = D_800D6B62;
+//     window->unk60 = temp_v0_9;
+//     D_800D6B62 = (temp_v0_9 - 32);
+//     window->unkAA = (u16)0x138;
+//     return winId;
+// }
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005B040);
 
@@ -298,7 +509,15 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8005FFA8);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_800600C0);
 
+// Sets an option disabled.
 INCLUDE_ASM(s32, "code_5ACF0", func_8006010C);
+// void func_8006010C(s32 winId, s32 optionIndex) {
+//     s32 temp_v0;
+
+//     temp_v0 = D_800CC69C[winId] + ((s32) (arg1 << 0x10) >> 0xC);
+//     temp_v0->unkF4 = (u8)2;
+//     return temp_v0;
+// }
 
 INCLUDE_ASM(s32, "code_5ACF0", func_80060144);
 
@@ -391,7 +610,7 @@ INCLUDE_ASM(s32, "code_5ACF0", func_80061188);
 //     s16 temp_v1;
 //     s32 temp_s0_2;
 //     s32 temp_s1;
-//     struct str800CC69C *temp_s2;
+//     struct window *temp_s2;
 //     s32 phi_s3;
 
 //     temp_s0 = arg3 + 2;
@@ -425,7 +644,7 @@ INCLUDE_ASM(s32, "code_5ACF0", func_800615B8);
 
 void func_80061934(s16 winId, s16 arg1) {
     s16 temp_v0;
-    struct str800CC69C *temp_s0;
+    struct window *temp_s0;
 
     temp_s0 = &D_800CC69C[winId];
     func_800600C0(winId, 1);
