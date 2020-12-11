@@ -74,8 +74,7 @@ void func_800EC134_FFD54(s32 arg0) {
 }
 
 void func_800EC1E8_FFE08(char *arg0, char *arg1, char *arg2, char *arg3, char *arg4, char *arg5) {
-    s16 temp_a0;
-    s16 temp_s0;
+    s16 winId;
     struct struct_func_800EC70C_10032C some_struct;
 
     if (arg1 != NULL) {
@@ -95,32 +94,31 @@ void func_800EC1E8_FFE08(char *arg0, char *arg1, char *arg2, char *arg3, char *a
     }
 
     func_80060394(1, &some_struct, arg0);
-    temp_a0 = func_80061188(-1, 0, 0, some_struct.unk0, some_struct.unk2, 2);
-    temp_s0 = temp_a0;
-    D_80105714 = temp_s0;
+    winId = func_80061188(-1, 0, 0, some_struct.unk0, some_struct.unk2, 2);
+    D_80105714 = winId;
 
     if (D_800CB99C == 0) {
-        func_8005B63C(temp_a0, 0x40, 0x40);
+        func_8005B63C(winId, 0x40, 0x40);
     }
 
     if (arg1 != NULL) {
-        func_8005B6BC(temp_s0, arg1, 0);
+        func_8005B6BC(winId, arg1, 0);
     }
     if (arg2 != NULL) {
-        func_8005B6BC(temp_s0, arg2, 1);
+        func_8005B6BC(winId, arg2, 1);
     }
     if (arg3 != NULL) {
-        func_8005B6BC(temp_s0, arg3, 2);
+        func_8005B6BC(winId, arg3, 2);
     }
     if (arg4 != NULL) {
-        func_8005B6BC(temp_s0, arg4, 3);
+        func_8005B6BC(winId, arg4, 3);
     }
     if (arg5 != NULL) {
-        func_8005B6BC(temp_s0, arg5, 4);
+        func_8005B6BC(winId, arg5, 4);
     }
 
-    func_8005B43C(temp_s0, arg0, -1, -1);
-    func_80061388(temp_s0);
+    func_8005B43C(winId, arg0, -1, -1);
+    func_80061388(winId);
 }
 
 void func_800EC39C_FFFBC(s32 arg0) {

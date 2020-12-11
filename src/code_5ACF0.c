@@ -326,6 +326,39 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8006034C);
 INCLUDE_ASM(s32, "code_5ACF0", func_80060388);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_80060394);
+// u16 func_80060394(s16 arg0, void *arg1, ?32 arg2, ?32 arg3) {
+//     s16 temp_s0;
+//     s16 temp_s0_2;
+//     s16 temp_v0_3;
+//     s16 temp_v0_4;
+//     s32 temp_v0_2;
+//     u16 temp_v0;
+//     s32 phi_v0;
+//     s16 phi_s0;
+//     s32 phi_v0_2;
+//     s16 phi_s0_2;
+
+//     s32 i;
+
+//     D_800BDA6A = 0;
+//     D_800BDA6E = 0;
+//     D_800BDA6C = 0;
+
+//     phi_v0 = (s32) (&arg2 + 3);
+//     for (i = 0; i < arg0; i++) {
+//         temp_v0_2 = phi_v0 & -4;
+//         func_800605A4(*temp_v0_2);
+//     }
+
+//     for (i = 0; i < 5; i++) {
+//         D_800D5206[i] = 0;
+//     }
+
+//     D_800D5540 = 12;
+//     arg1->unk0 = D_800BDA6C + 10;
+//     arg1->unk2 = D_800BDA6E + 6;
+//     return temp_v0;
+// }
 
 INCLUDE_ASM(s32, "code_5ACF0", func_800604A8);
 
