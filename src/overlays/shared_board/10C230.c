@@ -1,13 +1,17 @@
 #include "common.h"
 #include "../../board.h"
 #include "../../object.h"
+#include "../../player.h"
 #include "../../process.h"
 #include "../../spaces.h"
+
+extern void *data_128CC60_ROM_START;
 
 extern s16 D_800A1768;
 
 extern s16 D_800CD2A2;
 
+extern s16 D_800D1380;
 extern s16 D_800D4196;
 
 struct str800D2010 {
@@ -22,11 +26,13 @@ extern s16 D_800D6A48;
 extern s16 D_800D6B60;
 
 extern u32 D_80101B40[];
+extern void (*D_80101B64)();
+extern void (*D_80101B68)();
+extern s32 D_80101B6C;
 
 extern s32 D_80105668;
 extern s16 D_8010566C;
 extern s16 D_80105664;
-extern s16 D_800D1380;
 extern s16 D_80105666;
 
 void func_800F8610_10C230(s32 arg0, s16 arg1, s16 arg2) {
@@ -136,17 +142,118 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F88D0_10C4F0);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F88FC_10C51C);
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8908_10C528);
+INCLUDE_ASM(void, "overlays/shared_board/10C230", func_800F8908_10C528);
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F89D0_10C5F0);
+void func_800F89D0_10C5F0(s32 arg0, s16 arg1, s32 arg2) {
+    u8 curPlayerIndex;
+    struct process *process;
+    s32 *unkallocated;
+    s32 i;
+    struct strCD058 *strloc;
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8C74_10C894);
+    func_800E9EF4_FDB14();
+    func_800E6630_FA250(&data_128CC60_ROM_START);
+    if (arg0 >= 0) {
+        func_800E69BC_FA5DC(arg0);
+    }
+    func_800EA60C_FE22C();
+    if (arg1 >= 0) {
+        func_800EAE10_FEA30(0x13, arg1);
+    }
+    func_800D76D0_EB2F0(arg2);
+    func_800D8F80_ECBA0();
+    func_800F26E8_106308();
+    func_800E63F0_FA010();
+    func_800F25D8_1061F8(0);
+    func_800F25D8_1061F8(1);
+    func_800F25D8_1061F8(2);
+    func_800F25D8_1061F8(3);
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8D48_10C968);
+    for (i = 0; i < 4; i++) {
+        func_800D9714_ED334(GetPlayerStruct(i)->obj);
+        GetPlayerStruct(i)->obj->unkA |= 2;
+        func_800D9AA4_ED6C4(GetPlayerStruct(i)->obj);
+    }
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8D54_10C974);
+    strloc = &D_800CD058;
+    curPlayerIndex = (*strloc).current_player_index;
+    if ((curPlayerIndex < 4) && gPlayers[(s8)curPlayerIndex].bowser_suit_flag != 0) {
+        func_800E6264_F9E84();
+        func_800D9B24_ED744(gPlayers[strloc->current_player_index].obj);
+    }
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8D60_10C980);
+    func_8001FDE8(GetPlayerStruct(0)->obj->unk3C->unk40->unk0);
+    func_8001FDE8(GetPlayerStruct(1)->obj->unk3C->unk40->unk0);
+    func_8001FDE8(GetPlayerStruct(2)->obj->unk3C->unk40->unk0);
+    func_8001FDE8(GetPlayerStruct(3)->obj->unk3C->unk40->unk0);
+    func_800F2A20_106640();
+    func_800DF854_F3474();
+    func_800E17B0_F53D0();
+    func_800E4B60_F8780();
+    func_800F453C_10815C();
+    func_800DB5DC_EF1FC();
+    func_8005A6B0();
+    func_800ECAB4_1006D4();
+    D_80105664 = -1;
+    D_800D1380 = 0;
+    D_80105666 = 0;
+    func_800F27D0_1063F0();
+    D_80101B64 = NULL;
+    D_80101B68 = NULL;
+    D_80101B6C = NULL;
+    func_8004CF30();
+
+    for (i = 0; i < 4; i++) {
+        process = InitProcess(func_800F8908_10C528, 0, 0, 0x40);
+        unkallocated = (s32 *)Malloc(process->heap, 16); // TODO: What type is this?
+        process->user_data = unkallocated;
+        *unkallocated = i;
+        func_80047B80(process, 0xA0);
+    }
+}
+
+void func_800F8C74_10C894() {
+    void (*func)();
+
+    func_800DCB8C_F07AC();
+    func_800F4730_108350();
+    func_800E4BA0_F87C0();
+    func_800E18FC_F551C();
+    func_800DF8B4_F34D4();
+    func_800F2A34_106654();
+    func_8005F524();
+    func_800E6404_FA024();
+    func_800F27C4_1063E4();
+    func_800D8FC4_ECBE4();
+    func_800D7714_EB334();
+    func_800EB09C_FECBC();
+    func_800EA694_FE2B4();
+    func_800E69D8_FA5F8();
+    func_800E66E0_FA300();
+    func_800E66D4_FA2F4();
+    func_800EA284_FDEA4();
+    func = D_80101B64;
+    if (func != NULL) {
+        func();
+    }
+    func = D_80101B68;
+    if (func != NULL) {
+        func();
+    }
+    func_800FC8A4_1104C4();
+}
+
+void func_800F8D48_10C968(s32 arg0) {
+    D_80101B6C = arg0;
+}
+
+void func_800F8D54_10C974(s32 arg0) {
+    D_80101B64 = arg0;
+}
+
+void func_800F8D60_10C980(s32 arg0) {
+    D_80101B68 = arg0;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8D6C_10C98C);
 
