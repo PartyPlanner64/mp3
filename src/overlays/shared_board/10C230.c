@@ -34,7 +34,7 @@ extern s16 D_800D4196;
 struct str800D2010 {
     s32 unk0;
     s16 unk4;
-    s16 unk6;
+    u16 unk6;
 };
 extern struct str800D2010 D_800D2010[];
 extern struct str800D2010 D_800D20F0[];
@@ -100,7 +100,35 @@ void func_800F86B4_10C2D4() {
     D_800D6A48 = 0;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8774_10C394);
+void func_800F8774_10C394() {
+    s16 temp_v0;
+    s16 temp_v0_2;
+    struct str800D2010 *str;
+
+    D_800D4196 = 1;
+    temp_v0 = D_800D6B60;
+    if (temp_v0 != 0) {
+        temp_v0_2 = temp_v0 - 1;
+        D_800D6B60 = temp_v0_2;
+        str = &D_800D20F0[temp_v0_2];
+        func_80048128(str->unk0, str->unk4, str->unk6);
+        return;
+    }
+
+    if (D_800CD2A2 != 0) {
+        D_800D4196 = 0;
+        func_80048128(D_80101B40[D_800CD058.current_board_index], 2, 0x192);
+        return;
+    }
+
+    if (D_800D6A48 != 0) {
+        func_80035EF4(0xC);
+    }
+    else {
+        func_80035F44(0xC);
+    }
+    func_8004819C(1);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F884C_10C46C);
 
