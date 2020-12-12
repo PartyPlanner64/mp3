@@ -9,6 +9,8 @@ extern void *data_128CC60_ROM_START;
 
 extern s16 D_800A1768;
 
+extern s16 D_800CC0B8;
+
 extern s16 D_800CD2A2;
 
 extern s16 D_800D1380;
@@ -144,7 +146,8 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F88FC_10C51C);
 
 INCLUDE_ASM(void, "overlays/shared_board/10C230", func_800F8908_10C528);
 
-void func_800F89D0_10C5F0(s32 arg0, s16 arg1, s32 arg2) {
+// Called to set up the board.
+void func_800F89D0_10C5F0(s32 bgIndex, s16 boardDefFile, s32 pauseBgIndex) {
     u8 curPlayerIndex;
     struct process *process;
     s32 *unkallocated;
@@ -153,14 +156,14 @@ void func_800F89D0_10C5F0(s32 arg0, s16 arg1, s32 arg2) {
 
     func_800E9EF4_FDB14();
     func_800E6630_FA250(&data_128CC60_ROM_START);
-    if (arg0 >= 0) {
-        func_800E69BC_FA5DC(arg0);
+    if (bgIndex >= 0) {
+        func_800E69BC_FA5DC(bgIndex);
     }
     func_800EA60C_FE22C();
-    if (arg1 >= 0) {
-        func_800EAE10_FEA30(0x13, arg1);
+    if (boardDefFile >= 0) {
+        func_800EAE10_FEA30(0x13, boardDefFile);
     }
-    func_800D76D0_EB2F0(arg2);
+    func_800D76D0_EB2F0(pauseBgIndex);
     func_800D8F80_ECBA0();
     func_800F26E8_106308();
     func_800E63F0_FA010();
@@ -243,21 +246,25 @@ void func_800F8C74_10C894() {
     func_800FC8A4_1104C4();
 }
 
-void func_800F8D48_10C968(s32 arg0) {
-    D_80101B6C = arg0;
+void func_800F8D48_10C968(void (*func)()) {
+    D_80101B6C = func;
 }
 
-void func_800F8D54_10C974(s32 arg0) {
-    D_80101B64 = arg0;
+void func_800F8D54_10C974(void (*func)()) {
+    D_80101B64 = func;
 }
 
-void func_800F8D60_10C980(s32 arg0) {
-    D_80101B68 = arg0;
+void func_800F8D60_10C980(void (*func)()) {
+    D_80101B68 = func;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8D6C_10C98C);
+void func_800F8D6C_10C98C(s16 arg0) {
+    D_800CC0B8 = arg0;
+}
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8D78_10C998);
+s16 func_800F8D78_10C998() {
+    return D_800CC0B8;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8D84_10C9A4);
 
