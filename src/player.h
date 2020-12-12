@@ -11,7 +11,7 @@
 struct player {
     s8 id;
     s8 cpu_difficulty;
-    s8 controller;
+    u8 controller;
     u8 character;
     /**
      * Miscellaneous flags.

@@ -13,6 +13,8 @@ extern s32 D_800A12D8;
 extern s32 D_800A12DC;
 extern s16 D_800A1768;
 
+extern void *D_800C9520; // controller structs?
+
 extern s16 D_800C9930;
 extern f32 D_800C9938;
 
@@ -61,6 +63,7 @@ extern s16 D_800D2130;
 extern s16 D_800D4080;
 extern s16 D_800D4196;
 extern s32 D_800D41C0;
+extern s16 D_800D530C;
 
 extern s16 D_800D59E0[];
 
@@ -85,6 +88,11 @@ extern s16 D_80105666;
 extern s16 D_8010566E;
 // extern struct ? D_80105670;
 extern s32 D_8010567C;
+
+extern void func_800E9730_FD350(f32);
+extern f32 func_800E973C_FD35C();
+extern void func_800E9AC8_FD6E8(f32);
+extern f32 func_800E9AD4_FD6F4();
 
 void func_800F8610_10C230(s32 arg0, s16 arg1, s16 arg2) {
     struct str800D2010 *str;
@@ -189,11 +197,33 @@ void func_800F8864_10C484(s16 arg0) {
     func_8004819C(1);
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F88D0_10C4F0);
+void func_800F88D0_10C4F0() {
+    if (func_80035F98(0x17) != 0) {
+        func_80035FDC(0x10);
+    }
+}
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F88FC_10C51C);
+s32 func_800F88FC_10C51C() {
+    return D_800D1240;
+}
 
+// One of these processes per player.
 INCLUDE_ASM(void, "overlays/shared_board/10C230", func_800F8908_10C528);
+// void func_800F8908_10C528() {
+//     void *temp_s0;
+
+//     temp_s0 = GetCurrentProcess()->user_data;
+//     while (TRUE) {
+//         if ((PlayerIsCPU(temp_s0->unk2) == 0) && (D_800A12D8 == 0)) {
+//             if ((D_800CD058.current_player_index != temp_s0->unk0) || (D_800A12D4 == 0)) {
+//                 if (D_800C9520[gPlayers[temp_s0->unk0].controller] & 0x20) != 0) {
+//                     func_8004ACE0(0x2BD, temp_s0->unk2);
+//                 }
+//             }
+//         }
+//         SleepVProcess();
+//     }
+// }
 
 // Called to set up the board.
 void func_800F89D0_10C5F0(s32 bgIndex, s16 boardDefFile, s32 pauseBgIndex) {
@@ -556,6 +586,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FC3D0_10FFF0);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FC4E0_110100);
 
+// This is the one that hangs if too few blue/red spaces exist in a board.
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FC594_1101B4);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FC7C8_1103E8);
@@ -1303,15 +1334,29 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FCA7C_11069C);
 // }
 
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF0F8_112D18);
+void func_800FF0F8_112D18() {
+    SleepVProcess();
+    func_8010067C_11429C(gPlayers[D_800CD058.current_player_index].controller);
+    func_800F8C74_10C894();
+    func_8004819C(1);
+    func_8004849C();
+    SleepVProcess();
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF158_112D78);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF41C_11303C);
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF75C_11337C);
+void func_800FF75C_11337C(s16 arg0) {
+    D_800CD2A2 = 1;
+    D_80105664 = 64;
+    D_800D1380 = arg0;
+    D_80105666 = 0;
+}
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF788_1133A8);
+void func_800FF788_1133A8(s16 arg0) {
+    D_800A12C8 = arg0;
+}
 
 void func_800FF794_1133B4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     D_80105668 = arg0;
@@ -1325,10 +1370,37 @@ void func_800FF7C4_1133E4(s32 arg1, s16 arg2, s16 arg3) {
     func_800FF794_1133B4(arg1, arg2, arg3, 0);
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF7F0_113410);
+void func_800FF7F0_113410() {
+    D_800D530C = 1;
+}
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF800_113420);
+void func_800FF800_113420(s16 arg0, s16 arg1) {
+    D_80105664 = 16;
+    D_800D1380 = arg0;
+    D_80105666 = arg1;
+    func_800F884C_10C46C();
+}
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF834_113454);
+s16 func_800FF834_113454() {
+    return D_80105664;
+}
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF840_113460);
+void func_800FF840_113460(struct coords_3d *coords) {
+    f32 ftemp1;
+    f32 ftemp2;
+
+    func_800E728C_FAEAC();
+    func_800E7254_FAE74();
+    ftemp2 = func_800E9AD4_FD6F4();
+    func_800E9AC8_FD6E8(-1.0f);
+    ftemp1 = func_800E973C_FD35C();
+    func_800E9730_FD350(1.0f);
+    func_800E6FBC_FABDC();
+    if (coords == NULL) {
+        coords = &GetPlayerStruct(-1)->obj->coords;
+    }
+    func_800E9748_FD368(coords);
+    SleepVProcess();
+    func_800E9730_FD350(ftemp1);
+    func_800E9AC8_FD6E8(ftemp2);
+}
