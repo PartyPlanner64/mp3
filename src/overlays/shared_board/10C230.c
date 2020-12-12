@@ -37,6 +37,7 @@ extern s16 D_800CD096[16];
 
 extern s16 D_800CD2A2;
 extern s16 D_800CDD68;
+extern u16 D_800CE198; // board song index
 extern s16 D_800CE1C4;
 extern s16 D_800CE1E8[];
 extern s16 D_800CE206;

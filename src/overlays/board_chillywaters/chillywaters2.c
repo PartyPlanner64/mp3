@@ -1,13 +1,10 @@
 #include "common.h"
+#include "../../board.h"
 #include "../../process.h"
 #include "../../object.h"
 #include "../../spaces.h"
 
 extern u8 D_800CB99C;
-extern u8 D_800CD059;
-extern s8 D_800CD05A;
-extern s8 D_800CD05B;
-extern s8 D_800CD067;
 extern u16 D_800CD0B4[];
 extern u16 D_800CE198;
 extern u16 D_800D037C;
@@ -114,7 +111,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80107BD4_31D7
 
 // entrypoint 0
 void func_80107BF4_31D764() {
-    D_800CD059 = 0;
+    D_800CD058.current_board_index = 0;
     InitObjSys(10, 0);
     func_80048228(0x47, 0, 0x192);
 }
@@ -426,7 +423,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //     func_800EBCC8(0);
 
 //     player = GetPlayerStruct(-1);
-//     func_800F2304(-1, -1, 2, func_800DBEC0(D_800CD067));
+//     func_800F2304(-1, -1, 2, func_800DBEC0(D_800CD058.current_player_index));
 
 //     // GetAbsSpaceIndexFromChainSpaceIndex
 //     space_index = func_800EB184(player->cur_chain_index, player->cur_space_index, 0);
@@ -515,7 +512,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //     else {
 // loop_23:
 // loop_24:
-//         if (phi_s0 != D_800CD067) {
+//         if (phi_s0 != D_800CD058.current_player_index) {
 //             temp_v1 = ((phi_s0 * 8) - phi_s0) * 8;
 //             phi_v0 = phi_s0 < 4;
 //             if (gPlayers[temp_v1].coins == 0) {
@@ -539,7 +536,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //         } else {
 //             phi_s0_2 = 0;
 // loop_31:
-//             if ((phi_s0_2 == D_800CD067) || (phi_s0_3 = phi_s0_2, (((((phi_s0_2 * 8) - phi_s0_2) * 8) + 0x800D0000)->unk1112 == 0))) {
+//             if ((phi_s0_2 == D_800CD058.current_player_index) || (phi_s0_3 = phi_s0_2, (((((phi_s0_2 * 8) - phi_s0_2) * 8) + 0x800D0000)->unk1112 == 0))) {
 //                 temp_s0_6 = phi_s0_2 + 1;
 //                 phi_s0_2 = temp_s0_6;
 //                 phi_s0_3 = temp_s0_6;
@@ -552,7 +549,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //             }
 //             phi_s0_4 = 0;
 // loop_38:
-//             if ((phi_s0_4 == D_800CD067) || (phi_s0_5 = phi_s0_4, (((((phi_s0_4 * 8) - phi_s0_4) * 8) + 0x800D0000)->unk1116 == 0))) {
+//             if ((phi_s0_4 == D_800CD058.current_player_index) || (phi_s0_5 = phi_s0_4, (((((phi_s0_4 * 8) - phi_s0_4) * 8) + 0x800D0000)->unk1116 == 0))) {
 //                 temp_s0_7 = phi_s0_4 + 1;
 //                 phi_s0_4 = temp_s0_7;
 //                 phi_s0_5 = temp_s0_7;
@@ -560,7 +557,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //                     goto loop_38;
 //                 }
 //             }
-//             if ((phi_s0_5 != 4) && (temp_v1_2 = D_800CD067 * 0x38, (((s32) (temp_v1_2 + 0x800D0000)->unk1112 < 0x32) == 0))) {
+//             if ((phi_s0_5 != 4) && (temp_v1_2 = D_800CD058.current_player_index * 0x38, (((s32) (temp_v1_2 + 0x800D0000)->unk1112 < 0x32) == 0))) {
 //                 if ((s32) (temp_v1_2 + 0x800D0000)->unk1116 >= 0x63) {
 // block_45:
 //                 }
@@ -590,7 +587,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 // loop_53:
 // loop_54:
 // loop_55:
-//                     if (phi_s0_6 != D_800CD067) {
+//                     if (phi_s0_6 != D_800CD058.current_player_index) {
 //                         temp_v0_4 = phi_s0_6 * 8;
 //                         if (subroutine_arg2F == 0) {
 //                             temp_v0_5 = &subroutine_arg18 + phi_s1;
@@ -661,7 +658,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //                         phi_s2_3 = phi_s2;
 //                         if (phi_s0_7 == func_800EE9C0(phi_s1_2)) {
 //                             phi_s2_3 = phi_s2;
-//                             if (D_800CD067 != phi_s1_2) {
+//                             if (D_800CD058.current_player_index != phi_s1_2) {
 //                                 ((phi_s2 * 4) + &subroutine_arg8)->unk58 = phi_s1_2;
 //                                 phi_s2_3 = phi_s2 + 1;
 //                             }
@@ -700,7 +697,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //                                 goto loop_84;
 //                             }
 // loop_86:
-//                             if (temp_v1_3 != D_800CD067) {
+//                             if (temp_v1_3 != D_800CD058.current_player_index) {
 //                                 goto loop_86;
 //                             }
 //                             phi_s0_9 = phi_s0_9 - 1;
@@ -712,7 +709,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 // loop_90:
 //                             temp_v1_4 = (phi_v0_4 + &subroutine_arg8)->unk58;
 //                             temp_s0_13 = phi_s0_11 - 1;
-//                             if ((((temp_v1_4 * 0x38) + 0x800D0000)->unk1112 == 0) || (temp_v1_4 == D_800CD067)) {
+//                             if ((((temp_v1_4 * 0x38) + 0x800D0000)->unk1112 == 0) || (temp_v1_4 == D_800CD058.current_player_index)) {
 //                                 phi_v0_4 = temp_s0_13 * 4;
 //                                 phi_s0_11 = temp_s0_13;
 //                                 if (temp_s0_13 >= 0) {
@@ -724,7 +721,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //                         phi_s0_12 = 2;
 // loop_94:
 //                         temp_v1_5 = (phi_v0_5 + &subroutine_arg8)->unk58;
-//                         if ((((temp_v1_5 * 0x38) + 0x800D0000)->unk1112 == 0) || (phi_v0_7 = phi_s0_12 * 4, (temp_v1_5 == D_800CD067))) {
+//                         if ((((temp_v1_5 * 0x38) + 0x800D0000)->unk1112 == 0) || (phi_v0_7 = phi_s0_12 * 4, (temp_v1_5 == D_800CD058.current_player_index))) {
 //                             temp_s0_14 = phi_s0_12 - 1;
 //                             temp_v0_6 = temp_s0_14 * 4;
 //                             phi_v0_5 = temp_v0_6;
@@ -738,13 +735,13 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //                         phi_s2_2 = (s16) (sp + phi_v0_7)->unk7A;
 //                     }
 //                     if ((subroutine_arg2B << 0x10) == 0) {
-//                         func_800E1F48(D_800CD067, -5);
+//                         func_800E1F48(D_800CD058.current_player_index, -5);
 //                         phi_a1 = -5;
 //                     } else {
-//                         func_800E1F48(D_800CD067, -0x32);
+//                         func_800E1F48(D_800CD058.current_player_index, -0x32);
 //                         phi_a1 = -0x32;
 //                     }
-//                     func_800F5D44(D_800CD067, phi_a1);
+//                     func_800F5D44(D_800CD058.current_player_index, phi_a1);
 //                     SleepProcess(0x1E);
 //                     if ((s16) subroutine_arg2B == 1) {
 //                         if (phi_s1_3 != 0) {
@@ -822,7 +819,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //                                         phi_f20_3 = temp_f20_3;
 //                                         if (1.0f <= temp_f20_3) {
 //                                             func_8010DE40_3239B0(subroutine_arg23);
-//                                             func_800F5D44(D_800CD067, 1);
+//                                             func_800F5D44(D_800CD058.current_player_index, 1);
 //                                             func_800F5BF4(phi_s2_2, -1, 0);
 //                                             phi_s6_2 = phi_s6_4 - 1;
 //                                             phi_f20_3 = temp_f20_3 - 1.0f;
@@ -842,7 +839,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //                                 func_800ECC0C(&(GetPlayerStruct(-1)->obj->unk18));
 //                                 func_800F2304(-1, 5, 0);
 //                                 SleepProcess(5);
-//                                 func_8004ACE0(0x274, D_800CD067);
+//                                 func_8004ACE0(0x274, D_800CD058.current_player_index);
 //                                 SleepProcess(0x2D);
 //                                 D_800D037C = 1;
 //                             } else {
@@ -1011,16 +1008,16 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801125BC_3281
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801127D8_328348);
 
-void func_80112BCC_32873C(void) {
+void func_80112BCC_32873C() {
     s32 i;
 
     SleepProcess(10);
     for (i = 1; i < 64; i++) {
-        func_800F68E0(D_800CD067, func_800E4A7C(), 255.0f - (i * 3.984f));
+        func_800F68E0(D_800CD058.current_player_index, func_800E4A7C(), 255.0f - (i * 3.984f));
         SleepVProcess();
     }
 
-    func_800F68E0(D_800CD067, func_800E4A7C(), 0);
+    func_800F68E0(D_800CD058.current_player_index, func_800E4A7C(), 0);
 }
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80112C88_3287F8);
@@ -1242,8 +1239,10 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8011C68C_3321
 s32 func_8011C750_3322C0() {
     s32 temp_s0;
     s32 phi_v1;
+    struct strCD058 *loc;
+    loc = &D_800CD058;
 
-    temp_s0 = D_800CD05A - D_800CD05B + 1;
+    temp_s0 = loc->total_turns - loc->current_turn + 1;
 
     phi_v1 = func_800E49DC(-1);
     if (phi_v1 == -1) {
