@@ -7,14 +7,45 @@
 
 extern void *data_128CC60_ROM_START;
 
+extern s16 D_800A12C8;
+extern s32 D_800A12D4;
+extern s32 D_800A12D8;
 extern s16 D_800A1768;
+
+extern s16 D_800C9930;
+extern f32 D_800C9938;
 
 extern s16 D_800CC0B8;
 
-extern s16 D_800CD2A2;
+struct strCC0C8 {
+    s8 unks09E[0x9E];
+    s8 unk9E;
+    s8 unk9F;
+    s8 unkA0;
+    s8 unkA1;
+    s8 unkA2;
+};
+extern struct strCC0C8 D_800CC0C8;
 
+extern s16 D_800CC378[];
+extern s16 D_800CC4E4;
+
+extern s16 D_800CD096[];
+
+extern s16 D_800CD2A2;
+extern s16 D_800CDD68;
+extern s16 D_800CE1C4;
+extern s16 D_800CE1E8[];
+extern s16 D_800CE206;
+extern s16 D_800CE208;
+
+extern s16 D_800D03FC;
+extern s32 D_800D1240;
+extern s16 D_800D124E;
 extern s16 D_800D1380;
-extern s16 D_800D4196;
+extern s16 D_800D1708;
+extern s16 D_800D1F7A;
+extern s16 D_800D1FEC;
 
 struct str800D2010 {
     s32 unk0;
@@ -24,6 +55,14 @@ struct str800D2010 {
 extern struct str800D2010 D_800D2010[];
 extern struct str800D2010 D_800D20F0[];
 
+extern s16 D_800D2130;
+extern s16 D_800D4080;
+extern s16 D_800D4196;
+extern s32 D_800D41C0;
+
+extern s16 D_800D59E0[];
+
+extern s16 D_800D6A44;
 extern s16 D_800D6A48;
 extern s16 D_800D6B60;
 
@@ -267,6 +306,155 @@ s16 func_800F8D78_10C998() {
 }
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8D84_10C9A4);
+// void func_800F8D84_10C9A4() {
+//     struct player *player;
+//     s32 i, j;
+//     s8 tempByte;
+//     struct strCD058 *CD058loc;
+//     struct strCC0C8 *CC0C8loc;
+
+//     s16 *CC378loc;
+//     s16 *D59E0loc;
+//     s16 *CE1E8loc;
+
+//     CD058loc = &D_800CD058;
+//     CC0C8loc = &D_800CC0C8;
+
+//     D_800D1240 = 0;
+//     D_800D41C0 = 0;
+//     D_800CDD68 = 0;
+//     D_800CE208 = 0;
+//     D_800D03FC = 0;
+//     D_800CC4E4 = -1;
+//     D_800D124E = -1;
+//     D_800CE1C4 = -1;
+//     D_800D1708 = 0;
+//     D_800D4080 = 0;
+//     D_800D2130 = 0;
+
+//     // FIXME: Something is off here. Relates to how arrays get passed as args later.
+//     i = 0;
+//     CC378loc = &D_800CC378;
+//     D59E0loc = &D_800D59E0;
+//     CE1E8loc = &D_800CE1E8;
+//     for (; i < 10; i++) {
+//         *(CC378loc + i) = -1;
+//         *(D59E0loc + i) = -1;
+//         *(CE1E8loc + i) = -1;
+//     }
+
+//     D_800D1F7A = 0;
+//     D_800D6A44 = 0;
+//     D_800D1FEC = 0;
+//     D_800C9938 = 1.0f;
+//     func_800DF7F4_F3414(CE1E8loc, -1, CC378loc, D59E0loc);
+//     func_800DB56C_EF18C();
+//     D_800A12C8 = -1;
+//     D_800C9930 = -1;
+//     D_800CE206 = 0;
+//     D_800A12D4 = 1;
+//     D_800A12D8 = 0;
+
+//     func_800F2484_1060A4(0);
+//     func_800F2484_1060A4(1);
+//     func_800F2484_1060A4(2);
+//     func_800F2484_1060A4(3);
+
+//     tempByte = CC0C8loc->unk9E;
+//     if ((tempByte == 3 | (tempByte == 1)) != 0) {
+//         CC0C8loc->unk9E = 2;
+//     }
+//     if (CC0C8loc->unk9F == 3) {
+//         CC0C8loc->unk9F = 0;
+//     }
+//     if (CC0C8loc->unkA0 == 3) {
+//         CC0C8loc->unkA0 = 1;
+//     }
+//     if (CC0C8loc->unkA1 == 3) {
+//         CC0C8loc->unkA1 = 1;
+//     }
+//     if (CC0C8loc->unkA2 == 3) {
+//         CC0C8loc->unkA2 = 0;
+//     }
+//     CD058loc->unk12 = CC0C8loc->unk9E;
+//     CD058loc->unk13 = CC0C8loc->unk9F;
+//     CD058loc->unk14 = CC0C8loc->unkA0;
+//     CD058loc->unk15 = CC0C8loc->unkA1;
+//     CD058loc->unk16 = CC0C8loc->unkA2;
+
+//     if (func_80035F98(1) == 0) {
+//         CD058loc->current_star_spawn = 0;
+//         CD058loc->current_turn = 1;
+//         CD058loc->current_player_index = 0;
+//         CD058loc->unk10 = 0;
+
+//         for (i = 0; i < 5; i++)
+//         {
+//             player = GetPlayerStruct(i);
+//             player->coins = 0;
+//             player->minigame_star = 0;
+//             player->max_coins = 0;
+//             player->happening_space_count = 0;
+//             player->red_space_count = 0;
+//             player->blue_space_count = 0;
+//             player->chance_space_count = 0;
+//             player->game_guy_space_count = 0;
+//             player->bowser_space_count = 0;
+//             player->battle_space_count = 0;
+//             player->item_space_count = 0;
+//             player->bank_space_count = 0;
+//             player->flags2 = 0;
+//             for (j = 0; j < 3; j++) {
+//                 player->items[j] = -1;
+//             }
+//             player->bowser_suit_flag = 0;
+//         }
+
+//         for (i = 0; i < 16; i++) {
+//             D_800CD096[i] = 0;
+//         }
+
+//         func_8003602C(6);
+//         func_8003602C(7);
+//         func_8003602C(8);
+//         func_8003602C(9);
+//         func_8003602C(0xA);
+//         func_8003602C(0xB);
+//         func_8003602C(0xC);
+//         func_8003602C(0xD);
+//         func_8003602C(0x12);
+//         func_8003602C(0x13);
+//         func_8003602C(0x14);
+//         func_8003602C(0x15);
+//         func_8003602C(0x16);
+//         func_8003602C(0x17);
+//         func_8003602C(2);
+//         func_8003602C(3);
+//         func_8003602C(4);
+//         func_8003602C(0xE);
+//         func_8003602C(1);
+//         func_8003602C(0x11);
+//         func_8003602C(0x10);
+//         if (func_80035EB0(0x1B) != 0) {
+//             func_80035FDC(0xF);
+//         }
+//         else {
+//             func_8003602C(0xF);
+//         }
+
+//         if ((D_800CD058.unk0 & 4) != 0) {
+//             if (func_80035EB0(0x28) != 0) {
+//                 func_80035FDC(0);
+//             }
+//         }
+//         else if (func_80035EB0(0x16) != 0) {
+//             func_80035FDC(0);
+//         }
+//         else {
+//             func_8003602C(0);
+//         }
+//     }
+// }
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F915C_10CD7C);
 

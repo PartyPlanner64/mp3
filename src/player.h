@@ -42,7 +42,7 @@ struct player {
     u8 reverse_space_index; // 22 (0x16)
 
     u8 flags2; // 23 (0x17)
-    u8 items[3]; // 24 (0x18)
+    s8 items[3]; // 24 (0x18)
     s8 bowser_suit_flag; // 27 (0x1B)
     u8 turn_color_status; // 28 (0x1C)
     s8 unk1D; // 29 (0x1D)

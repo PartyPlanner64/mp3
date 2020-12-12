@@ -29,6 +29,7 @@ struct strCD058 {
     /* 0x13 - 800CD06B */ s8 unk13;
     /* 0x14 - 800CD06C */ s8 unk14;
     /* 0x15 - 800CD06D */ s8 unk15;
+    /* 0x16 - 800CD06E */ s8 unk16;
 
     // 800cd09c flag for re-roll
 };
