@@ -10,6 +10,7 @@ extern void *data_128CC60_ROM_START;
 extern s16 D_800A12C8;
 extern s32 D_800A12D4;
 extern s32 D_800A12D8;
+extern s32 D_800A12DC;
 extern s16 D_800A1768;
 
 extern s16 D_800C9930;
@@ -30,7 +31,7 @@ extern struct strCC0C8 D_800CC0C8;
 extern s16 D_800CC378[];
 extern s16 D_800CC4E4;
 
-extern s16 D_800CD096[];
+extern s16 D_800CD096[16];
 
 extern s16 D_800CD2A2;
 extern s16 D_800CDD68;
@@ -39,6 +40,7 @@ extern s16 D_800CE1E8[];
 extern s16 D_800CE206;
 extern s16 D_800CE208;
 
+extern s16 D_800D037E;
 extern s16 D_800D03FC;
 extern s32 D_800D1240;
 extern s16 D_800D124E;
@@ -71,10 +73,18 @@ extern void (*D_80101B64)();
 extern void (*D_80101B68)();
 extern s32 D_80101B6C;
 
+extern void *D_80101E60;
+extern void *D_80101E64;
+extern void *D_80101E68;
+extern void *D_80101E6C;
+
 extern s32 D_80105668;
 extern s16 D_8010566C;
 extern s16 D_80105664;
 extern s16 D_80105666;
+extern s16 D_8010566E;
+// extern struct ? D_80105670;
+extern s32 D_8010567C;
 
 void func_800F8610_10C230(s32 arg0, s16 arg1, s16 arg2) {
     struct str800D2010 *str;
@@ -456,17 +466,48 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F8D84_10C9A4);
 //     }
 // }
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F915C_10CD7C);
+void func_800F915C_10CD7C(s16 arg0) {
+    D_8010566E = arg0;
+}
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F9168_10CD88);
+s16 func_800F9168_10CD88() {
+    return D_8010566E;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F9174_10CD94);
+// s32 func_800F9174_10CD94(void *arg0) {
+//     D_80105670.unk0 = arg0->unk0;
+//     D_80105670.unk4 = arg0->unk4;
+//     D_80105670.unk8 = arg0->unk8;
+// }
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F9198_10CDB8);
+void func_800F9198_10CDB8(s32 arg0) {
+    D_8010567C = arg0;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F91A4_10CDC4);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F92A0_10CEC0);
+// void func_800F92A0_10CEC0() {
+//     s32 index;
+
+//     index = ++D_800CD058.current_player_index;
+//     if (index >= 4) {
+//         D_800CD058.current_player_index = 0;
+//         if (D_800A12DC == 0) {
+//             if (D_800CD058.unk52 != 2) {
+//                 D_800CD058.current_turn++;
+//             }
+//             else {
+//                 D_800CD0AA = 3;
+//                 D_800CD058.current_turn = D_800CD058.total_turns - 4;
+//             }
+//             if (D_800CD058.current_turn >= 99) {
+//                 D_800CD058.current_turn = 99;
+//             }
+//         }
+//     }
+// }
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F933C_10CF5C);
 
@@ -480,7 +521,12 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F96E0_10D300);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F9A68_10D688);
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F9C68_10D888);
+void func_800F9C68_10D888() {
+    SleepProcess(30);
+    func_800035E8(D_800D037E);
+    D_800CE206 = 0;
+    EndProcess(NULL);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F9CA0_10D8C0);
 
@@ -514,7 +560,24 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FC594_1101B4);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FC7C8_1103E8);
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FC8A4_1104C4);
+void func_800FC8A4_1104C4() {
+    if (D_80101E60 != NULL) {
+        func_800E21F4_F5E14(D_80101E60);
+        D_80101E60 = NULL;
+    }
+    if (D_80101E64 != NULL) {
+        func_800E21F4_F5E14(D_80101E64);
+        D_80101E64 = NULL;
+    }
+    if (D_80101E68 != NULL) {
+        func_800E21F4_F5E14(D_80101E68);
+        D_80101E68 = NULL;
+    }
+    if (D_80101E6C != NULL) {
+        func_800E21F4_F5E14(D_80101E6C);
+        D_80101E6C = NULL;
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FC938_110558);
 
@@ -526,7 +589,11 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FC9E0_110600);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FCA14_110634);
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FCA4C_11066C);
+void func_800FCA4C_11066C() {
+    D_800D1240 = 14;
+    D_800D1380 = 3;
+    func_800FC8A4_1104C4();
+}
 
 // Some sort of main process loop during board play.
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FCA7C_11069C);
