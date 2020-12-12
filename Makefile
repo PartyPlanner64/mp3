@@ -71,6 +71,7 @@ SRC_DIRS := src \
 	src/libultra/os \
 	src/libultra/libc \
 	src/overlays \
+	src/overlays/overlay71 \
 	src/overlays/board_chillywaters \
 	src/overlays/debug_message_check \
 	src/overlays/shared_board
@@ -79,6 +80,7 @@ ASM_DIRS := asm \
 	asm/overlays/shared_board
 DATA_DIRS := bin \
 	bin/overlays \
+	bin/overlays/overlay71 \
 	bin/overlays/debug_message_check \
 	bin/overlays/shared_board
 

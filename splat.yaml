@@ -1004,14 +1004,14 @@ segments:
       - [0x316DF0, "asm"]
       - [0x31AB90, "bin"] # rodata
 
-  - name: overlays/overlay71
+  - name: overlays/overlay71/
     type: code
     overlay: True
     start: 0x31B3B0
     vram: 0x801059A0
     files:
-      - [0x31B3B0, "asm"]
-      - [0x31B3E0, "asm"]
+      - [0x31B3B0, "c", "overlays/overlay71/overlay71_main"]
+      - [0x31B3E0, "c", "overlays/overlay71/overlay71"]
       - [0x31B4F0, "bin"] # rodata
 
   # Chilly Waters

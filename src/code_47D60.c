@@ -217,6 +217,7 @@ INCLUDE_ASM(s32, "code_47D60", func_80048128);
 
 INCLUDE_ASM(s32, "code_47D60", func_8004819C);
 
+// Changes overlay
 INCLUDE_ASM(s32, "code_47D60", func_80048228);
 
 INCLUDE_ASM(s32, "code_47D60", func_80048460);
