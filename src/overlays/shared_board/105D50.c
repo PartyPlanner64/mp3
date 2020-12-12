@@ -98,21 +98,19 @@ void func_800F22C0_105EE0(s32 player_index) {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/105D50", func_800F2304_105F24);
-// s8 func_800F2304_105F24(s32 player_index, s32 arg2) {
-//     struct player *player;
-//     s8 ret;
+void func_800F2304_105F24(s32 player_index, s16 arg1, u16 arg2) {
+    struct player *player;
+    s8 ret;
 
-//     player = GetPlayerStruct(player_index);
-//     if (player == GetPlayerStruct(-1)) {
-//         func_800D9CE8_ED908(player->obj, player_index, arg2);
-//         ret = (player->bowser_suit_flag != 0) & (player_index < 7);
-//         if (ret != 0) {
-//             ret = func_800E6420_FA040(player_index, arg2);
-//         }
-//     }
-//     return ret;
-// }
+    player = GetPlayerStruct(player_index);
+    if (player == GetPlayerStruct(-1)) {
+        func_800D9CE8_ED908(player->obj, arg1, arg2);
+        ret = (player->bowser_suit_flag != 0) & (arg1 < 7);
+        if (ret != 0) {
+            func_800E6420_FA040(arg1, arg2);
+        }
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/105D50", func_800F2388_105FA8);
 
