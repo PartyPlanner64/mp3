@@ -7,11 +7,14 @@
 extern struct object *D_801011FC; // bowser suit model?
 extern s8 D_80101630[]; // difficulty data
 extern void *D_80101734[];
+extern u8 D_80101754[];
 extern u8 D_8010175C[];
 
 extern void func_8001C92C(void *, f32);
 extern void func_80089A10(void *, f32, f32, f32);
+extern struct process *InitProcess(void *, s32, s32, s32);
 
+extern struct object *func_800D90C8_ECCE8(u8, s32);
 extern void func_800D9CE8_ED908(struct object *, s32, u16);
 
 /**
@@ -144,7 +147,27 @@ void func_800F248C_1060AC() {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/105D50", func_800F24FC_10611C);
+void func_800F24FC_10611C(s16 arg0, s32 arg1, s32 arg2) {
+    u8 temp_v1;
+    struct player *player;
+    struct process *process;
+    u8 phi_a0;
+
+    player = GetPlayerStruct(arg0);
+    player->unk1D = arg0;
+    temp_v1 = player->character;
+    if (arg2 == 0) {
+        phi_a0 = D_80101754[temp_v1];
+        player->obj = func_800D90C8_ECCE8(phi_a0, arg1);
+    }
+    else if ((phi_a0 = arg2 >= 0) && (arg2 < 3)) {
+        phi_a0 = D_8010175C[temp_v1];
+        player->obj = func_800D90C8_ECCE8(phi_a0, arg1);
+    }
+    process = InitProcess(func_800F248C_1060AC, 0x5000, 0, 0);
+    player->process = process;
+    process->user_data = player;
+}
 
 void func_800F25B4_1061D4(s16 arg0, s32 arg1) {
     func_800F24FC_10611C(arg0, arg1, 0);
