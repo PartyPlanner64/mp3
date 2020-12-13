@@ -100,19 +100,27 @@ void func_800F22C0_105EE0(s32 player_index) {
 
 void func_800F2304_105F24(s32 player_index, s16 arg1, u16 arg2) {
     struct player *player;
-    s8 ret;
 
     player = GetPlayerStruct(player_index);
     if (player == GetPlayerStruct(-1)) {
         func_800D9CE8_ED908(player->obj, arg1, arg2);
-        ret = (player->bowser_suit_flag != 0) & (arg1 < 7);
-        if (ret != 0) {
+        if ((player->bowser_suit_flag != 0) & (arg1 < 7)) {
             func_800E6420_FA040(arg1, arg2);
         }
     }
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/105D50", func_800F2388_105FA8);
+void func_800F2388_105FA8(s32 player_index, s16 arg1, s16 arg2, s16 arg3, u16 arg4) {
+    struct player *player;
+
+    player = GetPlayerStruct(player_index);
+    if (player == GetPlayerStruct(-1)) {
+        func_800D9D84_ED9A4(player->obj, arg1, arg2, arg3, arg4);
+        if ((player->bowser_suit_flag != 0) & (arg1 < 7)) {
+            func_800E644C_FA06C(arg1, arg2, arg3, arg4);
+        }
+    }
+}
 
 void func_800F244C_10606C(s32 player_index, u8 difficulty) {
     GetPlayerStruct(player_index)->cpu_difficulty = D_80101630[difficulty];
