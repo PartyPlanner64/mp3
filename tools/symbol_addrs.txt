@@ -111,6 +111,7 @@ GetCurrentSpaceIndex = 0x800EBCC8;
 // shared_board/1006F0
 SetPlayerOntoChain = 0x800ED91C;
 SetNextChainAndSpace = 0x800ED998;
+SetPrevChainAndSpace = 0x800ED9F8;
 
 // overlay128_105D50
 GetCurrentPlayerIndex = 0x800F2130;

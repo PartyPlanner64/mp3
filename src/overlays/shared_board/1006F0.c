@@ -87,7 +87,17 @@ void SetNextChainAndSpace(s16 playerIndex, s16 chainIndex, s16 spaceIndex) {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED9F8_101618);
+void SetPrevChainAndSpace(s16 playerIndex, s16 chainIndex, s16 spaceIndex) {
+    struct player *player;
+
+    player = GetPlayerStruct(playerIndex);
+    if (chainIndex >= 0) {
+        player->reverse_chain_index = (s8)chainIndex;
+    }
+    if (spaceIndex >= 0) {
+        player->reverse_space_index = (s8)spaceIndex;
+    }
+}
 
 s32 func_800EDA58_101678() {
     s32 ret;
