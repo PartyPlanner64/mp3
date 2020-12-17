@@ -32,11 +32,15 @@ void func_800ECB90_1007B0(s16 playerIndex, s32 arg1) {
     func_800ECB58_100778(&obj->coords, arg1, &obj->unk18);
 }
 
-void func_800ECBD0_1007F0(struct object *obj, s16 arg1) {
-    func_800ECB58_100778(&obj->coords, &GetSpaceData(arg1)->coords, &obj->unk18);
+void func_800ECBD0_1007F0(struct object *obj, s16 spaceIndex) {
+    func_800ECB58_100778(&obj->coords, &GetSpaceData(spaceIndex)->coords, &obj->unk18);
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECC0C_10082C);
+void func_800ECC0C_10082C(struct coords_3d *coords) {
+    coords->x = 0;
+    coords->y = 0;
+    coords->z = 1.0f;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECC28_100848);
 
