@@ -42,7 +42,9 @@ void func_800ECC0C_10082C(struct coords_3d *coords) {
     coords->z = 1.0f;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECC28_100848);
+void func_800ECC28_100848(s16 playerIndex) {
+    func_800ECC0C_10082C(&(GetPlayerStruct(playerIndex)->obj->unk18));
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECC54_100874);
 
