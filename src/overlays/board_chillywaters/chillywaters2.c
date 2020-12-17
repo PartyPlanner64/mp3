@@ -114,7 +114,16 @@ void func_80107044_31CBB4() {
     D_800D51F8 = 1;
 }
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80107114_31CC84);
+// teardown arrows
+void func_80107114_31CC84() {
+    D_800CDD58 = 0;
+    D_800D51F8 = 0;
+    func_800E21F4(D_8011FAC0);
+    func_800E21F4(D_8011FAC4);
+    func_800E21F4(D_8011FAD0);
+    func_800E21F4(D_8011FAC8);
+    func_800E21F4(D_8011FACC);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80107174_31CCE4);
 
