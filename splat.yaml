@@ -333,6 +333,7 @@ segments:
     files:
       - [0xEA790, "asm"]
       - [0xEB2F0, "asm"]
+      - [0xEC3B0, "asm"]
       - [0xECA50, "c"]
       - [0xEE3B0, "asm"]
       - [0xEE660, "asm"]
