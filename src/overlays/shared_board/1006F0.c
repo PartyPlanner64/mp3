@@ -16,7 +16,9 @@ void func_800ECAD0_1006F0(s16 arg0, s16 spaceIndex, struct coords_3d *coords) {
     coords->z = space->coords.z;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECB14_100734);
+void func_800ECB14_100734(s16 arg0, s16 arg1) {
+    func_800ECAD0_1006F0(arg0, arg1, &(gPlayers[arg0].obj->coords));
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECB58_100778);
 
