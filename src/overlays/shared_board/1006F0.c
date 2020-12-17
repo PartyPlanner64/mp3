@@ -20,12 +20,17 @@ void func_800ECB14_100734(s16 arg0, s16 arg1) {
     func_800ECAD0_1006F0(arg0, arg1, &(gPlayers[arg0].obj->coords));
 }
 
-void func_800ECB58_100778(s32 arg0, s32 arg1, s32 arg2) {
+void func_800ECB58_100778(void *arg0, s32 arg1, void *arg2) {
     func_80089AB0(arg2, arg1, arg0);
     func_800D88E8_EC508(arg2);
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECB90_1007B0);
+void func_800ECB90_1007B0(s16 playerIndex, s32 arg1) {
+    struct object *obj;
+
+    obj = GetPlayerStruct(playerIndex)->obj;
+    func_800ECB58_100778(&obj->coords, arg1, &obj->unk18);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECBD0_1007F0);
 
