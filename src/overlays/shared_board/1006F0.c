@@ -1,11 +1,20 @@
 #include "common.h"
 #include "../../player.h"
+#include "../../object.h"
+#include "../../spaces.h"
 
 extern s8 D_800CD066;
 
 extern s16 func_800F8858_10C478();
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECAD0_1006F0);
+void func_800ECAD0_1006F0(s16 arg0, s16 spaceIndex, struct coords_3d *coords) {
+    struct space_data *space;
+
+    space = GetSpaceData(spaceIndex);
+    coords->x = space->coords.x;
+    coords->y = space->coords.y;
+    coords->z = space->coords.z;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECB14_100734);
 
