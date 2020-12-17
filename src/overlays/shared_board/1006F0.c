@@ -59,7 +59,21 @@ INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED75C_10137C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED810_101430);
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED91C_10153C);
+void SetPlayerOntoChain(s16 arg0, s16 chainIndex, s16 spaceIndex) {
+    struct player *player;
+
+    player = GetPlayerStruct(arg0);
+    if (chainIndex >= 0) {
+        player->cur_chain_index = (s8)chainIndex;
+        player->next_chain_index = (s8)chainIndex;
+        player->reverse_chain_index = (s8)chainIndex;
+    }
+    if (spaceIndex >= 0) {
+        player->cur_space_index = (s8)spaceIndex;
+        player->next_space_index = (s8)(spaceIndex + 1);
+        player->reverse_space_index = (s8)(spaceIndex - 1);
+    }
+}
 
 void SetNextChainAndSpace(s16 playerIndex, s16 chainIndex, s16 spaceIndex) {
     struct player *player;
