@@ -20,7 +20,10 @@ void func_800ECB14_100734(s16 arg0, s16 arg1) {
     func_800ECAD0_1006F0(arg0, arg1, &(gPlayers[arg0].obj->coords));
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECB58_100778);
+void func_800ECB58_100778(s32 arg0, s32 arg1, s32 arg2) {
+    func_80089AB0(arg2, arg1, arg0);
+    func_800D88E8_EC508(arg2);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECB90_1007B0);
 
