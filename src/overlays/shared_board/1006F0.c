@@ -1,4 +1,5 @@
 #include "common.h"
+#include "../../player.h"
 
 extern s8 D_800CD066;
 
@@ -60,7 +61,17 @@ INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED810_101430);
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED91C_10153C);
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED998_1015B8);
+void SetNextChainAndSpace(s16 playerIndex, s16 chainIndex, s16 spaceIndex) {
+    struct player *player;
+
+    player = GetPlayerStruct(playerIndex);
+    if (chainIndex >= 0) {
+        player->next_chain_index = (s8)chainIndex;
+    }
+    if (spaceIndex >= 0) {
+        player->next_space_index = (s8)spaceIndex;
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED9F8_101618);
 

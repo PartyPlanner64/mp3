@@ -108,6 +108,9 @@ SetSpaceType = 0x800EB7F0;
 SetCurrentSpaceIndex = 0x800EBCBC;
 GetCurrentSpaceIndex = 0x800EBCC8;
 
+// shared_board/1006F0
+SetNextChainAndSpace = 0x800ED998;
+
 // overlay128_105D50
 GetCurrentPlayerIndex = 0x800F2130;
 GetPlayerStruct = 0x800F213C;

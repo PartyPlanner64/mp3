@@ -1116,6 +1116,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801158FC_32B4
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80115B80_32B6F0);
 
+// helper used with chain split
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80116484_32BFF4);
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8011667C_32C1EC);
