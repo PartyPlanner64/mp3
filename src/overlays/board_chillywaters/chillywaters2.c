@@ -6,9 +6,11 @@
 
 extern u8 D_800CB99C;
 extern u16 D_800CD0B4[];
+extern s16 D_800CDD58; // used with direction arrows
 extern u16 D_800CE198;
 extern u16 D_800D037C;
 extern u8 D_800D03F8[];
+extern s16 D_800D51F8; // used with direction arrows
 
 extern void *D_8011A8D8;
 extern s32 D_8011E280[];
@@ -24,6 +26,11 @@ extern void *D_8011E4D8;
 extern void *D_8011E718;
 extern void *D_8011E8B8;
 extern f64 D_8011F968;
+extern void *D_8011FAC0; // used with direction arrows
+extern void *D_8011FAC4; // used with direction arrows
+extern void *D_8011FAC8; // used with direction arrows
+extern void *D_8011FACC; // used with direction arrows
+extern void *D_8011FAD0; // used with direction arrows
 extern void *D_8011FAEC;
 extern void *D_8011FB08;
 extern void *D_8011FB0C;
@@ -91,7 +98,21 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80106F60_31CA
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80106FE8_31CB58);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80107044_31CBB4);
+// setup arrows used during player direction decisions.
+void func_80107044_31CBB4() {
+    while (func_800E9AE0() != 0) {
+        SleepVProcess();
+    }
+    SleepVProcess();
+    D_8011FAC0 = func_800E210C(0, 0x92, 1);
+    D_8011FAC4 = func_800E210C(1, 0xA0, 1);
+    D_8011FAD0 = func_800E210C(0xD, 0xAE, 1);
+    D_8011FAC8 = func_800E210C(3, 0xBC, 1);
+    D_8011FACC = func_800E210C(0xB, 0xCA, 1);
+    SleepProcess(3);
+    D_800CDD58 = 1;
+    D_800D51F8 = 1;
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80107114_31CC84);
 
