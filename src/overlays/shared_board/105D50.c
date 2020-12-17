@@ -6,10 +6,27 @@
 
 extern struct object *D_801011FC; // bowser suit model?
 extern s8 D_80101630[]; // difficulty data
-extern void *D_80101734[];
+
+struct str101634inner {
+    s16 unk0;
+    s16 unk2;
+};
+struct str101634 {
+    u32 unk0; // count?
+    struct str101634inner *unk4;
+};
+extern struct str101634 D_80101634;
+
+struct str101734 {
+    s32 unk0;
+    s32 unk4;
+};
+
+extern struct str101734 *D_80101734[];
 extern u8 D_80101754[];
 extern u8 D_8010175C[];
 
+extern s32 func_80017BB8(s16, s16);
 extern void func_8001C92C(void *, f32);
 extern void func_80089A10(void *, f32, f32, f32);
 extern struct process *InitProcess(void *, s32, s32, s32);
@@ -174,7 +191,7 @@ void func_800F25B4_1061D4(s16 arg0, s32 arg1) {
 }
 
 void func_800F25D8_1061F8(s16 player_index) {
-    func_800F24FC_10611C(player_index, D_80101734[GetPlayerStruct(player_index)->character], 0);
+    func_800F24FC_10611C(player_index, (s32)D_80101734[GetPlayerStruct(player_index)->character], 0);
 }
 
 void func_800F2624_106244(s16 player_index) {
@@ -207,6 +224,20 @@ void *func_800F2690_1062B0(s16 arg0) {
 }
 
 INCLUDE_ASM(s32, "overlays/shared_board/105D50", func_800F26E8_106308);
+// void func_800F26E8_106308() {
+//     s32 i, j;
+
+//     for (i = 0; i < 5; i++) {
+//         GetPlayerStruct(i)->obj = NULL;
+//     }
+
+//     for (i = 1; i < 8; i++) {
+//         for (j = 0; j < D_80101634.unk0; j++) {
+//             // FIXME: Pretty wrong here.
+//             D_80101734[i]->unk4 = func_80017BB8(i, D_80101634.unk4[j].unk2);
+//         }
+//     }
+// }
 
 void func_800F27C4_1063E4() {
 }
