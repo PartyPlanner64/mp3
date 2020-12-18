@@ -22,9 +22,12 @@ extern struct object *D_8011D318;
 extern void *D_8011D31C;
 extern void *D_8011D320;
 extern void *D_8011D578; // ai
+extern void *D_8011D77C; // ai
 extern void *D_8011DA58; // ai
 extern void *D_8011DA84; // spaces
 extern void *D_8011DA98; // chains
+extern void *D_8011DB5C; // spaces
+extern void *D_8011DB70; // chains
 extern void *D_8011E010; // spaces
 extern void *D_8011E024; // chains
 extern void *D_8011E2CC;
@@ -334,7 +337,20 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108D60_31E8
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108D98_31E908);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108DD0_31E940);
+void func_80108DD0_31E940() {
+    struct player *player;
+
+    player = GetPlayerStruct(-1);
+    if (GetAbsSpaceIndexFromChainSpaceIndex(player->reverse_chain_index, player->reverse_space_index) == 0x4B
+        && (player->flags2 & 0x80) == 0) {
+        SetNextChainAndSpace(-1, 0xA, 0);
+        player->flags2 &= 0xFE;
+    }
+    else {
+        func_80116484_32BFF4(&D_8011DB5C, &D_8011DB70, &D_8011D77C);
+    }
+    EndProcess(0);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108E80_31E9F0);
 
