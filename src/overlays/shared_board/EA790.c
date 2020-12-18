@@ -27,7 +27,7 @@ struct unkArrowInstance {
 extern void func_80089AF0(struct coords_3d *, f32, struct coords_3d *);
 
 // allocate individual arrow
-INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6B70_EA790);
+INCLUDE_ASM(struct unkArrowInstance *, "overlays/shared_board/EA790", func_800D6B70_EA790);
 // struct unkArrowInstance *func_800D6B70_EA790(s32 arg0) {
 //     struct unkArrowInstance *arrow;
 //     struct object *obj;
@@ -118,7 +118,7 @@ void func_800D7568_EB188(struct unkArrowInstance *arrow, struct coords_3d *arg1,
 // shows arrows pointing from player to each space in list.
 // space list end is signaled by -1.
 struct unkArrows *func_800D75E8_EB208(s16 playerIndex, s16 *spaceIndices, s32 arg2) {
-    void *temp_s0;
+    struct unkArrowInstance *arrow;
     struct unkArrows *unkStruct;
     struct player *player;
 
@@ -126,9 +126,9 @@ struct unkArrows *func_800D75E8_EB208(s16 playerIndex, s16 *spaceIndices, s32 ar
     unkStruct = func_800D6C6C_EA88C();
     unkStruct->player = player;
     while (*spaceIndices >= 0) {
-        temp_s0 = func_800D6B70_EA790(arg2);
-        func_800D7568_EB188(temp_s0, &player->obj->coords, &(GetSpaceData(*spaceIndices)->coords), 18.0f);
-        func_800D6D2C_EA94C(unkStruct, temp_s0, 0);
+        arrow = func_800D6B70_EA790(arg2);
+        func_800D7568_EB188(arrow, &player->obj->coords, &(GetSpaceData(*spaceIndices)->coords), 18.0f);
+        func_800D6D2C_EA94C(unkStruct, arrow, 0);
         spaceIndices++;
     }
     return unkStruct;
