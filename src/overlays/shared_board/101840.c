@@ -43,7 +43,11 @@ INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EE884_1024A4);
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EE94C_10256C);
 
-INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EE97C_10259C);
+void func_800EE97C_10259C(s32 arg0) {
+    while ((func_800D9E0C_EDA2C(arg0) & 1) == 0) {
+        SleepVProcess();
+    }
+}
 
 // calculates player placement
 s32 func_800EE9C0_1025E0(s32 playerIndex) {
