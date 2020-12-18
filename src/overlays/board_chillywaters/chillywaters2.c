@@ -21,7 +21,10 @@ extern struct object *D_8011D314;
 extern struct object *D_8011D318;
 extern void *D_8011D31C;
 extern void *D_8011D320;
+extern void *D_8011D578; // ai
 extern void *D_8011DA58; // ai
+extern void *D_8011DA84; // spaces
+extern void *D_8011DA98; // chains
 extern void *D_8011E010; // spaces
 extern void *D_8011E024; // chains
 extern void *D_8011E2CC;
@@ -322,7 +325,10 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108CA4_31E8
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108CC8_31E838);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108D28_31E898);
+void func_80108D28_31E898() {
+    func_80116484_32BFF4(&D_8011DA84, &D_8011DA98, &D_8011D578);
+    EndProcess(NULL);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108D60_31E8D0);
 
