@@ -342,7 +342,7 @@ segments:
       # - [0xFE110, "asm"] suspected based on mp1 spaces.c
       - [0xFFB10, "c"]
       - [0x1006F0, "c"]
-      - [0x101840, "asm"]
+      - [0x101840, "c"]
       - [0x105D50, "c"]
       - [0x1063F0, "asm"]
       - [0x106640, "asm"]
