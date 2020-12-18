@@ -139,6 +139,44 @@ s32 func_800EECB0_1028D0(s32 playerIndex) {
 }
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EECF0_102910);
+// s32 func_800EECF0_102910(s32 playerIndex) {
+//     s32 i;
+//     s32 max;
+//     s32 placement;
+
+//     placement = (gPlayers[playerIndex].stars * 1000) + gPlayers[playerIndex].coins;
+
+//     if (func_80035F98(0xF) != 0) {
+//         for (i = 0, max = -100000; i < 4; i++) { // FIXME: Same delay slot issue.
+//             if (max < gPlayers[i].minigame_star) {
+//                 max = gPlayers[i].minigame_star;
+//             }
+//         }
+//         if (gPlayers[playerIndex].minigame_star == max) {
+//             placement += 1000;
+//         }
+
+//         for (i = 0, max = -100000; i < 4; i++) {
+//             if (max < gPlayers[i].max_coins) {
+//                 max = gPlayers[i].max_coins;
+//             }
+//         }
+//         if (gPlayers[playerIndex].max_coins == max) {
+//             placement += 1000;
+//         }
+
+//         for (i = 0, max = -100000; i < 4; i++) {
+//             if (max < gPlayers[i].happening_space_count) {
+//                 max = gPlayers[i].happening_space_count;
+//             }
+//         }
+//         if (gPlayers[playerIndex].happening_space_count == max) {
+//             placement += 1000;
+//         }
+//     }
+
+//     return placement;
+// }
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EEE84_102AA4);
 
