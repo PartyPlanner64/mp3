@@ -144,7 +144,6 @@ s32 func_800D7250_EAE70(struct unkArrows *unkArrows, OSMesg val) {
 
 INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D7280_EAEA0);
 
-//INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D742C_EB04C);
 s8 func_800D742C_EB04C(struct unkArrows *unkArrows, s16 playerIndex, s32 arg2) {
     struct player *player;
     struct process *process;
