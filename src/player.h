@@ -38,8 +38,8 @@ struct player {
     u8 next_space_index; // 18 (0x12)
     u8 unk1_chain_index; // 19 (0x13)
     u8 unk1_space_index; // 20 (0x14)
-    u8 reverse_chain_index; // 21 (0x15)
-    u8 reverse_space_index; // 22 (0x16)
+    s8 reverse_chain_index; // 21 (0x15)
+    s8 reverse_space_index; // 22 (0x16)
 
     u8 flags2; // 23 (0x17)
     s8 items[3]; // 24 (0x18)

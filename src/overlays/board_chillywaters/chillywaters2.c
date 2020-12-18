@@ -1,5 +1,6 @@
 #include "common.h"
 #include "../../board.h"
+#include "../../player.h"
 #include "../../process.h"
 #include "../../object.h"
 #include "../../spaces.h"
@@ -73,6 +74,17 @@ extern s32 func_80116DAC_32C91C();
 extern s32 func_801176A4_32D214();
 extern s32 func_8011C88C_3323FC();
 extern s32 func_80118B7C_32E6EC();
+
+// struct space_index_args {
+// };
+
+struct chain_args {
+    s16 chainl;
+    s16 chainr;
+    s16 flags;
+};
+
+extern s16 GetAbsSpaceIndexFromChainSpaceIndex(u16 chain_index, u16 space_index);
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80105E80_31B9F0);
 
@@ -1118,6 +1130,67 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80115B80_32B6
 
 // helper used with chain split
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80116484_32BFF4);
+// FIXME: Pretty far off, but general idea is there.
+// u8 func_80116484_32BFF4(s16 *spaceIndexArgs, struct chain_args *chainArgs, s32 *ai_data) {
+//     struct player *player;
+//     struct chain_args *chosenChainArgs;
+//     void *temp_s2;
+//     s32 temp_s0_2;
+//     s16 flagsTemp;
+//     s32 i, j;
+
+//     func_800F2304(-1, -1, 2);
+//     SleepVProcess();
+//     func_80107044_31CBB4();
+//     player = GetPlayerStruct(D_800CD058.current_player_index);
+
+//     for (i = 0; i < 3; i++) {
+//         for (j = 0; j < 2; j++) {
+//             if (*(spaceIndexArgs + (i * 3) + j) != GetAbsSpaceIndexFromChainSpaceIndex(player->reverse_chain_index, player->reverse_space_index)) {
+//                 continue;
+//             }
+//             break;
+//         }
+
+//         if (j != 2) {
+//             break;
+//         }
+//     }
+
+//     chosenChainArgs = &chainArgs[i];
+//     temp_s2 = func_800D76A0(D_800CD058.current_player_index, spaceIndexArgs + (i * 3), 2);
+//     func_800D742C(temp_s2, D_800CD058.current_player_index, 0);
+//     if (PlayerIsCPU(-1) != 0) {
+//         {
+//             s32 ai_choice;
+
+//             ai_choice = func_800DA190(ai_data[i]);
+//             for (i = 0; i < ai_choice; i++) {
+//                 func_800D7250(temp_s2, -2);
+//             }
+//             func_800D7250(temp_s2, -4);
+//         }
+//     }
+//     temp_s0_2 = func_800D7518(temp_s2);
+//     func_800D6CA0(temp_s2);
+//     func_80107114_31CC84();
+//     if (temp_s0_2 != 0) {
+//         chosenChainArgs = chosenChainArgs + 1;
+//     }
+//     SetNextChainAndSpace(-1, chosenChainArgs->chainl, chosenChainArgs->chainr);
+//     flagsTemp = chosenChainArgs->flags;
+//     if (flagsTemp != 0) {
+//         if (flagsTemp != 1) {
+//             return 1;
+//         }
+//         flagsTemp = player->flags2 | 1;
+//     }
+//     else {
+//         flagsTemp = player->flags2 & 0xFE;
+//     }
+//     player->flags2 = flagsTemp;
+//     return flagsTemp;
+// }
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8011667C_32C1EC);
 

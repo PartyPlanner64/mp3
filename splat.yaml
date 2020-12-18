@@ -331,7 +331,7 @@ segments:
     start: 0xEA790
     vram: 0x800D6B70
     files:
-      - [0xEA790, "asm"]
+      - [0xEA790, "c"]
       - [0xEB2F0, "asm"]
       - [0xEC3B0, "asm"]
       - [0xECA50, "c"]
