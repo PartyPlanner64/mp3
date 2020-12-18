@@ -4,25 +4,33 @@
 #include "../../player.h"
 #include "../../process.h"
 #include "../../spaces.h"
+#include "../../code_47D60.h"
 
 // Supporting code for the "direction choice arrows" shown during board play.
-
-struct unkArrows {
-    s16 unk0;
-    s16 unk2; // count?
-    s32 *unk4;
-    struct process *unk8;
-    s16 unkC;
-    s16 unkE;
-    OSMesgQueue *unk10;
-    u8 unks[0x54];
-    struct player *player; // 0x68
-}; // sizeof 0x6C
 
 struct unkArrowInstance {
     s16 unk0;
     struct object *obj;
 };
+
+struct unkArrows {
+    s16 unk0;
+    s16 unk2; // count?
+    struct unkArrowInstance **unk4;
+    struct process *unk8;
+    s16 unkC;
+    s16 unkE; // controller
+    OSMesgQueue *unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    u8 unks[56];
+    struct player *player; // 0x68
+}; // sizeof 0x6C
 
 extern void func_80089AF0(struct coords_3d *, f32, struct coords_3d *);
 
@@ -67,7 +75,7 @@ struct unkArrows *func_800D6C6C_EA88C() {
 // Frees arrow data.
 void func_800D6CA0_EA8C0(struct unkArrows *unkArrows) {
     struct process *process;
-    s32 *arrTemp;
+    struct unkArrowInstance **arrTemp;
     s32 i, count;
 
     count = unkArrows->unk2;
@@ -95,7 +103,7 @@ void func_800D6D2C_EA94C(struct unkArrows *unkArrows, struct unkArrowInstance *a
     s32 i;
 
     unkArrows->unk2++;
-    newArrowPtrs = MallocTemp(unkArrows->unk2 * sizeof(struct unkArrowInstance *));
+    newArrowPtrs = (struct unkArrowInstance **)MallocTemp(unkArrows->unk2 * sizeof(struct unkArrowInstance *));
     oldArrowPtrs = unkArrows->unk4;
     newArrowPtrsTemp = newArrowPtrs;
     if (oldArrowPtrs != NULL) {
@@ -120,7 +128,10 @@ void func_800D6D2C_EA94C(struct unkArrows *unkArrows, struct unkArrowInstance *a
 
 INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6E00_EAA20);
 
-INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6EC8_EAAE8);
+// Gets a particular arrow instance from the state struct.
+struct unkArrowInstance *func_800D6EC8_EAAE8(struct unkArrows *unkArrows, s16 index) {
+    return unkArrows->unk4[index];
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6EE0_EAB00);
 
@@ -133,7 +144,30 @@ s32 func_800D7250_EAE70(struct unkArrows *unkArrows, OSMesg val) {
 
 INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D7280_EAEA0);
 
-INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D742C_EB04C);
+//INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D742C_EB04C);
+s8 func_800D742C_EB04C(struct unkArrows *unkArrows, s16 playerIndex, s32 arg2) {
+    struct player *player;
+    struct process *process;
+
+    if (unkArrows->unk8 == NULL) {
+        process = InitProcess(func_800D6EE0_EAB00, 0xEFFF, 0x1000, 0);
+        unkArrows->unk8 = process;
+        process->user_data = unkArrows;
+        osCreateMesgQueue(&unkArrows->unk10, &unkArrows->unk28, 16);
+        unkArrows->unk0 = arg2 | unkArrows->unk0;
+        player = GetPlayerStruct(playerIndex);
+        if ((player->flags & 1) != 0) {
+            unkArrows->unk0 = unkArrows->unk0 | 1;
+            func_800D7250_EAE70(unkArrows, -1);
+        }
+        else {
+            unkArrows->unkE = player->controller;
+            InitProcess(func_800D7280_EAEA0, 0xEFFF, 0x1000, 0)->user_data = unkArrows;
+        }
+        return player->flags & 1;
+    }
+    return -1;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D7518_EB138);
 
