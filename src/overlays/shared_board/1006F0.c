@@ -1,6 +1,7 @@
 #include "common.h"
 #include "../../player.h"
 #include "../../object.h"
+#include "../../process.h"
 #include "../../spaces.h"
 
 extern s8 D_800CD066;
@@ -64,9 +65,26 @@ INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECF9C_100BBC);
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECFC8_100BE8);
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED128_100D48);
+INCLUDE_ASM(struct process *, "overlays/shared_board/1006F0", func_800ED128_100D48);
+// struct process *func_800ED128_100D48(struct coords_3d *arg0, struct coords_3d *arg1, struct coords_3d *arg2, s32 frameCount) {
+//     u8 *temp_s0;
+//     struct process *process;
+
+//     process = InitProcess(func_800ECFC8_100BE8, 0x4002, 0, 0x80);
+//     temp_s0 = Malloc(process->heap, 0x24);
+//     process->user_data = temp_s0;
+//     func_80089A10(&temp_s0, arg0->x, 0, arg0->z);
+//     func_80089A10(&temp_s0 + 0xC, arg1->x, 0, arg1->z);
+//     temp_s0->unk18 = arg2;
+//     temp_s0->unk1C = arg3;
+//     temp_s0->unk20 = 0;
+//     return process;
+// }
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED1E4_100E04);
+// void func_800ED1E4_100E04() {
+//     func_800ED128_100D48()->user_data->unk20 = 1;
+// }
 
 // Rotate player towards space over a frame count period.
 void func_800ED20C_100E2C(s16 playerIndex, s32 frameCount, s16 spaceIndex) {
@@ -162,3 +180,16 @@ s32 func_800EDA58_101678() {
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800EDAF0_101710);
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800EDB98_1017B8);
+// struct process *func_800EDB98_1017B8(void *arg0, f32 arg1, f32 arg2) {
+//     void *process;
+//     void *temp_v0;
+
+//     process = InitProcess(func_800EDAF0_101710, 0xA, 0, 0x40);
+//     temp_v0 = Malloc(process->heap, 16);
+//     process->user_data = temp_v0;
+//     temp_v0->unk0 = arg0;
+//     temp_v0->unk4 = arg1;
+//     temp_v0->unk8 = arg2;
+//     temp_v0->unkC = (f32) arg0->unk30;
+//     return process;
+// }
