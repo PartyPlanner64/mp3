@@ -1,13 +1,15 @@
 #include "common.h"
+#include "../../heap_temporary.h"
 #include "../../object.h"
 #include "../../player.h"
+#include "../../process.h"
 #include "../../spaces.h"
 
 struct unkArrows {
     s16 unk0;
-    s16 unk2;
-    s32 unk4;
-    s32 unk8;
+    s16 unk2; // count?
+    s32 *unk4;
+    struct process *unk8;
     s32 unkC;
     OSMesgQueue *unk10;
     u8 unks[0x54];
@@ -27,7 +29,27 @@ INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6C3C_EA85C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6C6C_EA88C);
 
-INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6CA0_EA8C0);
+// Frees arrow data.
+void func_800D6CA0_EA8C0(struct unkArrows *unkArrows) {
+    struct process *process;
+    s32 *arrTemp;
+    s32 i, count;
+
+    count = unkArrows->unk2;
+    if (count != 0) {
+        arrTemp = unkArrows->unk4;
+        for (i = 0; i < unkArrows->unk2; i++) {
+            func_800D6C3C_EA85C(*arrTemp++);
+        }
+        FreeTemp(unkArrows->unk4);
+    }
+
+    process = unkArrows->unk8;
+    if (process != 0) {
+        EndProcess(process);
+    }
+    FreeTemp(unkArrows);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6D2C_EA94C);
 
