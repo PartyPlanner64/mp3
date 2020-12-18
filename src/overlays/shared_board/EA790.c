@@ -4,11 +4,17 @@
 #include "../../spaces.h"
 
 struct unkArrows {
-    u8 unks[0x68];
+    s16 unk0;
+    s16 unk2;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    OSMesgQueue *unk10;
+    u8 unks[0x54];
     struct player *player; // 0x68
 };
 
-struct unkfunc_800D7568_EB188 {
+struct unkArrows2 {
     s32 unk0;
     struct object *unk4;
 };
@@ -31,7 +37,12 @@ INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6EC8_EAAE8);
 
 INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6EE0_EAB00);
 
-INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D7250_EAE70);
+s32 func_800D7250_EAE70(struct unkArrows *unkArrows, OSMesg val) {
+    if (unkArrows->unk8 != 0) {
+        return osSendMesg(&unkArrows->unk10, val, 0);
+    }
+    return -1;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D7280_EAEA0);
 
@@ -39,7 +50,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D742C_EB04C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D7518_EB138);
 
-void func_800D7568_EB188(struct unkfunc_800D7568_EB188 *arg0, struct coords_3d *arg1, struct coords_3d *arg2, f32 arg3) {
+void func_800D7568_EB188(struct unkArrows2 *arg0, struct coords_3d *arg1, struct coords_3d *arg2, f32 arg3) {
     struct coords_3d coords;
     func_800ECB58_100778(arg1, arg2, &coords);
     func_80089A20(&arg0->unk4->unk18, &coords);
@@ -66,6 +77,6 @@ struct unkArrows *func_800D75E8_EB208(s16 playerIndex, s16 *spaceIndices, s32 ar
     return unkStruct;
 }
 
-void func_800D76A0_EB2C0(s16 playerIndex, void *arg1, s32 arg2) {
-    func_800D75E8_EB208(playerIndex, arg1, 0);
+struct unkArrows *func_800D76A0_EB2C0(s16 playerIndex, void *arg1, s32 arg2) {
+    return func_800D75E8_EB208(playerIndex, arg1, 0);
 }
