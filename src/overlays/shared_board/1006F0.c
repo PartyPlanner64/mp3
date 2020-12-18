@@ -68,7 +68,18 @@ INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED128_100D48);
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED1E4_100E04);
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED20C_100E2C);
+// Rotate player towards space over a frame count period.
+void func_800ED20C_100E2C(s16 playerIndex, s32 frameCount, s16 spaceIndex) {
+    f32 *temp_a2;
+    struct player *player;
+    struct coords_3d coords;
+
+    player = GetPlayerStruct(playerIndex);
+    func_80089AB0(&coords, &GetSpaceData(spaceIndex)->coords, &player->obj->coords);
+    func_800D88E8_EC508(&coords);
+    temp_a2 = &player->obj->unk18;
+    func_800ED128_100D48(temp_a2, &coords, temp_a2, frameCount);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED290_100EB0);
 
