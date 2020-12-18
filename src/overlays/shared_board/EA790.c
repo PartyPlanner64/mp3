@@ -5,29 +5,64 @@
 #include "../../process.h"
 #include "../../spaces.h"
 
+// Supporting code for the "direction choice arrows" shown during board play.
+
 struct unkArrows {
     s16 unk0;
     s16 unk2; // count?
     s32 *unk4;
     struct process *unk8;
-    s32 unkC;
+    s16 unkC;
+    s16 unkE;
     OSMesgQueue *unk10;
     u8 unks[0x54];
     struct player *player; // 0x68
-};
+}; // sizeof 0x6C
 
-struct unkArrows2 {
-    s32 unk0;
-    struct object *unk4;
+struct unkArrowInstance {
+    s16 unk0;
+    struct object *obj;
 };
 
 extern void func_80089AF0(struct coords_3d *, f32, struct coords_3d *);
 
+// allocate individual arrow
 INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6B70_EA790);
+// struct unkArrowInstance *func_800D6B70_EA790(s32 arg0) {
+//     struct unkArrowInstance *arrow;
+//     struct object *obj;
 
-INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6C3C_EA85C);
+//     // FIXME: there is a static struct copy here
 
-INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6C6C_EA88C);
+//     arrow = (struct unkArrowInstance *)MallocTemp(sizeof(struct unkArrowInstance));
+//     arrow->unk0 = 0;
+//     obj = func_800D90C8_ECCE8(arg0 /*((arg0 * 4) + &subroutine_arg4)->unk3 */, 0);
+//     arrow->obj = obj;
+//     func_8001C258(obj->unk3C->unk40->unk0, 0x180, 0);
+//     func_8001C8E4(arrow->obj->unk3C->unk40->unk0, 0x1400);
+//     func_8001C448(arrow->obj->unk3C->unk40->unk0);
+//     func_800D9714_ED334(arrow->obj);
+//     return arrow;
+// }
+
+// frees an individual arrow
+void func_800D6C3C_EA85C(struct unkArrowInstance *arrow) {
+    func_800D9B54_ED774(arrow->obj);
+    FreeTemp(arrow);
+}
+
+struct unkArrows *func_800D6C6C_EA88C() {
+    struct unkArrows *unkArrows;
+
+    unkArrows = (struct unkArrows *)MallocTemp(sizeof(struct unkArrows));
+    unkArrows->unk0 = 0;
+    unkArrows->unk2 = 0;
+    unkArrows->unk4 = NULL;
+    unkArrows->unk8 = NULL;
+    unkArrows->unkC = 0;
+    unkArrows->player = 0;
+    return unkArrows;
+}
 
 // Frees arrow data.
 void func_800D6CA0_EA8C0(struct unkArrows *unkArrows) {
@@ -72,12 +107,12 @@ INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D742C_EB04C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D7518_EB138);
 
-void func_800D7568_EB188(struct unkArrows2 *arg0, struct coords_3d *arg1, struct coords_3d *arg2, f32 arg3) {
+void func_800D7568_EB188(struct unkArrowInstance *arrow, struct coords_3d *arg1, struct coords_3d *arg2, f32 arg3) {
     struct coords_3d coords;
     func_800ECB58_100778(arg1, arg2, &coords);
-    func_80089A20(&arg0->unk4->unk18, &coords);
+    func_80089A20(&arrow->obj->unk18, &coords);
     func_80089AF0(&coords, arg3, &coords);
-    func_80089A70(&arg0->unk4->coords, &coords, arg1);
+    func_80089A70(&arrow->obj->coords, &coords, arg1);
 }
 
 // shows arrows pointing from player to each space in list.

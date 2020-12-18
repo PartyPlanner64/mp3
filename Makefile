@@ -6,6 +6,7 @@ BASEROM = baserom.u.z64
 TARGET = marioparty3
 COMPARE = 1
 NON_MATCHING = 0
+CHECK = 0
 
 # Microcode
 GRUCODE_CFLAGS := -DF3DEX_GBI_2
@@ -61,7 +62,9 @@ LDFLAGS    := -T undefined_syms.txt -T undefined_funcs.txt -T $(BUILD_DIR)/$(LD_
 # Check code syntax with host compiler
 CC_CHECK := gcc -fsyntax-only -fsigned-char -nostdinc -fno-builtin -I include -I $(BUILD_DIR)/include -I src\
 	-std=gnu90 -Wall -Wextra -Wno-format-security -Wno-unused-parameter -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast $(GRUCODE_CFLAGS)
-
+ifneq ($(CHECK),1)
+CC_CHECK += -w
+endif
 
 ### Sources ###
 
