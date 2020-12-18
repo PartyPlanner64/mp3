@@ -1135,7 +1135,21 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80116BA0_32C7
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80116DAC_32C91C);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80116F0C_32CA7C);
+void func_80116F0C_32CA7C() {
+    void *data;
+    s32 i;
+
+    i = 0x3C;
+    data = GetCurrentProcess()->user_data;
+
+    while (i != 0) {
+        SleepVProcess();
+        i--;
+    }
+
+    func_800FFAEC(data);
+    EndProcess(NULL);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80116F5C_32CACC);
 
