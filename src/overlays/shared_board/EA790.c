@@ -133,7 +133,210 @@ struct unkArrowInstance *func_800D6EC8_EAAE8(struct unkArrows *unkArrows, s16 in
     return unkArrows->unk4[index];
 }
 
+// jtables
+// 800D7048
+// 800D7034
+// 800D7008
+// 800D6FE4
+// 800D6FB8
+// 800D706C
+
+// 800DA63C
+// 800DA1F0
+// 800DA20C
+// 800DA2AC
+// 800DA2BC
+// 800DA3F4
+// 800DA424
+// 800DA440
+// 800DA458
+// 800DA47C
+// 800DA49C
+// 800DA4B0
+// 800DA530
+// 800DA54C
+// 800DA588
+// 800DA59C
+// 800DA5F8
+// 00000000
+// 800DA2F4
+// 800DA31C
+// 800DA344
+// 800DA370
+// 800DA39C
+// 800DA3C8
+
+// FIXME: very far off
 INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6EE0_EAB00);
+// void func_800D6EE0_EAB00() {
+//     f32 temp_f20;
+//     f32 temp_f22;
+//     f32 temp_f24;
+//     s16 temp_s3;
+//     s16 temp_v0_4;
+//     s32 temp_a2;
+//     s32 temp_s0;
+//     s32 temp_s0_2;
+//     s32 temp_v0_3;
+//     u16 temp_s4;
+//     u16 temp_v0;
+//     u16 temp_v0_2;
+//     u32 temp_v1;
+//     struct unkArrows *unkArrows;
+//     s16 phi_s3;
+//     s32 phi_s5;
+//     u16 phi_v0;
+//     s32 phi_v0_2;
+//     s32 phi_v0_3;
+//     s16 phi_s3_2;
+//     f32 phi_f24;
+//     f32 phi_f0;
+//     f32 phi_f24_2;
+//     s16 phi_s4;
+//     s16 phi_s0;
+//     s32 phi_v0_4;
+//     s16 phi_s4_2;
+//     f32 phi_f24_3;
+//     OSMesg msg;
+
+//     unkArrows = GetCurrentProcess()->user_data;
+//     phi_s3 = -1;
+//     phi_s5 = 0;
+//     phi_s4_2 = unkArrows->unkC;
+//     phi_f24_3 = 0.0f;
+
+//     while (TRUE) {
+//         SleepVProcess();
+//         phi_v0_3 = phi_s4_2 << 0x10;
+//         phi_s3_2 = phi_s3;
+//         phi_f24 = phi_f24_3;
+//         phi_s4 = phi_s4_2;
+//         if (phi_s3 & 0x8000) {
+//             if (phi_s5 != 0) {
+//                 phi_s5--;
+//             }
+//             else {
+//                 if (osRecvMesg(unkArrows->unk10, &msg, 0) == -1) {
+
+//                 }
+//                 if ((unkArrows->unk0 & 1) != 0) {
+//                     phi_s5 = 8;
+//                 }
+//             }
+
+//             switch ((s32)msg) {
+//                 case -2:
+//                     unkArrows->unkC++;
+//                     if (unkArrows->unkC >= unkArrows->unk2) {
+//                         unkArrows->unkC = 0;
+//                     }
+//                     break;
+
+//                 case -1:
+//                     break;
+
+//                 case -3:
+//                     unkArrows->unkC--;
+//                     phi_s3_2 = phi_s3;
+//                     if (unkArrows->unkC & 0x8000) {
+//                         phi_v0 = (u16) unkArrows->unk2 - 1;
+//                     }
+//                     break;
+
+//                 case -4:
+//                     phi_v0_2 = phi_s4_2 << 0x10;
+//                     phi_s3_2 = phi_s3;
+//                     if ((s32) (s16) unkArrows->unkC < 0) {
+// block_25:
+//                         temp_s0 = phi_v0_2 >> 0x10;
+//                         phi_v0_3 = phi_s4_2 << 0x10;
+//                         phi_f24 = phi_f24_3;
+//                         phi_s4 = phi_s4_2;
+//                         if (temp_s0 != (s16) unkArrows->unkC) {
+//                             func_8004AA88(1);
+//                             phi_f24 = phi_f24_3;
+//                             if (temp_s0 >= 0) {
+//                                 func_80089A10(func_800D6EC8_EAAE8(&unkArrows, temp_s0)->obj->unk24, 1.0f, 1.0f, 1.0f);
+//                                 phi_f24 = 0.0f;
+//                             }
+//                             temp_s4 = unkArrows->unkC;
+//                             phi_v0_3 = temp_s4 << 0x10;
+//                             phi_s4 = (s16) temp_s4;
+//                         }
+// block_29:
+//                         phi_f24_3 = phi_f24;
+//                         if (phi_v0_3 >= 0) {
+//                             phi_f0 = 25.0f;
+//                             if ((phi_s3_2 << 0x10) >= 0) {
+//                                 phi_f0 = 50.0f;
+//                             }
+//                             temp_f24 = phi_f24 + phi_f0;
+//                             phi_f24_2 = temp_f24;
+//                             if (360.0f < temp_f24) {
+//                                 phi_f24_2 = temp_f24 - 360.0f;
+//                             }
+//                             temp_f22 = (func_8008E3F0(phi_f24_2) * 0.3f) + 1.2f;
+//                             temp_f20 = (func_8008E3F0(phi_f24_2) * 0.2f) + 1.2f;
+//                             func_80089A10(func_800D6EC8_EAAE8(unkArrows, phi_s4)->unk4 + 0x24, temp_f20, 0x3F800000, temp_f22);
+//                             phi_f24_3 = phi_f24_2;
+//                         }
+//                         temp_v0_3 = phi_s3_2 << 0x10;
+//                         phi_v0_4 = temp_v0_3;
+//                         phi_s3 = phi_s3_2;
+//                         if (temp_v0_3 > 0) {
+//                             temp_v0_4 = phi_s3_2 - 1;
+//                             temp_s3 = temp_v0_4;
+//                             if ((s32) unkArrows->unk2 > 0) {
+//                                 phi_s0 = (u16)0;
+// loop_38:
+//                                 if (phi_s0 != phi_s4) {
+//                                     temp_a2 = func_800D6EC8_EAAE8(unkArrows, phi_s0)->unk4 + 0x24;
+//                                     func_80089AF0(temp_a2, (f32) temp_v0_4 * 0.033333335f, temp_a2);
+//                                 }
+//                                 temp_s0_2 = phi_s0 + 1;
+//                                 phi_s0 = (s16) temp_s0_2;
+//                                 if (temp_s0_2 < (s32) unkArrows->unk2) {
+//                                     goto loop_38;
+//                                 }
+//                             }
+//                             phi_v0_4 = temp_s3 << 0x10;
+//                             phi_s3 = temp_s3;
+//                         }
+//                         phi_s4_2 = phi_s4;
+//                         if (phi_v0_4 != 0) {
+//                             goto loop_1;
+//                         }
+//                         EndProcess(0);
+//                         return;
+//                     }
+//                     func_8004AA88(3);
+//                     D_800CDD58 = (u16)0;
+//                     D_800D51F8 = (u16)0;
+//                     phi_s3_2 = (u16)0x1E;
+//                     goto block_24;
+
+//                 case -5:
+//                     func_8004AA88(4);
+//                     unkArrows->unkC = -1;
+//                     phi_s3_2 = (u16)0;
+//                     break;
+
+//                 case -6:
+//                     unkArrows->unkC = -1;
+//                     break;
+//                 }
+//             }
+//         }
+//         else {
+//             if ((s32)msg < unkArrows->unk2) {
+//                 unkArrows->unkC = (s32)msg;
+//             }
+//         }
+//         }
+//     }
+
+//     EndProcess(NULL);
+// }
 
 s32 func_800D7250_EAE70(struct unkArrows *unkArrows, OSMesg val) {
     if (unkArrows->unk8 != 0) {
@@ -168,7 +371,14 @@ s8 func_800D742C_EB04C(struct unkArrows *unkArrows, s16 playerIndex, s32 arg2) {
     return -1;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D7518_EB138);
+s16 func_800D7518_EB138(struct unkArrows *unkArrows) {
+    if (unkArrows->unk8 != 0) {
+        LinkChildProcess(GetCurrentProcess(), unkArrows->unk8);
+        WaitForChildProcess();
+        unkArrows->unk8 = 0;
+    }
+    return unkArrows->unkC;
+}
 
 void func_800D7568_EB188(struct unkArrowInstance *arrow, struct coords_3d *arg1, struct coords_3d *arg2, f32 arg3) {
     struct coords_3d coords;
