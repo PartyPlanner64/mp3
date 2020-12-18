@@ -86,7 +86,37 @@ void func_800D6CA0_EA8C0(struct unkArrows *unkArrows) {
     FreeTemp(unkArrows);
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6D2C_EA94C);
+// adds an arrow to the arrows state struct.
+void func_800D6D2C_EA94C(struct unkArrows *unkArrows, struct unkArrowInstance *arrow, s16 arg2) {
+    struct unkArrowInstance **newArrowPtrs;
+    struct unkArrowInstance **oldArrowPtrs;
+    struct unkArrowInstance **newArrowPtrsTemp;
+    struct unkArrowInstance **oldArrowPtrsTemp;
+    s32 i;
+
+    unkArrows->unk2++;
+    newArrowPtrs = MallocTemp(unkArrows->unk2 * sizeof(struct unkArrowInstance *));
+    oldArrowPtrs = unkArrows->unk4;
+    newArrowPtrsTemp = newArrowPtrs;
+    if (oldArrowPtrs != NULL) {
+        oldArrowPtrsTemp = oldArrowPtrs;
+        for (i = 0; i < unkArrows->unk2 - 1; i++) {
+            *newArrowPtrsTemp++ = *oldArrowPtrsTemp++;
+        }
+    }
+
+    *newArrowPtrsTemp = arrow;
+
+    if (unkArrows->unk4 != NULL) {
+        FreeTemp(unkArrows->unk4);
+    }
+    unkArrows->unk4 = newArrowPtrs;
+
+    arrow->unk0 = arg2;
+    if ((arg2 & 1) != 0) {
+        unkArrows->unkC = unkArrows->unk2 - 1;
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6E00_EAA20);
 
