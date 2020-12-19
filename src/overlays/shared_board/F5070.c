@@ -14,6 +14,7 @@ extern void *D_801012C0;
 extern u32 D_801012C8[];
 extern u32 D_80101318[];
 extern s32 D_80102180;
+extern s8 D_80102C48;
 extern void *D_80102C58[]; // function pointers given by board.
 
 extern void *D_80102DB0; // hvq rom offset copied here
@@ -49,7 +50,10 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E18FC_F551C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E1934_F5554);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E1F28_F5B48);
+void func_800E1F28_F5B48() {
+    D_80102C48 = 0;
+    func_800E1934_F5554();
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E1F48_F5B68);
 
