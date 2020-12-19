@@ -139,7 +139,7 @@ void InitObjSys(s32 maxObjects, s16 maxProcesses) {
 
 INCLUDE_ASM(s32, "code_47D60", func_80047420);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047620);
+INCLUDE_ASM(struct object_indirect *, "code_47D60", func_80047620);
 
 INCLUDE_ASM(s32, "code_47D60", func_800477A4);
 
@@ -149,7 +149,9 @@ INCLUDE_ASM(s32, "code_47D60", func_800479AC);
 
 INCLUDE_ASM(s32, "code_47D60", func_80047B30);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047B38);
+void func_80047B38(struct object_indirect *arg0, s32 arg1) {
+    arg0->unk0 |= arg1;
+}
 
 INCLUDE_ASM(s32, "code_47D60", func_80047B48);
 

@@ -1,4 +1,5 @@
 #include "common.h"
+#include "../../object.h"
 #include "../../process.h"
 
 /* Message Check */
@@ -24,7 +25,7 @@ extern s32 func_801063BC_4F740C();
 extern s32 func_80105B8C_4F6BDC();
 
 void func_801059A0_4F69F0() {
-    s32 temp_v0;
+    struct object_indirect *temp_v0;
 
     func_80012220(1);
     func_8001FE20(1);
