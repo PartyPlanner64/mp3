@@ -392,21 +392,21 @@ void func_800D7568_EB188(struct arrow_instance *arrow, struct coords_3d *arg1, s
 // space list end is signaled by -1.
 struct arrow_state *func_800D75E8_EB208(s16 playerIndex, s16 *spaceIndices, s32 arg2) {
     struct arrow_instance *arrow;
-    struct arrow_state *unkStruct;
+    struct arrow_state *arrowState;
     struct player *player;
 
     player = GetPlayerStruct(playerIndex);
-    unkStruct = func_800D6C6C_EA88C();
-    unkStruct->player = player;
+    arrowState = func_800D6C6C_EA88C();
+    arrowState->player = player;
     while (*spaceIndices >= 0) {
         arrow = func_800D6B70_EA790(arg2);
         func_800D7568_EB188(arrow, &player->obj->coords, &(GetSpaceData(*spaceIndices)->coords), 18.0f);
-        func_800D6D2C_EA94C(unkStruct, arrow, 0);
+        func_800D6D2C_EA94C(arrowState, arrow, 0);
         spaceIndices++;
     }
-    return unkStruct;
+    return arrowState;
 }
 
-struct arrow_state *func_800D76A0_EB2C0(s16 playerIndex, void *arg1, s32 arg2) {
-    return func_800D75E8_EB208(playerIndex, arg1, 0);
+struct arrow_state *func_800D76A0_EB2C0(s16 playerIndex, s16 *spaceIndices, s32 arg2) {
+    return func_800D75E8_EB208(playerIndex, spaceIndices, 0);
 }

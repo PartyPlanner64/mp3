@@ -1,9 +1,11 @@
 #include "common.h"
+#include "../../heap_temporary.h"
 #include "../../spaces.h"
 
 extern void *data_128CC60_ROM_START; // hvq rom
 
 extern s8 D_800CD069;
+extern s16 D_800D41C2;
 
 extern void *D_80101240; // pointer to hvq dir offsets
 extern s32 D_80101248;
@@ -11,6 +13,7 @@ extern s32 D_80101248;
 extern void *D_801012C0;
 extern u32 D_801012C8[];
 extern u32 D_80101318[];
+extern s32 D_80102180;
 extern void *D_80102C58[]; // function pointers given by board.
 
 extern void *D_80102DB0; // hvq rom offset copied here
@@ -56,7 +59,45 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E2074_F5C94);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E20A4_F5CC4);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E210C_F5D2C);
+struct unkf800E210C {
+    s8 unk0;
+    s8 unk1;
+    s16 unk2;
+    s32 unk4;
+    s16 unk8;
+    s32 unkC;
+};
+
+struct strtemp_v0_2 {
+    s8 unks[0x5C];
+    struct unkf800E210C *unk5C;
+};
+
+void *func_800E210C_F5D2C(s16 arg0, s16 arg1, s8 arg2) {
+    s32 temp_v0_3;
+    struct unkf800E210C *temp_v0;
+    struct strtemp_v0_2 *temp_v0_2;
+
+    temp_v0 = (struct unkf800E210C *)MallocTemp(sizeof(struct unkf800E210C));
+    if (temp_v0 != NULL) {
+        temp_v0->unk0 = (s8)arg0;
+        temp_v0->unk2 = arg1;
+        temp_v0->unk1 = arg2;
+        temp_v0_2 = func_80047620(0x100, 0, 0, -1, func_800E20A4_F5CC4);
+        temp_v0->unk4 = temp_v0_2;
+        temp_v0_2->unk5C = temp_v0;
+        func_80047B38(temp_v0->unk4, 0x80);
+        temp_v0->unk8 = -1;
+        if (arg0 == 6) {
+            temp_v0_3 = MallocTemp(8);
+            temp_v0->unkC = temp_v0_3;
+            func_8007BDC0(temp_v0_3, &D_80102180, D_800D41C2);
+            return temp_v0;
+        }
+        temp_v0->unkC = 0;
+    }
+    return temp_v0;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E21F4_F5E14);
 
