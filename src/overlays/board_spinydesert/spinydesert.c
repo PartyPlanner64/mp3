@@ -1,5 +1,7 @@
 #include "common.h"
 
+extern void *D_8011D598;
+
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_801059D0_34E840);
 
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_801059F8_34E868);
@@ -14,6 +16,7 @@ INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_80105DB0_34EC20)
 
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_801061A0_34F010);
 
+// Star tour.
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_8010622C_34F09C);
 
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_801066CC_34F53C);
@@ -330,8 +333,14 @@ INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_8011A704_363574)
 
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_8011B1FC_36406C);
 
-// entrypoin 4
-INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_8011B41C_36428C);
+// entrypoint 4
+void func_8011B41C_36428C() {
+    func_80012220(2);
+    func_800124BC(1, &D_8011D598);
+    func_80107A04_350874();
+    func_800FF41C(2);
+    InitProcess(func_8010622C_34F09C, 0x1005, 0x1000, 0);
+}
 
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_8011B470_3642E0);
 
