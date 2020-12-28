@@ -46,6 +46,8 @@ struct hvq_rom_initial {
     u32 dirOffsets[3];
 };
 
+extern s16 GetCurrentSpaceIndex();
+
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E1450_F5070);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E17B0_F53D0);
@@ -632,8 +634,71 @@ void func_800EBA60_FF680(struct event_table_entry *table) {
     }
 }
 
-// ExecuteEventForSpace?
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EBAC8_FF6E8);
+// ExecuteEventForSpace
+s32 func_800EBAC8_FF6E8(s16 space_index, s16 activation_type) {
+    struct event_list_entry *event_list;
+    s16 cur_space_index;
+    s32 ret;
+
+    if (((D_800CD058.current_player_index == 4) & (activation_type != 1)) != 0) {
+        return 0;
+    }
+
+    switch (space_index) {
+        case -2:
+            event_list = D_80105278;
+            break;
+
+        case -3:
+            event_list = D_8010527C;
+            break;
+
+        case -4:
+            event_list = D_80105280;
+            break;
+
+        case -5:
+            event_list = D_80105284;
+            break;
+
+        default:
+            event_list = GetSpaceData(space_index)->event_list;
+            break;
+    }
+
+    ret = 0;
+    cur_space_index = GetCurrentSpaceIndex();
+    SetCurrentSpaceIndex(space_index);
+
+    if (event_list != NULL) {
+        while (event_list->activation_type != 0) {
+            if (event_list->activation_type == activation_type) {
+                D_80105288 = 0;
+
+                switch (event_list->execution_type) {
+                    case 1:
+                        event_list->event_fn();
+                        break;
+
+                    case 2:
+                        {
+                            struct process *cur_process = GetCurrentProcess();
+                            struct process *space_process = InitProcess(event_list->event_fn, 0x4800, 0, 0);
+                            LinkChildProcess(cur_process, space_process);
+                            WaitForChildProcess();
+                        }
+                        break;
+                }
+
+                ret = ret | D_80105288;
+            }
+            event_list++;
+        }
+    }
+
+    SetCurrentSpaceIndex(cur_space_index);
+    return ret;
+}
 
 void func_800EBCB0_FF8D0(s32 unk) {
     D_80105288 = unk;
