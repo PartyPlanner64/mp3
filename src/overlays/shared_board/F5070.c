@@ -29,6 +29,7 @@ extern u16 D_80105212; // chain count
 extern void *D_80105220[];
 extern s16 D_80105260;
 extern s16 D_80105262;
+extern s32 D_80105288;
 extern f32 D_80105290[]; // arrow angles
 extern s32 D_801052B0; // arrow angle count
 
@@ -606,7 +607,9 @@ void func_800EBA60_FF680(struct event_table_entry *table) {
 // ExecuteEventForSpace?
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EBAC8_FF6E8);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EBCB0_FF8D0);
+void func_800EBCB0_FF8D0(s32 unk) {
+    D_80105288 = unk;
+}
 
 void SetCurrentSpaceIndex(s16 space_index) {
     D_800CD069 = space_index;
