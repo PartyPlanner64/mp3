@@ -795,7 +795,10 @@ void func_800EBDAC_FF9CC() {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EBEAC_FFACC);
+// Reads space index from the cached space type data.
+u8 func_800EBEAC_FFACC(s32 spaceType, s32 index) {
+    return *(D_801012C4 + (spaceType * 128) + index);
+}
 
 void func_800EBEC8_FFAE8() {
     D_80105262 = 1;
