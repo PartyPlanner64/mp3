@@ -4,6 +4,7 @@
 #include "heap_temporary.h"
 
 extern s8 D_800A1762;
+extern s16 D_800A1768;
 extern struct object_indirect *D_800A1770;
 extern s16 D_800A1774;
 extern s16 D_800A1776;
@@ -36,6 +37,13 @@ struct strCD1E4 {
 extern struct strCD1E4 D_800CD1E0[];
 
 extern s8 D_800CD280;
+
+struct strD2010 {
+    s32 overlayIndex;
+    s16 entrypointIndex;
+    s16 unk6;
+};
+extern struct strD2010 D_800D2010[];
 
 extern s32 D_800D2118;
 extern f32 D_800D4198[];
@@ -215,7 +223,21 @@ INCLUDE_ASM(void, "code_47D60", func_80048054);
 
 INCLUDE_ASM(s32, "code_47D60", func_800480E4);
 
-INCLUDE_ASM(s32, "code_47D60", func_80048128);
+// Changes overlay with some logic beforehand.
+s32 func_80048128(s32 arg0, s16 arg1, u16 arg2) {
+    struct strD2010 *unkStr;
+
+    if (!(D_800A1768 < 12)) {
+        return 0;
+    }
+
+    unkStr = &D_800D2010[++D_800A1768];
+    unkStr->overlayIndex = arg0;
+    unkStr->entrypointIndex = arg1;
+    unkStr->unk6 = arg2;
+    func_80048228(arg0, arg1, arg2);
+    return 1;
+}
 
 INCLUDE_ASM(s32, "code_47D60", func_8004819C);
 
