@@ -5,6 +5,8 @@
 #include "../../object.h"
 #include "../../spaces.h"
 
+extern s32 D_800A12D4;
+
 extern u8 D_800CB99C;
 extern u16 D_800CD0B4[];
 extern s16 D_800CDD58; // used with direction arrows
@@ -36,6 +38,8 @@ extern void *D_8011E4D8;
 extern void *D_8011E718;
 extern void *D_8011E8B8;
 extern f64 D_8011F968;
+extern struct process *D_8011FAB8; // related to star tour
+extern struct object *D_8011FABC; // related to star tour
 extern void *D_8011FAC0; // used with direction arrows
 extern void *D_8011FAC4; // used with direction arrows
 extern void *D_8011FAC8; // used with direction arrows
@@ -55,6 +59,8 @@ extern f32 func_8008EF20(f32);
 extern f32 func_800D8790(struct coords_3d *);
 extern u16 func_800D9E0C(struct object *);
 extern u16 func_800D9E80(struct object *);
+extern void func_800E9730(f32);
+extern void func_800E9AC8(f32);
 extern f32 func_800EA660(f32);
 extern f32 func_800EEF80(f32);
 extern void func_800F68E0(s8, s32, s16);
@@ -109,7 +115,93 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80106154_31BC
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80106544_31C0B4);
 
+// Star tour at start of game.
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801065D0_31C140);
+// void func_801065D0_31C140() {
+//     s32 temp_s0;
+//     void *temp_s1;
+//     s32 msgIdx;
+//     struct space_data *spacedata;
+//     s32 phi_v0;
+
+//     D_800A12D4 = 0;
+//     temp_s1 = func_800E5DD4(0, 0);
+//     func_8004A520(0x12);
+//     func_800EEFEC(temp_s1->unk0, 2, 0xF, D_8011D2D0);
+//     func_800FFF44();
+//     func_800D9B24(D_8011FA78[D_800CD058.star_spawn_indices[D_800CD058.current_star_spawn]]);
+//     func_80061FE8(2, 0x10);
+
+//     while (func_800620BC() != 0) {
+//         SleepVProcess();
+//     }
+
+//     func_800E6FCC();
+//     func_800E9730(3.0f);
+//     func_80106544_31C0B4(temp_s1);
+//     if ((D_800CD058.current_star_spawn == 0) && (func_80035F98(4) == 0)) {
+//         msgIdx = D_800CD058.current_board_index == 2 ? 0x5E09 : 0x5E00;
+//     }
+//     else {
+//         msgIdx = D_800CD058.current_board_index == 2 ? 0x5E09 : 0x5E01;
+//     }
+//     func_8005B43C(temp_s1->unk8, msgIdx, -1, -1);
+//     func_80060C14(temp_s1->unk8, 1);
+//     func_8004AA88(0x2A7);
+//     func_800EE2C0(temp_s1->unk8);
+//     func_800D9D84(temp_s1->unk0, -1, 0, 6, 2);
+//     func_80060EA8(temp_s1->unk8, 1);
+//     func_8001FDE8(*temp_s1->unk0->unk3C->unk40);
+//     if ((D_800CD058.current_board_index != 2) || (phi_s3 = saved_reg_s3, ((GetRandomByte() & 1) != 0))) {
+//         spacedata = GetSpaceData(D_8011D2C0[D_800CD058.star_spawn_indices[D_800CD058.current_star_spawn]]);
+//     }
+//     func_800E9748(&spacedata->coords);
+//     func_800E9AC8(5.0f);
+//     SleepProcess(5);
+
+//     while (func_800E9AE0() != 0) {
+//         SleepVProcess();
+//     }
+
+//     SleepProcess(5);
+//     temp_s0 = func_800EEF80(7.0f);
+//     func_800EF070(temp_s1->unk0, *(&D_8011D2D0 + (temp_s0 * 4)));
+//     func_800D9CE8(temp_s1->unk0, -1, 2);
+//     if (D_800CD058.current_board_index != 2) {
+//         {
+//             struct process *process;
+
+//             process = InitProcess(func_80106154_31BCC4, 0x4800, 0, 0);
+//             D_8011FAB8 = process;
+//             process->user_data = spacedata;
+//             SleepProcess(0x1E);
+//             phi_v0 = temp_s0 * 4;
+//         }
+//     }
+//     else {
+//         D_8011FAB8 = NULL;
+//         phi_v0 = temp_s0 * 4;
+//     }
+//     func_8005B43C(temp_s1->unk8, *(&D_8011D2EC + phi_v0), -1, -1);
+//     func_80060C14(temp_s1->unk8, 1);
+//     func_800EE2C0(temp_s1->unk8);
+//     func_800D9D84(temp_s1->unk0, -1, 0, 6, 2);
+//     func_80060EA8(temp_s1->unk8, 1);
+//     func_8004A994(0x5A);
+//     SleepProcess(0x1E);
+//     func_80062050(2, 0x10);
+//     SleepProcess(0x11);
+//     D_800A12D4 = 1;
+//     func_80100130();
+//     func_80046558(D_8011FABC->unk3C->unk40->unk0);
+//     func_800D9B54(D_8011FABC);
+//     func_800D9AA4(D_8011FA78[D_800CD058.star_spawn_indices[D_800CD058.current_star_spawn]]]);
+//     func_800E60D8(temp_s1);
+//     func_800F8C74();
+//     func_8004819C(1);
+//     func_8004849C();
+//     SleepVProcess();
+// }
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010698C_31C4FC);
 
