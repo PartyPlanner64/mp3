@@ -1,10 +1,24 @@
 #include "common.h"
+#include "../../board.h"
+#include "../../player.h"
+#include "../../process.h"
+#include "../../object.h"
+#include "../../spaces.h"
 
 extern s32 D_800A12D4;
+
+extern u16 D_800CE198;
+
+extern struct event_table_entry *D_8011D1C4;
+extern struct event_table_entry *D_8011D23C;
+extern struct event_table_entry *D_8011D3D0;
+extern struct event_table_entry *D_8011D478;
 
 extern void *D_8011D598;
 
 extern struct object *D_8011EB0C;
+
+extern void func_8011A704_363574();
 
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_801059D0_34E840);
 
@@ -171,7 +185,19 @@ INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_80107970_3507E0)
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_80107A04_350874);
 
 // entrypoint 2
-INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_80107CA4_350B14);
+void func_80107CA4_350B14() {
+    func_8004A520(0x1A);
+    D_800CE198 = 0x1A;
+    func_800F8D6C(0x1A);
+    func_80012220(2);
+    func_80107A04_350874();
+    func_800EBA60(&D_8011D1C4);
+    func_800EBA60(&D_8011D478);
+    func_800F8D48(func_8011A704_363574);
+    func_800EBA60(&D_8011D23C);
+    func_800EBA60(&D_8011D3D0);
+    func_800FF41C(0);
+}
 
 // entrypoint 3
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_80107D28_350B98);
@@ -446,7 +472,7 @@ INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_8011A338_3631A8)
 
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_8011A550_3633C0);
 
-INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_8011A704_363574);
+INCLUDE_ASM(void, "overlays/board_spinydesert/spinydesert", func_8011A704_363574);
 
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_8011B1FC_36406C);
 
