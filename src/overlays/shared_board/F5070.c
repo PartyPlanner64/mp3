@@ -1,4 +1,5 @@
 #include "common.h"
+#include "../../board.h"
 #include "../../heap_temporary.h"
 #include "../../spaces.h"
 
@@ -594,8 +595,15 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EB97C_FF59C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EB9C0_FF5E0);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EBA60_FF680);
+// EventTableHydrate
+void func_800EBA60_FF680(struct event_table_entry *table) {
+    while (table->space_index != -1) {
+        func_800EB9C0_FF5E0(table->space_index, table->event_list);
+        table++;
+    }
+}
 
+// ExecuteEventForSpace?
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EBAC8_FF6E8);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EBCB0_FF8D0);
