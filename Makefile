@@ -76,6 +76,7 @@ SRC_DIRS := src \
 	src/overlays \
 	src/overlays/overlay71 \
 	src/overlays/board_chillywaters \
+	src/overlays/board_spinydesert \
 	src/overlays/debug_message_check \
 	src/overlays/shared_board
 ASM_DIRS := asm \

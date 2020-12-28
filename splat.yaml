@@ -1028,7 +1028,8 @@ segments:
       - [0x332DC0, ".data", "overlays/board_chillywaters/chillywaters_main"]
       - [0x332DF0, "bin"]
 
-  - name: overlays/overlay73
+  # Deep Bloober Sea
+  - name: overlays/board_deepbloobersea
     type: code
     overlay: True
     start: 0x3355E0
@@ -1038,17 +1039,21 @@ segments:
       - [0x335610, "asm"]
       - [0x34C270, "bin"] # data
 
-  - name: overlays/overlay74
+  # Spiny Desert
+  - name: overlays/board_spinydesert
     type: code
     overlay: True
     start: 0x34E810
     vram: 0x801059A0
     files:
-      - [0x34E810, "asm"]
-      - [0x34E840, "asm"]
-      - [0x364F50, "bin"] # data
+      - [0x34E810, "c", "overlays/board_spinydesert/spinydesert_main"]
+      - [0x34E840, "c", "overlays/board_spinydesert/spinydesert"]
+      # Possible split at 0x34EB90 if similar to Chilly Waters.
+      - [0x364F50, ".data", "overlays/board_spinydesert/spinydesert_main"]
+      - [0x364F80, "bin"] # data
 
-  - name: overlays/overlay75
+  # Woody Woods
+  - name: overlays/board_woodywoods
     type: code
     overlay: True
     start: 0x367930
@@ -1058,7 +1063,8 @@ segments:
       - [0x367960, "asm"]
       - [0x37D6A0, "bin"] # data
 
-  - name: overlays/overlay76
+  # Creepy Cavern
+  - name: overlays/board_creepycavern
     type: code
     overlay: True
     start: 0x37FF80
@@ -1068,7 +1074,8 @@ segments:
       - [0x37FFB0, "asm"]
       - [0x3975F0, "bin"] # data
 
-  - name: overlays/overlay77
+  # Waluigi's Island
+  - name: overlays/board_waluigisisland
     type: code
     overlay: True
     start: 0x39AD20
