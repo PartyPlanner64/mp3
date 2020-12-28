@@ -29,6 +29,10 @@ extern u16 D_80105212; // chain count
 extern void *D_80105220[];
 extern s16 D_80105260;
 extern s16 D_80105262;
+extern struct event_list_entry *D_80105278;
+extern struct event_list_entry *D_8010527C;
+extern struct event_list_entry *D_80105280;
+extern struct event_list_entry *D_80105284;
 extern s32 D_80105288;
 extern f32 D_80105290[]; // arrow angles
 extern s32 D_801052B0; // arrow angle count
@@ -594,7 +598,31 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EB8BC_FF4DC);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EB97C_FF59C);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EB9C0_FF5E0);
+void func_800EB9C0_FF5E0(s16 space_index, struct event_list_entry *event_list) {
+    switch (space_index) {
+        case -2:
+            D_80105278 = event_list;
+            return;
+
+        case -3:
+            D_8010527C = event_list;
+            return;
+
+        case -4:
+            D_80105280 = event_list;
+            return;
+
+        case -5:
+            D_80105284 = event_list;
+            return;
+    }
+
+    {
+        struct space_data *space;
+        space = GetSpaceData(space_index);
+        space->event_list = event_list;
+    }
+}
 
 // EventTableHydrate
 void func_800EBA60_FF680(struct event_table_entry *table) {
