@@ -1,6 +1,7 @@
 #include "common.h"
 #include "../../board.h"
 #include "../../heap_temporary.h"
+#include "../../process.h"
 #include "../../spaces.h"
 
 extern void *data_128CC60_ROM_START; // hvq rom
@@ -598,7 +599,11 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EB820_FF440);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EB8BC_FF4DC);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EB97C_FF59C);
+void func_800EB97C_FF59C(s16 space_index) {
+    struct process *process;
+    process = InitProcess(func_800EB8BC_FF4DC, 0xEF00, 0, 0);
+    process->user_data = (void *)space_index;
+}
 
 void func_800EB9C0_FF5E0(s16 space_index, struct event_list_entry *event_list) {
     switch (space_index) {
