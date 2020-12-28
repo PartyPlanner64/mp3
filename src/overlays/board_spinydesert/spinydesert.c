@@ -1,6 +1,10 @@
 #include "common.h"
 
+extern s32 D_800A12D4;
+
 extern void *D_8011D598;
+
+extern struct object *D_8011EB0C;
 
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_801059D0_34E840);
 
@@ -18,6 +22,119 @@ INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_801061A0_34F010)
 
 // Star tour.
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_8010622C_34F09C);
+// void func_8010622C_34F09C() {
+//     s32 temp_a0;
+//     s32 temp_a0_2;
+//     s32 temp_s0;
+//     struct space_data *temp_s2;
+//     struct space_data *temp_s4;
+//     void *temp_s1;
+//     struct process *temp_v0;
+//     struct process *temp_v0_2;
+//     s32 msgIdx;
+//     s32 phi_s2;
+//     s32 phi_s4;
+
+//     D_800A12D4 = 0;
+//     temp_s1 = func_800E5DD4(0, 0);
+//     func_8004A520(0x12);
+//     func_800EEFEC(temp_s1->unk0, 2, 0xF, 0x000A007E);
+//     func_800FFF44();
+//     func_800D9B24(D_8011EAC8[D_800CD058.star_spawn_indices[D_800CD058.current_star_spawn]]]);
+//     func_800D9B24(D_8011EAC8[D_800CD058.unk3E]);
+//     func_80061FE8(2, 0x10);
+
+//     while (func_800620BC() != 0) {
+//         SleepVProcess();
+//     }
+
+//     func_800E6FCC();
+//     func_800E9730(3.0f);
+//     func_801061A0_34F010(temp_s1);
+//     temp_s2 = GetSpaceData(D_8011C150[D_800CD058.star_spawn_indices[D_800CD058.current_star_spawn]]);
+//     temp_s4 = GetSpaceData(D_8011C150[D_800CD096]);
+//     phi_s2 = temp_s2;
+//     phi_s4 = temp_s4;
+//     if (func_800ECE9C(0x32) != 0) {
+//         phi_s2 = temp_s4;
+//         phi_s4 = temp_s2;
+//     }
+//     msgIdx = 0x5E0A;
+//     if (D_800CD058.current_star_spawn == 0) {
+//         if (func_80035F98(4) != 0) {
+//             msgIdx = 0x5E0A;
+//         }
+//         else {
+//             msgIdx = 0x5E09;
+//         }
+//     }
+//     func_8005B43C(temp_s1->unk8, msgIdx, -1, -1);
+
+//     func_80060C14(temp_s1->unk8, 1);
+//     func_8004AA88(0x2A7);
+//     temp_s0 = phi_s2;
+//     func_800EE2C0(temp_s1->unk8);
+//     func_800D9D84(temp_s1->unk0, -1, 0, 6, 2);
+//     func_80060EA8(temp_s1->unk8, 1);
+//     func_8001FDE8(*temp_s1->unk0->unk3C->unk40);
+//     func_800E9748(&temp_s0->coords);
+//     func_800E9AC8(5.0f);
+//     SleepProcess(5);
+//     while (func_800E9AE0() != 0) {
+//         SleepVProcess();
+//     }
+//     SleepProcess(5);
+//     func_800D9CE8(temp_s1->unk0, -1, 2);
+//     temp_v0 = InitProcess(func_80105DB0_34EC20, 0x4800, 0, 0);
+//     D_8011EB08 = temp_v0;
+//     temp_v0->user_data = temp_s0;
+//     SleepProcess(0x1E);
+//     temp_a0 = D_800CC69C;
+//     ((temp_s1->unk8 * 0x27C) + temp_a0)->unk20 = (u8)1;
+//     SleepVProcess(temp_a0);
+
+//     func_80060C14(temp_s1->unk8, 1);
+//     func_800EE2C0(temp_s1->unk8);
+//     func_800D9D84(temp_s1->unk0, -1, 0, 6, 2);
+//     func_80060EA8(temp_s1->unk8, 1);
+//     while (D_8011EB08 != 0) {
+//         SleepVProcess();
+//     }
+//     func_800E9748(&phi_s4->coords);
+//     func_800E9AC8(5.0f);
+//     SleepProcess(5);
+
+//     while (func_800E9AE0() != 0) {
+//         SleepVProcess();
+//     }
+//     SleepProcess(5);
+
+//     temp_v0_2 = InitProcess(func_80105DB0_34EC20, 0x4800, 0, 0);
+//     D_8011EB08 = temp_v0_2;
+//     temp_v0_2->user_data = phi_s4;
+//     SleepProcess(0x1E);
+//     temp_a0_2 = D_800CC69C;
+//     ((temp_s1->unk8 * 0x27C) + temp_a0_2)->unk20 = (u8)1;
+//     SleepVProcess(temp_a0_2);
+//     func_80060C14(temp_s1->unk8, 1);
+//     func_800EE2C0(temp_s1->unk8);
+//     func_80060EA8(temp_s1->unk8, 1);
+//     func_8004A994(0x5A);
+//     SleepProcess(0x1E);
+//     func_80062050(2, 0x10);
+//     SleepProcess(0x11);
+//     D_800A12D4 = 1;
+//     func_80100130();
+//     func_80046558(D_8011EB0C->unk3C->unk40->unk0);
+//     func_800D9B54(D_8011EB0C);
+//     func_800D9AA4(D_8011EAC8[D_800CD058.star_spawn_indices[D_800CD058.current_star_spawn]]);
+//     func_800D9AA4(D_8011EAC8[D_800CD05D.unk39]);
+//     func_800E60D8(temp_s1);
+//     func_800F8C74();
+//     func_8004819C(1);
+//     func_8004849C();
+//     SleepVProcess();
+// }
 
 INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", func_801066CC_34F53C);
 
