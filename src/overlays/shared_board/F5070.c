@@ -597,7 +597,33 @@ void SetSpaceType(s16 space_index, s32 space_type) {
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EB820_FF440);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EB8BC_FF4DC);
+void func_800EB8BC_FF4DC() {
+    struct process *process;
+    struct space_data *space;
+    f32 fval;
+    f32 fOrig;
+
+    process = GetCurrentProcess();
+    space = GetSpaceData((s16)process->user_data);
+
+    fOrig = space->sx;
+    fval = fOrig + 0.03f;
+    if (D_801012C0 != NULL) {
+        do {
+            SleepVProcess();
+            fval -= 0.005f;
+            if (fval <= fOrig) {
+                fval = fOrig;
+            }
+
+            space->sx = fval;
+            space->sz = fval;
+        }
+        while (!(fval <= fOrig) && D_801012C0 != NULL);
+    }
+
+    EndProcess(NULL);
+}
 
 void func_800EB97C_FF59C(s16 space_index) {
     struct process *process;
