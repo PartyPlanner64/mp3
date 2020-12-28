@@ -41,7 +41,7 @@ extern s8 D_800CD280;
 struct strD2010 {
     s32 overlayIndex;
     s16 entrypointIndex;
-    s16 unk6;
+    u16 unk6;
 };
 extern struct strD2010 D_800D2010[];
 
@@ -239,7 +239,26 @@ s32 func_80048128(s32 arg0, s16 arg1, u16 arg2) {
     return 1;
 }
 
-INCLUDE_ASM(s32, "code_47D60", func_8004819C);
+// Changes overlay with some logic beforehand.
+s32 func_8004819C(s32 arg0) {
+    s16 temp_v0;
+    s16 temp_v0_2;
+    s32 temp_v0_3;
+
+    D_800A1768 -= arg0;
+    if (D_800A1768 < 0) {
+        D_800A1768 = 0;
+        func_80048228(D_800D2010[0].overlayIndex, D_800D2010[0].entrypointIndex, D_800D2010[0].unk6);
+        return 0;
+    }
+
+    func_80048228(
+        D_800D2010[D_800A1768].overlayIndex,
+        D_800D2010[D_800A1768].entrypointIndex,
+        D_800D2010[D_800A1768].unk6
+    );
+    return 1;
+}
 
 // Changes overlay
 INCLUDE_ASM(s32, "code_47D60", func_80048228);
