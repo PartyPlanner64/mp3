@@ -2,6 +2,7 @@
 #include "process.h"
 #include "object.h"
 #include "heap_temporary.h"
+#include "code_47D60.h"
 
 extern s8 D_800A1762;
 extern s16 D_800A1768;
@@ -37,13 +38,6 @@ struct strCD1E4 {
 extern struct strCD1E4 D_800CD1E0[];
 
 extern s8 D_800CD280;
-
-struct strD2010 {
-    s32 overlayIndex;
-    s16 entrypointIndex;
-    u16 unk6;
-};
-extern struct strD2010 D_800D2010[];
 
 extern s32 D_800D2118;
 extern f32 D_800D4198[];

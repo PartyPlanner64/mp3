@@ -4,6 +4,7 @@
 #include "../../player.h"
 #include "../../process.h"
 #include "../../spaces.h"
+#include "../../code_47D60.h"
 
 extern void *data_128CC60_ROM_START;
 
@@ -52,14 +53,6 @@ extern s16 D_800D1708;
 extern s16 D_800D1F7A;
 extern s16 D_800D1FEC;
 
-struct str800D2010 {
-    s32 unk0;
-    s16 unk4;
-    u16 unk6;
-};
-extern struct str800D2010 D_800D2010[];
-extern struct str800D2010 D_800D20F0[];
-
 extern s16 D_800D2130;
 extern s16 D_800D4080;
 extern s16 D_800D4196;
@@ -96,27 +89,27 @@ extern void func_800E9AC8_FD6E8(f32);
 extern f32 func_800E9AD4_FD6F4();
 
 void func_800F8610_10C230(s32 arg0, s16 arg1, s16 arg2) {
-    struct str800D2010 *str;
-    s32 temp;
+    struct strD2010 *str;
+    s32 overlayIndex;
 
     str = &D_800D20F0[D_800D6B60++];
 
     switch (arg0) {
         case -1:
-            temp = D_800D2010[D_800A1768].unk0;
+            overlayIndex = D_800D2010[D_800A1768].overlayIndex;
             break;
 
         case -2:
-            temp = D_80101B40[D_800CD058.current_board_index];
+            overlayIndex = D_80101B40[D_800CD058.current_board_index];
             break;
 
         default:
-            temp = arg0;
+            overlayIndex = arg0;
             break;
     }
 
-    str->unk0 = temp;
-    str->unk4 = arg1;
+    str->overlayIndex = overlayIndex;
+    str->entrypointIndex = arg1;
     str->unk6 = arg2;
     if (D_800D6B60 >= 5) {
         D_800D6B60 = 4;
@@ -146,17 +139,12 @@ void func_800F86B4_10C2D4() {
 }
 
 void func_800F8774_10C394() {
-    s16 temp_v0;
-    s16 temp_v0_2;
-    struct str800D2010 *str;
+    struct strD2010 *str;
 
     D_800D4196 = 1;
-    temp_v0 = D_800D6B60;
-    if (temp_v0 != 0) {
-        temp_v0_2 = temp_v0 - 1;
-        D_800D6B60 = temp_v0_2;
-        str = &D_800D20F0[temp_v0_2];
-        func_80048128(str->unk0, str->unk4, str->unk6);
+    if (D_800D6B60 != 0) {
+        str = &D_800D20F0[--D_800D6B60];
+        func_80048128(str->overlayIndex, str->entrypointIndex, str->unk6);
         return;
     }
 
@@ -188,7 +176,7 @@ void func_800F8864_10C484(s16 arg0) {
     s16 temp_v0_2;
 
     temp_v0 = D_800D6B60;
-    D_800D20F0[temp_v0].unk4 = arg0;
+    D_800D20F0[temp_v0].entrypointIndex = arg0;
     temp_v0_2 = temp_v0 + 1;
     D_800D6B60 = temp_v0_2;
     if (temp_v0_2 >= 5) {
