@@ -13,6 +13,7 @@ extern void *D_80101240; // pointer to hvq dir offsets
 extern s32 D_80101248;
 
 extern void *D_801012C0;
+extern u8 *D_801012C4;
 extern u32 D_801012C8[];
 extern u32 D_80101318[];
 extern s32 D_80102180;
@@ -23,13 +24,15 @@ extern void *D_80102DB0; // hvq rom offset copied here
 extern s32 D_80102DB4; // hvq directory count
 extern void *D_80102DCC; // ? size 0x300
 
+extern u16 D_80105210; // space count
+extern u16 D_80105212; // chain count
 extern struct space_data *D_80105214;
 extern struct chain_data *D_80105218;
 
-extern u16 D_80105212; // chain count
 extern void *D_80105220[];
 extern s16 D_80105260;
 extern s16 D_80105262;
+extern s8 D_80105268[]; // counts of each space type
 extern struct event_list_entry *D_80105278;
 extern struct event_list_entry *D_8010527C;
 extern struct event_list_entry *D_80105280;
@@ -768,7 +771,29 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EBCFC_FF91C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EBD54_FF974);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EBDAC_FF9CC);
+// Refreshes cached space type data, prompting redraw of spaces.
+void func_800EBDAC_FF9CC() {
+    s32 stype;
+    s32 i;
+    s32 spaceCountOfType;
+
+    if (D_801012C4 != NULL) {
+        FreeTemp(D_801012C4);
+    }
+    D_801012C4 = MallocTemp(128 * 16);
+
+    for (stype = 0; stype < 16; stype++) {
+        spaceCountOfType = 0;
+        for (i = 0; i < D_80105210; i++) {
+            if (GetSpaceData(i)->space_type == stype) {
+                *(D_801012C4 + (stype * 128) + spaceCountOfType) = i;
+                spaceCountOfType++;
+            }
+        }
+        *(D_801012C4 + (stype * 128) + spaceCountOfType) = 0xFF;
+        D_80105268[stype] = spaceCountOfType;
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EBEAC_FFACC);
 
