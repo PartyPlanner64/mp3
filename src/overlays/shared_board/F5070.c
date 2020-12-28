@@ -530,6 +530,7 @@ void func_800EA6E0_FE300(s32 arg0, s16 arg1) {
     D_80105540[arg0] = arg1;
 }
 
+// Draws spaces
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EA6F4_FE314);
 
 u16 *func_800EAE00_FEA20(u8 *arr, s32 index) {
