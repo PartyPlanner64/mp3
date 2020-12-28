@@ -595,7 +595,23 @@ void SetSpaceType(s16 space_index, s32 space_type) {
     space->space_type = space_type;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EB820_FF440);
+// Change spaces of old type to new type on a given chain.
+void func_800EB820_FF440(u16 chain_index, u16 old_type, u8 new_type) {
+    s32 chain_len;
+    s16 absidx;
+    struct space_data *space;
+    s32 i;
+
+    i = 0;
+    chain_len = GetChainLength(chain_index);
+    for (i = 0; i < chain_len; i++) {
+        absidx = GetAbsSpaceIndexFromChainSpaceIndex(chain_index, i);
+        space = GetSpaceData(absidx);
+        if (space->space_type == old_type) {
+            space->space_type = new_type;
+        }
+    }
+}
 
 void func_800EB8BC_FF4DC() {
     struct process *process;
