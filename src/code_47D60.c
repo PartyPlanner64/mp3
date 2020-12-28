@@ -19,6 +19,8 @@ struct str800A177C {
 };
 extern struct str800A177C *D_800A177C;
 
+extern s16 D_800A1780;
+
 extern s16 D_800B23C0;
 
 extern f32 D_800CB890;
@@ -39,6 +41,8 @@ extern struct strCD1E4 D_800CD1E0[];
 
 extern s8 D_800CD280;
 
+extern s16 D_800D0A3A;
+extern s8 D_800D1710;
 extern s32 D_800D2118;
 extern f32 D_800D4198[];
 extern f32 D_800D5210;
@@ -289,7 +293,11 @@ INCLUDE_ASM(s32, "code_47D60", func_8004A208);
 
 INCLUDE_ASM(s32, "code_47D60", func_8004A354);
 
-INCLUDE_ASM(s32, "code_47D60", func_8004A444);
+void func_8004A444(s8 arg0) {
+    D_800A1780 = 1;
+    D_800D0A3A = 4;
+    D_800D1710 = arg0;
+}
 
 INCLUDE_ASM(s32, "code_47D60", func_8004A468);
 
