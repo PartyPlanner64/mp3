@@ -40,15 +40,18 @@ struct strCD1E4 {
 extern struct strCD1E4 D_800CD1E0[];
 
 extern s8 D_800CD280;
+extern s16 D_800CD2F4;
 
 extern s16 D_800D0A3A;
 extern s8 D_800D1710;
 extern s32 D_800D2118;
+extern s16 D_800D4082;
 extern f32 D_800D4198[];
 extern f32 D_800D5210;
 extern s16 D_800D530C;
 extern s16 D_800D5560;
 extern s32 D_800D6A40;
+extern s16 D_800D6A56;
 extern s8 D_800D6A90;
 extern s16 D_800D6B40;
 
@@ -299,6 +302,12 @@ void func_8004A444(s8 arg0) {
     D_800D1710 = arg0;
 }
 
-INCLUDE_ASM(s32, "code_47D60", func_8004A468);
+void func_8004A468(s16 arg0, s16 arg1, s16 arg2) {
+    D_800D4082 = arg0;
+    D_800CD2F4 = arg1;
+    D_800D6A56 = arg2;
+    D_800A1780 = 1;
+    D_800D0A3A = 4;
+}
 
 INCLUDE_ASM(s32, "code_47D60", func_8004A49C);
