@@ -278,9 +278,18 @@ segments:
     - [0x8F7D0, "asm"]
     - [0x8F830, "asm"]
     - [0x8FB20, "asm"]
-  - [0x8FCF0, "bin"]
-  - [0x98310, "bin"]
-  - [0xA7590, "bin"] # decode rodata
+
+  # Separating out the data/rodata into another segment since it
+  # seems to be subaligned by 8.
+  - type: code
+    start: 0x8FCF0
+    vram: 0x8008F0F0
+    subalign: 8
+    files:
+    - [0x8FCF0, "bin"]
+    - [0x98310, "bin"]
+    - [0xA7590, ".rodata", "decode"]
+    - [0xA75A8, "bin"]
 
   - name: overlays/overlay130
     type: code
