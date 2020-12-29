@@ -402,7 +402,53 @@ void func_8000A9E8(struct decode_struct *decode) {
     }
 }
 
-INCLUDE_ASM(s32, "decode", func_8000AE64);
+// Type 5 decompression.
+void func_8000AE64(struct decode_struct *decode) {
+    s32 curCodeByte;
+    s32 i;
+    s32 byteValue;
+
+    while (decode->len != 0) {
+        if (decode->chunkLen >= 1024) {
+            func_8004DA40(decode->src, &D_800ABFF0, 1024);
+            decode->src += 1024;
+            decode->chunkLen = 0;
+        }
+
+        curCodeByte = D_800ABFF0[decode->chunkLen++];
+        if (curCodeByte < 0x80) {
+            // No sign bit means we repeat the next byte n times.
+            if (decode->chunkLen >= 1024) {
+                func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                decode->src += 1024;
+                decode->chunkLen = 0;
+            }
+
+            byteValue = D_800ABFF0[decode->chunkLen++];
+
+            for (i = 0; i < curCodeByte; i++) {
+                *(decode->dest++) = byteValue;
+            }
+        }
+        else {
+            // Having the sign bit means we read the next n bytes from the input.
+            curCodeByte = curCodeByte - 0x80;
+
+            for (i = 0; i < curCodeByte; i++) {
+                if (decode->chunkLen >= 1024) {
+                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    decode->src += 1024;
+                    decode->chunkLen = 0;
+                }
+
+                byteValue = D_800ABFF0[decode->chunkLen++];
+                *(decode->dest++) = byteValue;
+            }
+        }
+
+        decode->len -= curCodeByte;
+    }
+}
 
 INCLUDE_ASM(s32, "decode", DecodeFile);
 // Correct except for jump table data.
