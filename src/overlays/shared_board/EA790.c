@@ -18,7 +18,7 @@ struct arrow_state {
     s16 arrowCount;
     struct arrow_instance **arrows;
     struct process *unk8;
-    s16 unkC;
+    s16 selectedArrowIndex; // 0xC
     s16 unkE; // controller
     OSMesgQueue *unk10;
     s32 unk14;
@@ -67,7 +67,7 @@ struct arrow_state *func_800D6C6C_EA88C() {
     arrowState->arrowCount = 0;
     arrowState->arrows = NULL;
     arrowState->unk8 = NULL;
-    arrowState->unkC = 0;
+    arrowState->selectedArrowIndex = 0;
     arrowState->player = 0;
     return arrowState;
 }
@@ -122,7 +122,7 @@ void func_800D6D2C_EA94C(struct arrow_state *arrowState, struct arrow_instance *
 
     arrow->unk0 = arg2;
     if ((arg2 & 1) != 0) {
-        arrowState->unkC = arrowState->arrowCount - 1;
+        arrowState->selectedArrowIndex = arrowState->arrowCount - 1;
     }
 }
 
@@ -202,7 +202,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6EE0_EAB00);
 //     arrowState = GetCurrentProcess()->user_data;
 //     phi_s3 = -1;
 //     phi_s5 = 0;
-//     phi_s4_2 = arrowState->unkC;
+//     phi_s4_2 = arrowState->selectedArrowIndex;
 //     phi_f24_3 = 0.0f;
 
 //     while (TRUE) {
@@ -226,9 +226,9 @@ INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6EE0_EAB00);
 
 //             switch ((s32)msg) {
 //                 case -2:
-//                     arrowState->unkC++;
-//                     if (arrowState->unkC >= arrowState->arrowCount) {
-//                         arrowState->unkC = 0;
+//                     arrowState->selectedArrowIndex++;
+//                     if (arrowState->selectedArrowIndex >= arrowState->arrowCount) {
+//                         arrowState->selectedArrowIndex = 0;
 //                     }
 //                     break;
 
@@ -236,9 +236,9 @@ INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6EE0_EAB00);
 //                     break;
 
 //                 case -3:
-//                     arrowState->unkC--;
+//                     arrowState->selectedArrowIndex--;
 //                     phi_s3_2 = phi_s3;
-//                     if (arrowState->unkC & 0x8000) {
+//                     if (arrowState->selectedArrowIndex & 0x8000) {
 //                         phi_v0 = (u16) arrowState->arrowCount - 1;
 //                     }
 //                     break;
@@ -246,20 +246,20 @@ INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6EE0_EAB00);
 //                 case -4:
 //                     phi_v0_2 = phi_s4_2 << 0x10;
 //                     phi_s3_2 = phi_s3;
-//                     if ((s32) (s16) arrowState->unkC < 0) {
+//                     if ((s32) (s16) arrowState->selectedArrowIndex < 0) {
 // block_25:
 //                         temp_s0 = phi_v0_2 >> 0x10;
 //                         phi_v0_3 = phi_s4_2 << 0x10;
 //                         phi_f24 = phi_f24_3;
 //                         phi_s4 = phi_s4_2;
-//                         if (temp_s0 != (s16) arrowState->unkC) {
+//                         if (temp_s0 != (s16) arrowState->selectedArrowIndex) {
 //                             func_8004AA88(1);
 //                             phi_f24 = phi_f24_3;
 //                             if (temp_s0 >= 0) {
 //                                 func_80089A10(func_800D6EC8_EAAE8(&arrowState, temp_s0)->obj->unk24, 1.0f, 1.0f, 1.0f);
 //                                 phi_f24 = 0.0f;
 //                             }
-//                             temp_s4 = arrowState->unkC;
+//                             temp_s4 = arrowState->selectedArrowIndex;
 //                             phi_v0_3 = temp_s4 << 0x10;
 //                             phi_s4 = (s16) temp_s4;
 //                         }
@@ -317,19 +317,19 @@ INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6EE0_EAB00);
 
 //                 case -5:
 //                     func_8004AA88(4);
-//                     arrowState->unkC = -1;
+//                     arrowState->selectedArrowIndex = -1;
 //                     phi_s3_2 = (u16)0;
 //                     break;
 
 //                 case -6:
-//                     arrowState->unkC = -1;
+//                     arrowState->selectedArrowIndex = -1;
 //                     break;
 //                 }
 //             }
 //         }
 //         else {
 //             if ((s32)msg < arrowState->arrowCount) {
-//                 arrowState->unkC = (s32)msg;
+//                 arrowState->selectedArrowIndex = (s32)msg;
 //             }
 //         }
 //         }
@@ -371,13 +371,14 @@ s8 func_800D742C_EB04C(struct arrow_state *arrowState, s16 playerIndex, s32 arg2
     return -1;
 }
 
+// Ends the arrow process and returns the current selected index.
 s16 func_800D7518_EB138(struct arrow_state *arrowState) {
     if (arrowState->unk8 != 0) {
         LinkChildProcess(GetCurrentProcess(), arrowState->unk8);
         WaitForChildProcess();
         arrowState->unk8 = 0;
     }
-    return arrowState->unkC;
+    return arrowState->selectedArrowIndex;
 }
 
 void func_800D7568_EB188(struct arrow_instance *arrow, struct coords_3d *arg1, struct coords_3d *arg2, f32 arg3) {

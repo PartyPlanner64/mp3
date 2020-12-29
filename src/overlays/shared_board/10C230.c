@@ -1063,7 +1063,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FCA7C_11069C);
 //             SleepProcess(0x1E);
 //         }
 //         func_800ECC0C_10082C(&subroutine_arg8);
-//         temp_a2 = &player->unk24->unk18;
+//         temp_a2 = &player->obj->unk18;
 //         func_800ED1E4_100E04(temp_a2, &subroutine_arg8, temp_a2, 8);
 //         temp_s0_6 = GetAbsSpaceIndexFromChainSpaceIndex(player->cur_chain_index, player->cur_space_index);
 //         spacedata = GetSpaceData(temp_s0_6);
