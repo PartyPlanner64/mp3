@@ -256,7 +256,8 @@ void func_8000A53C(struct decode_struct *decode) {
 
 // Type 3/4 decompression.
 // Only difference from Type 2 is the handling for when the lookback
-// looks prior to the destOrig pointer.
+// looks prior to the destOrig pointer. Since this just doesn't handle that
+// case, it's probably inferior to the Type 2 decoder.
 void func_8000A9E8(struct decode_struct *decode) {
     s32 codeWordBitsRemaining;
     s32 curCodeWord;
