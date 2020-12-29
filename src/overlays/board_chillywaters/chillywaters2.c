@@ -52,6 +52,7 @@ extern void *D_8011FB10;
 extern void *D_8011FB18[];
 extern void *D_8011FB58;
 extern s32 D_8011FB68;
+extern struct object **D_8011FB98;
 extern s32 D_80121D80[];
 
 extern void func_80089A10(void *, f32, f32, f32);
@@ -1345,7 +1346,59 @@ void func_80116F0C_32CA7C() {
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80116F5C_32CACC);
 
+// Reverse pre-turn event.
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801174D4_32D044);
+// void func_801174D4_32D044() {
+//     struct strCD058 *strCD058loc;
+//     struct player *player;
+//     s32 phi_a0;
+//     s32 phi_a1;
+//     f32 ftemp;
+
+//     strCD058loc = &D_800CD058;
+
+//     player = GetPlayerStruct(-1);
+//     if ((player->flags2 & 0x80) != 0) {
+//         // 0x3A03 "A Reverse Mushroom is forcing you to move in the opposite direction"
+//         // 0x421C "Because of the "Reverse Curse", you'll now move in the opposite direction."
+//         if ((player->flags2 & 0x40) == 0) {
+//             phi_a1 = 0x3A03;
+//             if ((player->flags2 & 0x14) == 0x10) {
+//                 phi_a1 = 0x421C;
+//             }
+//         }
+//         else {
+//             phi_a1 = 0x421C;
+//         }
+//         func_800EC590(-1, phi_a1);
+
+//         if ((player->flags2 & 4) != 0) {
+//             if (D_8011FB98[strCD058loc->current_player_index] != NULL) {
+//                 ftemp = 1.0f;
+//                 do {
+//                     func_80089A10(&(*(D_8011FB98 + strCD058loc->current_player_index)->unk24), ftemp, ftemp, ftemp);
+//                     SleepVProcess();
+//                     ftemp -= 0.08f;
+//                 }
+//                 while (ftemp >= 0.0f);
+//             }
+//             func_8011667C_32C1EC(strCD058loc->current_player_index);
+//         }
+//         if ((player->flags2 & 0x10) != 0) {
+//             if (D_8011FB98[strCD058loc->current_player_index] != NULL) {
+//                 ftemp = 1.0f;
+//                 do {
+//                     func_80089A10(&(D_8011FB98[strCD058loc->current_player_index]->unk24), ftemp, ftemp, ftemp);
+//                     SleepVProcess();
+//                     ftemp -= 0.08f;
+//                 }
+//                 while (ftemp >= 0.0f);
+//             }
+//             func_8011667C_32C1EC(strCD058loc->current_player_index);
+//         }
+//         player->flags2 &= 0xAB;
+//     }
+// }
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801176A4_32D214);
 
