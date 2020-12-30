@@ -474,10 +474,51 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6AC4_FA6E4);
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6C4C_FA86C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6C80_FA8A0);
+// void func_800E6C80_FA8A0() {
+//     OSMesg msg;
+
+//     while (TRUE) {
+//         osRecvMesg(&D_80103468, &msg, 1);
+//         if (msg != NULL) {
+//             func_8004DA40(msg->unk10, msg->unk8, msg->unkC);
+//             osSendMesg(&D_80104880, msg, 0);
+//             continue;
+//         }
+//         osSendMesg(&D_801049D0, 1, 0);
+//         func_8007C910(0);
+//         break;
+//     }
+// }
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6CF8_FA918);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6DEC_FAA0C);
+// void func_800E6DEC_FAA0C() {
+//     OSMesg msg;
+//     void *temp_a0;
+
+//     func_8006A370(0xFF);
+//     func_80069E68(D_80103138);
+
+//     while (TRUE) {
+//         osRecvMesg(&D_80104880, &msg, 1);
+//         if (msg != NULL) {
+//             temp_a0 = msg->unk8;
+//             D_80102DD0 = temp_a0;
+//             if (*temp_a0 == 0x48565153) { // "HVQS"
+//                 func_800698E8(temp_a0 + 4, msg->unk4, 0x40, D_80102DCC);
+//             }
+//             else {
+//                 func_800E6CF8_FA918(D_80102DD0 + 4, msg->unk4, 0x1800);
+//             }
+//             osSendMesg(&D_80104928, msg, 0);
+//             continue;
+//         }
+//         osSendMesg(&D_801049D0, 2, 0);
+//         func_8007C910(0);
+//         break;
+//     }
+// }
 
 void func_800E6EC8_FAAE8() {
     osCreateMesgQueue(&D_80103468, &D_80103480, 0x24);
