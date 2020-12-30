@@ -565,11 +565,20 @@ void func_800E7254_FAE74() {
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E728C_FAEAC);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E72C4_FAEE4);
+void func_800E72C4_FAEE4() {
+    D_80102DC0 &= 0xFFFB;
+}
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E72DC_FAEFC);
+// Get scale factor
+f32 func_800E72DC_FAEFC() {
+    return D_80101248 != NULL ? D_80101248->scaleFactor : 1.0f;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7300_FAF20);
+// FIXME: I think it's just regalloc.
+// u16 func_800E7300_FAF20(u16 arg0, s32 arg1) {
+//     return ((((D_80101248->tileCountY) - arg1 - 1) * D_80101248->tileCountX) + arg0) + 1;
+// }
 
 // Get size of hvq tile file by index.
 u32 func_800E7330_FAF50(u16 arg0) {
