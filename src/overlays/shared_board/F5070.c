@@ -465,7 +465,9 @@ f32 func_800E6A54_FA674() {
     return (((f32)D_80102DC6 - 160.0f) / D_8010341C) + 160.0f;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6A8C_FA6AC);
+f32 func_800E6A8C_FA6AC() {
+    return (((f32)D_80102DC8 - 120.0f) / D_8010341C) + 120.0f;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6AC4_FA6E4);
 
