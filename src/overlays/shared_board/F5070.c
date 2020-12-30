@@ -790,7 +790,9 @@ f32 func_800E9AD4_FD6F4() {
     return D_80102DBC;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9AE0_FD700);
+s32 func_800E9AE0_FD700() {
+    return D_80102DC0 & 2;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9AF0_FD710);
 
