@@ -468,7 +468,10 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E72DC_FAEFC);
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7300_FAF20);
 
 // Get size of hvq tile file by index.
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7330_FAF50);
+u32 func_800E7330_FAF50(u16 arg0) {
+    arg0++;
+    return D_80101244[arg0 + 1] - D_80101244[arg0];
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7358_FAF78);
 
