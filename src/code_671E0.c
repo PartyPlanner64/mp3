@@ -19,6 +19,7 @@ INCLUDE_ASM(s32, "code_671E0", func_800694D0);
 // Decodes an HVQS
 INCLUDE_ASM(void, "code_671E0", func_800698E8, void *hvqsData, s32 arg1, s32 arg2, void *arg3);
 
-INCLUDE_ASM(s32, "code_671E0", func_80069E68);
+// Decodes the HVQ-MPS 1.1 (first file in the tile set)
+INCLUDE_ASM(void, "code_671E0", func_80069E68, void *hvqMps);
 
-INCLUDE_ASM(s32, "code_671E0", func_8006A370);
+INCLUDE_ASM(void, "code_671E0", func_8006A370, s32 arg0); // or s8?

@@ -80,6 +80,11 @@ osInitRdb = 0x8007B8F0;
 strchr = 0x8007BD30;
 strlen = 0x8007BD70;
 memcpy = 0x8007BD94;
+
+rmonPrintf_func_8007BE50 = 0x8007BE50;
+osSyncPrintf_func_8007BE80 = 0x8007BE80;
+osSyncPrintf_func_8007BEC0 = 0x8007BEC0;
+
 osCreateMesgQueue = 0x8007BF00;
 osJamMesg = 0x8007BF30;
 osRecvMesg = 0x8007C070;
