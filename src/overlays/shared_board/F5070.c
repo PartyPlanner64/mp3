@@ -72,6 +72,23 @@ extern u8 D_801030A8[];
 extern void *D_80103138;
 extern struct coords_3d D_80103450;
 
+extern OSMesgQueue D_80103468;
+extern OSMesg D_80103480;
+
+extern OSThread D_80103EC0;
+extern OSThread D_80103510;
+
+extern s32 D_80104070;
+
+extern OSMesgQueue D_80104880;
+extern OSMesg D_80104898;
+
+extern OSMesgQueue D_80104928;
+extern OSMesg D_80104940;
+
+extern OSMesgQueue D_801049D0;
+extern OSMesg D_801049E8;
+
 extern u16 D_80105210; // space count
 extern u16 D_80105212; // chain count
 extern struct space_data *D_80105214;
@@ -453,7 +470,17 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6CF8_FA918);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6DEC_FAA0C);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6EC8_FAAE8);
+void func_800E6EC8_FAAE8() {
+    osCreateMesgQueue(&D_80103468, &D_80103480, 0x24);
+    osCreateMesgQueue(&D_80104880, &D_80104898, 0x24);
+    osCreateMesgQueue(&D_80104928, &D_80104940, 0x24);
+    osCreateMesgQueue(&D_801049D0, &D_801049E8, 2);
+    D_80104070 = 1;
+    func_8007C810(&D_80103EC0, 0x64, func_800E6DEC_FAA0C, 0, &D_80104880, 1);
+    osStartThread(&D_80103EC0);
+    func_8007C810(&D_80103510, 0x65, func_800E6C80_FA8A0, 0, &D_80103EC0, 4);
+    osStartThread(&D_80103510);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6FBC_FABDC);
 
