@@ -162,7 +162,9 @@ void func_80047B38(struct object_indirect *arg0, s32 arg1) {
     arg0->unk0 |= arg1;
 }
 
-INCLUDE_ASM(s32, "code_47D60", func_80047B48);
+void func_80047B48(struct object_indirect *arg0, s32 arg1) {
+    arg0->unk0 &= ~arg1;
+}
 
 INCLUDE_ASM(s32, "code_47D60", func_80047B5C);
 
