@@ -59,7 +59,7 @@ extern f32 D_80102DBC;
 extern void *D_80102DCC; // ? size 0x300
 
 struct str102DD8 {
-    s8 unk0;
+    u8 unk0;
     s8 unk1;
     s16 unk2;
     void *unk4;
@@ -593,13 +593,25 @@ void func_800E7130_FAD50() {
         cur->unk1 = 0;
         cur->unk2 = -1;
         cur->unk4 = func_800199F8(0x1800);
-        cur->unk8 = 0;
+        cur->unk8 = NULL;
         cur++;
     }
     bzero(&D_801030A8, 0x90);
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E71A8_FADC8);
+void func_800E71A8_FADC8() {
+    struct str102DD8 *cur;
+    s32 i;
+
+    cur = &D_80102DD8[0];
+    for (i = 0; i < 36; i++) {
+        if ((cur->unk8 == NULL) && (cur->unk0 == 0)) {
+            cur->unk2 = -1;
+        }
+        cur->unk0 = 0;
+        cur++;
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E71EC_FAE0C);
 
