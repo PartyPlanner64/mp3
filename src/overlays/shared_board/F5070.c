@@ -81,7 +81,7 @@ extern OSMesg D_80103480;
 extern OSThread D_80103EC0;
 extern OSThread D_80103510;
 
-extern s32 D_80104070;
+extern s32 D_80104070; // thread priority
 
 extern OSMesgQueue D_80104880;
 extern OSMesg D_80104898;
@@ -493,7 +493,11 @@ void func_800E6FCC_FABEC() {
     D_80104070 = 1;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6FDC_FABFC);
+void func_800E6FDC_FABFC() {
+    if (osGetThreadPri(&D_80103EC0) != D_80104070) {
+        osSetThreadPri(&D_80103EC0, D_80104070);
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7018_FAC38);
 
