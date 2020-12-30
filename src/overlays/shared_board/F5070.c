@@ -314,7 +314,9 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E66E0_FA300);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6720_FA340);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E69BC_FA5DC);
+void func_800E69BC_FA5DC(s32 bgIndex) {
+    func_800E6720_FA340(bgIndex, 1);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E69D8_FA5F8);
 
