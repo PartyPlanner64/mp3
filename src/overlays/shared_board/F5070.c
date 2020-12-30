@@ -10,7 +10,8 @@ extern s8 D_800CD069;
 extern s16 D_800D41C2;
 
 extern void *D_80101240; // pointer to hvq dir offsets
-extern s32 D_80101248;
+extern void *D_80101244;
+extern void *D_80101248;
 
 extern void *D_801012C0;
 extern u8 *D_801012C4;
@@ -23,6 +24,7 @@ extern void *D_80102C58[]; // function pointers given by board.
 extern void *D_80102DB0; // hvq rom offset copied here
 extern s32 D_80102DB4; // hvq directory count
 extern void *D_80102DCC; // ? size 0x300
+extern void *D_80103138;
 
 extern u16 D_80105210; // space count
 extern u16 D_80105212; // chain count
@@ -305,11 +307,11 @@ void func_800E6630_FA250(void *hvqRomOffset) {
     func_8004DA40(hvqRomOffset + 4, hvqDirs, dirsSize);
 
     D_80102DCC = MallocTemp(0x300);
-    D_80101248 = 0;
+    D_80101248 = NULL;
 }
 
 void func_800E66D4_FA2F4() {
-    D_80101248 = 0;
+    D_80101248 = NULL;
 }
 
 void func_800E66E0_FA300() {
@@ -326,7 +328,17 @@ void func_800E69BC_FA5DC(s32 bgIndex) {
     func_800E6720_FA340(bgIndex, 1);
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E69D8_FA5F8);
+void func_800E69D8_FA5F8() {
+    if (D_80101244 != NULL) {
+        FreeTemp(D_80101244);
+        D_80101244 = NULL;
+        FreeTemp(D_80101248);
+        FreeTemp(D_80103138);
+        func_8001F95C(0, 0);
+        func_800E728C_FAEAC();
+        func_800E9328_FCF48();
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6A40_FA660);
 
