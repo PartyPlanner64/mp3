@@ -6,12 +6,37 @@
 
 extern void *data_128CC60_ROM_START; // hvq rom
 
+struct hvq_table_initial {
+    u32 count;
+    u32 offsets[3];
+};
+
+struct hvq_metadata {
+    /* 0x00 */ s32 tileWidth;
+    /* 0x04 */ s32 tileHeight;
+    /* 0x08 */ s32 tileCountX;
+    /* 0x0C */ s32 tileCountY;
+    /* 0x10 */ f32 fov;
+    /* 0x14 */ f32 scaleFactor;
+    /* 0x18 */ f32 cameraEyePosX;
+    /* 0x1C */ f32 cameraEyePosZ;
+    /* 0x20 */ f32 cameraEyePosY;
+    /* 0x24 */ f32 lookatPointX;
+    /* 0x28 */ f32 lookatPointZ;
+    /* 0x2C */ f32 lookatPointY;
+    /* 0x30 */ f32 cameraUpVecX;
+    /* 0x34 */ f32 cameraUpVecZ;
+    /* 0x38 */ f32 cameraUpVecY;
+}; // sizeof 0x3C / 60
+
 extern s8 D_800CD069;
 extern s16 D_800D41C2;
 
-extern void *D_80101240; // pointer to hvq dir offsets
-extern void *D_80101244;
-extern void *D_80101248;
+extern u32 *D_80101240; // pointer to hvq dir offsets (table)
+extern u32 *D_80101244; // pointer to hvq file offsets (table)
+extern struct hvq_metadata *D_80101248; // pointer to current hvq metadata
+extern s32 D_80101254;
+extern s32 D_80101258;
 
 extern void *D_801012C0;
 extern u8 *D_801012C4;
@@ -23,10 +48,15 @@ extern void *D_80102C58[]; // function pointers given by board.
 
 extern void *D_80102DB0; // hvq rom offset copied here
 extern s32 D_80102DB4; // hvq directory count
+extern s32 D_80102DB8; // hvq current file table ROM offset
+extern s16 D_80102DC0;
 extern s16 D_80102DC2;
 extern s16 D_80102DC4;
+extern s16 D_80102DC6; // total width
+extern s16 D_80102DC8; // total height
 extern void *D_80102DCC; // ? size 0x300
 extern void *D_80103138;
+extern struct coords_3d D_80103450;
 
 extern u16 D_80105210; // space count
 extern u16 D_80105212; // chain count
@@ -48,13 +78,14 @@ extern s32 D_801052B0; // arrow angle count
 extern void *D_80105500[];
 
 extern s16 D_80105540[];
-
-struct hvq_rom_initial {
-    u32 dirCount;
-    u32 dirOffsets[3];
-};
+extern s32 D_80105990; // current hvq bg index
 
 extern s16 GetCurrentSpaceIndex();
+
+extern void func_800E86CC_FC2EC();
+extern void func_800E8DD4_FC9F4(f32);
+extern void func_800E9730_FD350(f32);
+extern void func_800E9AC8_FD6E8(f32);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E1450_F5070);
 
@@ -294,13 +325,13 @@ void func_800E6630_FA250(void *hvqRomOffset) {
     s32 dirsSize;
     s32 temp_v0;
     s32 *hvqDirs;
-    struct hvq_rom_initial *hvqInitial;
+    struct hvq_table_initial *hvqInitial;
 
     D_80102DB0 = hvqRomOffset;
 
-    hvqInitial = MallocTemp(sizeof(struct hvq_rom_initial));
-    func_8004DA40(hvqRomOffset, hvqInitial, sizeof(struct hvq_rom_initial));
-    D_80102DB4 = hvqInitial->dirCount;
+    hvqInitial = MallocTemp(sizeof(struct hvq_table_initial));
+    func_8004DA40(hvqRomOffset, hvqInitial, sizeof(struct hvq_table_initial));
+    D_80102DB4 = hvqInitial->count;
     FreeTemp(hvqInitial);
 
     dirsSize = D_80102DB4 * 4;
@@ -324,7 +355,54 @@ void func_800E66E0_FA300() {
     }
 }
 
+// Called to show one of the HVQ backgrounds by index.
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6720_FA340);
+// FIXME: mostly regalloc left.
+// void func_800E6720_FA340(s32 bgIndex, s32 arg1) {
+//     s32 fileTableSize;
+//     s32 fileCount;
+//     struct hvq_table_initial *hvqInitial;
+
+//     D_80105990 = bgIndex;
+//     D_80102DB8 = D_80102DB0 + D_80101240[bgIndex];
+//     hvqInitial = (struct hvq_table_initial *)MallocTemp(sizeof(struct hvq_table_initial));
+//     func_8004DA40(D_80102DB8, hvqInitial, sizeof(struct hvq_table_initial));
+//     fileCount = hvqInitial->count;
+//     FreeTemp(hvqInitial);
+//     fileTableSize = (fileCount + 1) * 4;
+//     D_80101244 = (u32 *)MallocTemp(fileTableSize);
+//     func_8004DA40(D_80102DB8 + 4, D_80101244, fileTableSize);
+//     D_80101248 = (struct hvq_metadata *)MallocTemp(sizeof(struct hvq_metadata));
+//     func_8004DA40(D_80102DB8 + D_80101244[0], D_80101248, sizeof(struct hvq_metadata));
+//     D_80103450.x = D_80101248->cameraEyePosX;
+//     D_80103450.y = D_80101248->cameraEyePosZ;
+//     D_80103450.z = D_80101248->cameraEyePosY;
+//     D_80101248->cameraEyePosX *= 5.0f;
+//     D_80101248->cameraEyePosZ *= 5.0f;
+//     D_80101248->cameraEyePosY *= 5.0f;
+//     D_80101248->lookatPointX *= 5.0f;
+//     D_80101248->lookatPointZ *= 5.0f;
+//     D_80101248->lookatPointY *= 5.0f;
+//     D_80103138 = MallocTemp(func_800E7330_FAF50(0));
+//     func_8004DA40(D_80102DB8 + D_80101244[1], D_80103138, func_800E7330_FAF50(0));
+//     D_80102DC4 = 0;
+//     D_80102DC2 = 0;
+//     D_80102DC6 = (D_80101248->tileWidth * D_80101248->tileCountX) / 2; // not confirmed
+//     D_80102DC8 = (D_80101248->tileHeight * D_80101248->tileCountY) / 2;
+//     D_80102DC0 = 1;
+//     func_8001F95C(0, func_800E86CC_FC2EC);
+//     func_800E7254_FAE74();
+//     func_800E6FBC_FABDC();
+//     if (arg1 != 0) {
+//         func_800E90BC_FCCDC();
+//     }
+//     func_800E9730_FD350(1.0f);
+//     func_800E9A54_FD674(0xFF);
+//     func_800E9AC8_FD6E8(-1.0f);
+//     D_80101254 = 0;
+//     D_80101258 = 0;
+//     func_800E8DD4_FC9F4(1.0f);
+// }
 
 void func_800E69BC_FA5DC(s32 bgIndex) {
     func_800E6720_FA340(bgIndex, 1);
@@ -389,6 +467,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E72DC_FAEFC);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7300_FAF20);
 
+// Get size of hvq tile file by index.
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7330_FAF50);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7358_FAF78);
@@ -399,11 +478,11 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7514_FB134);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E76EC_FB30C);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E86CC_FC2EC);
+INCLUDE_ASM(void, "overlays/shared_board/F5070", func_800E86CC_FC2EC);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E8DC8_FC9E8);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E8DD4_FC9F4);
+INCLUDE_ASM(void, "overlays/shared_board/F5070", func_800E8DD4_FC9F4, f32 arg1);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E8DE0_FCA00);
 
@@ -423,7 +502,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9344_FCF64);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9358_FCF78);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9730_FD350);
+INCLUDE_ASM(void, "overlays/shared_board/F5070", func_800E9730_FD350, f32 arg1);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E973C_FD35C);
 
@@ -443,7 +522,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9A60_FD680);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9A94_FD6B4);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9AC8_FD6E8);
+INCLUDE_ASM(void, "overlays/shared_board/F5070", func_800E9AC8_FD6E8, f32 arg1);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9AD4_FD6F4);
 
