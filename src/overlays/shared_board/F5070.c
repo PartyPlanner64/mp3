@@ -312,7 +312,13 @@ void func_800E66D4_FA2F4() {
     D_80101248 = 0;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E66E0_FA300);
+void func_800E66E0_FA300() {
+    if (D_80101240 != NULL) {
+        FreeTemp(D_80101240);
+        D_80101240 = NULL;
+        FreeTemp(D_80102DCC);
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6720_FA340);
 
