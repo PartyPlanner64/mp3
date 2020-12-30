@@ -1,5 +1,6 @@
 #include "common.h"
 #include "../../board.h"
+#include "../../heap_permanent.h"
 #include "../../heap_temporary.h"
 #include "../../process.h"
 #include "../../spaces.h"
@@ -500,8 +501,41 @@ void func_800E6FDC_FABFC() {
 }
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7018_FAC38);
+// void func_800E7018_FAC38() {
+//     OSMesg msg;
+//     while (TRUE) {
+//         if (osRecvMesg(&D_80104928, &msg, 0) == 0) {
+//             if (msg == NULL) {
+//                 goto continue;
+//             }
+//             FreePerm(subroutine_arg4->unk8);
+//             subroutine_arg4->unk8 = NULL;
+//             continue;
+//         }
+//         break;
+//     }
+// }
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7068_FAC88);
+// s32 func_800E7068_FAC88() {
+//     struct str102DD8 *unk;
+//     s32 i;
+
+//     osJamMesg(&D_80103468, 0, 0);
+//     osJamMesg(&D_80104880, 0, 0);
+//     func_800E6FBC_FABDC();
+//     func_800E6FDC_FABFC();
+//     osRecvMesg(&D_801049D0, 0, 1);
+//     osRecvMesg(&D_801049D0, 0, 1);
+
+//     for (i = 0; i < 36; i++) {
+//         unk = &D_80102DD8[i];
+//         if (unk->unk8 != NULL) {
+//             FreePerm(unk->unk8);
+//             unk->unk8 = NULL;
+//         }
+//     }
+// }
 
 void func_800E7130_FAD50() {
     struct str102DD8 *cur;
