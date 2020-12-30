@@ -36,6 +36,7 @@ extern s16 D_800D41C2;
 extern u32 *D_80101240; // pointer to hvq dir offsets (table)
 extern u32 *D_80101244; // pointer to hvq file offsets (table)
 extern struct hvq_metadata *D_80101248; // pointer to current hvq metadata
+extern f32 D_80101250;
 extern s32 D_80101254;
 extern s32 D_80101258;
 
@@ -671,11 +672,15 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7384_FAFA4);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7514_FB134);
 
+// A big one.
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E76EC_FB30C);
 
+// A big one.
 INCLUDE_ASM(void, "overlays/shared_board/F5070", func_800E86CC_FC2EC);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E8DC8_FC9E8);
+f32 func_800E8DC8_FC9E8() {
+    return D_80101250;
+}
 
 INCLUDE_ASM(void, "overlays/shared_board/F5070", func_800E8DD4_FC9F4, f32 arg1);
 
