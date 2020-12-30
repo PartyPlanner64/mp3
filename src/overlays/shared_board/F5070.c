@@ -611,7 +611,9 @@ void func_800E9BD0_FD7F0(s32 bgIndex) {
     D_80103410 = NULL;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9C00_FD820);
+void func_800E9C00_FD820(s16 arg0, s16 arg1) {
+    func_800E6A40_FA660(arg0, arg1);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9C28_FD848);
 
