@@ -308,7 +308,9 @@ void func_800E6630_FA250(void *hvqRomOffset) {
     D_80101248 = 0;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E66D4_FA2F4);
+void func_800E66D4_FA2F4() {
+    D_80101248 = 0;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E66E0_FA300);
 
