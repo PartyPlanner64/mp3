@@ -55,6 +55,20 @@ extern s16 D_80102DC4;
 extern s16 D_80102DC6; // total width
 extern s16 D_80102DC8; // total height
 extern void *D_80102DCC; // ? size 0x300
+
+struct str102DD8 {
+    s8 unk0;
+    s8 unk1;
+    s16 unk2;
+    void *unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+}; // sizeof 0x14
+extern struct str102DD8 D_80102DD8[];
+
+extern u8 D_801030A8[];
+
 extern void *D_80103138;
 extern struct coords_3d D_80103450;
 
@@ -451,7 +465,21 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7018_FAC38);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7068_FAC88);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7130_FAD50);
+void func_800E7130_FAD50() {
+    struct str102DD8 *cur;
+    s32 i;
+
+    cur = &D_80102DD8[0];
+    for (i = 0; i < 36; i++) {
+        cur->unk0 = 0;
+        cur->unk1 = 0;
+        cur->unk2 = -1;
+        cur->unk4 = func_800199F8(0x1800);
+        cur->unk8 = 0;
+        cur++;
+    }
+    bzero(&D_801030A8, 0x90);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E71A8_FADC8);
 
