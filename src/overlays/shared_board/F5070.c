@@ -672,17 +672,18 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7384_FAFA4);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7514_FB134);
 
-// A big one.
+// These next two are likely the bulk of the board background layout logic.
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E76EC_FB30C);
 
-// A big one.
 INCLUDE_ASM(void, "overlays/shared_board/F5070", func_800E86CC_FC2EC);
 
 f32 func_800E8DC8_FC9E8() {
     return D_80101250;
 }
 
-INCLUDE_ASM(void, "overlays/shared_board/F5070", func_800E8DD4_FC9F4, f32 arg1);
+void func_800E8DD4_FC9F4(f32 arg0) {
+    D_80101250 = arg0;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E8DE0_FCA00);
 
