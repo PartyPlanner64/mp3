@@ -489,7 +489,9 @@ void func_800E6FBC_FABDC() {
     D_80104070 = 3;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6FCC_FABEC);
+void func_800E6FCC_FABEC() {
+    D_80104070 = 1;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6FDC_FABFC);
 
