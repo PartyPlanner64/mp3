@@ -54,6 +54,7 @@ extern s16 D_80102DC2;
 extern s16 D_80102DC4;
 extern s16 D_80102DC6; // total width
 extern s16 D_80102DC8; // total height
+extern f32 D_80102DBC;
 extern void *D_80102DCC; // ? size 0x300
 
 struct str102DD8 {
@@ -70,6 +71,7 @@ extern struct str102DD8 D_80102DD8[];
 extern u8 D_801030A8[];
 
 extern void *D_80103138;
+extern f32 D_80103418;
 extern struct coords_3d D_80103450;
 
 extern OSMesgQueue D_80103468;
@@ -566,7 +568,9 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9344_FCF64);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9358_FCF78);
 
-INCLUDE_ASM(void, "overlays/shared_board/F5070", func_800E9730_FD350, f32 arg1);
+void func_800E9730_FD350(f32 arg0) {
+    D_80103418 = arg0;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E973C_FD35C);
 
@@ -586,7 +590,9 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9A60_FD680);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9A94_FD6B4);
 
-INCLUDE_ASM(void, "overlays/shared_board/F5070", func_800E9AC8_FD6E8, f32 arg1);
+void func_800E9AC8_FD6E8(f32 arg0) {
+    D_80102DBC = arg0;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9AD4_FD6F4);
 
