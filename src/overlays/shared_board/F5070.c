@@ -773,7 +773,14 @@ void func_800E9A60_FD680(s16 arg0) {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9A94_FD6B4);
+void func_800E9A94_FD6B4(s16 arg0) {
+    if (arg0 != 0) {
+        D_80102DC0 |= 0x10;
+    }
+    else {
+        D_80102DC0 &= 0xFFEF;
+    }
+}
 
 void func_800E9AC8_FD6E8(f32 arg0) {
     D_80102DBC = arg0;
