@@ -482,7 +482,9 @@ void func_800E6EC8_FAAE8() {
     osStartThread(&D_80103510);
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6FBC_FABDC);
+void func_800E6FBC_FABDC() {
+    D_80104070 = 3;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6FCC_FABEC);
 
