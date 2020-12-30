@@ -704,7 +704,18 @@ struct process *func_800E8EDC_FCAFC(f32 arg0) {
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E8F54_FCB74);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9044_FCC64);
+struct process *func_800E9044_FCC64(f32 arg0) {
+    f32 *floatMem;
+
+    if (D_80103414 != NULL) {
+        EndProcess(D_80103414);
+    }
+    D_80103414 = InitProcess(func_800E8F54_FCB74, 1, 0, 0x40);
+    floatMem = Malloc(D_80103414->heap, 16);
+    D_80103414->user_data = floatMem;
+    *floatMem = arg0;
+    return D_80103414;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E90BC_FCCDC);
 
