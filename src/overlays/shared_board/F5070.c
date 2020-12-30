@@ -74,6 +74,7 @@ extern u8 D_801030A8[];
 
 extern void *D_80103138;
 extern struct process *D_80103410;
+extern struct process *D_80103414;
 extern f32 D_80103418;
 extern f32 D_8010341C;
 extern struct coords_3d D_80103450;
@@ -685,9 +686,21 @@ void func_800E8DD4_FC9F4(f32 arg0) {
     D_80101250 = arg0;
 }
 
+// A process that does logic based on D_80101250.
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E8DE0_FCA00);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E8EDC_FCAFC);
+struct process *func_800E8EDC_FCAFC(f32 arg0) {
+    f32 *floatMem;
+
+    if (D_80103414 != NULL) {
+        EndProcess(D_80103414);
+    }
+    D_80103414 = InitProcess(func_800E8DE0_FCA00, 1, 0, 0x40);
+    floatMem = Malloc(D_80103414->heap, 16);
+    D_80103414->user_data = floatMem;
+    *floatMem = arg0;
+    return D_80103414;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E8F54_FCB74);
 
