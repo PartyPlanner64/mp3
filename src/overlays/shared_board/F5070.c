@@ -662,7 +662,10 @@ u32 func_800E7330_FAF50(u16 arg0) {
     return D_80101244[arg0 + 1] - D_80101244[arg0];
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7358_FAF78);
+// Returns ROM offset of an HVQ file by index.
+s32 func_800E7358_FAF78(u16 arg0) {
+    return D_80102DB8 + D_80101244[++arg0];
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E7384_FAFA4);
 
