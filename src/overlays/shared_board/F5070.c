@@ -71,6 +71,7 @@ extern struct str102DD8 D_80102DD8[];
 extern u8 D_801030A8[];
 
 extern void *D_80103138;
+extern struct process *D_80103410;
 extern f32 D_80103418;
 extern struct coords_3d D_80103450;
 
@@ -604,7 +605,11 @@ void func_800E9BB0_FD7D0() {
     func_800E6630_FA250(&data_128CC60_ROM_START);
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9BD0_FD7F0);
+void func_800E9BD0_FD7F0(s32 bgIndex) {
+    func_800E6720_FA340(bgIndex, 1);
+    EndProcess(D_80103410);
+    D_80103410 = NULL;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9C00_FD820);
 
