@@ -853,7 +853,9 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EA2E4_FDF04);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EA320_FDF40);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800EA348_FDF68);
+void func_800EA348_FDF68() {
+    D_801012BC = 1;
+}
 
 void func_800EA358_FDF78() {
     D_801012BC = 0;
