@@ -719,7 +719,16 @@ struct process *func_800E9044_FCC64(f32 arg0) {
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E90BC_FCCDC);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E92D4_FCEF4);
+void func_800E92D4_FCEF4() {
+    if (D_80103410 != NULL) {
+        EndProcess(D_80103410);
+        D_80103410 = NULL;
+    }
+    if (D_80103414 != NULL) {
+        EndProcess(D_80103414);
+        D_80103414 = NULL;
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9328_FCF48);
 
