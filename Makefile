@@ -68,35 +68,8 @@ endif
 
 ### Sources ###
 
-# Directories containing source files
-SRC_DIRS := src \
-	src/libultra \
-	src/libultra/os \
-	src/libultra/libc \
-	src/overlays \
-	src/overlays/overlay71 \
-	src/overlays/board_chillywaters \
-	src/overlays/board_spinydesert \
-	src/overlays/debug_message_check \
-	src/overlays/shared_board
-ASM_DIRS := asm \
-	asm/overlays \
-	asm/overlays/shared_board
-DATA_DIRS := bin \
-	bin/overlays \
-	bin/overlays/overlay71 \
-	bin/overlays/debug_message_check \
-	bin/overlays/shared_board
-
-# Source code files
-C_FILES := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
-S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s))
-DATA_FILES := $(foreach dir,$(DATA_DIRS),$(wildcard $(dir)/*.bin))
-
 # Object files
-O_FILES := $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
-           $(foreach file,$(S_FILES),$(BUILD_DIR)/$(file:.s=.o)) \
-           $(foreach file,$(DATA_FILES),$(BUILD_DIR)/$(file:.bin=.o)) \
+OBJECTS = $(subst BUILD_DIR, $(BUILD_DIR), $(shell grep -E 'BUILD_DIR.+\.o' marioparty3.ld -o))
 
 ### Targets ###
 
@@ -123,36 +96,46 @@ split:
 test: $(ROM)
 	$(EMULATOR) $<
 
-$(BUILD_DIR):
-	mkdir $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(ASM_DIRS) $(DATA_DIRS))
-
-$(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT) $(BUILD_DIR)
+$(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	@mkdir -p $(shell dirname $@)
 	$(CPP) -DBUILD_DIR=$(BUILD_DIR) -o $@ $<
 
 # Pre-process .c files with the modern cpp.
-$(BUILD_DIR)/%.i: %.c $(BUILD_DIR)
+$(BUILD_DIR)/src/%.i: src/%.c
+	@mkdir -p $(shell dirname $@)
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $@.d $<
 	$(CPP) -MMD -MP -MT $@ -MF $@.d -I include/ -o $@ $<
 
 # Go from .i to .s...
 $(BUILD_DIR)/src/%.s: $(BUILD_DIR)/src/%.i
+	@mkdir -p $(shell dirname $@)
 	$(CC) $(CFLAGS) -o $@ $<
 
 # Run a separate assembler for src and asm .s files.
-$(BUILD_DIR)/asm/%.o: asm/%.s $(BUILD_DIR)
-	$(AS) $(ASFLAGS) -o $@ $<
-
-$(BUILD_DIR)/src/%.o: $(BUILD_DIR)/src/%.s
+$(BUILD_DIR)/src/%.c.o: $(BUILD_DIR)/src/%.s
+	@mkdir -p $(shell dirname $@)
 	$(OLD_AS) $(OLDASFLAGS) -o $@ $<
 
+$(BUILD_DIR)/asm/%.s.o: asm/%.s
+	@mkdir -p $(shell dirname $@)
+	$(AS) $(ASFLAGS) -o $@ $<
+
+$(BUILD_DIR)/data/%.data.o: asm/data/%.data.s
+	@mkdir -p $(shell dirname $@)
+	$(AS) $(ASFLAGS) -o $@ $<
+
+$(BUILD_DIR)/rodata/%.rodata.o: asm/data/%.rodata.s
+	@mkdir -p $(shell dirname $@)
+	$(AS) $(ASFLAGS) -o $@ $<
+
 # Create .o files from .bin files.
-$(BUILD_DIR)/%.o: %.bin $(BUILD_DIR)
+$(BUILD_DIR)/%.bin.o: %.bin
+	@mkdir -p $(shell dirname $@)
 	$(LD) -r -b binary -o $@ $<
 
 # Continue the rest of the build...
-$(BUILD_DIR)/$(TARGET).elf: $(BUILD_DIR)/$(LD_SCRIPT) $(O_FILES)
-	$(LD) $(LDFLAGS) -o $@ $(O_FILES) $(LIBS)
+$(BUILD_DIR)/$(TARGET).elf: $(BUILD_DIR)/$(LD_SCRIPT) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o $@
 
 $(BUILD_DIR)/$(TARGET).bin: $(BUILD_DIR)/$(TARGET).elf
 	$(OBJCOPY) $< $@ -O binary
