@@ -613,7 +613,21 @@ void func_800E71A8_FADC8() {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E71EC_FAE0C);
+void func_800E71EC_FAE0C() {
+    struct str102DD8 *cur;
+    s32 i;
+
+    cur = &D_80102DD8[0];
+    for (i = 0; i < 36; i++) {
+        cur->unk0 = 0;
+        cur->unk2 = -1;
+        if (cur->unk4 != NULL) {
+            func_80019A98(cur->unk4);
+            cur->unk4 = NULL;
+        }
+        cur++;
+    }
+}
 
 void func_800E7254_FAE74() {
     func_800E7130_FAD50();
