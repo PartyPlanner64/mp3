@@ -563,7 +563,11 @@ void func_800E7254_FAE74() {
     D_80102DC0 |= 4;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E728C_FAEAC);
+void func_800E728C_FAEAC() {
+    func_800E7068_FAC88();
+    func_800E71EC_FAE0C();
+    D_80102DC0 &= 0xFFFB;
+}
 
 void func_800E72C4_FAEE4() {
     D_80102DC0 &= 0xFFFB;
