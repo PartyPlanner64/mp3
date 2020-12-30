@@ -794,7 +794,27 @@ s32 func_800E9AE0_FD700() {
     return D_80102DC0 & 2;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E9AF0_FD710);
+void func_800E9AF0_FD710(s32 arg0, s32 arg1) {
+    f32 temp_f20;
+    f32 temp_f22;
+
+    func_800E728C_FAEAC();
+    func_800E7254_FAE74();
+    temp_f22 = func_800E9AD4_FD6F4();
+    func_800E9AC8_FD6E8(-1.0f);
+    temp_f20 = func_800E973C_FD35C();
+    func_800E9730_FD350(1.0f);
+    func_800E6FBC_FABDC();
+    if (arg0 != 0) {
+        func_800E9748_FD368(arg0);
+    }
+    SleepVProcess();
+    if (arg1 != 0) {
+        func_800E6FCC_FABEC();
+    }
+    func_800E9730_FD350(temp_f20);
+    func_800E9AC8_FD6E8(temp_f22);
+}
 
 void func_800E9BB0_FD7D0() {
     func_800E6630_FA250(&data_128CC60_ROM_START);
