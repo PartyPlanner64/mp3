@@ -74,6 +74,7 @@ extern u8 D_801030A8[];
 extern void *D_80103138;
 extern struct process *D_80103410;
 extern f32 D_80103418;
+extern f32 D_8010341C;
 extern struct coords_3d D_80103450;
 
 extern OSMesgQueue D_80103468;
@@ -460,7 +461,9 @@ void func_800E6A40_FA660(s16 arg0, s16 arg1) {
     D_80102DC4 = arg1;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6A54_FA674);
+f32 func_800E6A54_FA674() {
+    return (((f32)D_80102DC6 - 160.0f) / D_8010341C) + 160.0f;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E6A8C_FA6AC);
 
