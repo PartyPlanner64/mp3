@@ -487,7 +487,9 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80109784_31F2
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801097E4_31F354);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80109808_31F378);
+void func_80109808_31F378() {
+    func_80108C1C_31E78C(0x59, 2, 7);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010982C_31F39C);
 
