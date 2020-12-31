@@ -313,7 +313,23 @@ void PlayerHasEmptyItemSlot(s32 playerIndex) {
     func_800E4978_F8598(playerIndex, -1);
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4A08_F8628);
+void FixUpPlayerItemSlots(s32 playerIndex) {
+    s32 i;
+    s8 *items;
+
+    if (playerIndex == -1) {
+        playerIndex = D_800CD058.current_player_index;
+    }
+
+    items = &gPlayers[playerIndex].items[0];
+
+    for (i = 0; i < 2; i++) {
+        if (items[i] == -1) {
+            items[i] = items[i + 1];
+            items[i + 1] = -1;
+        }
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4A6C_F868C);
 

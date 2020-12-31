@@ -108,6 +108,7 @@ osGetCount = 0x800830A0;
 
 // shared_board/F5070
 PlayerHasEmptyItemSlot = 0x800E49DC;
+FixUpPlayerItemSlots = 0x800E4A08;
 GetSpaceData = 0x800EB160;
 GetAbsSpaceIndexFromChainSpaceIndex = 0x800EB184;
 GetChainLength = 0x800EB1B0;
