@@ -336,7 +336,9 @@ void func_800E4A6C_F868C() {
     D_80100F90 = -1;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4A7C_F869C);
+s32 func_800E4A7C_F869C() {
+    return D_80100F90;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4A88_F86A8);
 
