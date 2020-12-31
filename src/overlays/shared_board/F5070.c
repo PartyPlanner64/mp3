@@ -34,6 +34,7 @@ struct hvq_metadata {
 extern s8 D_800CD069;
 extern s16 D_800D41C2;
 
+extern s32 D_80100F90;
 extern u32 *D_80101240; // pointer to hvq dir offsets (table)
 extern u32 *D_80101244; // pointer to hvq file offsets (table)
 extern struct hvq_metadata *D_80101248; // pointer to current hvq metadata
@@ -331,7 +332,9 @@ void FixUpPlayerItemSlots(s32 playerIndex) {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4A6C_F868C);
+void func_800E4A6C_F868C() {
+    D_80100F90 = -1;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4A7C_F869C);
 
