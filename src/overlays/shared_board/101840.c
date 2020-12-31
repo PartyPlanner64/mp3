@@ -1,6 +1,8 @@
 #include "common.h"
 #include "../../player.h"
 
+extern u8 GetRandomByte();
+
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EDC20_101840);
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EDC40_101860);
@@ -184,9 +186,12 @@ INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EEE84_102AA4);
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EEF80_102BA0);
 
+// Picks random number out of 100
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EEFEC_102C0C);
 
-INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EF068_102C88);
+void func_800EF068_102C88() {
+
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EF070_102C90);
 
