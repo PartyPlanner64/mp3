@@ -344,7 +344,19 @@ void func_800E4A88_F86A8(s32 arg0) {
     D_80100F90 = arg0;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4A94_F86B4);
+s32 func_800E4A94_F86B4() {
+    s32 i;
+    u16 *cd0ae;
+
+    i = 0;
+    cd0ae = &D_800CD0AE;
+
+    for (i = 0; i < 4; i++) {
+        GetPlayerStruct(i)->flags2 &= 0xB9;
+        GetPlayerStruct(i)->flags2 |= 0x28;
+        *cd0ae |= (1 << i);
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4B18_F8738);
 

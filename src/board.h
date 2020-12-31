@@ -35,4 +35,6 @@ struct strCD058 {
 };
 extern struct strCD058 D_800CD058;
 
+extern u16 D_800CD0AE;
+
 #endif /* _BOARD_H */
