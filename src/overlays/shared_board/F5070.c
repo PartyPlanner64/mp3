@@ -361,7 +361,15 @@ s32 func_800E4A94_F86B4() {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4B18_F8738);
+void func_800E4B18_F8738() {
+    s32 i;
+    struct player *player;
+
+    for (i = 0; i < 4; i++) {
+        player = GetPlayerStruct(i);
+        player->flags2 = (player->flags2 & 0xD9) | 0xD0;
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4B60_F8780);
 
