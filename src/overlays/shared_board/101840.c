@@ -184,9 +184,9 @@ INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EECF0_102910);
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EEE84_102AA4);
 
+// Picks random number out of 100
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EEF80_102BA0);
 
-// Picks random number out of 100
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EEFEC_102C0C);
 
 void func_800EF068_102C88() {
@@ -197,7 +197,9 @@ INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EF070_102C90);
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EF0D8_102CF8);
 
-INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EF200_102E20);
+s32 func_800EF200_102E20(s32 arg0) {
+    return arg0;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EF208_102E28);
 
