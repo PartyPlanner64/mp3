@@ -51,6 +51,7 @@ extern u32 D_80101318[];
 extern s32 D_80102180;
 extern s8 D_80102C48;
 extern void *D_80102C58[]; // function pointers given by board.
+extern void (*D_80102C7C)();
 
 extern void *D_80102DB0; // hvq rom offset copied here
 extern s32 D_80102DB4; // hvq directory count
@@ -282,7 +283,9 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E455C_F817C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E48F4_F8514);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4954_F8574);
+void func_800E4954_F8574() {
+    D_80102C7C();
+}
 
 // PlayerHasItem
 // returns index of item in player array, otherwise -1.
