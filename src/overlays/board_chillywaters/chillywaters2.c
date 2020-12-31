@@ -1534,7 +1534,7 @@ s32 func_8011C750_3322C0() {
 
     temp_s0 = loc->total_turns - loc->current_turn + 1;
 
-    phi_v1 = func_800E49DC(-1);
+    phi_v1 = PlayerHasEmptyItemSlot(-1);
     if (phi_v1 == -1) {
         phi_v1 = 3;
     }

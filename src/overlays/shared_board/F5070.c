@@ -284,6 +284,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E48F4_F8514);
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4954_F8574);
 
 // PlayerHasItem
+// returns index of item in player array, otherwise -1.
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4978_F8598);
 // s32 func_800E4978_F8598(s32 playerIndex, s32 item) {
 //     s32 i;
@@ -304,7 +305,13 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4978_F8598);
 //     return i;
 // }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E49DC_F85FC);
+// Returns index of first empty item slot, otherwise -1.
+void PlayerHasEmptyItemSlot(s32 playerIndex) {
+    if (playerIndex == -1) {
+        playerIndex = D_800CD058.current_player_index;
+    }
+    func_800E4978_F8598(playerIndex, -1);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4A08_F8628);
 
