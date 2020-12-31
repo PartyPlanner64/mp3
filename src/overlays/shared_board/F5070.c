@@ -53,6 +53,7 @@ extern s8 D_80102C48;
 extern void *D_80102C58[]; // function pointers given by board.
 extern void (*D_80102C7C)();
 
+extern u8 D_80102D36;
 extern void *D_80102DB0; // hvq rom offset copied here
 extern s32 D_80102DB4; // hvq directory count
 extern s32 D_80102DB8; // hvq current file table ROM offset
@@ -391,7 +392,9 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E57D8_F93F8);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E5840_F9460);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E5B80_F97A0);
+s32 func_800E5B80_F97A0() {
+    return D_80102D36 & 0xC;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E5B90_F97B0);
 
