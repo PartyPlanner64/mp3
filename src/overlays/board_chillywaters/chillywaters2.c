@@ -491,19 +491,21 @@ void func_80109808_31F378() {
     func_80108C1C_31E78C(0x59, 2, 7);
 }
 
-void func_8010982C_31F39C(void) {
+void func_8010982C_31F39C() {
     func_80108C1C_31E78C(0x47, 2, 7);
 }
 
-void func_80109850_31F3C0(void) {
-    func_80108C1C_31E78C(0x7C, 0xA, 2);
+void func_80109850_31F3C0() {
+    func_80108C1C_31E78C(0x7C, 10, 2);
 }
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80109874_31F3E4);
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801098D4_31F444);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801098F8_31F468);
+void func_801098F8_31F468() {
+    func_80108C1C_31E78C(0x15, 5, 11);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010991C_31F48C);
 
