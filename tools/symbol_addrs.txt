@@ -106,7 +106,7 @@ sqrtf = 0x80081240;
 _Printf = 0x80081A40;
 osGetCount = 0x800830A0;
 
-// overlay128_F5070
+// shared_board/F5070
 GetSpaceData = 0x800EB160;
 GetAbsSpaceIndexFromChainSpaceIndex = 0x800EB184;
 GetChainLength = 0x800EB1B0;
@@ -120,7 +120,7 @@ SetPlayerOntoChain = 0x800ED91C;
 SetNextChainAndSpace = 0x800ED998;
 SetPrevChainAndSpace = 0x800ED9F8;
 
-// overlay128_105D50
+// shared_board/105D50
 GetCurrentPlayerIndex = 0x800F2130;
 GetPlayerStruct = 0x800F213C;
 PlayerIsCurrent = 0x800F217C;

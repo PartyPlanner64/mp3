@@ -2,6 +2,7 @@
 #include "../../board.h"
 #include "../../heap_permanent.h"
 #include "../../heap_temporary.h"
+#include "../../player.h"
 #include "../../process.h"
 #include "../../spaces.h"
 
@@ -282,7 +283,26 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E48F4_F8514);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4954_F8574);
 
+// PlayerHasItem
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E4978_F8598);
+// s32 func_800E4978_F8598(s32 playerIndex, s32 item) {
+//     s32 i;
+//     s8 *items;
+
+//     i = 0;
+//     if (playerIndex == -1) {
+//         playerIndex = D_800CD058.current_player_index;
+//     }
+
+//     items = &gPlayers[playerIndex].items[0];
+
+//     do {} while (items[i] != item && i++ < 3); // FIXME: Unclear why this is so hard to match.
+
+//     if (i == 3) {
+//         return -1;
+//     }
+//     return i;
+// }
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E49DC_F85FC);
 
