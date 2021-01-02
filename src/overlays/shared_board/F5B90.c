@@ -820,7 +820,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E982C_FD44C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E989C_FD4BC);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E98E8_FD508);
+INCLUDE_ASM(void, "overlays/shared_board/F5B90", func_800E98E8_FD508, void *arg0);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E9940_FD560);
 

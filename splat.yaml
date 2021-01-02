@@ -361,7 +361,7 @@ segments:
       - [0x10AD50, "asm"]
       - [0x10C230, "c"]
       - [0x113520, "asm"]
-      - [0x113750, "asm"]
+      - [0x113750, "c"]
       - [0x1143C0, "bin"] # data
 
   - name: overlays/overlay0
