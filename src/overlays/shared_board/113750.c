@@ -6,6 +6,7 @@
 
 extern s8 D_800CB99C;
 
+extern s32 D_801056C0;
 extern f32 D_801056E8;
 extern void *D_801056EC;
 
@@ -17,7 +18,10 @@ INCLUDE_ASM(s32, "overlays/shared_board/113750", func_800FFB30_113750);
 
 INCLUDE_ASM(s32, "overlays/shared_board/113750", func_800FFD0C_11392C);
 
-INCLUDE_ASM(s32, "overlays/shared_board/113750", func_800FFE90_113AB0);
+void func_800FFE90_113AB0(s32 arg0) {
+    func_800479AC(D_801056C0);
+    func_800F2CA4_1068C4(arg0);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/113750", func_800FFEC4_113AE4);
 
