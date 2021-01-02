@@ -75,7 +75,7 @@ extern s32 D_800C155C;
 INCLUDE_ASM(s32, "lib/hvq", func_800665E0);
 // s32 func_800665E0(struct huff_buff *arg0, s16 *arg1) {
 //     s16 temp_v0;
-//     s32 temp_s1;
+//     u32 temp_s1;
 //     u32 b1, b2, b3, b4, b5, b6, b7, b8;
 //     u32 temp_unk0;
 //     u32 temp_unk0_shift;
@@ -95,6 +95,7 @@ INCLUDE_ASM(s32, "lib/hvq", func_800665E0);
 //         temp_s0[0x201] = func_800665E0(arg0, arg1);
 //         return temp_s1;
 //     }
+
 //     if (temp_unk0_shift == 0) {
 //         arg0->unk4 = *(arg0->unk8++);
 //         arg0->unk0 = 0x80000000U;
@@ -103,6 +104,7 @@ INCLUDE_ASM(s32, "lib/hvq", func_800665E0);
 //     temp_unk0_shift = temp_unk0 >> 1;
 //     b1 = (arg0->unk4 & temp_unk0) != 0;
 //     arg0->unk0 = temp_unk0_shift;
+
 //     if (temp_unk0_shift == 0) {
 //         arg0->unk4 = *(arg0->unk8++);
 //         arg0->unk0 = 0x80000000U;
@@ -111,6 +113,7 @@ INCLUDE_ASM(s32, "lib/hvq", func_800665E0);
 //     temp_unk0_shift = temp_unk0 >> 1;
 //     b2 = (arg0->unk4 & temp_unk0) != 0;
 //     arg0->unk0 = temp_unk0_shift;
+
 //     if (temp_unk0_shift == 0) {
 //         arg0->unk4 = *(arg0->unk8++);
 //         arg0->unk0 = 0x80000000U;
@@ -119,6 +122,7 @@ INCLUDE_ASM(s32, "lib/hvq", func_800665E0);
 //     temp_unk0_shift = temp_unk0 >> 1;
 //     b3 = (arg0->unk4 & temp_unk0) != 0;
 //     arg0->unk0 = temp_unk0_shift;
+
 //     if (temp_unk0_shift == 0) {
 //         arg0->unk4 = *(arg0->unk8++);
 //         arg0->unk0 = 0x80000000U;
@@ -127,6 +131,7 @@ INCLUDE_ASM(s32, "lib/hvq", func_800665E0);
 //     temp_unk0_shift = temp_unk0 >> 1;
 //     b4 = (arg0->unk4 & temp_unk0) != 0;
 //     arg0->unk0 = temp_unk0_shift;
+
 //     if (temp_unk0_shift == 0) {
 //         arg0->unk4 = *(arg0->unk8++);
 //         arg0->unk0 = 0x80000000U;
@@ -135,6 +140,7 @@ INCLUDE_ASM(s32, "lib/hvq", func_800665E0);
 //     temp_unk0_shift = temp_unk0 >> 1;
 //     b5 = (arg0->unk4 & temp_unk0) != 0;
 //     arg0->unk0 = temp_unk0_shift;
+
 //     if (temp_unk0_shift == 0) {
 //         arg0->unk4 = *(arg0->unk8++);
 //         arg0->unk0 = 0x80000000U;
@@ -143,6 +149,7 @@ INCLUDE_ASM(s32, "lib/hvq", func_800665E0);
 //     temp_unk0_shift = temp_unk0 >> 1;
 //     b6 = (arg0->unk4 & temp_unk0) != 0;
 //     arg0->unk0 = temp_unk0_shift;
+
 //     if (temp_unk0_shift == 0) {
 //         arg0->unk4 = *(arg0->unk8++);
 //         arg0->unk0 = 0x80000000U;
@@ -151,12 +158,14 @@ INCLUDE_ASM(s32, "lib/hvq", func_800665E0);
 //     temp_unk0_shift = temp_unk0 >> 1;
 //     b7 = (arg0->unk4 & temp_unk0) != 0;
 //     arg0->unk0 = temp_unk0_shift;
+
 //     if (temp_unk0_shift == 0) {
 //         arg0->unk4 = *(arg0->unk8++);
 //         arg0->unk0 = 0x80000000U;
 //     }
 //     b8 = ((arg0->unk4 & temp_unk0) != 0);
 //     arg0->unk0 >>= 1;
+
 //     return (b1 << 7)
 //       | (b2 << 6)
 //       | (b3 << 5)
