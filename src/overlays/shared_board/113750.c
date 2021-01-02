@@ -1,5 +1,7 @@
 
 #include "common.h"
+#include "../../board.h"
+#include "../../player.h"
 #include "../../process.h"
 
 extern s8 D_800CB99C;
@@ -29,7 +31,12 @@ INCLUDE_ASM(s32, "overlays/shared_board/113750", func_80100228_113E48);
 
 INCLUDE_ASM(s32, "overlays/shared_board/113750", func_8010024C_113E6C);
 
-INCLUDE_ASM(s32, "overlays/shared_board/113750", func_80100630_114250);
+void func_80100630_114250() {
+    while (TRUE) {
+        func_800E9748_FD368(&gPlayers[D_800CD058.current_player_index].obj->coords);
+        SleepVProcess();
+    }
+}
 
 // related to showing pause screen overlay.
 void func_8010067C_11429C(s32 controller) {

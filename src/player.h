@@ -45,25 +45,25 @@ struct player {
      */
     /* 23 (0x17) 800D111F */ u8 flags2;
     /* 24 (0x18) 800D1120 */ s8 items[3];
-    /* 27 (0x1B) */ s8 bowser_suit_flag;
-    /* 28 (0x1C) */ u8 turn_color_status;
-    /* 29 (0x1D) */ s8 unk1D;
+    /* 27 (0x1B) 800D1123 */ s8 bowser_suit_flag;
+    /* 28 (0x1C) 800D1124 */ u8 turn_color_status;
+    /* 29 (0x1D) 800D1125 */ s8 unk1D;
 
     s8 unks1E1F[2]; // 20 - 31
 
-    /* 32 (0x20) */ struct process *process;
-    /* 36 (0x24) */ struct object *obj;
-    /* 40 (0x28) */ s16 minigame_star;
-    /* 42 (0x2A) */ s16 max_coins;
-    /* 44 (0x2C) */ s8 happening_space_count;
+    /* 32 (0x20) 800D1128 */ struct process *process;
+    /* 36 (0x24) 800D112C */ struct object *obj;
+    /* 40 (0x28) 800D1130 */ s16 minigame_star;
+    /* 42 (0x2A) 800D1132 */ s16 max_coins;
+    /* 44 (0x2C) 800D1134 */ s8 happening_space_count;
     s8 red_space_count;
     s8 blue_space_count;
     s8 chance_space_count;
-    /* 48 (0x30) */ s8 bowser_space_count;
+    /* 48 (0x30) 800D1138 */ s8 bowser_space_count;
     s8 battle_space_count;
     s8 item_space_count;
     s8 bank_space_count;
-    /* 52 (0x34) */ s8 game_guy_space_count;
+    /* 52 (0x34) 800D113C */ s8 game_guy_space_count;
 
     // s8 pad2[3];
 }; // sizeof == 56 | 0x38
