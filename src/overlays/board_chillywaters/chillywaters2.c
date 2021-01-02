@@ -208,9 +208,24 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010698C_31C4
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80106EEC_31CA5C);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80106F60_31CAD0);
+// View board map
+void func_80106F60_31CAD0() {
+    D_800CDD58 = 1;
+    D_800D037C = 0;
+    func_80047B80(GetCurrentProcess(), 0x80);
+    func_8010067C(gPlayers[D_800CD058.current_player_index].controller);
+    func_80047BAC(GetCurrentProcess(), 0x80);
+    D_800CDD58 = 0;
+    D_800D037C = 1;
+}
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80106FE8_31CB58);
+// Exit the board map?
+void func_80106FE8_31CB58() {
+    D_800D037C = 0;
+    func_80047B80(GetCurrentProcess(), 0x80);
+    func_8010067C(gPlayers[D_800CD058.current_player_index].controller);
+    D_800D037C = 1;
+}
 
 // setup arrows used during player direction decisions.
 void func_80107044_31CBB4() {
