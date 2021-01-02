@@ -25,9 +25,14 @@ INCLUDE_ASM(s32, "overlays/shared_board/113750", func_800FFF44_113B64);
 
 INCLUDE_ASM(s32, "overlays/shared_board/113750", func_80100130_113D50);
 
-INCLUDE_ASM(s32, "overlays/shared_board/113750", func_8010020C_113E2C);
+void func_8010020C_113E2C() {
+    func_800FFF44_113B64();
+}
 
-INCLUDE_ASM(s32, "overlays/shared_board/113750", func_80100228_113E48);
+void func_80100228_113E48() {
+    func_80100130_113D50();
+    func_800F5DD8_1099F8();
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/113750", func_8010024C_113E6C);
 
