@@ -75,6 +75,7 @@ OBJECTS = $(subst BUILD_DIR, $(BUILD_DIR), $(shell grep -E 'BUILD_DIR.+\.o' mari
 
 build/src/libultra/os/%.o: CFLAGS := -O2 $(CFLAGSCOMMON)
 build/src/libultra/libc/%.o: CFLAGS := -O2 $(CFLAGSCOMMON)
+build/src/lib/%.o: CFLAGS := -O2 $(CFLAGSCOMMON)
 
 clean:
 	rm -rf $(BUILD_DIR)

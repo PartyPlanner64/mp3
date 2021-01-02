@@ -7,6 +7,29 @@ extern const char *D_800A7F50;
 extern const char *D_800A7F5C;
 // const char *HVQMPS_ERR = "Error : This file is not HVQ-MPS 1.1";
 
+struct hvq_mps {
+    s8 magic[16]; // "HVQ-MPS 1.1" with zero padding
+    s32 len;
+    s16 unk14;
+    s16 unk16;
+    s8 unk18;
+    s8 unk19;
+    s8 unk1A;
+    s8 unk1B;
+
+    // offsets from start of struct
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+};
+
+struct huff_buff {
+    u32 unk0;
+    u32 unk4;
+    u32 *unk8;
+};
+
 extern s32 D_800BE090;
 extern s32 D_800BE098;
 
@@ -48,42 +71,119 @@ extern s8 D_800C148D; // hvq mps unk19
 extern s32 D_800C1558;
 extern s32 D_800C155C;
 
-struct hvq_mps {
-    s8 magic[16]; // "HVQ-MPS 1.1" with zero padding
-    s32 len;
-    s16 unk14;
-    s16 unk16;
-    s8 unk18;
-    s8 unk19;
-    s8 unk1A;
-    s8 unk1B;
+// Huffman bytes decompression.
+INCLUDE_ASM(s32, "lib/hvq", func_800665E0);
+// s32 func_800665E0(struct huff_buff *arg0, s16 *arg1) {
+//     s16 temp_v0;
+//     s32 temp_s1;
+//     u32 b1, b2, b3, b4, b5, b6, b7, b8;
+//     u32 temp_unk0;
+//     u32 temp_unk0_shift;
+//     s16 *temp_s0;
 
-    // offsets from start of struct
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-};
+//     if (arg0->unk0 == 0) {
+//         arg0->unk4 = *(arg0->unk8++);
+//         arg0->unk0 = 0x80000000U;
+//     }
+//     temp_unk0 = arg0->unk0;
+//     temp_unk0_shift = temp_unk0 >> 1;
+//     arg0->unk0 = temp_unk0_shift;
+//     if ((arg0->unk4 & temp_unk0) != 0) {
+//         temp_s1 = D_800BE098++;
+//         temp_s0 = temp_s1 + arg1;
+//         temp_s0[1] = func_800665E0(arg0, arg1);
+//         temp_s0[0x201] = func_800665E0(arg0, arg1);
+//         return temp_s1;
+//     }
+//     if (temp_unk0_shift == 0) {
+//         arg0->unk4 = *(arg0->unk8++);
+//         arg0->unk0 = 0x80000000U;
+//     }
+//     temp_unk0 = arg0->unk0;
+//     temp_unk0_shift = temp_unk0 >> 1;
+//     b1 = (arg0->unk4 & temp_unk0) != 0;
+//     arg0->unk0 = temp_unk0_shift;
+//     if (temp_unk0_shift == 0) {
+//         arg0->unk4 = *(arg0->unk8++);
+//         arg0->unk0 = 0x80000000U;
+//     }
+//     temp_unk0 = arg0->unk0;
+//     temp_unk0_shift = temp_unk0 >> 1;
+//     b2 = (arg0->unk4 & temp_unk0) != 0;
+//     arg0->unk0 = temp_unk0_shift;
+//     if (temp_unk0_shift == 0) {
+//         arg0->unk4 = *(arg0->unk8++);
+//         arg0->unk0 = 0x80000000U;
+//     }
+//     temp_unk0 = arg0->unk0;
+//     temp_unk0_shift = temp_unk0 >> 1;
+//     b3 = (arg0->unk4 & temp_unk0) != 0;
+//     arg0->unk0 = temp_unk0_shift;
+//     if (temp_unk0_shift == 0) {
+//         arg0->unk4 = *(arg0->unk8++);
+//         arg0->unk0 = 0x80000000U;
+//     }
+//     temp_unk0 = arg0->unk0;
+//     temp_unk0_shift = temp_unk0 >> 1;
+//     b4 = (arg0->unk4 & temp_unk0) != 0;
+//     arg0->unk0 = temp_unk0_shift;
+//     if (temp_unk0_shift == 0) {
+//         arg0->unk4 = *(arg0->unk8++);
+//         arg0->unk0 = 0x80000000U;
+//     }
+//     temp_unk0 = arg0->unk0;
+//     temp_unk0_shift = temp_unk0 >> 1;
+//     b5 = (arg0->unk4 & temp_unk0) != 0;
+//     arg0->unk0 = temp_unk0_shift;
+//     if (temp_unk0_shift == 0) {
+//         arg0->unk4 = *(arg0->unk8++);
+//         arg0->unk0 = 0x80000000U;
+//     }
+//     temp_unk0 = arg0->unk0;
+//     temp_unk0_shift = temp_unk0 >> 1;
+//     b6 = (arg0->unk4 & temp_unk0) != 0;
+//     arg0->unk0 = temp_unk0_shift;
+//     if (temp_unk0_shift == 0) {
+//         arg0->unk4 = *(arg0->unk8++);
+//         arg0->unk0 = 0x80000000U;
+//     }
+//     temp_unk0 = arg0->unk0;
+//     temp_unk0_shift = temp_unk0 >> 1;
+//     b7 = (arg0->unk4 & temp_unk0) != 0;
+//     arg0->unk0 = temp_unk0_shift;
+//     if (temp_unk0_shift == 0) {
+//         arg0->unk4 = *(arg0->unk8++);
+//         arg0->unk0 = 0x80000000U;
+//     }
+//     b8 = ((arg0->unk4 & temp_unk0) != 0);
+//     arg0->unk0 >>= 1;
+//     return (b1 << 7)
+//       | (b2 << 6)
+//       | (b3 << 5)
+//       | (b4 << 4)
+//       | (b5 << 3)
+//       | (b6 << 2)
+//       | (b7 << 1)
+//       | b8;
+// }
 
-INCLUDE_ASM(s32, "code_671E0", func_800665E0);
+INCLUDE_ASM(s32, "lib/hvq", func_80066894);
 
-INCLUDE_ASM(s32, "code_671E0", func_80066894);
+INCLUDE_ASM(s32, "lib/hvq", func_80066A44);
 
-INCLUDE_ASM(s32, "code_671E0", func_80066A44);
+INCLUDE_ASM(s32, "lib/hvq", func_800677B8);
 
-INCLUDE_ASM(s32, "code_671E0", func_800677B8);
+INCLUDE_ASM(s32, "lib/hvq", func_80067D50);
 
-INCLUDE_ASM(s32, "code_671E0", func_80067D50);
+INCLUDE_ASM(s32, "lib/hvq", func_80068ECC);
 
-INCLUDE_ASM(s32, "code_671E0", func_80068ECC);
-
-INCLUDE_ASM(s32, "code_671E0", func_800694D0);
+INCLUDE_ASM(s32, "lib/hvq", func_800694D0);
 
 // Decodes an HVQS
-INCLUDE_ASM(void, "code_671E0", func_800698E8, void *hvqsData, s32 arg1, s32 arg2, void *arg3);
+INCLUDE_ASM(void, "lib/hvq", func_800698E8, void *hvqsData, s32 arg1, s32 arg2, void *arg3);
 
 // Decodes the HVQ-MPS 1.1 (first file in the tile set)
-INCLUDE_ASM(void, "code_671E0", func_80069E68, struct hvq_mps *hvqMps);
+INCLUDE_ASM(void, "lib/hvq", func_80069E68, struct hvq_mps *hvqMps);
 // FIXME: Mediocre attempt. Might be -O2?
 // void func_80069E68(struct hvq_mps *hvqMps) {
 //     s16 temp_v0;
@@ -273,4 +373,4 @@ INCLUDE_ASM(void, "code_671E0", func_80069E68, struct hvq_mps *hvqMps);
 //     }
 // }
 
-INCLUDE_ASM(void, "code_671E0", func_8006A370, s32 arg0); // or s8?
+INCLUDE_ASM(void, "lib/hvq", func_8006A370, s32 arg0); // or s8?

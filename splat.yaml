@@ -64,7 +64,7 @@ segments:
     - [0x66E70, "asm"]
     - [0x67000, "asm"]
     - [0x67100, "asm", "setjmp"]
-    - [0x671E0, "c"]
+    - [0x671E0, "c", "lib/hvq"]
     - [0x6B050, "asm"]
     - [0x6BA20, "asm"]
     - [0x6C140, "asm"]
