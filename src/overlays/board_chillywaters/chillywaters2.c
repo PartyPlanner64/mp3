@@ -23,6 +23,9 @@ extern struct object *D_8011D314;
 extern struct object *D_8011D318;
 extern void *D_8011D31C;
 extern void *D_8011D320;
+extern struct coords_3d D_8011D3A0[];
+extern f32 *D_8011D3E0;
+extern f32 *D_8011D3E8;
 extern void *D_8011D578; // ai
 extern void *D_8011D77C; // ai
 extern void *D_8011DA58; // ai
@@ -400,6 +403,32 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010841C_31DF
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108478_31DFE8);
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108574_31E0E4, s16 arg0);
+// void func_80108574_31E0E4(s16 arg0) {
+//     void *temp_v0;
+//     void *temp_s2;
+//     void *temp_s3;
+//     struct object *obj;
+
+//     temp_v0 = D_8011FB18[arg0];
+//     if (temp_v0 == NULL) {
+//         if (D_8011FB10 == NULL) {
+//             temp_s3 = func_800D90C8(0x1E, 0);
+//             func_800D9714(temp_s3);
+//             D_8011FB10 = temp_s3;
+//             obj = temp_s3;
+//         }
+//         else {
+//             obj = func_800D975C(D_8011FB10);
+//         }
+//         D_8011FB18[arg0] = obj;
+//         obj->unkA |= 2;
+//         func_80089A20(&obj->coords, &(GetSpaceData(arg0)->coords));
+//         func_80089A70(&obj->coords, D_8011D3A0[arg0].y, &obj->coords);
+//         obj->unk3C->unk24 = D_8011D3E0[arg0];
+//         obj->unk3C->unk2C = D_8011D3E8[arg0];
+//         func_800D9B24(obj);
+//     }
+// }
 
 // draw bank coins
 void func_801086E0_31E250(void) {
