@@ -13,6 +13,7 @@ extern s16 D_800CDD58; // used with direction arrows
 extern u16 D_800CE198;
 extern u16 D_800D037C;
 extern u8 D_800D03F8[];
+extern s32 D_800D41C0;
 extern s16 D_800D51F8; // used with direction arrows
 
 extern void *D_8011A8D8;
@@ -1458,9 +1459,19 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", D_801177DC_32D34C)
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", D_80117C60_32D7D0);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80118308_32DE78);
+INCLUDE_ASM(void, "overlays/board_chillywaters/chillywaters2", func_80118308_32DE78);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80118A98_32E608);
+void func_80118A98_32E608() {
+    struct player *player;
+
+    player = GetPlayerStruct(-1);
+    if (D_800D41C0 != 0) {
+        if ((player->flags2 & 1) == 0) {
+            SleepProcess(0xA);
+            func_80118308_32DE78();
+        }
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80118AE8_32E658);
 
