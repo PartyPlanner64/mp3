@@ -2,7 +2,7 @@
 
 extern s8 D_80102C48;
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E1450_F5070);
+INCLUDE_ASM(s32, "overlays/shared_board/F5070", D_800E1450_F5070);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5070", func_800E17B0_F53D0);
 

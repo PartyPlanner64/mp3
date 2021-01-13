@@ -55,7 +55,7 @@ extern s16 D_800D6A56;
 extern s8 D_800D6A90;
 extern s16 D_800D6B40;
 
-extern void func_80048054();
+extern void D_80048054();
 
 void InitObjSys(s32 maxObjects, s16 maxProcesses) {
     s32 i;
@@ -209,7 +209,7 @@ struct process *InitProcess(void *func, u16 priority, s32 stackSize, s32 extraDa
         process = CreateProcess(func, priority, stackSize, extraDataSize);
         temp_s0->process = process;
         process->dtor_idx = dtorIndex;
-        SetProcessDestructor(temp_s0->process, func_80048054);
+        SetProcessDestructor(temp_s0->process, D_80048054);
         temp_s0->unk8 = 0;
         D_800A1776++;
         return temp_s0->process;
@@ -222,7 +222,7 @@ INCLUDE_ASM(s32, "code_47D60", func_80047F50);
 INCLUDE_ASM(s32, "code_47D60", EndProcess);
 
 // Process destructor used in InitProcess.
-INCLUDE_ASM(void, "code_47D60", func_80048054);
+INCLUDE_ASM(void, "code_47D60", D_80048054);
 
 INCLUDE_ASM(s32, "code_47D60", func_800480E4);
 
@@ -286,7 +286,7 @@ INCLUDE_ASM(s32, "code_47D60", func_80048E88);
 
 INCLUDE_ASM(s32, "code_47D60", func_80048EE8);
 
-INCLUDE_ASM(s32, "code_47D60", func_800499B0);
+INCLUDE_ASM(s32, "code_47D60", D_800499B0);
 
 INCLUDE_ASM(s32, "code_47D60", func_80049F98);
 
@@ -296,7 +296,7 @@ INCLUDE_ASM(s32, "code_47D60", func_8004A0E0);
 
 INCLUDE_ASM(s32, "code_47D60", func_8004A208);
 
-INCLUDE_ASM(s32, "code_47D60", func_8004A354);
+INCLUDE_ASM(s32, "code_47D60", D_8004A354);
 
 void func_8004A444(s8 arg0) {
     D_800A1780 = 1;

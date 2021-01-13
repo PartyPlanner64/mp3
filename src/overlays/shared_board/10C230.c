@@ -197,8 +197,8 @@ s32 func_800F88FC_10C51C() {
 }
 
 // One of these processes per player.
-INCLUDE_ASM(void, "overlays/shared_board/10C230", func_800F8908_10C528);
-// void func_800F8908_10C528() {
+INCLUDE_ASM(void, "overlays/shared_board/10C230", D_800F8908_10C528);
+// void D_800F8908_10C528() {
 //     void *temp_s0;
 
 //     temp_s0 = GetCurrentProcess()->user_data;
@@ -275,7 +275,7 @@ void func_800F89D0_10C5F0(s32 bgIndex, s16 boardDefFile, s32 pauseBgIndex) {
     func_8004CF30();
 
     for (i = 0; i < 4; i++) {
-        process = InitProcess(func_800F8908_10C528, 0, 0, 0x40);
+        process = InitProcess(D_800F8908_10C528, 0, 0, 0x40);
         unkallocated = (s32 *)Malloc(process->heap, 16); // TODO: What type is this?
         process->user_data = unkallocated;
         *unkallocated = i;
@@ -504,7 +504,7 @@ void func_800F9198_10CDB8(s32 arg0) {
     D_8010567C = arg0;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F91A4_10CDC4);
+INCLUDE_ASM(s32, "overlays/shared_board/10C230", D_800F91A4_10CDC4);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F92A0_10CEC0);
 // void func_800F92A0_10CEC0() {
@@ -530,7 +530,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F92A0_10CEC0);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F933C_10CF5C);
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F93A4_10CFC4);
+INCLUDE_ASM(s32, "overlays/shared_board/10C230", D_800F93A4_10CFC4);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F95FC_10D21C);
 
@@ -540,14 +540,14 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F96E0_10D300);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F9A68_10D688);
 
-void func_800F9C68_10D888() {
+void D_800F9C68_10D888() {
     SleepProcess(30);
     func_800035E8(D_800D037E);
     D_800CE206 = 0;
     EndProcess(NULL);
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F9CA0_10D8C0);
+INCLUDE_ASM(s32, "overlays/shared_board/10C230", D_800F9CA0_10D8C0);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800F9D1C_10D93C);
 
@@ -616,8 +616,8 @@ void func_800FCA4C_11066C() {
 }
 
 // Some sort of main process loop during board play.
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FCA7C_11069C);
-// void func_800FCA7C_11069C(void) {
+INCLUDE_ASM(s32, "overlays/shared_board/10C230", D_800FCA7C_11069C);
+// void D_800FCA7C_11069C(void) {
 //     s16 temp_a0;
 //     s16 temp_a0_3;
 //     s16 temp_a0_5;
@@ -1323,7 +1323,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FCA7C_11069C);
 // }
 
 
-void func_800FF0F8_112D18() {
+void D_800FF0F8_112D18() {
     SleepVProcess();
     func_8010067C_11429C(gPlayers[D_800CD058.current_player_index].controller);
     func_800F8C74_10C894();
@@ -1332,7 +1332,7 @@ void func_800FF0F8_112D18() {
     SleepVProcess();
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF158_112D78);
+INCLUDE_ASM(s32, "overlays/shared_board/10C230", D_800FF158_112D78);
 
 INCLUDE_ASM(s32, "overlays/shared_board/10C230", func_800FF41C_11303C);
 

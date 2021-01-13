@@ -229,7 +229,7 @@ INCLUDE_ASM(struct object *, "overlays/shared_board/ECA50", func_800D912C_ECD4C,
 //             phi_s4 = arg4->unk2;
 //             phi_s2 = arg4 + 4;
 //         }
-//         temp_v0_2 = func_80047620(0x4000, 1, phi_s4 & 0xFFFF, -1, func_800D93C0_ECFE0);
+//         temp_v0_2 = func_80047620(0x4000, 1, phi_s4 & 0xFFFF, -1, D_800D93C0_ECFE0);
 //         temp_v0->unk3C = temp_v0_2;
 //         temp_s0 = func_8000B108(file, 0x6A9);
 //         func_80047B38(temp_v0_2, 0x80); // ORs arg 2 into temp_v0_2->unk0
@@ -264,7 +264,7 @@ INCLUDE_ASM(struct object *, "overlays/shared_board/ECA50", func_800D912C_ECD4C,
 //             phi_v1 = 0;
 //         }
 //         if ((((u32) ~shadowFile >> 0x1F) & phi_v1) != 0) {
-//             temp_v0_5 = func_80047620(0x4000, 1, 0, -1, func_800D95D0_ED1F0);
+//             temp_v0_5 = func_80047620(0x4000, 1, 0, -1, D_800D95D0_ED1F0);
 //             temp_v0->unk40 = temp_v0_5;
 //             temp_s0_3 = func_8000B108(shadowFile, 0x229);
 //             func_80047B38(temp_v0_5, 0x80);
@@ -284,13 +284,13 @@ INCLUDE_ASM(struct object *, "overlays/shared_board/ECA50", func_800D912C_ECD4C,
 //     return temp_v0;
 // }
 
-INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D93C0_ECFE0);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", D_800D93C0_ECFE0);
 
 void func_800D95C4_ED1E4(f32 arg0) {
     D_80100D40 = arg0;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D95D0_ED1F0);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", D_800D95D0_ED1F0);
 
 struct object_indirect *func_800D9714_ED334(struct object *obj) {
     struct object_indirect *temp_v0;
@@ -414,7 +414,7 @@ s32 func_800D9E80_EDAA0(struct object *obj) {
     return ret & 0xFFFF;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D9ED0_EDAF0);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", D_800D9ED0_EDAF0);
 
 INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D9F5C_EDB7C);
 

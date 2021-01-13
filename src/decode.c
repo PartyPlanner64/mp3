@@ -30,7 +30,7 @@ extern u8 D_800ABFF0[1024]; // src copy
 extern u8 D_800AC3F0[1024]; // window
 
 // Type 1 decompression.
-INCLUDE_ASM(s32, "decode", DecodeLZ);
+INCLUDE_ASM(void, "decode", DecodeLZ, struct decode_struct *decode);
 // void DecodeLZ(struct decode_struct *decode) {
 //     u16 flag = 0;
 //     u16 windowPos = 958;

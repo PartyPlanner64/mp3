@@ -57,7 +57,7 @@ CFLAGSCOMMON = -G 0 -quiet -mcpu=r4300 -mips2
 ASFLAGS    := -G 0 -I include -mips3 -mabi=32 $(GRUCODE_ASFLAGS)
 OLDASFLAGS := -G 0 -I include -mips2 $(GRUCODE_ASFLAGS)
 CFLAGS     := -O1 $(CFLAGSCOMMON)
-LDFLAGS    := -T undefined_syms.txt -T undefined_funcs.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(LD_MAP) --no-check-sections
+LDFLAGS    := -T undefined_syms.txt -T undefined_funcs.txt -T undefined_funcs_auto.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(LD_MAP) --no-check-sections
 
 # Check code syntax with host compiler
 CC_CHECK := gcc -fsyntax-only -fsigned-char -nostdinc -fno-builtin -I include -I $(BUILD_DIR)/include -I src\

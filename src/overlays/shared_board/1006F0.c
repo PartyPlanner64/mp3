@@ -63,14 +63,14 @@ INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECF18_100B38);
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECF9C_100BBC);
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECFC8_100BE8);
+INCLUDE_ASM(s32, "overlays/shared_board/1006F0", D_800ECFC8_100BE8);
 
 INCLUDE_ASM(struct process *, "overlays/shared_board/1006F0", func_800ED128_100D48);
 // struct process *func_800ED128_100D48(struct coords_3d *arg0, struct coords_3d *arg1, struct coords_3d *arg2, s32 frameCount) {
 //     u8 *temp_s0;
 //     struct process *process;
 
-//     process = InitProcess(func_800ECFC8_100BE8, 0x4002, 0, 0x80);
+//     process = InitProcess(D_800ECFC8_100BE8, 0x4002, 0, 0x80);
 //     temp_s0 = Malloc(process->heap, 0x24);
 //     process->user_data = temp_s0;
 //     func_80089A10(&temp_s0, arg0->x, 0, arg0->z);
@@ -99,17 +99,17 @@ void func_800ED20C_100E2C(s16 playerIndex, s32 frameCount, s16 spaceIndex) {
     func_800ED128_100D48(temp_a2, &coords, temp_a2, frameCount);
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED290_100EB0);
+INCLUDE_ASM(s32, "overlays/shared_board/1006F0", D_800ED290_100EB0);
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED35C_100F7C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED410_101030);
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED518_101138);
+INCLUDE_ASM(s32, "overlays/shared_board/1006F0", D_800ED518_101138);
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED5E0_101200);
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED694_1012B4);
+INCLUDE_ASM(s32, "overlays/shared_board/1006F0", D_800ED694_1012B4);
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ED75C_10137C);
 
@@ -177,14 +177,14 @@ s32 func_800EDA58_101678() {
     return ret;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800EDAF0_101710);
+INCLUDE_ASM(s32, "overlays/shared_board/1006F0", D_800EDAF0_101710);
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800EDB98_1017B8);
 // struct process *func_800EDB98_1017B8(void *arg0, f32 arg1, f32 arg2) {
 //     void *process;
 //     void *temp_v0;
 
-//     process = InitProcess(func_800EDAF0_101710, 0xA, 0, 0x40);
+//     process = InitProcess(D_800EDAF0_101710, 0xA, 0, 0x40);
 //     temp_v0 = Malloc(process->heap, 16);
 //     process->user_data = temp_v0;
 //     temp_v0->unk0 = arg0;

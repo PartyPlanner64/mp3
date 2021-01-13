@@ -1037,9 +1037,8 @@ segments:
       - [0x31B540, "c", "overlays/board_chillywaters/chillywaters"]
       - [0x31B9F0, "c", "overlays/board_chillywaters/chillywaters2"]
       - [0x332DC0, ".data", "overlays/board_chillywaters/chillywaters_main"]
-      - [0x332DF0, "bin"]
-      #- [0x332DF0, "data", "overlays/board_chillywaters/chillywaters2"]
-      #- [0x335440, "rodata", "overlays/board_chillywaters/chillywaters2"]
+      - [0x332DF0, "data", "overlays/board_chillywaters/chillywaters2"]
+      - [0x335440, "rodata", "overlays/board_chillywaters/chillywaters2"]
 
   # Deep Bloober Sea
   - name: overlays/board_deepbloobersea

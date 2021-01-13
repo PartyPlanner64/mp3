@@ -35,8 +35,8 @@ struct arrow_state {
 extern void func_80089AF0(struct coords_3d *, f32, struct coords_3d *);
 
 // allocate individual arrow
-INCLUDE_ASM(struct arrow_instance *, "overlays/shared_board/EA790", func_800D6B70_EA790);
-// struct arrow_instance *func_800D6B70_EA790(s32 arg0) {
+INCLUDE_ASM(struct arrow_instance *, "overlays/shared_board/EA790", D_800D6B70_EA790);
+// struct arrow_instance *D_800D6B70_EA790(s32 arg0) {
 //     struct arrow_instance *arrow;
 //     struct object *obj;
 
@@ -167,8 +167,8 @@ struct arrow_instance *func_800D6EC8_EAAE8(struct arrow_state *arrowState, s16 i
 // 800DA3C8
 
 // FIXME: very far off
-INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D6EE0_EAB00);
-// void func_800D6EE0_EAB00() {
+INCLUDE_ASM(s32, "overlays/shared_board/EA790", D_800D6EE0_EAB00);
+// void D_800D6EE0_EAB00() {
 //     f32 temp_f20;
 //     f32 temp_f22;
 //     f32 temp_f24;
@@ -345,14 +345,14 @@ s32 func_800D7250_EAE70(struct arrow_state *arrowState, OSMesg val) {
     return -1;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/EA790", func_800D7280_EAEA0);
+INCLUDE_ASM(s32, "overlays/shared_board/EA790", D_800D7280_EAEA0);
 
 s8 func_800D742C_EB04C(struct arrow_state *arrowState, s16 playerIndex, s32 arg2) {
     struct player *player;
     struct process *process;
 
     if (arrowState->unk8 == NULL) {
-        process = InitProcess(func_800D6EE0_EAB00, 0xEFFF, 0x1000, 0);
+        process = InitProcess(D_800D6EE0_EAB00, 0xEFFF, 0x1000, 0);
         arrowState->unk8 = process;
         process->user_data = arrowState;
         osCreateMesgQueue(&arrowState->unk10, &arrowState->unk28, 16);
@@ -364,7 +364,7 @@ s8 func_800D742C_EB04C(struct arrow_state *arrowState, s16 playerIndex, s32 arg2
         }
         else {
             arrowState->unkE = player->controller;
-            InitProcess(func_800D7280_EAEA0, 0xEFFF, 0x1000, 0)->user_data = arrowState;
+            InitProcess(D_800D7280_EAEA0, 0xEFFF, 0x1000, 0)->user_data = arrowState;
         }
         return player->flags & 1;
     }
@@ -400,7 +400,7 @@ struct arrow_state *func_800D75E8_EB208(s16 playerIndex, s16 *spaceIndices, s32 
     arrowState = func_800D6C6C_EA88C();
     arrowState->player = player;
     while (*spaceIndices >= 0) {
-        arrow = func_800D6B70_EA790(arg2);
+        arrow = D_800D6B70_EA790(arg2);
         func_800D7568_EB188(arrow, &player->obj->coords, &(GetSpaceData(*spaceIndices)->coords), 18.0f);
         func_800D6D2C_EA94C(arrowState, arrow, 0);
         spaceIndices++;

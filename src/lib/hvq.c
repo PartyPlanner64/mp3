@@ -180,9 +180,9 @@ INCLUDE_ASM(s32, "lib/hvq", func_80066894);
 
 INCLUDE_ASM(s32, "lib/hvq", func_80066A44);
 
-INCLUDE_ASM(s32, "lib/hvq", func_800677B8);
+INCLUDE_ASM(s32, "lib/hvq", D_800677B8);
 
-INCLUDE_ASM(s32, "lib/hvq", func_80067D50);
+INCLUDE_ASM(s32, "lib/hvq", D_80067D50);
 
 INCLUDE_ASM(s32, "lib/hvq", func_80068ECC);
 
@@ -239,11 +239,11 @@ INCLUDE_ASM(void, "lib/hvq", func_80069E68, struct hvq_mps *hvqMps);
 
 //     if (unk19temp == 1) {
 //         D_800BE090 = 0;
-//         D_800BE094 = func_800677B8;
+//         D_800BE094 = D_800677B8;
 //     }
 //     else {
 //         D_800BE090 = 1;
-//         D_800BE094 = func_80067D50;
+//         D_800BE094 = D_80067D50;
 //     }
 
 //     D_800C0BD4 = hvqMps->unk1B;
