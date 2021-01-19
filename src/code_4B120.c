@@ -74,7 +74,9 @@ INCLUDE_ASM(s32, "code_4B120", func_8004ACE0);
 
 INCLUDE_ASM(s32, "code_4B120", func_8004AD50);
 
-INCLUDE_ASM(s32, "code_4B120", func_8004AD70);
+void func_8004AD70() {
+    func_80007DD8(-1);
+}
 
 INCLUDE_ASM(s32, "code_4B120", func_8004AD8C);
 
