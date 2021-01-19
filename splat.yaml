@@ -178,6 +178,7 @@ segments:
     - [0x7F3A0, "asm"]
     - [0x7F590, "asm"]
     - [0x7F800, "asm"]
+    - [0x7F820, "asm"]
     - [0x7FCD0, "asm"]
     - [0x800A0, "asm"]
     - [0x80460, "asm"]
