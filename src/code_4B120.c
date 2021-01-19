@@ -80,7 +80,9 @@ void func_8004AD70() {
 
 INCLUDE_ASM(s32, "code_4B120", func_8004AD8C);
 
-INCLUDE_ASM(s32, "code_4B120", func_8004ADDC);
+void func_8004ADDC(s16 arg0) {
+    func_80007C80(-1, arg0);
+}
 
 INCLUDE_ASM(s32, "code_4B120", func_8004AE00);
 
