@@ -1,10 +1,13 @@
 #include "common.h"
+#include "board.h"
 
 extern u8 D_800CD0B6;
 
 INCLUDE_ASM(s32, "code_36650", func_80035A50);
 
-INCLUDE_ASM(s32, "code_36650", func_80035AA8);
+void func_80035AA8(s8 arg0) {
+    D_800CD058.unk10 = arg0;
+}
 
 INCLUDE_ASM(s32, "code_36650", func_80035AB4);
 
