@@ -1,4 +1,5 @@
 #include "common.h"
+#include "player.h"
 
 extern void *data_1881C40_ROM_START;
 extern void *data_1A56870_ROM_START;
@@ -98,7 +99,11 @@ INCLUDE_ASM(s32, "code_4B120", func_8004B0D4);
 
 INCLUDE_ASM(s32, "code_4B120", func_8004B1AC);
 
-INCLUDE_ASM(s32, "code_4B120", func_8004B25C);
+void func_8004B25C(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
+    if ((gPlayers[arg0].flags & 1) == 0) {
+        func_8005A674(gPlayers[arg0].controller, arg1, arg2, arg3);
+    }
+}
 
 s32 func_8004B2C0() {
     return 0;
