@@ -1,6 +1,8 @@
 #include "common.h"
 #include "board.h"
 
+extern s32 D_800B1A30;
+
 extern void *D_800CC0C8;
 extern s16 D_800CC0CA[];
 
@@ -101,4 +103,6 @@ INCLUDE_ASM(s32, "code_36650", func_8003602C);
 
 INCLUDE_ASM(s32, "code_36650", func_80036080);
 
-INCLUDE_ASM(s32, "code_36650", func_800360B8);
+s32 func_800360B8() {
+    return D_800B1A30;
+}
