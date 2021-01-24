@@ -1,9 +1,23 @@
 #include "common.h"
 #include "board.h"
 
+extern void *D_800CC0C8;
+
 extern u8 D_800CD0B6;
 
-INCLUDE_ASM(s32, "code_36650", func_80035A50);
+extern void *D_800D0308;
+
+void func_80035A50() {
+    u8 *D_800CC0C8loc;
+
+    D_800CC0C8loc = (u8 *)&D_800CC0C8;
+
+    bzero(D_800CC0C8loc, 0xA4);
+    bzero(&D_800D0308, 0x74);
+    *D_800CC0C8loc = 0x91;
+    D_800CD058.current_board_index = 0;
+    D_800CD058.unk10 = 0;
+}
 
 void func_80035AA8(s8 arg0) {
     D_800CD058.unk10 = arg0;
