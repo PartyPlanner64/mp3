@@ -46,9 +46,11 @@ void func_80035C84(s8 arg0) {
     D_800CD058.current_board_index = arg0;
 }
 
-INCLUDE_ASM(s32, "code_36650", func_80035C90);
+INCLUDE_ASM(u8 *, "code_36650", func_80035C90);
 
-INCLUDE_ASM(s32, "code_36650", func_80035CF8);
+u8 func_80035CF8(s16 arg0) {
+    return *func_80035C90(arg0);
+}
 
 INCLUDE_ASM(s32, "code_36650", func_80035D1C);
 
