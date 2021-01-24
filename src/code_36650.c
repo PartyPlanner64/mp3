@@ -42,7 +42,9 @@ u16 func_80035C6C(s16 arg0) {
     return D_800CC0CA[arg0];
 }
 
-INCLUDE_ASM(s32, "code_36650", func_80035C84);
+void func_80035C84(s8 arg0) {
+    D_800CD058.current_board_index = arg0;
+}
 
 INCLUDE_ASM(s32, "code_36650", func_80035C90);
 
