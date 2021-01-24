@@ -38,7 +38,9 @@ void func_80035C20(s16 arg0, s16 arg1) {
     }
 }
 
-INCLUDE_ASM(s32, "code_36650", func_80035C6C);
+u16 func_80035C6C(s16 arg0) {
+    return D_800CC0CA[arg0];
+}
 
 INCLUDE_ASM(s32, "code_36650", func_80035C84);
 
