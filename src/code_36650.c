@@ -2,6 +2,7 @@
 #include "board.h"
 
 extern void *D_800CC0C8;
+extern s16 D_800CC0CA[];
 
 extern u8 D_800CD0B6;
 
@@ -31,7 +32,11 @@ INCLUDE_ASM(s32, "code_36650", func_80035B80);
 
 INCLUDE_ASM(s32, "code_36650", func_80035BD8);
 
-INCLUDE_ASM(s32, "code_36650", func_80035C20);
+void func_80035C20(s16 arg0, s16 arg1) {
+    if (func_80035EB0(0xF) == 0) {
+        D_800CC0CA[arg0] = arg1;
+    }
+}
 
 INCLUDE_ASM(s32, "code_36650", func_80035C6C);
 
