@@ -3,7 +3,7 @@ crc1: 7C3829D9
 crc2: 6E8247CE
 basename: marioparty3
 options:
-  # find-file-boundaries: True
+  # find_file_boundaries: True
   compiler: "GCC"
   mnemonic_ljust: 10
   ld_o_replace_extension: False
@@ -32,10 +32,12 @@ segments:
     - [0xF610, "asm"]
     - [0x12E20, "asm"]
     - [0x13F90, "asm"]
+    - [0x14EA0, "asm"]
     - [0x19C30, "asm"]
     - [0x1A580, "asm"]
     - [0x20A20, "asm"]
     - [0x22EB0, "asm"]
+    - [0x30C40, "asm"]
     - [0x32160, "asm"]
     - [0x34DD0, "asm"]
     - [0x360A0, "c", "thread3_main"]
@@ -55,8 +57,10 @@ segments:
     - [0x4E800, "asm"]
     - [0x4F720, "c", "process"]
     - [0x4FE90, "asm"]
+    - [0x508F0, "asm"]
     - [0x51B50, "asm"]
     - [0x52350, "asm"]
+    - [0x527E0, "asm"]
     - [0x52F30, "asm"]
     - [0x58000, "asm"]
     - [0x5ACF0, "c"]
@@ -68,11 +72,16 @@ segments:
     - [0x6B050, "asm"]
     - [0x6BA20, "asm"]
     - [0x6C140, "asm"]
+    - [0x6C320, "asm"]
+    - [0x6C3A0, "asm"]
+    - [0x6C3C0, "asm"]
     - [0x6C9F0, "asm"]
     - [0x6DBD0, "asm"]
+    - [0x6DBF0, "asm"]
     - [0x6DC10, "asm"]
     - [0x6DC30, "asm"]
     - [0x6DC50, "asm"]
+    - [0x6DCD0, "asm"]
     - [0x6DCE0, "asm"]
     - [0x6DD10, "asm"]
     - [0x6DF20, "asm"]
@@ -303,8 +312,10 @@ segments:
       - [0xAB1C0, "asm"]
       - [0xB3CE0, "asm"]
       - [0xB63A0, "asm"]
+      - [0xB7600, "asm"]
       - [0xB88C0, "asm"]
       - [0xB8A20, "asm"]
+      - [0xBA4B0, "asm"]
       - [0xBC7A0, "asm"]
       - [0xBD210, "asm"]
       - [0xBE2A0, "bin"] # data
@@ -323,15 +334,21 @@ segments:
       - [0xC1D60, "asm"]
       - [0xC4430, "asm"]
       - [0xC45D0, "asm"]
+      - [0xC5770, "asm"]
+      - [0xC9330, "asm"]
+      - [0xC9690, "asm"]
+      - [0xCA640, "asm"]
       - [0xCCD20, "asm"]
       - [0xD1190, "asm"]
       - [0xD28F0, "asm"]
       - [0xD3450, "asm"]
+      - [0xD5B20, "asm"]
       - [0xDBE50, "asm"]
       - [0xDC0D0, "asm"]
       - [0xDC4E0, "asm"]
       - [0xDFD60, "asm"]
       - [0xE3CD0, "asm"]
+      - [0xE78B0, "asm"]
       - [0xE7AE0, "asm"]
       - [0xE8BE0, "bin"] # data
 
@@ -511,6 +528,7 @@ segments:
       - [0x181950, "asm"]
       - [0x18A560, "bin"] # data
 
+  # Toadstool Titan
   - name: overlays/overlay16
     type: code
     overlay: True
@@ -622,6 +640,7 @@ segments:
       - [0x1D9550, "asm"]
       - [0x1DE3D0, "bin"] # data
 
+  # Snowball Summit
   - name: overlays/overlay28
     type: code
     overlay: True
@@ -656,6 +675,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x1F3B90, "asm"]
+      - [0x1FD760, "asm"]
       - [0x1FE270, "bin"] # data
 
   - name: overlays/overlay32
@@ -942,6 +962,7 @@ segments:
       - [0x2DC4D0, "asm"]
       - [0x2E0B70, "bin"] # data
 
+  # Swinging With Sharks
   - name: overlays/overlay63
     type: code
     overlay: True
@@ -976,6 +997,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x2FC270, "asm"]
+      - [0x2FF5F0, "asm"]
       - [0x300F10, "bin"] # data
 
   - name: overlays/overlay67
@@ -1191,6 +1213,7 @@ segments:
       - [0x3D5C30, "asm"]
       - [0x3D7040, "bin"] # data
 
+  # Intro Screens
   - name: overlays/overlay88
     type: code
     overlay: True
@@ -1365,6 +1388,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x46CC10, "asm"]
+      - [0x473130, "asm"]
       - [0x479470, "asm"]
       - [0x47D880, "asm"]
       - [0x47DD90, "asm"]
@@ -1379,6 +1403,7 @@ segments:
       - [0x481970, "asm"]
       - [0x4822F0, "asm"]
       - [0x4832D0, "asm"]
+      - [0x487F50, "asm"]
       - [0x48BAB0, "bin"] # data
 
   - name: overlays/overlay107
@@ -1413,6 +1438,7 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4B29E0, "asm"]
+      - [0x4B4DC0, "asm"]
       - [0x4B9A30, "asm"]
       - [0x4C22A0, "bin"] # data
 
@@ -1424,6 +1450,7 @@ segments:
     files:
       - [0x4C2BD0, "asm"]
       - [0x4C47E0, "asm"]
+      - [0x4C8050, "asm"]
       - [0x4CECF0, "bin"] # data
 
   - name: overlays/overlay111
@@ -1433,8 +1460,10 @@ segments:
     vram: 0x801059A0
     files:
       - [0x4CF350, "asm"]
+      - [0x4D8E80, "asm"]
       - [0x4DE0E0, "bin"] # data
 
+  # Mini-Game Instructions Screen
   - name: overlays/overlay112
     type: code
     overlay: True
@@ -1443,11 +1472,15 @@ segments:
     files:
       - [0x4DEB60, "asm"]
       - [0x4E0630, "asm"]
+      - [0x4E1510, "asm"]
+      - [0x4E1CB0, "asm"]
+      - [0x4E2670, "asm"]
       - [0x4E2C50, "asm"]
       - [0x4E3390, "asm"]
       - [0x4E4B50, "asm"]
       - [0x4E65C0, "bin"] # data
 
+  # Mini-Game Results Screen
   - name: overlays/overlay113
     type: code
     overlay: True
@@ -1469,6 +1502,7 @@ segments:
     files:
       - [0x4EC1B0, "asm"]
       - [0x4ECDE0, "asm"]
+      - [0x4EDCB0, "asm"]
       - [0x4F00D0, "bin"] # data
 
   - name: overlays/overlay115
@@ -1511,6 +1545,7 @@ segments:
       - [0x4F69F0, "c"]
       - [0x4F7550, "bin"] # data
 
+  # Castle Grounds
   - name: overlays/overlay119
     type: code
     overlay: True
@@ -1522,6 +1557,7 @@ segments:
       - [0x4F8140, "asm"]
       - [0x501760, "bin"] # data
 
+  # Configuring gameplay ("warp pipe" in MP1 terminology)
   - name: overlays/overlay120
     type: code
     overlay: True
@@ -1532,8 +1568,11 @@ segments:
       - [0x506F20, "asm"]
       - [0x508D50, "asm"]
       - [0x5092C0, "asm"]
+      - [0x50B740, "asm"]
+      - [0x513B70, "asm"]
       - [0x515670, "bin"] # data
 
+  # Select save game screen
   - name: overlays/overlay121
     type: code
     overlay: True
@@ -1545,6 +1584,7 @@ segments:
       - [0x516D30, "asm"]
       - [0x5238E0, "bin"] # data
 
+  # Start Screen
   - name: overlays/overlay122
     type: code
     overlay: True
@@ -1565,6 +1605,7 @@ segments:
     files:
       - [0x5334D0, "asm"]
       - [0x533500, "asm"]
+      - [0x535A80, "asm"]
       - [0x53DCA0, "asm"]
       - [0x540FE0, "bin"] # data
 
@@ -1577,6 +1618,8 @@ segments:
       - [0x542220, "asm"]
       - [0x5436A0, "asm"]
       - [0x543FC0, "asm"]
+      - [0x544E70, "asm"]
+      - [0x5486A0, "asm"]
       - [0x54CDB0, "bin"] # data
 
   - name: overlays/overlay125
