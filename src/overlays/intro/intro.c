@@ -8,10 +8,14 @@ extern void func_8000BCC8(u16, s32);
 extern void func_8000C184(u16);
 
 extern u16 D_800D530C;
+extern u16 D_800D5558;
 extern u8 D_800D6A58;
 
 s32 D_80105F00_22E660;
+s32 D_80105F04_2A1994;
 extern struct process *D_80105F10; // bss
+
+extern void D_80105BA4_3D7354();
 extern void D_80105C80_3D7430();
 extern void D_80105AF0_3D72A0();
 extern void D_80105C14_3D73C4();
@@ -44,7 +48,27 @@ void func_80105ACC_3D727C() {
     D_801059D0();
 }
 
-INCLUDE_ASM(void, "overlays/intro/intro", D_80105AF0_3D72A0);
+struct unk80105AF0 {
+    s8 unks[0x14];
+    void *unk14;
+};
+
+void D_80105AF0_3D72A0(struct unk80105AF0 *arg0) {
+    if (D_800D530C != 0 || D_80105F04_2A1994 != 0) {
+        if (func_800620BC() == 0) {
+            func_800620C8(0, 0, 0);
+            func_80062050(0xB, 9);
+            arg0->unk14 = D_80105BA4_3D7354;
+            if (D_800D530C != 0) {
+                if (func_800620BC() == 0) {
+                    func_800620C8(0, 0, 0);
+                    func_80062050(0xB, 9);
+                    arg0->unk14 = D_80105BA4_3D7354;
+                }
+            }
+        }
+    }
+}
 
 void D_80105BA4_3D7354() {
     if (func_800620BC() == 0) {
@@ -58,7 +82,22 @@ void D_80105BA4_3D7354() {
     }
 }
 
-INCLUDE_ASM(void, "overlays/intro/intro", D_80105C14_3D73C4);
+void D_80105C14_3D73C4() {
+    s32 temp_s0;
+    s32 temp_v0;
+
+    if (func_800620BC() == 0) {
+        temp_s0 = func_800360B8();
+        if (temp_s0 == 1) {
+            if (func_8000985C(0) != 0) {
+                temp_v0 = D_800D5558 & 0x1000;
+                if (temp_v0 != 0) {
+                    D_80105F04_2A1994 = temp_s0;
+                }
+            }
+        }
+    }
+}
 
 void D_80105C80_3D7430() {
     s16 temp_s2;
