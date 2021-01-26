@@ -4,19 +4,24 @@
 
 struct strCD1DC {
     s32 unk0;
-    s32 unk4;
+    s16 unk4;
+    s16 unk6;
     s16 unk8;
-    s16 unkA;
-    s16 unkC;
+    s16 unkA; // x center
+    s16 unkC; // y center
     s16 unkE;
     s32 unk10;
     s32 unk14;
     s32 unk18;
-    s32 unk1C;
+    s16 unk1C;
+    s16 unk1E;
     s32 unk20;
 }; // sizeof === 0x24;
 
 extern struct strCD1DC *D_800CD1DC;
+
+extern void func_80055458(s16, s32, u16);
+extern void func_800551D8(s16, s32, f32, f32);
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000B5F0);
 
@@ -55,14 +60,21 @@ INCLUDE_ASM(s32, "code_C1F0", func_8000BB94);
 
 // Set sprite center.
 void func_8000BBD4(u16 spriteId, s16 x, s16 y) {
-    struct strCD1DC *temp_v0;
+    struct strCD1DC *sprite;
 
-    temp_v0 = D_800CD1DC + spriteId;
-    temp_v0->unkA = x;
-    temp_v0->unkC = y;
+    sprite = D_800CD1DC + spriteId;
+    sprite->unkA = x;
+    sprite->unkC = y;
 }
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BBFC);
+void func_8000BBFC(u16 spriteId, s16 arg1) {
+    struct strCD1DC *sprite;
+
+    sprite = D_800CD1DC + spriteId;
+    sprite->unk1E = arg1;
+    sprite->unk1C = arg1;
+    func_80055458(sprite->unk4, 0, arg1);
+}
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000BC48);
 
@@ -80,7 +92,13 @@ INCLUDE_ASM(s32, "code_C1F0", func_8000BDDC);
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000BE1C);
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BE5C);
+// Scale sprite.
+void func_8000BE5C(u16 spriteId, f32 x, f32 y) {
+    struct strCD1DC *sprite;
+
+    sprite = D_800CD1DC + spriteId;
+    func_800551D8(sprite->unk4, 0, x, y);
+}
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000BEAC);
 
