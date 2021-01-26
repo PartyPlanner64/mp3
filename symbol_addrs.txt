@@ -62,6 +62,10 @@ CallProcess = 0x8004F0D0;
 AllocProcessMemory = 0x8004F23C;
 FreeProcessMemory = 0x8004F26C;
 
+InitFadeIn = 0x80061FE8;
+InitFadeOut = 0x80062050;
+GetFadeStatus = 0x800620BC;
+
 setjmp = 0x80066500;
 longjmp = 0x80066564;
 

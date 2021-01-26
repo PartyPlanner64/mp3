@@ -56,9 +56,9 @@ INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", D_8010622C_34F09C);
 //     func_800FFF44();
 //     func_800D9B24(D_8011EAC8[D_800CD058.star_spawn_indices[D_800CD058.current_star_spawn]]]);
 //     func_800D9B24(D_8011EAC8[D_800CD058.unk3E]);
-//     func_80061FE8(2, 0x10);
+//     InitFadeIn(2, 0x10);
 
-//     while (func_800620BC() != 0) {
+//     while (GetFadeStatus() != 0) {
 //         SleepVProcess();
 //     }
 
@@ -135,7 +135,7 @@ INCLUDE_ASM(s32, "overlays/board_spinydesert/spinydesert", D_8010622C_34F09C);
 //     func_80060EA8(temp_s1->unk8, 1);
 //     func_8004A994(0x5A);
 //     SleepProcess(0x1E);
-//     func_80062050(2, 0x10);
+//     InitFadeOut(2, 0x10);
 //     SleepProcess(0x11);
 //     D_800A12D4 = 1;
 //     func_80100130();

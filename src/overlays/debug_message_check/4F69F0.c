@@ -17,7 +17,7 @@ extern void func_80019568(s32, f32, f32, f32);
 extern void func_8001C0C4(s32, s32, s32, f32);
 extern void func_8004819C(s32);
 extern void D_8004B340();
-extern s32 func_800620BC();
+extern s32 GetFadeStatus();
 
 extern void func_80105B50_4F6BA0();
 extern s32 D_80106334_4F7384();
@@ -51,7 +51,7 @@ void func_801059A0_4F69F0() {
     func_80019514(3, 0, 0, 0);
     InitProcess(func_80105B50_4F6BA0, 0x3F00, 0x800, 0);
     InitProcess(D_801063BC_4F740C, 0x3F00, 0x800, 0);
-    func_80061FE8(0, 0);
+    InitFadeIn(0, 0);
     D_800CD280 = 1;
     func_8001F38C(0xFF, 0xFF, 0xFF);
 }
@@ -69,8 +69,8 @@ INCLUDE_ASM(s32, "overlays/debug_message_check/4F69F0", func_80105B8C_4F6BDC);
 
 INCLUDE_ASM(s32, "overlays/debug_message_check/4F69F0", D_80106334_4F7384);
 
-void D_80106390_4F73E0(void) {
-    if (func_800620BC() == 0) {
+void D_80106390_4F73E0() {
+    if (GetFadeStatus() == 0) {
         func_8004819C(1);
     }
 }

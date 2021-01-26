@@ -55,14 +55,14 @@ struct unk80105AF0 {
 
 void D_80105AF0_3D72A0(struct unk80105AF0 *arg0) {
     if (D_800D530C != 0 || D_80105F04_2A1994 != 0) {
-        if (func_800620BC() == 0) {
+        if (GetFadeStatus() == 0) {
             func_800620C8(0, 0, 0);
-            func_80062050(0xB, 9);
+            InitFadeOut(0xB, 9);
             arg0->unk14 = D_80105BA4_3D7354;
             if (D_800D530C != 0) {
-                if (func_800620BC() == 0) {
+                if (GetFadeStatus() == 0) {
                     func_800620C8(0, 0, 0);
-                    func_80062050(0xB, 9);
+                    InitFadeOut(0xB, 9);
                     arg0->unk14 = D_80105BA4_3D7354;
                 }
             }
@@ -71,7 +71,7 @@ void D_80105AF0_3D72A0(struct unk80105AF0 *arg0) {
 }
 
 void D_80105BA4_3D7354() {
-    if (func_800620BC() == 0) {
+    if (GetFadeStatus() == 0) {
         func_8005F524();
         if (D_80105F00_22E660 != 0) {
             func_80048228(0x7A, 2, 0x92);
@@ -86,7 +86,7 @@ void D_80105C14_3D73C4() {
     s32 temp_s0;
     s32 temp_v0;
 
-    if (func_800620BC() == 0) {
+    if (GetFadeStatus() == 0) {
         temp_s0 = func_800360B8();
         if (temp_s0 == 1) {
             if (func_8000985C(0) != 0) {
@@ -108,16 +108,15 @@ void D_80105C80_3D7430() {
     func_8000BBD4(temp_s1, 320 / 2, 240 / 2);
     func_8000BB54(temp_s1);
     func_8000BCC8(temp_s1, 0xFFFF);
-    func_80061FE8(0xB, 0x1E);
 
-    while (func_800620BC() != 0) {
+    InitFadeIn(0xB, 0x1E);
+    while (GetFadeStatus() != 0) {
         SleepVProcess();
     }
     SleepProcess(0x25);
 
-    func_80062050(0xB, 9);
-
-    while (func_800620BC() != 0) {
+    InitFadeOut(0xB, 9);
+    while (GetFadeStatus() != 0) {
         SleepVProcess();
     }
 
@@ -130,16 +129,15 @@ void D_80105C80_3D7430() {
     func_8000BBD4(temp_s1, 320 / 2, 240 / 2);
     func_8000BB54(temp_s1);
     func_8000BCC8(temp_s1, 0xFFFF);
-    func_80061FE8(0xB, 9);
 
-    while (func_800620BC() != 0) {
+    InitFadeIn(0xB, 9);
+    while (GetFadeStatus() != 0) {
         SleepVProcess();
     }
     SleepProcess(0x25);
 
-    func_80062050(0xB, 9);
-
-    while (func_800620BC() != 0) {
+    InitFadeOut(0xB, 9);
+    while (GetFadeStatus() != 0) {
         SleepVProcess();
     }
 
@@ -152,12 +150,13 @@ void D_80105C80_3D7430() {
     func_8000BBD4(temp_s1, 320 / 2, 240 / 2);
     func_8000BB54(temp_s1);
     func_8000BCC8(temp_s1, 0xFFFF);
-    func_80061FE8(0xB, 9);
 
-    while (func_800620BC() != 0) {
+    InitFadeIn(0xB, 9);
+    while (GetFadeStatus() != 0) {
         SleepVProcess();
     }
     SleepProcess(0x25);
+
     D_800D530C = 1;
 
     while (1) {

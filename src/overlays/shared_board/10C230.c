@@ -864,7 +864,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/10C230", D_800FCA7C_11069C);
 //                 goto block_42;
 //             }
 
-//             while (func_800620BC() != 0) {
+//             while (GetFadeStatus() != 0) {
 //                 SleepVProcess();
 //             }
 
