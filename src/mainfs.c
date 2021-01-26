@@ -47,7 +47,25 @@ void func_80009AC0(void *fs_rom_loc) {
     D_800ABFD4 = D_800ABFC8;
 }
 
-INCLUDE_ASM(s32, "mainfs", func_80009B64);
+void func_80009B64(s32 type, s32 index, struct mainfs_entry_info *info) {
+    struct mainfs_table_header *mainfs_table_header;
+
+    mainfs_table_header = &D_800ABFE0;
+
+    switch (type) {
+        case 0x2F:
+            info->file_bytes = (u8 *)D_800ABFC0 + D_800ABFC8[index];
+            break;
+        case 0x2E:
+            info->file_bytes = (u8 *)D_800ABFCC + D_800ABFD4[index];
+            break;
+    }
+
+    func_8004DA40(info->file_bytes, mainfs_table_header, 16); // ExecRomCopy
+    info->file_bytes += 8;
+    info->size = mainfs_table_header->count;
+    info->compression_type = mainfs_table_header->offsets[0];
+}
 
 INCLUDE_ASM(s32, "mainfs", ReadMainFS);
 
