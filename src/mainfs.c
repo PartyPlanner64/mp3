@@ -181,7 +181,34 @@ void func_80009E8C(void *file) {
 
 INCLUDE_ASM(s32, "mainfs", func_80009EAC);
 
-INCLUDE_ASM(s32, "mainfs", func_80009F64);
+struct mainfs_something {
+    u16 unk0;
+    s32 unk4;
+    void *unk8;
+    u16 unkC;
+    u16 unkE;
+    s32 unk10;
+    s32 unk14;
+}; // sizeof === 0x18
+
+void *func_80009F64(s32 type, s32 index) {
+    struct mainfs_something *temp_s0;
+    struct mainfs_entry_info info;
+
+    temp_s0 = MallocPerm(sizeof(struct mainfs_something));
+    if (temp_s0 == 0) {
+        return NULL;
+    }
+
+    func_80009B64(type, index, &info);
+    temp_s0->unk4 = info.size;
+    temp_s0->unk0 = (u16)info.compression_type;
+    temp_s0->unk8 = MallocPerm(0x400);
+    temp_s0->unkC = 1;
+    temp_s0->unkE = 0;
+    temp_s0->unk10 = temp_s0->unk14 = info.file_bytes;
+    return temp_s0;
+}
 
 INCLUDE_ASM(s32, "mainfs", func_80009FF8);
 
