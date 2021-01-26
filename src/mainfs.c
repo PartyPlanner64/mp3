@@ -111,7 +111,23 @@ void *func_80009C74(s32 dirAndFile) {
     return NULL;
 }
 
-INCLUDE_ASM(s32, "mainfs", func_80009CD8);
+void *func_80009CD8(s32 dirAndFile, s32 arg1) {
+    u32 dir;
+    u32 file;
+
+    dir = dirAndFile >> 16;
+    file = dirAndFile & 0xFFFF;
+
+    if (dir < D_800ABFC4) {
+        func_80009EAC(0x2F, dir);
+
+        if (file < D_800ABFD0) {
+            return func_80009E04(0x2E, file, arg1);
+        }
+    }
+
+    return NULL;
+}
 
 INCLUDE_ASM(s32, "mainfs", func_80009D4C);
 
