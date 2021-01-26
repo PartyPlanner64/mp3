@@ -30,6 +30,8 @@ extern s32 *D_800ABFD4; // Directory offset table pointer (copy)
 
 extern struct mainfs_table_header D_800ABFE0;
 
+extern void *func_80009D4C(s32 type, s32 index);
+
 // Initialize file system from ROM.
 void func_80009AC0(void *fs_rom_loc) {
     s32 dir_table_size;
@@ -129,7 +131,20 @@ void *func_80009CD8(s32 dirAndFile, s32 arg1) {
     return NULL;
 }
 
-INCLUDE_ASM(s32, "mainfs", func_80009D4C);
+/**
+ * Read file, allocate space in perm heap, decode it.
+ */
+void *func_80009D4C(s32 type, s32 index) {
+    struct mainfs_entry_info info;
+    void *ret;
+
+    func_80009B64(type, index, &info);
+    ret = MallocPerm((info.size + 1) & -2);
+    if (ret != NULL) {
+        DecodeFile(info.file_bytes, ret, info.size, info.compression_type);
+    }
+    return ret;
+}
 
 INCLUDE_ASM(s32, "mainfs", func_80009DA8);
 
