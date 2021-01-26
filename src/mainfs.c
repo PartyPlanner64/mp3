@@ -67,7 +67,27 @@ void func_80009B64(s32 type, s32 index, struct mainfs_entry_info *info) {
     info->compression_type = mainfs_table_header->offsets[0];
 }
 
-INCLUDE_ASM(s32, "mainfs", ReadMainFS);
+/**
+ * Reads a file from the main filesystem and decodes it.
+ * File is in the permanent heap.
+ */
+void *ReadMainFS(s32 dirAndFile) {
+    u32 dir;
+    u32 file;
+
+    dir = dirAndFile >> 16;
+    file = dirAndFile & 0xFFFF;
+
+    if (dir < D_800ABFC4) {
+        func_80009EAC(0x2F, dir);
+
+        if (file < D_800ABFD0) {
+            return func_80009D4C(0x2E, file);
+        }
+    }
+
+    return NULL;
+}
 
 INCLUDE_ASM(s32, "mainfs", func_80009C74);
 
