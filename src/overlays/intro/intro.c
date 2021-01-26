@@ -8,10 +8,29 @@ extern void func_8000BCC8(u16, s32);
 extern void func_8000C184(u16);
 
 extern u16 D_800D530C;
+extern u8 D_800D6A58;
 
 extern s32 D_80105F00_22E660;
+extern struct process *D_80105F10;
+extern void D_80105C80_3D7430();
+extern void D_80105AF0_3D72A0();
+extern void D_80105C14_3D73C4();
 
-INCLUDE_ASM(void, "overlays/intro/intro", D_801059D0_3D7180);
+void D_801059D0_3D7180() {
+    func_80012220(1);
+    InitObjSys(0x10, 4);
+    D_800D6A58 = 1;
+    if (D_80105F00_22E660 == 0) {
+        func_80036080();
+        D_80105F10 = InitProcess(&D_80105C80_3D7430, 0xA, 0, 0);
+        func_80047620(0x3E8, 0, 0, -1, D_80105AF0_3D72A0);
+    }
+    else {
+        D_80105F10 = InitProcess(&D_80105C80_3D7430, 0xA, 0, 0);
+        func_80047620(0x3E8, 0, 0, -1, D_80105AF0_3D72A0);
+        func_80047620(0xA, 0, 0, -1, D_80105C14_3D73C4);
+    }
+}
 
 // entrypoint 0
 void func_80105AAC_3D725C() {
@@ -25,7 +44,7 @@ void func_80105ACC_3D727C() {
     D_801059D0();
 }
 
-INCLUDE_ASM(s32, "overlays/intro/intro", D_80105AF0_3D72A0);
+INCLUDE_ASM(void, "overlays/intro/intro", D_80105AF0_3D72A0);
 
 void D_80105BA4_3D7354() {
     if (func_800620BC() == 0) {
@@ -39,7 +58,7 @@ void D_80105BA4_3D7354() {
     }
 }
 
-INCLUDE_ASM(s32, "overlays/intro/intro", D_80105C14_3D73C4);
+INCLUDE_ASM(void, "overlays/intro/intro", D_80105C14_3D73C4);
 
 void D_80105C80_3D7430() {
     s16 temp_s2;
