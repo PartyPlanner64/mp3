@@ -10,8 +10,8 @@ extern void func_8000C184(u16);
 extern u16 D_800D530C;
 extern u8 D_800D6A58;
 
-extern s32 D_80105F00_22E660;
-extern struct process *D_80105F10;
+s32 D_80105F00_22E660;
+extern struct process *D_80105F10; // bss
 extern void D_80105C80_3D7430();
 extern void D_80105AF0_3D72A0();
 extern void D_80105C14_3D73C4();

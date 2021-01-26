@@ -1223,7 +1223,7 @@ segments:
       - [0x3D7150, "c", "overlays/intro/intro_main"]
       - [0x3D7180, "c", "overlays/intro/intro"]
       - [0x3D7690, ".data", "overlays/intro/intro_main"]
-      - [0x3D76B0, "bin"] # data
+      - [0x3D76B0, ".data", "overlays/intro/intro"]
 
   - name: overlays/overlay89
     type: code
