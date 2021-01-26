@@ -103,9 +103,9 @@ void D_80105C80_3D7430() {
     s16 temp_s2;
     s32 temp_s1;
 
-    temp_s2 = func_8000B838(0x110000);
+    temp_s2 = func_8000B838(0x00110000);
     temp_s1 = func_8000BFEC(temp_s2, 0, 1);
-    func_8000BBD4(temp_s1, 0xA0, 0x78);
+    func_8000BBD4(temp_s1, 320 / 2, 240 / 2);
     func_8000BB54(temp_s1);
     func_8000BCC8(temp_s1, 0xFFFF);
     func_80061FE8(0xB, 0x1E);
@@ -125,9 +125,9 @@ void D_80105C80_3D7430() {
     func_80055670(temp_s2);
     SleepProcess(9);
 
-    temp_s2 = func_8000B838(0x110001);
+    temp_s2 = func_8000B838(0x00110001);
     temp_s1 = func_8000BFEC(temp_s2, 0, 1);
-    func_8000BBD4(temp_s1, 0xA0, 0x78);
+    func_8000BBD4(temp_s1, 320 / 2, 240 / 2);
     func_8000BB54(temp_s1);
     func_8000BCC8(temp_s1, 0xFFFF);
     func_80061FE8(0xB, 9);
@@ -147,9 +147,9 @@ void D_80105C80_3D7430() {
     func_80055670(temp_s2);
     SleepProcess(9);
 
-    temp_s2 = func_8000B838(0x110002);
+    temp_s2 = func_8000B838(0x00110002);
     temp_s1 = func_8000BFEC(temp_s2, 0, 1);
-    func_8000BBD4(temp_s1, 0xA0, 0x78);
+    func_8000BBD4(temp_s1, 320 / 2, 240 / 2);
     func_8000BB54(temp_s1);
     func_8000BCC8(temp_s1, 0xFFFF);
     func_80061FE8(0xB, 9);
