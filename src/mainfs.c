@@ -210,7 +210,10 @@ void *func_80009F64(s32 type, s32 index) {
     return temp_s0;
 }
 
-INCLUDE_ASM(s32, "mainfs", func_80009FF8);
+void func_80009FF8(struct mainfs_something *arg0) {
+    FreePerm(arg0->unk8);
+    FreePerm(arg0);
+}
 
 INCLUDE_ASM(s32, "mainfs", func_8000A028);
 
