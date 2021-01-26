@@ -2,6 +2,8 @@
 
 // Sprite graphics related.
 
+extern void *D_800CD1DC;
+
 INCLUDE_ASM(s32, "code_C1F0", func_8000B5F0);
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000B638);
@@ -25,7 +27,11 @@ s16 func_8000B838(s32 dirAndFile) {
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000B880);
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BA00);
+void func_8000BA00() {
+    func_80056BAC();
+    func_80019A98(D_800CD1DC);
+    D_800CD1DC = NULL;
+}
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000BA30);
 
