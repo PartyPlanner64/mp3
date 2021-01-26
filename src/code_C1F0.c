@@ -2,7 +2,21 @@
 
 // Sprite graphics related.
 
-extern void *D_800CD1DC;
+struct strCD1DC {
+    s32 unk0;
+    s32 unk4;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+}; // sizeof === 0x24;
+
+extern struct strCD1DC *D_800CD1DC;
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000B5F0);
 
@@ -39,7 +53,14 @@ INCLUDE_ASM(s32, "code_C1F0", func_8000BB54);
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000BB94);
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BBD4);
+// Set sprite center.
+void func_8000BBD4(u16 spriteId, s16 x, s16 y) {
+    struct strCD1DC *temp_v0;
+
+    temp_v0 = D_800CD1DC + spriteId;
+    temp_v0->unkA = x;
+    temp_v0->unkC = y;
+}
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000BBFC);
 
