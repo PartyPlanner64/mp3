@@ -72,7 +72,9 @@ INCLUDE_ASM(s32, "code_C1F0", func_8000BA30);
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000BB54);
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BB94);
+void func_8000BB94(u16 spriteId) {
+    func_800553A8((D_800CD1DC + spriteId)->unk4, 0, 0x8000);
+}
 
 // Set sprite center.
 void func_8000BBD4(u16 spriteId, s16 x, s16 y) {
@@ -96,7 +98,7 @@ void func_8000BC48(u16 spriteId, s32 arg1) {
     struct strCD1DC *sprite;
 
     sprite = D_800CD1DC + spriteId;
-    func_800553A8(sprite->unk4, 0, arg1 & 0xFFFF);
+    func_800553A8(sprite->unk4, 0, arg1);
 }
 
 void func_8000BC88(u16 spriteId, s32 arg1) {
