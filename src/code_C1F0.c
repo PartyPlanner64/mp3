@@ -114,7 +114,19 @@ INCLUDE_ASM(s32, "code_C1F0", func_8000BF00);
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000BF48);
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BF8C);
+void func_8000BF8C(u16 spriteId, s16 arg1) {
+    u16 temp_v0;
+    struct strCD1DC *sprite;
+    u16 phi_return;
+
+    sprite = D_800CD1DC + spriteId;
+    sprite->unk0 &= 0xFFFD;
+    if (arg1 > 0) {
+        sprite->unk1E = arg1;
+        sprite->unk1C = arg1;
+        func_80055458(sprite->unk4, 0, arg1 & 0xFFFF);
+    }
+}
 
 // InitEspriteSlot
 s32 func_8000BFEC(s32 arg0, s32 arg1, s32 arg2) {
