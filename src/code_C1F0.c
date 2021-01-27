@@ -19,7 +19,8 @@ struct strCD1DC {
     s32 unk18;
     s16 unk1C;
     s16 unk1E;
-    s32 unk20;
+    s16 unk20;
+    s16 unk22;
 }; // sizeof === 0x24;
 
 extern struct strCD1DC *D_800CD1DC;
@@ -112,7 +113,18 @@ INCLUDE_ASM(s32, "code_C1F0", func_8000BEAC);
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000BF00);
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BF48);
+void func_8000BF48(u16 spriteId, s16 arg1, s16 arg2, s16 arg3) {
+    u16 temp_v0;
+    struct strCD1DC *sprite;
+
+    sprite = D_800CD1DC + spriteId;
+    sprite->unk0 |= 2;
+    sprite->unk1C = arg1;
+    if (arg2 > 0) {
+        sprite->unk1E = arg2;
+    }
+    sprite->unk20 = arg3;
+}
 
 void func_8000BF8C(u16 spriteId, s16 arg1) {
     u16 temp_v0;
