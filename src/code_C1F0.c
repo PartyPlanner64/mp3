@@ -70,7 +70,9 @@ void func_8000BA00() {
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000BA30);
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BB54);
+void func_8000BB54(u16 spriteId) {
+    func_8005532C((D_800CD1DC + spriteId)->unk4, 0, 0x8000);
+}
 
 void func_8000BB94(u16 spriteId) {
     func_800553A8((D_800CD1DC + spriteId)->unk4, 0, 0x8000);
