@@ -47,6 +47,8 @@ INCLUDE_ASM(s32, "code_C1F0", func_8000B690);
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000B710);
 
+// Potential file break, code above seems unrelated.
+
 void func_8000B7A0() {
     struct strCD1DC *sprite;
     u16 i;
