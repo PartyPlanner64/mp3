@@ -28,12 +28,16 @@ extern struct strCD1DC *D_800CD1DC;
 extern s16 D_800D5438;
 
 extern void func_80055024(s16, s32, s16, u16);
+extern void func_800550B4(s16, f32, f32);
 extern void func_800550F4(s16, s32, u16);
-extern void func_80055420(s16, s32, u8, u8, u8);
-extern void func_80055458(s16, s32, u16);
 extern void func_80055140(s16, s32, u16, u16);
 extern void func_800551D8(s16, s32, f32, f32);
+extern void func_80055294(s16, s32, u16);
 extern void func_800552DC(s16, f32, f32);
+extern void func_8005532C(s16, s32, u16);
+extern void func_800553A8(s16, s32, u16);
+extern void func_80055420(s16, s32, u8, u8, u8);
+extern void func_80055458(s16, s32, u16);
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000B5F0);
 
@@ -88,15 +92,40 @@ void func_8000BBFC(u16 spriteId, s16 arg1) {
     func_80055458(sprite->unk4, 0, arg1);
 }
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BC48);
+void func_8000BC48(u16 spriteId, s32 arg1) {
+    struct strCD1DC *sprite;
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BC88);
+    sprite = D_800CD1DC + spriteId;
+    func_800553A8(sprite->unk4, 0, arg1 & 0xFFFF);
+}
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BCC8);
+void func_8000BC88(u16 spriteId, s32 arg1) {
+    struct strCD1DC *sprite;
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BD08);
+    sprite = D_800CD1DC + spriteId;
+    func_8005532C(sprite->unk4, 0, arg1);
+}
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BD50);
+void func_8000BCC8(u16 spriteId, s32 arg1) {
+    struct strCD1DC *sprite;
+
+    sprite = D_800CD1DC + spriteId;
+    func_80055294(sprite->unk4, 0, arg1);
+}
+
+void func_8000BD08(u16 spriteId, f32 arg1) {
+    struct strCD1DC *sprite;
+
+    sprite = D_800CD1DC + spriteId;
+    func_800550B4(sprite->unk4, 0, arg1);
+}
+
+void func_8000BD50(u16 spriteId, s16 arg1) {
+    struct strCD1DC *sprite;
+
+    sprite = D_800CD1DC + spriteId;
+    func_80054FF8(sprite->unk4, 0, arg1);
+}
 
 void func_8000BD94(u16 spriteId, s32 arg1, s32 arg2) {
     struct strCD1DC *sprite;
