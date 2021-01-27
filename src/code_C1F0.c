@@ -47,7 +47,25 @@ INCLUDE_ASM(s32, "code_C1F0", func_8000B690);
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000B710);
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000B7A0);
+void func_8000B7A0() {
+    struct strCD1DC *sprite;
+    u16 i;
+
+    func_80052330();
+    D_800CD1DC = func_800199F8(sizeof(struct strCD1DC) * 0x100);
+    D_800C951C = 0x100;
+    D_800CB8BC = 0;
+
+    for (i = 0; i < 0x100; i++) {
+        sprite = D_800CD1DC + i;
+        sprite->unk0 = 0;
+        sprite->unk2 = i + 1;
+        sprite->unk1C = 0xFF;
+        sprite->unk1E = 0xFF;
+        sprite->unk20 = 0;
+    }
+    D_800D5438 = 0;
+}
 
 // Load sprite from main fs.
 s16 func_8000B838(s32 dirAndFile) {
@@ -68,7 +86,7 @@ void func_8000BA00() {
     D_800CD1DC = NULL;
 }
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BA30);
+INCLUDE_ASM(void, "code_C1F0", func_8000BA30);
 
 void func_8000BB54(u16 spriteId) {
     func_8005532C((D_800CD1DC + spriteId)->unk4, 0, 0x8000);

@@ -32,17 +32,21 @@ rootDir = sys.argv[1]
 cfile = sys.argv[2]
 lineNumber = max(0, int(sys.argv[3]) - 1)
 
-def run_mips_to_c(funcPath, funcName):
+def run_mips_to_c(retType, funcPath, funcName):
     asmPath = rootDir + "/asm/nonmatchings/" + funcPath + "/" + funcName + ".s"
     mipsToCPath = rootDir + "/tools/mips_to_c/mips_to_c.py"
-    subprocess.run([mipsToCPath, asmPath])
+    procArgs = [mipsToCPath]
+    if retType == "void":
+        procArgs.append("--void")
+    procArgs.append(asmPath)
+    subprocess.run(procArgs)
 
 with open(cfile, "r") as infile:
     lines = infile.readlines()
     while (lineNumber >= 0):
         lineText = lines[lineNumber]
-        x = re.match("^/*INCLUDE_ASM\(\w+,\s\"([/\w]+)\",\s(\w+)", lineText)
+        x = re.match("^/*INCLUDE_ASM\((\w+),\s\"([/\w]+)\",\s(\w+)", lineText)
         if x:
-            run_mips_to_c(x.group(1), x.group(2))
+            run_mips_to_c(x.group(1), x.group(2), x.group(3))
             break
         lineNumber = lineNumber - 1
