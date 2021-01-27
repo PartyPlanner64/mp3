@@ -99,7 +99,12 @@ INCLUDE_ASM(s32, "code_C1F0", func_8000BD50);
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000BD94);
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BDDC);
+void func_8000BDDC(u16 spriteId, s32 arg1) {
+    struct strCD1DC *sprite;
+
+    sprite = D_800CD1DC + spriteId;
+    func_800550F4(sprite->unk4, 0, arg1);
+}
 
 u8 func_8000BE1C(u16 spriteId) {
     struct strCD1DC *sprite;
