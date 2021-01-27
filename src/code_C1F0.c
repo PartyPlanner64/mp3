@@ -150,4 +150,16 @@ s32 func_8000BFEC(s32 arg0, s32 arg1, s32 arg2) {
     return spriteIndex;
 }
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000C184);
+// CloseEsprite
+void func_8000C184(u16 arg0) {
+    struct strCD1DC *sprite;
+
+    sprite = D_800CD1DC + arg0;
+    if ((sprite->unk0 & 1) != 0) {
+        func_800525C8(sprite->unk4);
+        sprite->unk0 = 0;
+        sprite->unk2 = D_800D5438;
+        D_800D5438 = arg0;
+        D_800CB8BC--;
+    }
+}
