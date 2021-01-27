@@ -101,7 +101,12 @@ INCLUDE_ASM(s32, "code_C1F0", func_8000BD94);
 
 INCLUDE_ASM(s32, "code_C1F0", func_8000BDDC);
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BE1C);
+u8 func_8000BE1C(u16 spriteId) {
+    struct strCD1DC *sprite;
+
+    sprite = D_800CD1DC + spriteId;
+    return func_800551AC(sprite->unk4, 0);
+}
 
 // Scale sprite.
 void func_8000BE5C(u16 spriteId, f32 x, f32 y) {
