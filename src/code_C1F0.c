@@ -29,6 +29,7 @@ extern s16 D_800D5438;
 
 extern void func_80055024(s16, s32, s16, u16);
 extern void func_800550F4(s16, s32, u16);
+extern void func_80055420(s16, s32, u8, u8, u8);
 extern void func_80055458(s16, s32, u16);
 extern void func_800551D8(s16, s32, f32, f32);
 extern void func_800552DC(s16, f32, f32);
@@ -110,7 +111,12 @@ void func_8000BE5C(u16 spriteId, f32 x, f32 y) {
     func_800551D8(sprite->unk4, 0, x, y);
 }
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000BEAC);
+void func_8000BEAC(u16 spriteId, s32 arg1, s32 arg2, s32 arg3) {
+    struct strCD1DC *sprite;
+
+    sprite = D_800CD1DC + spriteId;
+    func_80055420(sprite->unk4, 0, arg1, arg2, arg3);
+}
 
 void func_8000BF00(u16 spriteId, f32 arg1) {
     struct strCD1DC *sprite;
