@@ -54,4 +54,8 @@ void func_80036448(s32 arg0, struct str80036448 *arg1) {
 
 INCLUDE_ASM(s32, "code_36F80", func_800364DC);
 
-INCLUDE_ASM(s32, "code_36F80", func_800365E8);
+void func_800365E8(void *ptr) {
+    if (ptr != NULL) {
+        FreePerm(ptr);
+    }
+}
