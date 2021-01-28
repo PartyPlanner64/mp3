@@ -22,7 +22,10 @@ void func_80036380(void *stringsRomPtr) {
     func_8004DA40(stringsRomPtr + 4, stringDirTable, D_800B1A4C);
 }
 
-INCLUDE_ASM(s32, "code_36F80", func_80036414);
+void func_80036414(void *ptr) {
+    D_800B1A40 = ptr;
+    func_8004DA40(ptr + 4, D_800B1A48, D_800B1A4C);
+}
 
 INCLUDE_ASM(s32, "code_36F80", func_80036448);
 
