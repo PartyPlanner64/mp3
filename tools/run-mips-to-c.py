@@ -45,7 +45,7 @@ with open(cfile, "r") as infile:
     lines = infile.readlines()
     while (lineNumber >= 0):
         lineText = lines[lineNumber]
-        x = re.match("^/*INCLUDE_ASM\((\w+),\s\"([/\w]+)\",\s(\w+)", lineText)
+        x = re.match("^/*INCLUDE_ASM\(([\w\s\*]+),\s\"([/\w]+)\",\s(\w+)", lineText)
         if x:
             run_mips_to_c(x.group(1), x.group(2), x.group(3))
             break
