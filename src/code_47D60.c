@@ -44,7 +44,7 @@ extern s16 D_800CD2F4;
 
 extern s16 D_800D0A3A;
 extern s8 D_800D1710;
-extern s32 D_800D2118;
+extern void *D_800D2118;
 extern s16 D_800D4082;
 extern f32 D_800D4198[];
 extern f32 D_800D5210;
@@ -279,7 +279,7 @@ struct object_indirect *func_80047620(u16 arg0, u16 arg1, u16 arg2, s16 arg3, vo
 
 INCLUDE_ASM(s32, "code_47D60", func_800477A4);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047898);
+INCLUDE_ASM(void, "code_47D60", func_80047898, struct object_indirect *arg0);
 
 INCLUDE_ASM(s32, "code_47D60", func_800479AC);
 
@@ -293,7 +293,14 @@ void func_80047B48(struct object_indirect *arg0, s32 arg1) {
     arg0->unk0 &= ~arg1;
 }
 
-INCLUDE_ASM(s32, "code_47D60", func_80047B5C);
+INCLUDE_ASM(s16, "code_47D60", func_80047B5C, void *arg0, s16 arg1);
+// s16 func_80047B5C(void *arg0, s16 arg1) {
+//     s16 temp_v0;
+
+//     temp_v0 = arg0->unk22;
+//     D_800A1770[D_800D6B40].unk0 = arg1;
+//     return temp_v0;
+// }
 
 INCLUDE_ASM(s32, "code_47D60", func_80047B80);
 
