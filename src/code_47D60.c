@@ -31,11 +31,11 @@ extern f32 D_800CCF98[];
 extern s16 D_800CD050;
 
 struct strCD1E4 {
-    s16 unk0;
+    u16 unk0;
     u16 unk2;
-    s16 unk4;
-    s32 unk8;
-    s32 unkC;
+    u16 unk4;
+    s16 *unk8;
+    struct object_indirect **unkC;
 };
 extern struct strCD1E4 D_800CD1E0[];
 
@@ -307,7 +307,18 @@ INCLUDE_ASM(s32, "code_47D60", func_80047BFC);
 
 INCLUDE_ASM(s32, "code_47D60", func_80047C0C);
 
-INCLUDE_ASM(void, "code_47D60", func_80047CDC, u16 arg0, struct object_indirect *arg1);
+void func_80047CDC(u16 arg0, struct object_indirect *arg1) {
+    struct strCD1E4 *temp_a2;
+
+    temp_a2 = &D_800CD1E0[arg0];
+    if (temp_a2->unk4 != temp_a2->unk2) {
+        arg1->unkC = arg0;
+        arg1->unkE = temp_a2->unk0;
+        *(temp_a2->unkC + temp_a2->unk0) = arg1;
+        temp_a2->unk0 = *(temp_a2->unk8 + temp_a2->unk0);
+        temp_a2->unk4++;
+    }
+}
 
 INCLUDE_ASM(s32, "code_47D60", func_80047D4C);
 
