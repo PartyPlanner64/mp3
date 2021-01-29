@@ -56,6 +56,7 @@ extern s8 D_800D6A90;
 extern s16 D_800D6B40;
 
 extern void D_80048054();
+extern void func_80047CDC(u16 arg0, struct object_indirect *arg1);
 
 void InitObjSys(s32 maxObjects, s16 maxProcesses) {
     s32 i;
@@ -223,7 +224,58 @@ void func_80047420() {
     D_800D6A40 = 0;
 }
 
-INCLUDE_ASM(struct object_indirect *, "code_47D60", func_80047620);
+struct object_indirect *func_80047620(u16 arg0, u16 arg1, u16 arg2, s16 arg3, void *arg4) {
+    struct object_indirect *objind;
+    s32 i;
+
+    if (D_800CCF8C == D_800CCF50) {
+        return NULL;
+    }
+    objind = &D_800A1770[D_800D6B40];
+    objind->unk2 = D_800D6B40;
+    objind->unk4 = arg0;
+    func_80047898(objind);
+
+    if (arg1 != 0) {
+        objind->unk40 = MallocTemp(arg1 * 2);
+        objind->unk3C = arg1;
+        for (i = 0; i < arg1; i++) {
+            *(objind->unk40 + i) = -1;
+        }
+    }
+    else {
+        objind->unk40 = NULL;
+        objind->unk3C = 0;
+    }
+
+    if (arg2 != 0) {
+        objind->unk48 = MallocTemp(arg2 * 2);
+        objind->unk44 = arg2;
+    }
+    else {
+        objind->unk48 = NULL;
+        objind->unk44 = 0;
+    }
+
+    if (arg3 >= 0) {
+        func_80047CDC(arg3, objind);
+    }
+    else {
+        objind->unkC = arg3;
+        objind->unkE = 0;
+    }
+
+    objind->unk0 = 4;
+    objind->unk10 = 0;
+    objind->unk14 = arg4;
+    objind->unk58 = 0;
+    objind->unk54 = 0;
+    objind->unk50 = 0;
+    objind->unk4C = 0;
+    D_800D6B40 = objind->unkA;
+    D_800CCF8C++;
+    return objind;
+}
 
 INCLUDE_ASM(s32, "code_47D60", func_800477A4);
 
@@ -255,7 +307,7 @@ INCLUDE_ASM(s32, "code_47D60", func_80047BFC);
 
 INCLUDE_ASM(s32, "code_47D60", func_80047C0C);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047CDC);
+INCLUDE_ASM(void, "code_47D60", func_80047CDC, u16 arg0, struct object_indirect *arg1);
 
 INCLUDE_ASM(s32, "code_47D60", func_80047D4C);
 

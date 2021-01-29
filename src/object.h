@@ -63,23 +63,17 @@ struct object_indirect {
     f32 unk34;
     f32 unk38;
 
-    u16 unk3C;
-    struct object_indirect2 *unk40;
+    u16 unk3C; // count of unk40
+    s16 *unk40;
     u16 unk44; // count of unk48
-    s16 pad46;
     s16 *unk48;
-    u8 pad4C;
-    u8 pad4D;
-    u16 pad4E;
-    s32 pad50;
-    s32 pad54;
-    s32 pad58;
+
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
     struct object_indirect3 *unk5C;
 }; // sizeof 0x60
-
-struct object_indirect2 {
-    s16 unk0;
-};
 
 struct object_indirect3 {
     struct object *unk0;
