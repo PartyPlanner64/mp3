@@ -963,13 +963,13 @@ segments:
       - [0x2E0B70, "bin"] # data
 
   # Swinging With Sharks
-  - name: overlays/overlay63
+  - name: overlays/minigames/swinging_with_sharks/
     type: code
     overlay: True
     start: 0x2E0D20
     vram: 0x801059A0
     files:
-      - [0x2E0D20, "asm"]
+      - [0x2E0D20, "c", "overlays/minigames/swinging_with_sharks/swinging_with_sharks"]
       - [0x2E6060, "bin"] # data
 
   - name: overlays/overlay64

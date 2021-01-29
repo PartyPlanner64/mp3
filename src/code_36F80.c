@@ -1,5 +1,7 @@
 #include "common.h"
 
+// string table parsing code.
+
 extern void *D_800B1A40; // strings ROM pointer
 extern s32 D_800B1A44; // string directory count
 extern u32 *D_800B1A48; // string directory table
