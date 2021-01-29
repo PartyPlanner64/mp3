@@ -71,10 +71,8 @@ INCLUDE_ASM(s32, "overlays/minigames/swinging_with_sharks/swinging_with_sharks",
 //     }
 
 //     D_8010B9D8 = phi_a0_2;
-//     temp_v1 = phi_a0_2 * 0x38;
 //     D_8010B9E8 = (gPlayers[phi_a0_2].flags & 1);
 //     gPlayers[phi_a0_2].coins_won = -1;
-//     temp_v0 = ((phi_a0_2 * 8) - phi_a0_2) * 8;
 //     D_8010B9DC = gPlayers[phi_a0_2].character;
 //     D_8010B9DA = gPlayers[phi_a0_2].controller;
 //     func_8010979C_2E4B1C(&D_8010ACEC);
@@ -87,21 +85,21 @@ INCLUDE_ASM(s32, "overlays/minigames/swinging_with_sharks/swinging_with_sharks",
 //             D_8010B9EE = (s16) (s32) ((((((*(&D_8010B8E6 + (((s32) ((GetRandomByte() & 0xFF) * 5) >> 8) * 2)) * 0xC0) + D_800D03F8)->unk1C + 70.0f) / 1000.0f) * 70.0f) + 10.0f);
 //         }
 //     }
-//     D_80107384();
+//     D_80107384_2E2704();
 //     func_801077C4_2E2B44();
-//     D_80108B24();
-//     D_8010AA68();
-//     D_80106334();
+//     D_80108B24_2E3EA4();
+//     D_8010AA68_2E5DE8();
+//     D_80106334_2E16B4();
 //     D_8010ACE4_1E8B04 = 0;
 //     D_8010B9D0 = 80.0f;
 //     D_8010B9DE = (u16)-1;
-//     D_80108C08(0);
-//     D_80108DB0(&D_8010B9B8);
+//     D_80108C08_2E3F88(0);
+//     D_80108DB0_2E4130(&D_8010B9B8);
 //     D_8010B9E4_238A54 = (u16)0;
 //     func_8001FA68(D_8010B91E);
 //     func_8001C514(D_8010B91E);
 //     func_80045010(&D_8010B770, 1);
-//     D_8010A41C();
+//     D_8010A41C_2E579C();
 //     InitProcess(&D_80109950_2E4CD0, 0x3F00, 0x2000, 0);
 //     InitProcess(&D_80109950_2E4CD0, 0x3F00, 0x2000, 0);
 //     func_8004A520(0x44);

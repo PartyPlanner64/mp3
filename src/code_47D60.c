@@ -12,7 +12,7 @@ extern s16 D_800A1776;
 extern s16 D_800A1778;
 
 struct str800A177C {
-    s16 unk0;
+    u16 unk0;
     s16 unk2;
     struct process *process;
     s32 unk8;
@@ -32,7 +32,7 @@ extern s16 D_800CD050;
 
 struct strCD1E4 {
     s16 unk0;
-    s16 unk2;
+    u16 unk2;
     s16 unk4;
     s32 unk8;
     s32 unkC;
@@ -143,10 +143,85 @@ void InitObjSys(s32 maxObjects, s16 maxProcesses) {
     }
 
     D_800D6A40 = 0;
-    D_800CD050 = (u16)0x5A;
+    D_800CD050 = 0x5A;
 }
 
-INCLUDE_ASM(s32, "code_47D60", func_80047420);
+void func_80047420() {
+    void *temp_a0;
+    void *temp_a0_2;
+    void *temp_a0_3;
+    void *temp_a0_4;
+    void *temp_a0_5;
+    s32 temp_s1;
+    s32 temp_s1_2;
+    s32 temp_s1_3;
+    s32 phi_s1;
+    s32 phi_s1_2;
+    s32 phi_s1_3;
+    s32 phi_s1_4;
+    s32 i;
+    struct object_indirect *objind;
+    struct str800A177C *str7c;
+
+    D_800CC430 = -1;
+    for (i = 0; i < D_800CCF50; i++) {
+        objind = &D_800A1770[i];
+        if ((u16)objind->unk0 == 1) {
+            phi_s1_2 = phi_s1 + 1;
+        }
+        else {
+            temp_a0 = objind->unk40;
+            if (temp_a0 != NULL) {
+                FreeTemp(temp_a0);
+            }
+            temp_a0_2 = objind->unk48;
+            if (temp_a0_2 != NULL) {
+                FreeTemp(temp_a0_2);
+            }
+            temp_a0_3 = objind->unk5C;
+            temp_s1 = i + 1;
+            phi_s1_2 = temp_s1;
+            if (temp_a0_3 != NULL) {
+                func_80019A98(temp_a0_3);
+                phi_s1_2 = temp_s1;
+            }
+        }
+    }
+    FreeTemp(D_800A1770);
+    D_800A1770 = NULL;
+    D_800CCF50 = 0;
+
+    for (i = 0; i < 10; i++) {
+        if (D_800CD1E0[i].unk2 != 0) {
+            temp_a0_4 = D_800CD1E0[i].unkC;
+            if (temp_a0_4 != NULL) {
+                FreeTemp(temp_a0_4);
+                D_800CD1E0[i].unkC = NULL;
+            }
+            temp_a0_5 = D_800CD1E0[i].unk8;
+            if (temp_a0_5 != 0) {
+                FreeTemp(temp_a0_5);
+                D_800CD1E0[i].unk8 = NULL;
+            }
+            D_800CD1E0[i].unk2 = 0;
+        }
+    }
+
+    for (i = 0; i < D_800A1774; i++) {
+        str7c = &D_800A177C[i];
+        if (str7c->unk0 != 1) {
+            SetProcessDestructor(str7c->process, str7c->unk8);
+            KillProcess(str7c->process);
+        }
+    }
+    D_800A1774 = 0;
+    D_800A1776 = 0;
+    FreeTemp(D_800A177C);
+    D_800A177C = NULL;
+
+    func_80019B34(0x7918);
+    D_800D6A40 = 0;
+}
 
 INCLUDE_ASM(struct object_indirect *, "code_47D60", func_80047620);
 
