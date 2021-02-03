@@ -7,6 +7,7 @@ extern s8 D_800A2151;
 
 extern s8 D_800A2154[];
 
+// mainfs df pairs for character images showable in message boxes.
 extern s32 D_800A25D0[];
 
 extern s8 D_800BDA6A;
@@ -38,7 +39,7 @@ struct window {
     s16 unk66;
     s32 unk68;
     s16 unk6C;
-    s16 unk6E;
+    s16 unk6E[1]; // actually size 12 or 16
     s8 unks70274[516];
     s16 unk274;
     s16 unk276;
@@ -395,7 +396,33 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8005B68C);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005B6BC);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8005B7B8, s16 winId, s32 arg1, s16 arg2, s16 arg3, s16 arg4);
+s16 func_8005B7B8(s16 arg0, u32 spriteMainFsPair, s16 arg2, s16 arg3, u16 arg4) {
+    s16 spriteId;
+    void *spriteBytes;
+    s16 i;
+    struct window *window;
+
+    window = &D_800CC69C[arg0];
+
+    for (i = 4; i < 12; i++) {
+        if (window->unk6E[i] != -1) {
+            continue;
+        }
+        break;
+    }
+    if (i >= 12) {
+        return -1;
+    }
+
+    spriteBytes = ReadMainFS(spriteMainFsPair);
+    spriteId = func_80055810(spriteBytes);
+    window->unk6E[i] = spriteId;
+    FreePerm(spriteBytes);
+    func_80055024(window->unk6C, i, spriteId, arg4 & 0xFFFF);
+    func_80054904(window->unk6C, i, arg2, arg3);
+    func_800554C4(window->unk6C, i, 0);
+    return i;
+}
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005B8F8);
 
