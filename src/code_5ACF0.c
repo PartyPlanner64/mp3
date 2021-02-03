@@ -44,7 +44,7 @@ struct window {
     s16 unk66;
     s32 unk68;
     s16 unk6C;
-    s16 unk6E[1]; // actually size 12 or 16
+    s16 unk6E[1]; // actually size 16
     s8 unks70274[516];
     s16 unk274;
     s16 unk276;
@@ -57,7 +57,7 @@ extern s8 D_800CD2A4;
 extern s8 D_800D1F34;
 extern void *D_800D1FE4;
 extern s8 D_800D5206[];
-extern s32 D_800D5540;
+extern s8 D_800D5540;
 extern s8 D_800D6A26;
 extern u16 D_800D6B62;
 
@@ -592,7 +592,9 @@ INCLUDE_ASM(s32, "code_5ACF0", func_80060290);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8006034C);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_80060388);
+void func_80060388(s8 arg0) {
+    D_800D5540 = arg0;
+}
 
 INCLUDE_ASM(s32, "code_5ACF0", func_80060394);
 // u16 func_80060394(s16 arg0, void *arg1, ?32 arg2, ?32 arg3) {
