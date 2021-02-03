@@ -561,7 +561,9 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8006010C);
 //     return temp_v0;
 // }
 
-INCLUDE_ASM(s32, "code_5ACF0", func_80060144);
+void func_80060144() {
+
+}
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8006014C);
 
