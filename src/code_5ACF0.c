@@ -633,7 +633,9 @@ INCLUDE_ASM(s32, "code_5ACF0", func_800604A8);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_800605A4);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_80060848);
+void func_80060848() {
+    D_800CD2A4 = 1;
+}
 
 INCLUDE_ASM(s32, "code_5ACF0", func_80060858);
 
