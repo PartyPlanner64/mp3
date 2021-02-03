@@ -18,7 +18,8 @@ extern s16 D_800BDA6E;
 extern s32 D_800CB99C;
 
 struct window {
-    s8 unks03C[0x3C];
+    s8 unks038[0x38];
+    u32 unk38;
     u16 unk3C;
     u16 unk3E;
     s32 unk40;
@@ -538,7 +539,17 @@ INCLUDE_ASM(void, "code_5ACF0", func_8005FE90, s16 arg0);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005FFA8);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_800600C0);
+void func_800600C0(s16 winId, s32 arg1) {
+    struct window *window;
+
+    window = &D_800CC69C[winId];
+    if (arg1 != 0) {
+        window->unk38 |= 0x10;
+    }
+    else {
+        window->unk38 &= ~0x10;
+    }
+}
 
 // Sets an option disabled.
 INCLUDE_ASM(s32, "code_5ACF0", func_8006010C);
