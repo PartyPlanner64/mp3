@@ -18,7 +18,11 @@ extern s16 D_800BDA6E;
 extern s32 D_800CB99C;
 
 struct window {
-    s8 unks038[0x38];
+    s8 unks031[0x31];
+    s8 unk31;
+    s8 unk32;
+    s8 unk33;
+    s32 unk34;
     u32 unk38;
     u16 unk3C;
     u16 unk3E;
@@ -565,7 +569,9 @@ void func_80060144() {
 
 }
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8006014C);
+s8 func_8006014C(s32 winId) {
+    return D_800CC69C[winId].unk31;
+}
 
 INCLUDE_ASM(s32, "code_5ACF0", func_80060174);
 
