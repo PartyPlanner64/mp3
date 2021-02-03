@@ -58,6 +58,7 @@ extern u16 D_800D6B62;
 
 extern void func_80054904(s16, s16, s16, s16);
 extern void func_800551D8(s32, s32, f32, f32);
+extern s16 func_8005BA54(s16, s16);
 extern void func_8005BB18(s16, f32, f32);
 
 extern f32 func_8008EF20(f32);
@@ -424,13 +425,16 @@ s16 func_8005B7B8(s16 arg0, u32 spriteMainFsPair, s16 arg2, s16 arg3, u16 arg4) 
     return i;
 }
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8005B8F8);
+void func_8005B8F8(s16 arg0, s16 arg1) {
+    func_80055670(func_8005BA54(arg0, arg1));
+    D_800CC69C[arg0].unk6E[arg1] = -1;
+}
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005B974);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005BA28);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8005BA54);
+INCLUDE_ASM(s16, "code_5ACF0", func_8005BA54, s16 arg0, s16 arg1);
 
 INCLUDE_ASM(void, "code_5ACF0", func_8005BA90, s16 winId, s16 arg1, s16 arg2);
 
