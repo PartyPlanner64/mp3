@@ -15,6 +15,26 @@
 extern s16 D_800CB8CE[];
 
 extern s16 D_800CDD6A;
+
+struct strD03F8 {
+    s8 unk0;
+    s8 unk1;
+    s8 unk2;
+    s8 unk3;
+    u8 unk4;
+    s8 unk5;
+    s8 unk6;
+    s8 unk7;
+    s8 unks8to40[0x38];
+
+    f32 unk40;
+    f32 unk44;
+    f32 unk48;
+
+    s8 unks4CtoC0[0x74];
+}; // sizeof == 0xC0
+extern struct strD03F8 *D_800D03F8;
+
 extern void (*D_800D135C)(u8 *);
 extern s16 D_800D5204;
 
@@ -185,7 +205,19 @@ INCLUDE_ASM(s32, "code_1A580", func_8001F1FC);
 //     return temp_s0;
 // }
 
-INCLUDE_ASM(s32, "code_1A580", func_8001F304);
+void func_8001F304(s16 arg0, s8 arg1) {
+    struct strD03F8 *temp_v0;
+    f32 zero;
+
+    temp_v0 = D_800D03F8 + arg0;
+    temp_v0->unk2 = arg1;
+    temp_v0->unk3 = 0;
+    zero = 0.0f;
+    temp_v0->unk40 = zero;
+    temp_v0->unk48 = zero;
+    temp_v0->unk44 = 1.0f;
+    temp_v0->unk4 = 0xFF;
+}
 
 INCLUDE_ASM(s32, "code_1A580", func_8001F358);
 
