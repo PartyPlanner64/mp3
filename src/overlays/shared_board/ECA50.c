@@ -109,7 +109,7 @@ extern struct strfunc_800D90C8_ECCE8 D_80100850[]; // model info
 extern f32 D_80100D40;
 extern struct object *D_80102AB0;
 extern u16 D_80102AB4;
-extern u16 D_80102AB8[];
+extern u16 D_80102AB8[]; // animation ids?
 extern s32 D_80102BC0;
 extern *(*D_80102BC4)();
 extern u16 D_80105706;
@@ -296,11 +296,11 @@ struct object_indirect *func_800D9714_ED334(struct object *obj) {
     struct object_indirect *temp_v0;
     struct object_indirect *phi_return;
 
-    func_8001C514(obj->unk3C->unk40->unk0);
+    func_8001C514(*(obj->unk3C->unk40));
     temp_v0 = obj->unk40;
     phi_return = temp_v0;
     if (temp_v0 != NULL) {
-        phi_return = func_8001C514(temp_v0->unk40->unk0);
+        phi_return = func_8001C514(*(temp_v0->unk40));
     }
     return phi_return;
 }
@@ -315,11 +315,11 @@ struct object_indirect *func_800D9A50_ED670(struct object *obj) {
     struct object_indirect *temp_v0;
     struct object_indirect *phi_return;
 
-    func_8001C258(obj->unk3C->unk40->unk0, 4, 0);
+    func_8001C258(*(obj->unk3C->unk40), 4, 0);
     temp_v0 = obj->unk40;
     phi_return = temp_v0;
     if (temp_v0 != NULL) {
-        phi_return = func_8001C258(temp_v0->unk40->unk0, 4, 0);
+        phi_return = func_8001C258(*(temp_v0->unk40), 4, 0);
     }
     return phi_return;
 }
@@ -333,11 +333,11 @@ struct object_indirect *func_800D9AD0_ED6F0(struct object *obj) {
     struct object_indirect *temp_v0;
     struct object_indirect *phi_return;
 
-    func_8001C258(obj->unk3C->unk40->unk0, 4, 4);
+    func_8001C258(*(obj->unk3C->unk40), 4, 4);
     temp_v0 = obj->unk40;
     phi_return = temp_v0;
     if (temp_v0 != NULL) {
-        phi_return = func_8001C258(temp_v0->unk40->unk0, 4, 4);
+        phi_return = func_8001C258(*(temp_v0->unk40), 4, 4);
     }
     return phi_return;
 }
@@ -362,11 +362,11 @@ void func_800D9B54_ED774(struct object *obj) {
             D_80102AB0 = obj->prev;
         }
 
-        func_8001F304(obj->unk3C->unk40->unk0, -1);
-        func_8001ACDC(obj->unk3C->unk40->unk0);
+        func_8001F304(*(obj->unk3C->unk40), -1);
+        func_8001ACDC(*(obj->unk3C->unk40));
 
         if (obj->unk40 != NULL) {
-            func_8001ACDC(obj->unk40->unk40->unk0);
+            func_8001ACDC(*(obj->unk40->unk40));
         }
 
         {
@@ -408,7 +408,7 @@ s32 func_800D9E80_EDAA0(struct object *obj) {
     s32 ret;
 
     ret = 0;
-    if ((*D_800D03F8)[obj->unk3C->unk40->unk0].unk40 == 0.0f) {
+    if ((*D_800D03F8)[*(obj->unk3C->unk40)].unk40 == 0.0f) {
         ret = 1;
     }
     return ret & 0xFFFF;

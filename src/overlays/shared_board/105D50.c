@@ -102,7 +102,7 @@ void func_800F2260_105E80(s32 player_index, f32 arg1) {
     else {
         obj = player->obj;
     }
-    func_8001C92C(obj->unk3C->unk40->unk0, arg1);
+    func_8001C92C(*(obj->unk3C->unk40), arg1);
 }
 
 void func_800F22C0_105EE0(s32 player_index) {

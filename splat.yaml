@@ -34,7 +34,7 @@ segments:
     - [0x13F90, "asm"]
     - [0x14EA0, "asm"]
     - [0x19C30, "asm"]
-    - [0x1A580, "asm"]
+    - [0x1A580, "c"]
     - [0x20A20, "asm"]
     - [0x22EB0, "asm"]
     - [0x30C40, "asm"]

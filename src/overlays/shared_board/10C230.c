@@ -253,10 +253,10 @@ void func_800F89D0_10C5F0(s32 bgIndex, s16 boardDefFile, s32 pauseBgIndex) {
         func_800D9B24_ED744(gPlayers[strloc->current_player_index].obj);
     }
 
-    func_8001FDE8(GetPlayerStruct(0)->obj->unk3C->unk40->unk0);
-    func_8001FDE8(GetPlayerStruct(1)->obj->unk3C->unk40->unk0);
-    func_8001FDE8(GetPlayerStruct(2)->obj->unk3C->unk40->unk0);
-    func_8001FDE8(GetPlayerStruct(3)->obj->unk3C->unk40->unk0);
+    func_8001FDE8(*(GetPlayerStruct(0)->obj->unk3C->unk40));
+    func_8001FDE8(*(GetPlayerStruct(1)->obj->unk3C->unk40));
+    func_8001FDE8(*(GetPlayerStruct(2)->obj->unk3C->unk40));
+    func_8001FDE8(*(GetPlayerStruct(3)->obj->unk3C->unk40));
     func_800F2A20_106640();
     func_800DF854_F3474();
     func_800E17B0_F53D0();
