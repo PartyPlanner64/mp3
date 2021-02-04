@@ -1,5 +1,23 @@
 #include "common.h"
 
+// struct strCB8C0 {
+//     s16 unk0;
+//     s16 unk2;
+//     s16 unk4;
+//     s16 unk6;
+//     s16 unk8;
+//     s16 unkA;
+//     s16 unkC;
+//     s16 unkE;
+// };
+
+// extern struct strCB8C0 *D_800CB8C0;
+extern s16 D_800CB8CE[];
+
+extern s16 D_800CDD6A;
+extern void (*D_800D135C)(u8 *);
+extern s16 D_800D5204;
+
 INCLUDE_ASM(s32, "code_1A580", func_80019980);
 
 INCLUDE_ASM(s32, "code_1A580", func_800199F8);
@@ -145,6 +163,27 @@ INCLUDE_ASM(s32, "code_1A580", func_8001F038);
 INCLUDE_ASM(s32, "code_1A580", func_8001F154);
 
 INCLUDE_ASM(s32, "code_1A580", func_8001F1FC);
+// s16 func_8001F1FC(u8 *mtnx, s16 arg1) {
+//     s16 temp_s0;
+
+//     if (mtnx[0] != 0x4D || mtnx[1] != 0x54 || mtnx[2] != 0x4E || mtnx[3] != 0x58) {
+//         D_800D5204 = 0x2810;
+//         D_800CDD6A = 0x2811;
+//         D_800CB8CE[0] = 0x2810;
+//         func_8000F0A0(&D_800CB8CE[0] - 15, mtnx, arg1);
+//         temp_s0 = func_8002D2D8(mtnx, &D_800CB8CE[0] - 15);
+//         func_80019B34(D_800D5204);
+//         func_80019B34(D_800CDD6A);
+//     }
+//     else {
+//         temp_s0 = func_8002D3AC(mtnx);
+//     }
+
+//     if ((arg1 & 8) != 0) {
+//         D_800D135C(mtnx);
+//     }
+//     return temp_s0;
+// }
 
 INCLUDE_ASM(s32, "code_1A580", func_8001F304);
 
