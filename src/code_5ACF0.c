@@ -455,7 +455,19 @@ INCLUDE_ASM(void, "code_5ACF0", func_8005BDFC, s16 winId, s32 arg0);
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005BE30);
 
-INCLUDE_ASM(void, "code_5ACF0", func_8005BEE0, s16 winId, s32 arg2);
+void func_8005BEE0(s16 winId, s16 arg1) {
+    struct window *window;
+
+    window = &D_800CC69C[winId];
+
+    if (arg1 == 0) {
+        func_800553A8(window->unk6C, 0, 0x8000);
+    }
+    else {
+        func_8005532C(window->unk6C, 0, 0x8000);
+    }
+    func_80055458(window->unk6C, 0, arg1 & 0xFFFF);
+}
 
 INCLUDE_ASM(s32, "code_5ACF0", func_8005BF70);
 
