@@ -70,7 +70,8 @@ INCLUDE_ASM(s32, "code_1A580", func_80019E84);
 
 INCLUDE_ASM(s32, "code_1A580", func_8001A070);
 
-INCLUDE_ASM(s32, "code_1A580", func_8001A150);
+// Loads a model
+INCLUDE_ASM(s16, "code_1A580", func_8001A150);
 
 INCLUDE_ASM(s32, "code_1A580", func_8001A61C);
 

@@ -1,4 +1,5 @@
 #include "common.h"
+#include "../../board.h"
 #include "../../player.h"
 #include "../../object.h"
 #include "../../process.h"
@@ -7,6 +8,7 @@
 extern s8 D_800CD066;
 
 extern s16 func_800F8858_10C478();
+extern u8 GetRandomByte();
 
 void func_800ECAD0_1006F0(s16 arg0, s16 spaceIndex, struct coords_3d *coords) {
     struct space_data *space;
@@ -57,7 +59,10 @@ INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECE4C_100A6C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECE9C_100ABC);
 
-INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECEE4_100B04);
+s16 func_800ECEE4_100B04() {
+    struct strCD058 *cd058 = &D_800CD058;
+    return (cd058->total_turns - cd058->current_turn) + 1;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/1006F0", func_800ECF18_100B38);
 
