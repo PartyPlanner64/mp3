@@ -63,6 +63,7 @@ extern u16 D_800D6B62;
 
 extern void func_80054904(s16, s16, s16, s16);
 extern void func_800551D8(s32, s32, f32, f32);
+extern void func_800552DC(s16, f32, f32);
 extern s16 func_8005BA54(s16, s16);
 extern void func_8005BB18(s16, f32, f32);
 
@@ -457,7 +458,12 @@ INCLUDE_ASM(s32, "code_5ACF0", func_8005BBC0);
 
 INCLUDE_ASM(void, "code_5ACF0", func_8005BCA4, s16 winId, s16 arg1, s16 arg2);
 
-INCLUDE_ASM(s32, "code_5ACF0", func_8005BDA8);
+void func_8005BDA8(s16 winId, f32 arg1) {
+    struct window *window;
+
+    window = &D_800CC69C[winId];
+    func_800552DC(window->unk6C, 0, arg1);
+}
 
 INCLUDE_ASM(void, "code_5ACF0", func_8005BDFC, s16 winId, s32 arg0);
 
