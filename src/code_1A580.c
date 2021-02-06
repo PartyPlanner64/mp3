@@ -19,7 +19,7 @@ extern s16 D_800CDD6A;
 struct strD03F8 {
     s8 unk0;
     s8 unk1;
-    s8 unk2;
+    u8 unk2;
     s8 unk3;
     u8 unk4;
     s8 unk5;
@@ -279,4 +279,6 @@ INCLUDE_ASM(s32, "code_1A580", func_8001FBFC);
 
 INCLUDE_ASM(s32, "code_1A580", func_8001FD08);
 
-INCLUDE_ASM(s32, "code_1A580", func_8001FDE8);
+void func_8001FDE8(s16 arg0) {
+    (D_800D03F8 + arg0)->unk2 = 0xFF;
+}
