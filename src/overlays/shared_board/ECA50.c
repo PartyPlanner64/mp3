@@ -114,6 +114,7 @@ extern s32 D_80102BC0;
 extern *(*D_80102BC4)();
 extern u16 D_80105706;
 
+extern void func_8001C624(s16, s16, s16, s16, s16);
 extern void func_80089A10(void *, f32, f32, f32);
 extern void func_800D95C4_ED1E4(f32);
 
@@ -400,7 +401,18 @@ INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D9CB0_ED8D0);
 
 INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D9CE8_ED908);
 
-INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D9D84_ED9A4);
+void func_800D9D84_ED9A4(struct object *obj, s16 arg1, s16 arg2, s16 arg3, u16 arg4) {
+    s16 phi_v1;
+
+    if (arg1 == -1) {
+        phi_v1 = obj->unk44;
+    }
+    else {
+        phi_v1 = obj->unk3C->unk48[arg1];
+    }
+    obj->unk46 = arg1;
+    func_8001C624(*(obj->unk3C->unk40), phi_v1, arg2, arg3, arg4);
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D9E0C_EDA2C);
 
