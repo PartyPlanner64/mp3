@@ -38,7 +38,12 @@ struct strD03F8 {
     f32 unk50;
     f32 unk54;
 
-    s8 unks58toC0[0x68];
+    s8 unks58toB0[0x58];
+
+    s32 unkB0;
+    struct strD03F8 *unkB4;
+    s32 unkB8;
+    s32 unkBC;
 }; // sizeof == 0xC0
 extern struct strD03F8 *D_800D03F8;
 
@@ -273,7 +278,16 @@ INCLUDE_ASM(s32, "code_1A580", func_8001FA68);
 
 INCLUDE_ASM(s32, "code_1A580", func_8001FB34);
 
-INCLUDE_ASM(s32, "code_1A580", func_8001FBBC);
+void func_8001FBBC(s16 arg0, s8 arg1, s8 arg2, s8 arg3) {
+    struct strD03F8 *other;
+
+    other = (D_800D03F8 + arg0)->unkB4;
+    if (other != NULL) {
+        other->unk0 = arg1;
+        other->unk1 = arg2;
+        other->unk2 = arg3;
+    }
+}
 
 INCLUDE_ASM(s32, "code_1A580", func_8001FBFC);
 
