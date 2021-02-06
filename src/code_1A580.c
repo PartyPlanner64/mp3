@@ -25,13 +25,20 @@ struct strD03F8 {
     s8 unk5;
     s8 unk6;
     s8 unk7;
-    s8 unks8to40[0x38];
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s8 unks10to40[0x30];
 
     f32 unk40;
     f32 unk44;
     f32 unk48;
+    f32 unk4C;
+    f32 unk50;
+    f32 unk54;
 
-    s8 unks4CtoC0[0x74];
+    s8 unks58toC0[0x68];
 }; // sizeof == 0xC0
 extern struct strD03F8 *D_800D03F8;
 
@@ -117,7 +124,23 @@ INCLUDE_ASM(s32, "code_1A580", func_8001C514);
 
 INCLUDE_ASM(s32, "code_1A580", func_8001C5B4);
 
-INCLUDE_ASM(s32, "code_1A580", func_8001C624);
+void func_8001C624(s16 arg0, u8 arg1, s16 arg2, s16 arg3, u16 arg4) {
+    struct strD03F8 *temp_a0;
+
+    temp_a0 = D_800D03F8 + arg0;
+    if (temp_a0->unk4 != 0xFF) {
+        temp_a0->unk2 = temp_a0->unk4;
+        temp_a0->unk40 = temp_a0->unk4C;
+        temp_a0->unk3 = temp_a0->unk5;
+        temp_a0->unk48 = temp_a0->unk54;
+    }
+    temp_a0->unk4 = (u8)arg1;
+    temp_a0->unk4C = arg2;
+    temp_a0->unkE = (u16)0;
+    temp_a0->unkC = arg3;
+    temp_a0->unk5 = (u8)arg4;
+    temp_a0->unk54 = 0.0f;
+}
 
 INCLUDE_ASM(s32, "code_1A580", func_8001C6A8);
 
