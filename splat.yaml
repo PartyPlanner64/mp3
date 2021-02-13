@@ -298,6 +298,8 @@ segments:
     subalign: 8
     files:
     - [0x8FCF0, "bin"]
+    - [0x96EF0, ".data", "code_BCA0"]
+    - [0x98258, "bin"]
     - [0x98310, "bin"]
     - [0xA7590, ".rodata", "decode"]
     - [0xA75A8, "bin"]
