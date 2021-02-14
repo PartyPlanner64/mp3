@@ -1,9 +1,6 @@
 #include "common.h"
 #include "player.h"
 
-extern void *data_1881C40_ROM_START;
-extern void *data_1A56870_ROM_START;
-
 extern u8 D_800D09A8;
 
 struct str800D5298 {

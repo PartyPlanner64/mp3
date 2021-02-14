@@ -6,8 +6,6 @@
 #include "../../process.h"
 #include "../../spaces.h"
 
-extern void *data_128CC60_ROM_START; // hvq rom
-
 struct hvq_table_initial {
     u32 count;
     u32 offsets[3];

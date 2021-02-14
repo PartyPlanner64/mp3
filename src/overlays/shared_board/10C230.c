@@ -6,8 +6,6 @@
 #include "../../spaces.h"
 #include "../../code_47D60.h"
 
-extern void *data_128CC60_ROM_START;
-
 extern s16 D_800A12C8;
 extern s32 D_800A12D4;
 extern s32 D_800A12D8;

@@ -3,11 +3,6 @@
 #include "process.h"
 #include "player.h"
 
-extern void *data_1209850_ROM_START; // strings
-extern void *data_1881C40_ROM_START;
-extern void *data_1A56870_ROM_START;
-extern void *data_1EFD040_ROM_START;
-
 extern u16 D_800A190C;
 extern u16 D_800A190E;
 

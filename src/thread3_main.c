@@ -14,8 +14,6 @@ extern OSMesgQueue D_800CCF60;
 extern s32 D_800D1F70;
 extern u32 D_800D2094;
 
-extern void *data_557E20_ROM_START;
-
 #define INTR_MESG_BUF_SIZE 256
 #define OTHER_MESG_BUF_SIZE 8
 
