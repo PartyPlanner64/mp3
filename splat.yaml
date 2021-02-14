@@ -4,6 +4,7 @@ crc2: 6E8247CE
 basename: marioparty3
 options:
   # find_file_boundaries: True
+  platform: n64
   compiler: "GCC"
   mnemonic_ljust: 10
   ld_o_replace_extension: False

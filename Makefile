@@ -61,6 +61,7 @@ LDFLAGS    := -T undefined_syms.txt -T undefined_funcs.txt -T undefined_funcs_au
 
 # Check code syntax with host compiler
 CC_CHECK := gcc -fsyntax-only -fsigned-char -nostdinc -fno-builtin -I include -I $(BUILD_DIR)/include -I src\
+	-D CC_CHECK\
 	-std=gnu90 -Wall -Wextra -Wno-format-security -Wno-unused-parameter -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast $(GRUCODE_CFLAGS)
 ifneq ($(CHECK),1)
 CC_CHECK += -w
@@ -101,8 +102,11 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	@mkdir -p $(shell dirname $@)
 	$(CPP) -DBUILD_DIR=$(BUILD_DIR) -o $@ $<
 
+include/ld_addrs.h: $(BUILD_DIR)/$(LD_SCRIPT)
+	grep -E "[^ .]+ =" $< -o | sed 's/^/extern void */; s/ =/;/' > $@
+
 # Pre-process .c files with the modern cpp.
-$(BUILD_DIR)/src/%.i: src/%.c
+$(BUILD_DIR)/src/%.i: src/%.c include/ld_addrs.h
 	@mkdir -p $(shell dirname $@)
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $@.d $<
 	$(CPP) -MMD -MP -MT $@ -MF $@.d -I include/ -o $@ $<
