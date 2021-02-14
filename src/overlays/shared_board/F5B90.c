@@ -369,7 +369,9 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E53A4_F8FC4);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E5604_F9224);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E57C8_F93E8);
+s32 func_800E57C8_F93E8() {
+    return D_80102D36 & 4;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E57D8_F93F8);
 
