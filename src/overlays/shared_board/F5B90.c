@@ -192,7 +192,10 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E2354_F5F74);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E2390_F5FB0);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E2904_F6524);
+void func_800E2904_F6524() {
+    LinkChildProcess(GetCurrentProcess(), InitProcess(&D_800E2390_F5FB0, 0x1003, 0, 0));
+    WaitForChildProcess();
+}
 
 s16 func_800E2954_F6574() {
     return D_80102C50;
