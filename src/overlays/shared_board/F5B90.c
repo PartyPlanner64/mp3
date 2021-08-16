@@ -50,6 +50,7 @@ extern u8 *D_801012C4;
 extern u32 D_801012C8[];
 extern u32 D_80101318[];
 extern s32 D_80102180;
+extern s16 D_80102C50;
 extern void *D_80102C58[]; // function pointers given by board.
 extern void (*D_80102C7C)();
 
@@ -193,7 +194,9 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E2390_F5FB0);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E2904_F6524);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E2954_F6574);
+s16 func_800E2954_F6574() {
+    return D_80102C50;
+}
 
 void func_800E2960_F6580(s32 arg0, void *arg1) {
     D_80102C58[arg0] = arg1;
