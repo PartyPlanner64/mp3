@@ -51,6 +51,7 @@ extern u32 D_801012C8[];
 extern u32 D_80101318[];
 extern s32 D_80102180;
 extern s16 D_80102C50;
+extern s16 D_80102C52;
 extern void *D_80102C58[]; // function pointers given by board.
 extern void (*D_80102C7C)();
 
@@ -186,7 +187,17 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E22B4_F5ED4);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E22CC_F5EEC);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E22DC_F5EFC);
+//INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E22DC_F5EFC);
+void func_800E22DC_F5EFC(s16 arg0, s16 arg1) {
+    if (arg1 == GetCurrentPlayerIndex()) {
+        D_80102C50 = arg1;
+        D_80102C52 = arg0;
+    }
+    else {
+        D_80102C50 = arg0;
+        D_80102C52 = arg1;
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E2354_F5F74);
 
