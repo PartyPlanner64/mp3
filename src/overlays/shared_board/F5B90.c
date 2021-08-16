@@ -52,8 +52,7 @@ extern u32 D_80101318[];
 extern s32 D_80102180;
 extern s16 D_80102C50;
 extern s16 D_80102C52;
-extern void *D_80102C58[]; // function pointers given by board.
-extern void (*D_80102C7C)();
+extern void (*D_80102C58[])(); // function pointers given by board.
 
 extern u8 D_80102D36;
 extern void *D_80102DB0; // hvq rom offset copied here
@@ -234,7 +233,10 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E2C74_F6894);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E2C9C_F68BC);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E2CC4_F68E4);
+s32 func_800E2CC4_F68E4() {
+    D_80102C58[3]();
+    return 1;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E2CEC_F690C);
 
@@ -287,7 +289,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E455C_F817C);
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E48F4_F8514);
 
 void func_800E4954_F8574() {
-    D_80102C7C();
+    D_80102C58[9]();
 }
 
 // PlayerHasItem
