@@ -183,11 +183,13 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E21F4_F5E14);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E2260_F5E80);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E22B4_F5ED4);
+void func_800E22B4_F5ED4() {
+    D_80102C50 = -1;
+    D_80102C52 = -1;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E22CC_F5EEC);
 
-//INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E22DC_F5EFC);
 void func_800E22DC_F5EFC(s16 arg0, s16 arg1) {
     if (arg1 == GetCurrentPlayerIndex()) {
         D_80102C50 = arg1;
