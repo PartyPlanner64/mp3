@@ -16,6 +16,8 @@ extern u8 D_800D03F8[];
 extern s32 D_800D41C0;
 extern s16 D_800D51F8; // used with direction arrows
 
+extern s16 D_80105702; // window id
+
 extern void *D_8011A8D8;
 extern s32 D_8011E280[];
 extern s16 D_8011D2C0[];
@@ -590,7 +592,71 @@ void func_8010A068_31FBD8() {
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", D_8010A098_31FC08);
 
+// GetBasicPromptSelection
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", D_8010A134_31FCA4);
+// void D_8010A134_31FCA4(s32 arg0, s32 arg1) {
+//     s16 sp18;
+//     s32 temp_s0;
+//     s32 temp_s2;
+//     s32 i;
+//     s32 phi_s1_2;
+//     s32 phi_s2;
+//     s32 phi_s2_2;
+//     s32 phi_s0;
+//     s32 phi_v0;
+//     s32 phi_s2_3;
+
+//     for (i = 0; i < 4; i++) {
+//         if (i == D_800CD058.current_player_index) {
+//             if ((gPlayers[i].flags & 1) != 0) {
+//                 if (arg0 != 1) {
+//                     if (arg0 >= 2) {
+//                         phi_s2 = arg1 + 1;
+//                         if (arg0 != 2) {
+//                             goto block_13;
+//                         }
+//                     } else if (arg0 != 0) {
+// block_13:
+//                         phi_s2 = func_800DA190(arg0) + 1;
+//                     } else {
+//                         phi_s2 = func_800EF0D8(0) + 1;
+//                     }
+//                 } else {
+//                     phi_s2 = func_800EF0D8(1) + 1;
+//                 }
+//                 &sp18[gPlayers[i].controller] = 0x400;
+//                 break;
+//             }
+//             func_8005FE54(D_80105702, (sp + gPlayers[i].controller)->unk20);
+//             *(gPlayers[i].controller + &sp18) = -1;
+//         } else {
+//             *(gPlayers[i].controller + &sp18) = 0;
+//         }
+//     }
+
+//     if (phi_s2 != 0) {
+//         func_8005B63C(D_80105702, 2, 2);
+//         phi_s0 = 0;
+//         do {
+//             temp_s2 = phi_s2_2 - 1;
+//             phi_s2_2 = temp_s2;
+//             if (temp_s2 == 0) {
+//                 *(gPlayers[D_800CD058.current_player_index].controller + &sp18) = -0x8000;
+//             }
+//             phi_v0 = 5;
+//             if (phi_s0 == 0) {
+//                 phi_v0 = func_800EDC40() & 0xFF;
+//             }
+//             func_8005F698(sp18, sp1A, sp1C, sp1E, phi_v0);
+//             phi_s0 += 1;
+//         } while (temp_s2 != 0);
+//     }
+//     else {
+//         func_8005F744(sp18, sp1A, sp1C, sp1E);
+//     }
+
+//     func_8005E1D8(D_80105702, 0, 1);
+// }
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", D_8010A3B8_31FF28);
 
