@@ -2,7 +2,7 @@
 #include "process.h"
 #include "object.h"
 #include "heap_temporary.h"
-#include "code_47D60.h"
+#include "47D60.h"
 
 extern s8 D_800A1762;
 extern s16 D_800A1768;
@@ -277,13 +277,13 @@ struct object_indirect *func_80047620(u16 arg0, u16 arg1, u16 arg2, s16 arg3, vo
     return objind;
 }
 
-INCLUDE_ASM(s32, "code_47D60", func_800477A4);
+INCLUDE_ASM(s32, "47D60", func_800477A4);
 
-INCLUDE_ASM(void, "code_47D60", func_80047898, struct object_indirect *arg0);
+INCLUDE_ASM(void, "47D60", func_80047898, struct object_indirect *arg0);
 
-INCLUDE_ASM(s32, "code_47D60", func_800479AC);
+INCLUDE_ASM(s32, "47D60", func_800479AC);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047B30);
+INCLUDE_ASM(s32, "47D60", func_80047B30);
 
 void func_80047B38(struct object_indirect *arg0, s32 arg1) {
     arg0->unk0 |= arg1;
@@ -293,7 +293,7 @@ void func_80047B48(struct object_indirect *arg0, s32 arg1) {
     arg0->unk0 &= ~arg1;
 }
 
-INCLUDE_ASM(s16, "code_47D60", func_80047B5C, void *arg0, s16 arg1);
+INCLUDE_ASM(s16, "47D60", func_80047B5C, void *arg0, s16 arg1);
 // s16 func_80047B5C(void *arg0, s16 arg1) {
 //     s16 temp_v0;
 
@@ -302,17 +302,17 @@ INCLUDE_ASM(s16, "code_47D60", func_80047B5C, void *arg0, s16 arg1);
 //     return temp_v0;
 // }
 
-INCLUDE_ASM(s32, "code_47D60", func_80047B80);
+INCLUDE_ASM(s32, "47D60", func_80047B80);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047BAC);
+INCLUDE_ASM(s32, "47D60", func_80047BAC);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047BDC);
+INCLUDE_ASM(s32, "47D60", func_80047BDC);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047BEC);
+INCLUDE_ASM(s32, "47D60", func_80047BEC);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047BFC);
+INCLUDE_ASM(s32, "47D60", func_80047BFC);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047C0C);
+INCLUDE_ASM(s32, "47D60", func_80047C0C);
 
 void func_80047CDC(u16 arg0, struct object_indirect *arg1) {
     struct strCD1E4 *temp_a2;
@@ -327,17 +327,17 @@ void func_80047CDC(u16 arg0, struct object_indirect *arg1) {
     }
 }
 
-INCLUDE_ASM(s32, "code_47D60", func_80047D4C);
+INCLUDE_ASM(s32, "47D60", func_80047D4C);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047DBC);
+INCLUDE_ASM(s32, "47D60", func_80047DBC);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047DD4);
+INCLUDE_ASM(s32, "47D60", func_80047DD4);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047DFC);
+INCLUDE_ASM(s32, "47D60", func_80047DFC);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047E5C);
+INCLUDE_ASM(s32, "47D60", func_80047E5C);
 
-INCLUDE_ASM(s32, "code_47D60", func_80047E90);
+INCLUDE_ASM(s32, "47D60", func_80047E90);
 
 struct process *InitProcess(void *func, u16 priority, s32 stackSize, s32 extraDataSize) {
     s16 dtorIndex;
@@ -362,14 +362,14 @@ struct process *InitProcess(void *func, u16 priority, s32 stackSize, s32 extraDa
     return NULL;
 }
 
-INCLUDE_ASM(s32, "code_47D60", func_80047F50);
+INCLUDE_ASM(s32, "47D60", func_80047F50);
 
-INCLUDE_ASM(s32, "code_47D60", EndProcess);
+INCLUDE_ASM(s32, "47D60", EndProcess);
 
 // Process destructor used in InitProcess.
-INCLUDE_ASM(void, "code_47D60", D_80048054);
+INCLUDE_ASM(void, "47D60", func_80048054);
 
-INCLUDE_ASM(s32, "code_47D60", func_800480E4);
+INCLUDE_ASM(s32, "47D60", func_800480E4);
 
 // Changes overlay with some logic beforehand.
 s32 func_80048128(s32 arg0, s16 arg1, u16 arg2) {
@@ -409,9 +409,9 @@ s32 func_8004819C(s32 arg0) {
 }
 
 // Changes overlay
-INCLUDE_ASM(s32, "code_47D60", func_80048228);
+INCLUDE_ASM(s32, "47D60", func_80048228);
 
-INCLUDE_ASM(s32, "code_47D60", func_80048460);
+INCLUDE_ASM(s32, "47D60", func_80048460);
 
 void func_8004849C() {
     D_800A1762 = 4;
@@ -425,23 +425,23 @@ void func_8004849C() {
     D_800CD280 = 1;
 }
 
-INCLUDE_ASM(s32, "code_47D60", func_80048504);
+INCLUDE_ASM(s32, "47D60", func_80048504);
 
-INCLUDE_ASM(s32, "code_47D60", func_80048E88);
+INCLUDE_ASM(s32, "47D60", func_80048E88);
 
-INCLUDE_ASM(s32, "code_47D60", func_80048EE8);
+INCLUDE_ASM(s32, "47D60", func_80048EE8);
 
-INCLUDE_ASM(s32, "code_47D60", D_800499B0);
+INCLUDE_ASM(s32, "47D60", func_800499B0);
 
-INCLUDE_ASM(s32, "code_47D60", func_80049F98);
+INCLUDE_ASM(s32, "47D60", func_80049F98);
 
-INCLUDE_ASM(s32, "code_47D60", func_80049FB8);
+INCLUDE_ASM(s32, "47D60", func_80049FB8);
 
-INCLUDE_ASM(s32, "code_47D60", func_8004A0E0);
+INCLUDE_ASM(s32, "47D60", func_8004A0E0);
 
-INCLUDE_ASM(s32, "code_47D60", func_8004A208);
+INCLUDE_ASM(s32, "47D60", func_8004A208);
 
-INCLUDE_ASM(s32, "code_47D60", D_8004A354);
+INCLUDE_ASM(s32, "47D60", func_8004A354);
 
 void func_8004A444(s8 arg0) {
     D_800A1780 = 1;
@@ -457,4 +457,4 @@ void func_8004A468(s16 arg0, s16 arg1, s16 arg2) {
     D_800D0A3A = 4;
 }
 
-INCLUDE_ASM(s32, "code_47D60", func_8004A49C);
+INCLUDE_ASM(s32, "47D60", func_8004A49C);

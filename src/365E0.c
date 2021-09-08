@@ -1,5 +1,5 @@
 #include "common.h"
-#include "code_365E0.h"
+#include "365E0.h"
 
 // Function called by `main` overlay entrypoints, usually boards,
 // that redirects to some particular function based on current state.

@@ -65,7 +65,7 @@ void func_800354A0() {
     func_80009880();
     func_8004D9A0();
 
-    func_80009AC0(&data_557E20_ROM_START);
+    func_80009AC0(&bin_mainfs_ROM_START);
 
     InitProcessSys();
 

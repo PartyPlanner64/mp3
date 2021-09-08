@@ -136,7 +136,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E1F70_F5B90);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E2074_F5C94);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E20A4_F5CC4);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E20A4_F5CC4);
 
 struct unkf800E210C {
     s8 unk0;
@@ -162,7 +162,7 @@ void *func_800E210C_F5D2C(s16 arg0, s16 arg1, s8 arg2) {
         temp_v0->unk0 = (s8)arg0;
         temp_v0->unk2 = arg1;
         temp_v0->unk1 = arg2;
-        temp_v0_2 = func_80047620(0x100, 0, 0, -1, D_800E20A4_F5CC4);
+        temp_v0_2 = func_80047620(0x100, 0, 0, -1, func_800E20A4_F5CC4);
         temp_v0->unk4 = temp_v0_2;
         temp_v0_2->unk5C = temp_v0;
         func_80047B38(temp_v0->unk4, 0x80);
@@ -202,10 +202,10 @@ void func_800E22DC_F5EFC(s16 arg0, s16 arg1) {
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E2354_F5F74);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E2390_F5FB0);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E2390_F5FB0);
 
 void func_800E2904_F6524() {
-    LinkChildProcess(GetCurrentProcess(), InitProcess(&D_800E2390_F5FB0, 0x1003, 0, 0));
+    LinkChildProcess(GetCurrentProcess(), InitProcess(&func_800E2390_F5FB0, 0x1003, 0, 0));
     WaitForChildProcess();
 }
 
@@ -268,19 +268,19 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E34E0_F7100);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E3584_F71A4);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E35F8_F7218);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E35F8_F7218);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E3734_F7354);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E378C_F73AC);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E378C_F73AC);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E3F54_F7B74);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E400C_F7C2C);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E400C_F7C2C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E4160_F7D80);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E41FC_F7E1C);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E41FC_F7E1C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E44E4_F8104);
 
@@ -380,11 +380,11 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E4B60_F8780);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E4BA0_F87C0);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E4C68_F8888);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E4C68_F8888);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E4DC0_F89E0);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E4DC0_F89E0);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E5100_F8D20);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E5100_F8D20);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E53A4_F8FC4);
 
@@ -404,13 +404,13 @@ s32 func_800E5B80_F97A0() {
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E5B90_F97B0);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E5BE4_F9804);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E5BE4_F9804);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E5CE0_F9900);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E5D40_F9960);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E5DA8_F99C8);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E5DA8_F99C8);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E5DD4_F99F4);
 
@@ -418,7 +418,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E60D8_F9CF8);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E6120_F9D40);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E61C0_F9DE0);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E61C0_F9DE0);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E6264_F9E84);
 
@@ -561,7 +561,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E6AC4_FA6E4);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E6C4C_FA86C);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E6C80_FA8A0);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E6C80_FA8A0);
 // void D_800E6C80_FA8A0() {
 //     OSMesg msg;
 
@@ -580,7 +580,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E6C80_FA8A0);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E6CF8_FA918);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E6DEC_FAA0C);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E6DEC_FAA0C);
 // void D_800E6DEC_FAA0C() {
 //     OSMesg msg;
 //     void *temp_a0;
@@ -614,9 +614,9 @@ void func_800E6EC8_FAAE8() {
     osCreateMesgQueue(&D_80104928, &D_80104940, 0x24);
     osCreateMesgQueue(&D_801049D0, &D_801049E8, 2);
     D_80104070 = 1;
-    func_8007C810(&D_80103EC0, 0x64, D_800E6DEC_FAA0C, 0, &D_80104880, 1);
+    func_8007C810(&D_80103EC0, 0x64, func_800E6DEC_FAA0C, 0, &D_80104880, 1);
     osStartThread(&D_80103EC0);
-    func_8007C810(&D_80103510, 0x65, D_800E6C80_FA8A0, 0, &D_80103EC0, 4);
+    func_8007C810(&D_80103510, 0x65, func_800E6C80_FA8A0, 0, &D_80103EC0, 4);
     osStartThread(&D_80103510);
 }
 
@@ -762,7 +762,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E7514_FB134);
 // These next two are likely the bulk of the board background layout logic.
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E76EC_FB30C);
 
-INCLUDE_ASM(void, "overlays/shared_board/F5B90", D_800E86CC_FC2EC);
+INCLUDE_ASM(void, "overlays/shared_board/F5B90", func_800E86CC_FC2EC);
 
 f32 func_800E8DC8_FC9E8() {
     return D_80101250;
@@ -773,7 +773,7 @@ void func_800E8DD4_FC9F4(f32 arg0) {
 }
 
 // A process that does logic based on D_80101250.
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E8DE0_FCA00);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E8DE0_FCA00);
 
 struct process *func_800E8EDC_FCAFC(f32 arg0) {
     f32 *floatMem;
@@ -781,14 +781,14 @@ struct process *func_800E8EDC_FCAFC(f32 arg0) {
     if (D_80103414 != NULL) {
         EndProcess(D_80103414);
     }
-    D_80103414 = InitProcess(D_800E8DE0_FCA00, 1, 0, 0x40);
+    D_80103414 = InitProcess(func_800E8DE0_FCA00, 1, 0, 0x40);
     floatMem = Malloc(D_80103414->heap, 16);
     D_80103414->user_data = floatMem;
     *floatMem = arg0;
     return D_80103414;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E8F54_FCB74);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E8F54_FCB74);
 
 struct process *func_800E9044_FCC64(f32 arg0) {
     f32 *floatMem;
@@ -796,7 +796,7 @@ struct process *func_800E9044_FCC64(f32 arg0) {
     if (D_80103414 != NULL) {
         EndProcess(D_80103414);
     }
-    D_80103414 = InitProcess(D_800E8F54_FCB74, 1, 0, 0x40);
+    D_80103414 = InitProcess(func_800E8F54_FCB74, 1, 0, 0x40);
     floatMem = Malloc(D_80103414->heap, 16);
     D_80103414->user_data = floatMem;
     *floatMem = arg0;
@@ -825,7 +825,7 @@ void func_800E9344_FCF64(f32 arg0, f32 arg1) {
     D_80101254 = arg1;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E9358_FCF78);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E9358_FCF78);
 
 void func_800E9730_FD350(f32 arg0) {
     D_80103418 = arg0;
@@ -902,7 +902,7 @@ void func_800E9AF0_FD710(s32 arg0, s32 arg1) {
 }
 
 void func_800E9BB0_FD7D0() {
-    func_800E6630_FA250(&data_128CC60_ROM_START);
+    func_800E6630_FA250(&bin_hvq_ROM_START);
 }
 
 void func_800E9BD0_FD7F0(s32 bgIndex) {
@@ -917,7 +917,7 @@ void func_800E9C00_FD820(s16 arg0, s16 arg1) {
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E9C28_FD848);
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800E9C94_FD8B4);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E9C94_FD8B4);
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E9EF4_FDB14);
 
@@ -1021,7 +1021,7 @@ void func_800EA6E0_FE300(s32 arg0, s16 arg1) {
 }
 
 // Draws spaces
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", D_800EA6F4_FE314);
+INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800EA6F4_FE314);
 
 u16 *func_800EAE00_FEA20(u8 *arr, s32 index) {
     u16 offset = *((u16 *)(arr + index));

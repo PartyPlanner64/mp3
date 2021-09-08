@@ -111,25 +111,25 @@ _Printf = 0x80081A40;
 osGetCount = 0x800830A0;
 
 // shared_board/F5070
-PlayerHasEmptyItemSlot = 0x800E49DC;
-FixUpPlayerItemSlots = 0x800E4A08;
-GetSpaceData = 0x800EB160;
-GetAbsSpaceIndexFromChainSpaceIndex = 0x800EB184;
-GetChainLength = 0x800EB1B0;
+PlayerHasEmptyItemSlot = 0x800E49DC; // type:func rom:0xF85FC
+FixUpPlayerItemSlots = 0x800E4A08; // type:func rom:0xF8628
+GetSpaceData = 0x800EB160; // type:func rom:0xFED80
+GetAbsSpaceIndexFromChainSpaceIndex = 0x800EB184; // type:func rom:0xFEDA4
+GetChainLength = 0x800EB1B0; // type:func rom:0xFEDD0
 GetChainSpaceIndexFromAbsSpaceIndex = 0x800EB1CC;
 SetSpaceType = 0x800EB7F0;
-SetCurrentSpaceIndex = 0x800EBCBC;
-GetCurrentSpaceIndex = 0x800EBCC8;
+SetCurrentSpaceIndex = 0x800EBCBC; // type:func rom:0xFF8DC
+GetCurrentSpaceIndex = 0x800EBCC8; // type:func rom:0xFF8E8
 
 // shared_board/1006F0
-SetPlayerOntoChain = 0x800ED91C;
+SetPlayerOntoChain = 0x800ED91C; // type:func rom:0x10153C
 SetNextChainAndSpace = 0x800ED998;
 SetPrevChainAndSpace = 0x800ED9F8;
 
 // shared_board/105D50
-GetCurrentPlayerIndex = 0x800F2130;
-GetPlayerStruct = 0x800F213C;
+GetCurrentPlayerIndex = 0x800F2130; // type:func rom:0x105D50
+GetPlayerStruct = 0x800F213C; // type:func rom:0x105D5C
 PlayerIsCurrent = 0x800F217C;
-PlayerIsCPU = 0x800F2198;
-AdjustPlayerCoins = 0x800F21C0;
-PlayerHasCoins = 0x800F2230;
+PlayerIsCPU = 0x800F2198; // type:func rom:0x105DB8
+AdjustPlayerCoins = 0x800F21C0; // type:func rom:0x105DE0
+PlayerHasCoins = 0x800F2230; // type:func rom:0x105E50

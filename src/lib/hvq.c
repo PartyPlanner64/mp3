@@ -180,9 +180,9 @@ INCLUDE_ASM(s32, "lib/hvq", func_80066894);
 
 INCLUDE_ASM(s32, "lib/hvq", func_80066A44);
 
-INCLUDE_ASM(s32, "lib/hvq", D_800677B8);
+INCLUDE_ASM(s32, "lib/hvq", func_800677B8);
 
-INCLUDE_ASM(s32, "lib/hvq", D_80067D50);
+INCLUDE_ASM(s32, "lib/hvq", func_80067D50);
 
 INCLUDE_ASM(s32, "lib/hvq", func_80068ECC);
 

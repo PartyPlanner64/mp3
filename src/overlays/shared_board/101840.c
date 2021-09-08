@@ -39,7 +39,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EE700_102320);
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EE740_102360);
 
-INCLUDE_ASM(s32, "overlays/shared_board/101840", D_800EE7AC_1023CC);
+INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EE7AC_1023CC);
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EE884_1024A4);
 
@@ -219,7 +219,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EF898_1034B8);
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EF8F4_103514);
 
-INCLUDE_ASM(s32, "overlays/shared_board/101840", D_800EFA34_103654);
+INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EFA34_103654);
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800EFD8C_1039AC);
 
@@ -245,12 +245,12 @@ INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800F0E28_104A48);
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800F0E34_104A54);
 
-INCLUDE_ASM(s32, "overlays/shared_board/101840", D_800F0EF0_104B10);
+INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800F0EF0_104B10);
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800F102C_104C4C);
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800F1C94_1058B4);
 
-INCLUDE_ASM(s32, "overlays/shared_board/101840", D_800F1D34_105954);
+INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800F1D34_105954);
 
 INCLUDE_ASM(s32, "overlays/shared_board/101840", func_800F1EC8_105AE8);

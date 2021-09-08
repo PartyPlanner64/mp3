@@ -11,41 +11,41 @@ extern u16 D_800D530C;
 extern u16 D_800D5558;
 extern u8 D_800D6A58;
 
-s32 D_80105F00_22E660;
-s32 D_80105F04_2A1994;
+static s32 D_80105F00_22E660;
+static s32 D_80105F04_2A1994;
 extern struct process *D_80105F10; // bss
 
-extern void D_80105BA4_3D7354();
-extern void D_80105C80_3D7430();
-extern void D_80105AF0_3D72A0();
-extern void D_80105C14_3D73C4();
+extern void func_80105BA4_3D7354();
+extern void func_80105C80_3D7430();
+extern void func_80105AF0_3D72A0();
+extern void func_80105C14_3D73C4();
 
-void D_801059D0_3D7180() {
+void func_801059D0_3D7180() {
     func_80012220(1);
     InitObjSys(0x10, 4);
     D_800D6A58 = 1;
     if (D_80105F00_22E660 == 0) {
         func_80036080();
-        D_80105F10 = InitProcess(&D_80105C80_3D7430, 0xA, 0, 0);
-        func_80047620(0x3E8, 0, 0, -1, D_80105AF0_3D72A0);
+        D_80105F10 = InitProcess(&func_80105C80_3D7430, 0xA, 0, 0);
+        func_80047620(0x3E8, 0, 0, -1, func_80105AF0_3D72A0);
     }
     else {
-        D_80105F10 = InitProcess(&D_80105C80_3D7430, 0xA, 0, 0);
-        func_80047620(0x3E8, 0, 0, -1, D_80105AF0_3D72A0);
-        func_80047620(0xA, 0, 0, -1, D_80105C14_3D73C4);
+        D_80105F10 = InitProcess(&func_80105C80_3D7430, 0xA, 0, 0);
+        func_80047620(0x3E8, 0, 0, -1, func_80105AF0_3D72A0);
+        func_80047620(0xA, 0, 0, -1, func_80105C14_3D73C4);
     }
 }
 
 // entrypoint 0
 void func_80105AAC_3D725C() {
     D_80105F00_22E660 = 0;
-    D_801059D0_3D7180();
+    func_801059D0_3D7180();
 }
 
 // entrypoint 1
 void func_80105ACC_3D727C() {
     D_80105F00_22E660 = 1;
-    D_801059D0();
+    func_801059D0_3D7180();
 }
 
 struct unk80105AF0 {
@@ -53,24 +53,24 @@ struct unk80105AF0 {
     void *unk14;
 };
 
-void D_80105AF0_3D72A0(struct unk80105AF0 *arg0) {
+void func_80105AF0_3D72A0(struct unk80105AF0 *arg0) {
     if (D_800D530C != 0 || D_80105F04_2A1994 != 0) {
         if (GetFadeStatus() == 0) {
             func_800620C8(0, 0, 0);
             InitFadeOut(0xB, 9);
-            arg0->unk14 = D_80105BA4_3D7354;
+            arg0->unk14 = func_80105BA4_3D7354;
             if (D_800D530C != 0) {
                 if (GetFadeStatus() == 0) {
                     func_800620C8(0, 0, 0);
                     InitFadeOut(0xB, 9);
-                    arg0->unk14 = D_80105BA4_3D7354;
+                    arg0->unk14 = func_80105BA4_3D7354;
                 }
             }
         }
     }
 }
 
-void D_80105BA4_3D7354() {
+void func_80105BA4_3D7354() {
     if (GetFadeStatus() == 0) {
         func_8005F524();
         if (D_80105F00_22E660 != 0) {
@@ -82,7 +82,7 @@ void D_80105BA4_3D7354() {
     }
 }
 
-void D_80105C14_3D73C4() {
+void func_80105C14_3D73C4() {
     s32 temp_s0;
     s32 temp_v0;
 
@@ -99,7 +99,7 @@ void D_80105C14_3D73C4() {
     }
 }
 
-void D_80105C80_3D7430() {
+void func_80105C80_3D7430() {
     s16 temp_s2;
     s32 temp_s1;
 

@@ -37,7 +37,7 @@ LD_MAP := $(BUILD_DIR)/$(TARGET).map
 PYTHON := python3
 N64CKSUM := tools/n64cksum
 SPLAT_YAML := splat.yaml
-SPLAT = $(PYTHON) tools/n64splat/split.py $(BASEROM) $(SPLAT_YAML) .
+SPLAT = $(PYTHON) tools/n64splat/split.py $(SPLAT_YAML)
 EMULATOR = mupen64plus
 SHA1SUM = sha1sum
 
@@ -70,7 +70,8 @@ endif
 ### Sources ###
 
 # Object files
-OBJECTS = $(subst BUILD_DIR, $(BUILD_DIR), $(shell grep -E 'BUILD_DIR.+\.o' marioparty3.ld -o))
+OBJECTS = $(shell grep -E 'build.+\.o' marioparty3.ld -o)
+
 
 ### Targets ###
 
@@ -82,7 +83,7 @@ clean:
 	rm -rf $(BUILD_DIR)
 
 clean-all:
-	rm -rf $(BUILD_DIR) asm bin
+	rm -rf $(BUILD_DIR) asm assets
 
 setup: clean submodules split
 	make -C tools
@@ -91,9 +92,9 @@ submodules:
 	git submodule update --init --recursive
 
 split:
-	rm -rf bin asm
+	rm -rf assets asm
 	$(SPLAT)
-	sed -i 's/\.L800CD1A0/D_800CD1A0/g' asm/code_824C0.s
+	sed -i 's/\.L800CD1A0/D_800CD1A0/g' asm/824C0.s
 
 test: $(ROM)
 	$(EMULATOR) $<
@@ -102,11 +103,8 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	@mkdir -p $(shell dirname $@)
 	$(CPP) -DBUILD_DIR=$(BUILD_DIR) -o $@ $<
 
-include/ld_addrs.h: $(BUILD_DIR)/$(LD_SCRIPT)
-	grep -E "[^ .]+ =" $< -o | sed 's/^/extern void */; s/ =/;/' > $@
-
 # Pre-process .c files with the modern cpp.
-$(BUILD_DIR)/src/%.i: src/%.c include/ld_addrs.h
+$(BUILD_DIR)/src/%.i: src/%.c
 	@mkdir -p $(shell dirname $@)
 	@$(CC_CHECK) -MMD -MP -MT $@ -MF $@.d $<
 	$(CPP) -MMD -MP -MT $@ -MF $@.d -I include/ -o $@ $<

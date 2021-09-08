@@ -26,13 +26,13 @@ void func_80035AA8(s8 arg0) {
     D_800CD058.unk10 = arg0;
 }
 
-INCLUDE_ASM(s32, "code_36650", func_80035AB4);
+INCLUDE_ASM(s32, "36650", func_80035AB4);
 
-INCLUDE_ASM(s32, "code_36650", func_80035B2C);
+INCLUDE_ASM(s32, "36650", func_80035B2C);
 
-INCLUDE_ASM(s32, "code_36650", func_80035B80);
+INCLUDE_ASM(s32, "36650", func_80035B80);
 
-INCLUDE_ASM(s32, "code_36650", func_80035BD8);
+INCLUDE_ASM(s32, "36650", func_80035BD8);
 
 void func_80035C20(s16 arg0, s16 arg1) {
     if (func_80035EB0(0xF) == 0) {
@@ -48,27 +48,27 @@ void func_80035C84(s8 arg0) {
     D_800CD058.current_board_index = arg0;
 }
 
-INCLUDE_ASM(u8 *, "code_36650", func_80035C90);
+INCLUDE_ASM(u8 *, "36650", func_80035C90);
 
 u8 func_80035CF8(s16 arg0) {
     return *func_80035C90(arg0);
 }
 
-INCLUDE_ASM(s32, "code_36650", func_80035D1C);
+INCLUDE_ASM(s32, "36650", func_80035D1C);
 
-INCLUDE_ASM(s32, "code_36650", func_80035DA4);
+INCLUDE_ASM(s32, "36650", func_80035DA4);
 
-INCLUDE_ASM(s32, "code_36650", func_80035E3C);
+INCLUDE_ASM(s32, "36650", func_80035E3C);
 
-INCLUDE_ASM(s32, "code_36650", func_80035E60);
+INCLUDE_ASM(s32, "36650", func_80035E60);
 
-INCLUDE_ASM(s32, "code_36650", func_80035E88);
+INCLUDE_ASM(s32, "36650", func_80035E88);
 
-INCLUDE_ASM(s32, "code_36650", func_80035EB0);
+INCLUDE_ASM(s32, "36650", func_80035EB0);
 
-INCLUDE_ASM(s32, "code_36650", func_80035EF4);
+INCLUDE_ASM(s32, "36650", func_80035EF4);
 
-INCLUDE_ASM(s32, "code_36650", func_80035F44);
+INCLUDE_ASM(s32, "36650", func_80035F44);
 
 // IsBoardFeatureFlagSet
 s32 func_80035F98(s32 feature) {
@@ -97,11 +97,11 @@ s32 func_80035F98(s32 feature) {
     return ret & (1 << b);
 }
 
-INCLUDE_ASM(s32, "code_36650", func_80035FDC);
+INCLUDE_ASM(s32, "36650", func_80035FDC);
 
-INCLUDE_ASM(s32, "code_36650", func_8003602C);
+INCLUDE_ASM(s32, "36650", func_8003602C);
 
-INCLUDE_ASM(s32, "code_36650", func_80036080);
+INCLUDE_ASM(s32, "36650", func_80036080);
 
 s32 func_800360B8() {
     return D_800B1A30;

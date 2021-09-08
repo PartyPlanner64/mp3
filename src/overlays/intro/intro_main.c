@@ -1,5 +1,5 @@
 #include "common.h"
-#include "../../code_365E0.h"
+#include "../../365E0.h"
 
 extern s16 D_800A1764;
 

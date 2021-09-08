@@ -14,7 +14,7 @@ extern f32 func_800E8DC8_FC9E8();
 extern struct process *func_800E8EDC_FCAFC(f32 arg0);
 extern void func_800E98E8_FD508(void *arg0);
 
-INCLUDE_ASM(s32, "overlays/shared_board/113750", D_800FFB30_113750);
+INCLUDE_ASM(s32, "overlays/shared_board/113750", func_800FFB30_113750);
 
 INCLUDE_ASM(s32, "overlays/shared_board/113750", func_800FFD0C_11392C);
 
@@ -38,7 +38,7 @@ void func_80100228_113E48() {
     func_800F5DD8_1099F8();
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/113750", D_8010024C_113E6C);
+INCLUDE_ASM(s32, "overlays/shared_board/113750", func_8010024C_113E6C);
 
 void func_80100630_114250() {
     while (TRUE) {
@@ -63,7 +63,7 @@ void func_8010067C_11429C(s32 controller) {
     WaitForChildProcess();
     EndProcess(process);
     curProcess = GetCurrentProcess();
-    process = InitProcess(D_8010024C_113E6C, 0x1005, 0, 0);
+    process = InitProcess(func_8010024C_113E6C, 0x1005, 0, 0);
     process->user_data = controller;
     func_80047B80(process, 0x80);
     LinkChildProcess(curProcess, process);

@@ -285,13 +285,13 @@ INCLUDE_ASM(struct object *, "overlays/shared_board/ECA50", func_800D912C_ECD4C,
 //     return temp_v0;
 // }
 
-INCLUDE_ASM(s32, "overlays/shared_board/ECA50", D_800D93C0_ECFE0);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D93C0_ECFE0);
 
 void func_800D95C4_ED1E4(f32 arg0) {
     D_80100D40 = arg0;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/ECA50", D_800D95D0_ED1F0);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D95D0_ED1F0);
 
 struct object_indirect *func_800D9714_ED334(struct object *obj) {
     struct object_indirect *temp_v0;
@@ -426,7 +426,7 @@ s32 func_800D9E80_EDAA0(struct object *obj) {
     return ret & 0xFFFF;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/ECA50", D_800D9ED0_EDAF0);
+INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D9ED0_EDAF0);
 
 INCLUDE_ASM(s32, "overlays/shared_board/ECA50", func_800D9F5C_EDB7C);
 

@@ -127,7 +127,7 @@ void func_8000E3C0() {
     func_8001A070(&MallocPerm, &FreePerm, D_800D4082, D_800CD2F4, D_800D6A56, D_800D1710);
     func_80012220(1);
     func_8004DC00();
-    func_80036380(&data_1209850_ROM_START); // strings
+    func_80036380(&bin_strings_jp_ROM_START); // strings
     D_800D1F36 = 0;
 
 loop_3:
@@ -163,12 +163,12 @@ loop_3:
         }
     }
 
-    D_800D5298.unk8 = &data_1881C40_ROM_START;
-    D_800D5298.unkC = &data_1A56870_ROM_START;
+    D_800D5298.unk8 = &bin_audio_mbf0_ROM_START;
+    D_800D5298.unkC = &bin_audio_sbf0_ROM_START;
     D_800A190E = 0;
     D_800A190C = 0;
     D_800D5298.unk0 = 0x70418F;
-    D_800D5298.unk10 = &data_1EFD040_ROM_START;
+    D_800D5298.unk10 = &bin_audio_fxd0_ROM_START;
     D_800D5298.unk28 = 1;
     D_800D5298.unk2C = 0;
     D_800D5298.unk14 = (void *)0x802E0000;

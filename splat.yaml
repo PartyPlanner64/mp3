@@ -1,295 +1,299 @@
 name: Mario Party 3 (North America)
-crc1: 7C3829D9
-crc2: 6E8247CE
-basename: marioparty3
+
 options:
   # find_file_boundaries: True
+  basename: marioparty3
+  sha1: 6beb80ff822b96bcf85dcdb512e8b2b7969d8259
   platform: n64
   compiler: "GCC"
+  base_path: ./
+  target_path: baserom.u.z64
+  build_path: build
+  linker_symbol_header_path: include/ld_addrs.h
   mnemonic_ljust: 10
   ld_o_replace_extension: False
 
 segments:
-  - [0x000000, "bin", "header"]
-  - [0x000040, "bin", "boot"]
+  - [0x000000, bin, "header"]
+  - [0x000040, bin, "boot"]
   - type: code
     start: 0x1000
     vram: 0x80000400
-    files:
-    - [0x1000, "asm"]
-    - [0x1060, "asm"]
-    - [0x8F20, "asm"]
-    - [0x99D0, "asm"]
-    - [0xA480, "c", "mainfs"]
-    # - [0xA6C0, "asm"] mainfs likely split
-    - [0xAE30, "c", "decode"]
-    - [0xBCA0, "c"]
-    - [0xC1F0, "c"]
-    - [0xCE10, "asm"]
-    - [0xD7A0, "asm"]
-    - [0xE560, "asm"]
-    - [0xEFB0, "asm"]
-    - [0xEFC0, "c"]
-    - [0xF610, "asm"]
-    - [0x12E20, "asm"]
-    - [0x13F90, "asm"]
-    - [0x14EA0, "asm"]
-    - [0x19C30, "asm"]
-    - [0x1A580, "c"]
-    - [0x20A20, "asm"]
-    - [0x22EB0, "asm"]
-    - [0x30C40, "asm"]
-    - [0x32160, "asm"]
-    - [0x34DD0, "asm"]
-    - [0x360A0, "c", "thread3_main"]
-    - [0x36440, "c", "heap_permanent"]
-    - [0x36510, "c", "heap_temporary"]
-    - [0x365E0, "c"]
-    - [0x36650, "c"]
-    - [0x36CD0, "c", "heap"]
-    - [0x36F80, "c"]
-    - [0x37210, "asm"]
-    - [0x45F50, "asm"]
-    - [0x471D0, "asm"]
-    - [0x47D60, "c"]
-    - [0x4B120, "c"]
-    - [0x4BF40, "asm"]
-    - [0x4E5A0, "asm"]
-    - [0x4E800, "asm"]
-    - [0x4F720, "c", "process"]
-    - [0x4FE90, "asm"]
-    - [0x508F0, "asm"]
-    - [0x51B50, "asm"]
-    - [0x52350, "asm"]
-    - [0x527E0, "asm"]
-    - [0x52F30, "asm"]
-    - [0x58000, "asm"]
-    - [0x5ACF0, "c"]
-    - [0x62750, "asm"]
-    - [0x66E70, "asm"]
-    - [0x67000, "asm"]
-    - [0x67100, "asm", "setjmp"]
-    - [0x671E0, "c", "lib/hvq"]
-    - [0x6B050, "asm"]
-    - [0x6BA20, "asm"]
-    - [0x6C140, "asm"]
-    - [0x6C320, "asm"]
-    - [0x6C3A0, "asm"]
-    - [0x6C3C0, "asm"]
-    - [0x6C9F0, "asm"]
-    - [0x6DBD0, "asm"]
-    - [0x6DBF0, "asm"]
-    - [0x6DC10, "asm"]
-    - [0x6DC30, "asm"]
-    - [0x6DC50, "asm"]
-    - [0x6DCD0, "asm"]
-    - [0x6DCE0, "asm"]
-    - [0x6DD10, "asm"]
-    - [0x6DF20, "asm"]
-    - [0x6DFA0, "asm"]
-    - [0x6E6B0, "asm"]
-    - [0x6E780, "asm"]
-    - [0x6E7E0, "asm"]
-    - [0x6E840, "asm"]
-    - [0x6E880, "asm"]
-    - [0x6E8E0, "asm"]
-    - [0x6E940, "asm"]
-    - [0x6F470, "asm"]
-    - [0x70420, "asm"]
-    - [0x707B0, "asm"]
-    - [0x70850, "asm"]
-    - [0x70940, "asm"]
-    - [0x709E0, "asm"]
-    - [0x70A70, "asm"]
-    - [0x70B20, "asm"]
-    - [0x70BB0, "asm"]
-    - [0x70C30, "asm"]
-    - [0x72740, "asm"]
-    - [0x72750, "asm"]
-    - [0x72890, "bin"] # Should this be 0x7288C? What is this?
-    - [0x72C20, "asm"]
-    - [0x73020, "asm"]
-    - [0x730A0, "asm"]
-    - [0x73190, "asm"]
-    - [0x73550, "asm"]
-    - [0x737E0, "asm"]
-    - [0x73960, "asm"]
-    - [0x73D20, "asm"]
-    - [0x73E10, "asm"]
-    - [0x73F40, "asm"]
-    - [0x73FE0, "asm"]
-    - [0x75320, "asm"]
-    - [0x76700, "asm"]
-    - [0x776E0, "asm"]
-    - [0x77DA0, "asm"]
-    - [0x77E50, "asm"]
-    - [0x77E90, "asm"]
-    - [0x77EE0, "asm"]
-    - [0x77F20, "asm"]
-    - [0x79030, "asm"]
-    - [0x79420, "asm"]
-    - [0x79570, "asm"]
-    - [0x79740, "asm"]
-    - [0x797A0, "asm"]
-    - [0x798D0, "asm"]
-    - [0x79950, "asm"]
-    - [0x79980, "asm"]
-    - [0x79ED0, "c", "libultra/os/osVirtualToPhysical"]
-    - [0x79F30, "asm"]
-    - [0x7A790, "asm"]
-    - [0x7B1F0, "asm"]
-    - [0x7B7E0, "asm"]
-    - [0x7BA60, "asm"]
-    - [0x7BDE0, "asm"]
-    - [0x7C130, "asm"]
-    - [0x7C4F0, "c", "libultra/os/osInitRdb"]
-    - [0x7C570, "asm"]
-    - [0x7C930, "c", "libultra/libc/string"]
-    - [0x7C9C0, "asm"]
-    - [0x7CA50, "asm"]
-    - [0x7CB00, "c", "libultra/os/osCreateMesgQueue"]
-    - [0x7CB30, "c", "libultra/os/osJamMesg"]
-    - [0x7CC70, "c", "libultra/os/osRecvMesg"]
-    - [0x7CDA0, "c", "libultra/os/osSendMesg"]
-    - [0x7CED0, "asm"]
-    - [0x7CF90, "asm"]
-    - [0x7CFA0, "asm"]
-    - [0x7CFB0, "asm"]
-    - [0x7D200, "asm"]
-    - [0x7D320, "asm"]
-    - [0x7D410, "asm"]
-    - [0x7D510, "asm"]
-    - [0x7D5F0, "asm"]
-    - [0x7D610, "asm"]
-    - [0x7D6E0, "asm"]
-    - [0x7D800, "asm", "__osDequeueThread"]
-    - [0x7D840, "asm"]
-    - [0x7D890, "c", "libultra/os/osGetTime"]
-    - [0x7D920, "c", "libultra/os/osSetTimer"]
-    - [0x7DA50, "asm"]
-    - [0x7DED0, "asm"]
-    - [0x7DF10, "asm"]
-    - [0x7DF50, "asm"]
-    - [0x7E290, "asm"]
-    - [0x7E2F0, "asm"]
-    - [0x7E4B0, "asm"]
-    - [0x7E500, "asm"]
-    - [0x7E550, "asm"]
-    - [0x7E860, "asm"]
-    - [0x7E8C0, "asm"]
-    - [0x7E920, "asm"]
-    - [0x7E9A0, "asm"]
-    - [0x7EA20, "asm"]
-    - [0x7EB20, "asm"]
-    - [0x7EBE0, "asm"]
-    - [0x7EC40, "asm"]
-    - [0x7ECC0, "asm"]
-    - [0x7EFA0, "asm"]
-    - [0x7F3A0, "asm"]
-    - [0x7F590, "asm"]
-    - [0x7F800, "asm"]
-    - [0x7F820, "asm"]
-    - [0x7FCD0, "asm"]
-    - [0x800A0, "asm"]
-    - [0x80460, "asm"]
-    - [0x804E0, "asm"]
-    - [0x815D0, "asm"]
-    - [0x81660, "asm"]
-    - [0x818C0, "asm"]
-    - [0x81A30, "asm"]
-    - [0x81A80, "asm"]
-    - [0x81AD0, "asm"]
-    - [0x81AF0, "asm"]
-    - [0x81DB0, "asm"]
-    - [0x81E40, "asm", "sqrtf"]
-    - [0x81E50, "asm"]
-    - [0x81F20, "asm"]
-    - [0x824C0, "asm"]
-    - [0x82640, "asm", "_Printf"]
-    - [0x830A0, "asm", "osGetCount"]
-    - [0x830B0, "asm"]
-    - [0x830C0, "asm"]
-    - [0x83290, "asm"]
-    - [0x832B0, "asm"]
-    - [0x83390, "asm"]
-    - [0x833E0, "asm"]
-    - [0x83430, "asm"]
-    - [0x83520, "asm"]
-    - [0x83580, "asm"]
-    - [0x835D0, "asm"]
-    - [0x836E0, "asm"]
-    - [0x83700, "asm"]
-    - [0x83760, "asm"]
-    - [0x83A40, "asm"]
-    - [0x83C50, "asm"]
-    - [0x846E0, "asm"]
-    - [0x84780, "asm"]
-    - [0x847E0, "asm"]
-    - [0x84840, "asm"]
-    - [0x85630, "asm"]
-    - [0x856C0, "asm"]
-    - [0x87310, "asm"]
-    - [0x87750, "asm"]
-    - [0x87770, "asm", "osStopThread"]
-    - [0x87830, "asm"]
-    - [0x87A00, "asm"]
-    - [0x88440, "asm"]
-    - [0x88460, "asm"]
-    - [0x88710, "asm"]
-    - [0x88830, "asm"]
-    - [0x88CE0, "asm"]
-    - [0x88D50, "asm"]
-    - [0x890B0, "asm"]
-    - [0x89120, "asm"]
-    - [0x89510, "asm"]
-    - [0x89FB0, "asm"]
-    - [0x8A350, "asm"]
-    - [0x8A3D0, "asm"]
-    - [0x8A420, "asm"]
-    - [0x8A460, "asm"]
-    - [0x8A4A0, "asm"]
-    - [0x8A4D0, "asm"]
-    - [0x8A580, "asm"]
-    - [0x8A610, "asm"]
-    - [0x8A640, "asm"]
-    - [0x8A670, "asm"]
-    - [0x8A6B0, "asm"]
-    - [0x8A6F0, "asm"]
-    - [0x8A770, "asm"]
-    - [0x8A830, "asm"]
-    - [0x8A860, "asm"]
-    - [0x8A890, "asm"]
-    - [0x8AA90, "asm"]
-    - [0x8AC30, "asm"]
-    - [0x8AC70, "asm"]
-    - [0x8ACD0, "asm"]
-    - [0x8AD20, "asm"]
-    - [0x8ADB0, "asm"]
-    - [0x8AEA0, "asm"]
-    - [0x8AF30, "asm"]
-    - [0x8B030, "asm"]
-    - [0x8B0C0, "asm"]
-    - [0x8B1C0, "asm"]
-    - [0x8B3F0, "asm"]
-    - [0x8B560, "asm"]
-    - [0x8B960, "asm"]
-    - [0x8D730, "asm"]
-    - [0x8D790, "asm"]
-    - [0x8D7F0, "asm"]
-    - [0x8D860, "asm"]
-    - [0x8D8C0, "asm"]
-    - [0x8E050, "asm"]
-    - [0x8E4A0, "asm"]
-    - [0x8E6B0, "asm"]
-    - [0x8EA10, "asm"]
-    - [0x8EFF0, "asm"]
-    - [0x8F320, "asm"]
-    - [0x8F480, "asm"]
-    - [0x8F620, "asm"]
-    - [0x8F760, "asm"]
-    - [0x8F7D0, "asm"]
-    - [0x8F830, "asm"]
-    - [0x8FB20, "asm"]
+    subsegments:
+    - [0x1000, asm]
+    - [0x1060, asm]
+    - [0x8F20, asm]
+    - [0x99D0, asm]
+    - [0xA480, c, "mainfs"]
+    # - [0xA6C0, asm] mainfs likely split
+    - [0xAE30, c, "decode"]
+    - [0xBCA0, c]
+    - [0xC1F0, c]
+    - [0xCE10, asm]
+    - [0xD7A0, asm]
+    - [0xE560, asm]
+    - [0xEFB0, asm]
+    - [0xEFC0, c]
+    - [0xF610, asm]
+    - [0x12E20, asm]
+    - [0x13F90, asm]
+    - [0x14EA0, asm]
+    - [0x19C30, asm]
+    - [0x1A580, c]
+    - [0x20A20, asm]
+    - [0x22EB0, asm]
+    - [0x30C40, asm]
+    - [0x32160, asm]
+    - [0x34DD0, asm]
+    - [0x360A0, c, "thread3_main"]
+    - [0x36440, c, "heap_permanent"]
+    - [0x36510, c, "heap_temporary"]
+    - [0x365E0, c]
+    - [0x36650, c]
+    - [0x36CD0, c, "heap"]
+    - [0x36F80, c]
+    - [0x37210, asm]
+    - [0x45F50, asm]
+    - [0x471D0, asm]
+    - [0x47D60, c]
+    - [0x4B120, c]
+    - [0x4BF40, asm]
+    - [0x4E5A0, asm]
+    - [0x4E800, asm]
+    - [0x4F720, c, "process"]
+    - [0x4FE90, asm]
+    - [0x508F0, asm]
+    - [0x51B50, asm]
+    - [0x52350, asm]
+    - [0x527E0, asm]
+    - [0x52F30, asm]
+    - [0x58000, asm]
+    - [0x5ACF0, c]
+    - [0x62750, asm]
+    - [0x66E70, asm]
+    - [0x67000, asm]
+    - [0x67100, asm, "setjmp"]
+    - [0x671E0, c, "lib/hvq"]
+    - [0x6B050, asm]
+    - [0x6BA20, asm]
+    - [0x6C140, asm]
+    - [0x6C320, asm]
+    - [0x6C3A0, asm]
+    - [0x6C3C0, asm]
+    - [0x6C9F0, asm]
+    - [0x6DBD0, asm]
+    - [0x6DBF0, asm]
+    - [0x6DC10, asm]
+    - [0x6DC30, asm]
+    - [0x6DC50, asm]
+    - [0x6DCD0, asm]
+    - [0x6DCE0, asm]
+    - [0x6DD10, asm]
+    - [0x6DF20, asm]
+    - [0x6DFA0, asm]
+    - [0x6E6B0, asm]
+    - [0x6E780, asm]
+    - [0x6E7E0, asm]
+    - [0x6E840, asm]
+    - [0x6E880, asm]
+    - [0x6E8E0, asm]
+    - [0x6E940, asm]
+    - [0x6F470, asm]
+    - [0x70420, asm]
+    - [0x707B0, asm]
+    - [0x70850, asm]
+    - [0x70940, asm]
+    - [0x709E0, asm]
+    - [0x70A70, asm]
+    - [0x70B20, asm]
+    - [0x70BB0, asm]
+    - [0x70C30, asm]
+    - [0x72740, asm]
+    - [0x72750, asm]
+    - [0x72890, bin] # Should this be 0x7288C? What is this?
+    - [0x72C20, asm]
+    - [0x73020, asm]
+    - [0x730A0, asm]
+    - [0x73190, asm]
+    - [0x73550, asm]
+    - [0x737E0, asm]
+    - [0x73960, asm]
+    - [0x73D20, asm]
+    - [0x73E10, asm]
+    - [0x73F40, asm]
+    - [0x73FE0, asm]
+    - [0x75320, asm]
+    - [0x76700, asm]
+    - [0x776E0, asm]
+    - [0x77DA0, asm]
+    - [0x77E50, asm]
+    - [0x77E90, asm]
+    - [0x77EE0, asm]
+    - [0x77F20, asm]
+    - [0x79030, asm]
+    - [0x79420, asm]
+    - [0x79570, asm]
+    - [0x79740, asm]
+    - [0x797A0, asm]
+    - [0x798D0, asm]
+    - [0x79950, asm]
+    - [0x79980, asm]
+    - [0x79ED0, c, "libultra/os/osVirtualToPhysical"]
+    - [0x79F30, asm]
+    - [0x7A790, asm]
+    - [0x7B1F0, asm]
+    - [0x7B7E0, asm]
+    - [0x7BA60, asm]
+    - [0x7BDE0, asm]
+    - [0x7C130, asm]
+    - [0x7C4F0, c, "libultra/os/osInitRdb"]
+    - [0x7C570, asm]
+    - [0x7C930, c, "libultra/libc/string"]
+    - [0x7C9C0, asm]
+    - [0x7CA50, asm]
+    - [0x7CB00, c, "libultra/os/osCreateMesgQueue"]
+    - [0x7CB30, c, "libultra/os/osJamMesg"]
+    - [0x7CC70, c, "libultra/os/osRecvMesg"]
+    - [0x7CDA0, c, "libultra/os/osSendMesg"]
+    - [0x7CED0, asm]
+    - [0x7CF90, asm]
+    - [0x7CFA0, asm]
+    - [0x7CFB0, asm]
+    - [0x7D200, asm]
+    - [0x7D320, asm]
+    - [0x7D410, asm]
+    - [0x7D510, asm]
+    - [0x7D5F0, asm]
+    - [0x7D610, asm]
+    - [0x7D6E0, asm]
+    - [0x7D800, asm, "__osDequeueThread"]
+    - [0x7D840, asm]
+    - [0x7D890, c, "libultra/os/osGetTime"]
+    - [0x7D920, c, "libultra/os/osSetTimer"]
+    - [0x7DA50, asm]
+    - [0x7DED0, asm]
+    - [0x7DF10, asm]
+    - [0x7DF50, asm]
+    - [0x7E290, asm]
+    - [0x7E2F0, asm]
+    - [0x7E4B0, asm]
+    - [0x7E500, asm]
+    - [0x7E550, asm]
+    - [0x7E860, asm]
+    - [0x7E8C0, asm]
+    - [0x7E920, asm]
+    - [0x7E9A0, asm]
+    - [0x7EA20, asm]
+    - [0x7EB20, asm]
+    - [0x7EBE0, asm]
+    - [0x7EC40, asm]
+    - [0x7ECC0, asm]
+    - [0x7EFA0, asm]
+    - [0x7F3A0, asm]
+    - [0x7F590, asm]
+    - [0x7F800, asm]
+    - [0x7F820, asm]
+    - [0x7FCD0, asm]
+    - [0x800A0, asm]
+    - [0x80460, asm]
+    - [0x804E0, asm]
+    - [0x815D0, asm]
+    - [0x81660, asm]
+    - [0x818C0, asm]
+    - [0x81A30, asm]
+    - [0x81A80, asm]
+    - [0x81AD0, asm]
+    - [0x81AF0, asm]
+    - [0x81DB0, asm]
+    - [0x81E40, asm, "sqrtf"]
+    - [0x81E50, asm]
+    - [0x81F20, asm]
+    - [0x824C0, asm]
+    - [0x82640, asm, "_Printf"]
+    - [0x830A0, asm, "osGetCount"]
+    - [0x830B0, asm]
+    - [0x830C0, asm]
+    - [0x83290, asm]
+    - [0x832B0, asm]
+    - [0x83390, asm]
+    - [0x833E0, asm]
+    - [0x83430, asm]
+    - [0x83520, asm]
+    - [0x83580, asm]
+    - [0x835D0, asm]
+    - [0x836E0, asm]
+    - [0x83700, asm]
+    - [0x83760, asm]
+    - [0x83A40, asm]
+    - [0x83C50, asm]
+    - [0x846E0, asm]
+    - [0x84780, asm]
+    - [0x847E0, asm]
+    - [0x84840, asm]
+    - [0x85630, asm]
+    - [0x856C0, asm]
+    - [0x87310, asm]
+    - [0x87750, asm]
+    - [0x87770, asm, "osStopThread"]
+    - [0x87830, asm]
+    - [0x87A00, asm]
+    - [0x88440, asm]
+    - [0x88460, asm]
+    - [0x88710, asm]
+    - [0x88830, asm]
+    - [0x88CE0, asm]
+    - [0x88D50, asm]
+    - [0x890B0, asm]
+    - [0x89120, asm]
+    - [0x89510, asm]
+    - [0x89FB0, asm]
+    - [0x8A350, asm]
+    - [0x8A3D0, asm]
+    - [0x8A420, asm]
+    - [0x8A460, asm]
+    - [0x8A4A0, asm]
+    - [0x8A4D0, asm]
+    - [0x8A580, asm]
+    - [0x8A610, asm]
+    - [0x8A640, asm]
+    - [0x8A670, asm]
+    - [0x8A6B0, asm]
+    - [0x8A6F0, asm]
+    - [0x8A770, asm]
+    - [0x8A830, asm]
+    - [0x8A860, asm]
+    - [0x8A890, asm]
+    - [0x8AA90, asm]
+    - [0x8AC30, asm]
+    - [0x8AC70, asm]
+    - [0x8ACD0, asm]
+    - [0x8AD20, asm]
+    - [0x8ADB0, asm]
+    - [0x8AEA0, asm]
+    - [0x8AF30, asm]
+    - [0x8B030, asm]
+    - [0x8B0C0, asm]
+    - [0x8B1C0, asm]
+    - [0x8B3F0, asm]
+    - [0x8B560, asm]
+    - [0x8B960, asm]
+    - [0x8D730, asm]
+    - [0x8D790, asm]
+    - [0x8D7F0, asm]
+    - [0x8D860, asm]
+    - [0x8D8C0, asm]
+    - [0x8E050, asm]
+    - [0x8E4A0, asm]
+    - [0x8E6B0, asm]
+    - [0x8EA10, asm]
+    - [0x8EFF0, asm]
+    - [0x8F320, asm]
+    - [0x8F480, asm]
+    - [0x8F620, asm]
+    - [0x8F760, asm]
+    - [0x8F7D0, asm]
+    - [0x8F830, asm]
+    - [0x8FB20, asm]
 
   # Separating out the data/rodata into another segment since it
   # seems to be subaligned by 8.
@@ -297,1377 +301,1378 @@ segments:
     start: 0x8FCF0
     vram: 0x8008F0F0
     subalign: 8
-    files:
-    - [0x8FCF0, "bin"]
-    - [0x96EF0, ".data", "code_BCA0"]
-    - [0x98258, "bin"]
-    - [0x98310, "bin"]
-    - [0xA7590, ".rodata", "decode"]
-    - [0xA75A8, "bin"]
+    subsegments:
+    - [0x8FCF0, bin]
+    - [0x96EF0, .data, "BCA0"]
+    - [0x98258, bin]
+    - [0x98310, bin]
+    - [0xA7590, .rodata, "decode"]
+    - [0xA75A8, bin]
 
-  - name: overlays/overlay130
+  - dir: overlays/overlay130
     type: code
     overlay: True
     start: 0xA96F0
     vram: 0x800D6B70
-    files:
-      - [0xA96F0, "asm"]
-      - [0xAB1C0, "asm"]
-      - [0xB3CE0, "asm"]
-      - [0xB63A0, "asm"]
-      - [0xB7600, "asm"]
-      - [0xB88C0, "asm"]
-      - [0xB8A20, "asm"]
-      - [0xBA4B0, "asm"]
-      - [0xBC7A0, "asm"]
-      - [0xBD210, "asm"]
-      - [0xBE2A0, "bin"] # data
+    subsegments:
+      - [0xA96F0, asm]
+      - [0xAB1C0, asm]
+      - [0xB3CE0, asm]
+      - [0xB63A0, asm]
+      - [0xB7600, asm]
+      - [0xB88C0, asm]
+      - [0xB8A20, asm]
+      - [0xBA4B0, asm]
+      - [0xBC7A0, asm]
+      - [0xBD210, asm]
+      - [0xBE2A0, bin] # data
 
-  - name: overlays/overlay129
+  - dir: overlays/overlay129
     type: code
     overlay: True
     start: 0xBE940
     vram: 0x800D6B70
-    files:
-      - [0xBE940, "asm"]
-      - [0xBF4A0, "asm"]
-      - [0xBFB40, "asm"]
-      - [0xC1580, "asm"]
-      - [0xC1BA0, "asm"]
-      - [0xC1D60, "asm"]
-      - [0xC4430, "asm"]
-      - [0xC45D0, "asm"]
-      - [0xC5770, "asm"]
-      - [0xC9330, "asm"]
-      - [0xC9690, "asm"]
-      - [0xCA640, "asm"]
-      - [0xCCD20, "asm"]
-      - [0xD1190, "asm"]
-      - [0xD28F0, "asm"]
-      - [0xD3450, "asm"]
-      - [0xD5B20, "asm"]
-      - [0xDBE50, "asm"]
-      - [0xDC0D0, "asm"]
-      - [0xDC4E0, "asm"]
-      - [0xDFD60, "asm"]
-      - [0xE3CD0, "asm"]
-      - [0xE78B0, "asm"]
-      - [0xE7AE0, "asm"]
-      - [0xE8BE0, "bin"] # data
+    subsegments:
+      - [0xBE940, asm]
+      - [0xBF4A0, asm]
+      - [0xBFB40, asm]
+      - [0xC1580, asm]
+      - [0xC1BA0, asm]
+      - [0xC1D60, asm]
+      - [0xC4430, asm]
+      - [0xC45D0, asm]
+      - [0xC5770, asm]
+      - [0xC9330, asm]
+      - [0xC9690, asm]
+      - [0xCA640, asm]
+      - [0xCCD20, asm]
+      - [0xD1190, asm]
+      - [0xD28F0, asm]
+      - [0xD3450, asm]
+      - [0xD5B20, asm]
+      - [0xDBE50, asm]
+      - [0xDC0D0, asm]
+      - [0xDC4E0, asm]
+      - [0xDFD60, asm]
+      - [0xE3CD0, asm]
+      - [0xE78B0, asm]
+      - [0xE7AE0, asm]
+      - [0xE8BE0, bin] # data
 
   # Board play overlay
-  - name: overlays/shared_board/
+  - dir: overlays/shared_board
     type: code
     overlay: True
     start: 0xEA790
     vram: 0x800D6B70
-    files:
-      - [0xEA790, "c"]
-      - [0xEB2F0, "asm"]
-      - [0xEC3B0, "asm"]
-      - [0xECA50, "c"]
-      - [0xEE3B0, "asm"]
-      - [0xEE660, "asm"]
-      - [0xF2910, "asm"]
-      - [0xF5070, "c"]
-      - [0xF5B90, "c"]
-      # - [0xFE110, "asm"] suspected based on mp1 spaces.c
-      - [0xFFB10, "c"]
-      - [0x1006F0, "c"]
-      - [0x101840, "c"]
-      - [0x105D50, "c"]
-      - [0x1063F0, "asm"]
-      - [0x106640, "asm"]
-      - [0x106A50, "asm"]
-      - [0x10AD50, "asm"]
-      - [0x10C230, "c"]
-      - [0x113520, "asm"]
-      - [0x113750, "c"]
-      - [0x1143C0, "bin"] # data
+    subsegments:
+      - [0xEA790, c]
+      - [0xEB2F0, asm]
+      - [0xEC3B0, asm]
+      - [0xECA50, c]
+      - [0xEE3B0, asm]
+      - [0xEE660, asm]
+      - [0xF2910, asm]
+      - [0xF5070, c]
+      - [0xF5B90, c]
+      # - [0xFE110, asm] suspected based on mp1 spaces.c
+      - [0xFFB10, c]
+      - [0x1006F0, c]
+      - [0x101840, c]
+      - [0x105D50, c]
+      - [0x1063F0, asm]
+      - [0x106640, asm]
+      - [0x106A50, asm]
+      - [0x10AD50, asm]
+      - [0x10C230, c]
+      - [0x113520, asm]
+      - [0x113750, c]
+      - [0x1143C0, bin] # data
 
-  - name: overlays/overlay0
+  - dir: overlays/overlay0
     type: code
     overlay: True
     start: 0x116320
     vram: 0x801059A0
-    files:
-      - [0x116320, "asm"]
-      - [0x119560, "bin"] # data
+    subsegments:
+      - [0x116320, asm]
+      - [0x119560, bin] # data
 
-  - name: overlays/overlay1
+  - dir: overlays/overlay1
     type: code
     overlay: True
     start: 0x11A480
     vram: 0x801059A0
-    files:
-      - [0x11A480, "asm"]
-      - [0x120090, "asm"]
-      - [0x1209E0, "bin"] # data
+    subsegments:
+      - [0x11A480, asm]
+      - [0x120090, asm]
+      - [0x1209E0, bin] # data
 
-  - name: overlays/overlay2
+  - dir: overlays/overlay2
     type: code
     overlay: True
     start: 0x120BC0
     vram: 0x801059A0
-    files:
-      - [0x120BC0, "asm"]
-      - [0x126180, "bin"] # data
+    subsegments:
+      - [0x120BC0, asm]
+      - [0x126180, bin] # data
 
-  - name: overlays/overlay3
+  - dir: overlays/overlay3
     type: code
     overlay: True
     start: 0x1263E0
     vram: 0x801059A0
-    files:
-      - [0x1263E0, "asm"]
-      - [0x12D700, "bin"] # data
+    subsegments:
+      - [0x1263E0, asm]
+      - [0x12D700, bin] # data
 
-  - name: overlays/overlay4
+  - dir: overlays/overlay4
     type: code
     overlay: True
     start: 0x12DD30
     vram: 0x801059A0
-    files:
-      - [0x12DD30, "asm"]
-      - [0x131A90, "bin"] # data
+    subsegments:
+      - [0x12DD30, asm]
+      - [0x131A90, bin] # data
 
-  - name: overlays/overlay5
+  - dir: overlays/overlay5
     type: code
     overlay: True
     start: 0x131C10
     vram: 0x801059A0
-    files:
-      - [0x131C10, "asm"]
-      - [0x137A80, "bin"] # data
+    subsegments:
+      - [0x131C10, asm]
+      - [0x137A80, bin] # data
 
-  - name: overlays/overlay6
+  - dir: overlays/overlay6
     type: code
     overlay: True
     start: 0x137C00
     vram: 0x801059A0
-    files:
-      - [0x137C00, "asm"]
-      - [0x13E5D0, "bin"] # data
+    subsegments:
+      - [0x137C00, asm]
+      - [0x13E5D0, bin] # data
 
-  - name: overlays/overlay7
+  - dir: overlays/overlay7
     type: code
     overlay: True
     start: 0x13E9C0
     vram: 0x801059A0
-    files:
-      - [0x13E9C0, "asm"]
-      - [0x149CD0, "bin"] # data
+    subsegments:
+      - [0x13E9C0, asm]
+      - [0x149CD0, bin] # data
 
-  - name: overlays/overlay8
+  - dir: overlays/overlay8
     type: code
     overlay: True
     start: 0x14A810
     vram: 0x801059A0
-    files:
-      - [0x14A810, "asm"]
-      - [0x153BD0, "bin"] # data
+    subsegments:
+      - [0x14A810, asm]
+      - [0x153BD0, bin] # data
 
-  - name: overlays/overlay9
+  - dir: overlays/overlay9
     type: code
     overlay: True
     start: 0x1542E0
     vram: 0x801059A0
-    files:
-      - [0x1542E0, "asm"]
-      - [0x15BCF0, "bin"] # data
+    subsegments:
+      - [0x1542E0, asm]
+      - [0x15BCF0, bin] # data
 
-  - name: overlays/overlay10
+  - dir: overlays/overlay10
     type: code
     overlay: True
     start: 0x15C310
     vram: 0x801059A0
-    files:
-      - [0x15C310, "asm"]
-      - [0x1613E0, "bin"] # data
+    subsegments:
+      - [0x15C310, asm]
+      - [0x1613E0, bin] # data
 
-  - name: overlays/overlay11
+  - dir: overlays/overlay11
     type: code
     overlay: True
     start: 0x161750
     vram: 0x801059A0
-    files:
-      - [0x161750, "asm"]
-      - [0x164EB0, "bin"] # data
+    subsegments:
+      - [0x161750, asm]
+      - [0x164EB0, bin] # data
 
-  - name: overlays/overlay12
+  - dir: overlays/overlay12
     type: code
     overlay: True
     start: 0x165010
     vram: 0x801059A0
-    files:
-      - [0x165010, "asm"]
-      - [0x169540, "asm"]
-      - [0x16F3D0, "bin"] # data
+    subsegments:
+      - [0x165010, asm]
+      - [0x169540, asm]
+      - [0x16F3D0, bin] # data
 
-  - name: overlays/overlay13
+  - dir: overlays/overlay13
     type: code
     overlay: True
     start: 0x16F670
     vram: 0x801059A0
-    files:
-      - [0x16F670, "asm"]
-      - [0x17AB40, "bin"] # data
+    subsegments:
+      - [0x16F670, asm]
+      - [0x17AB40, bin] # data
 
-  - name: overlays/overlay14
+  - dir: overlays/overlay14
     type: code
     overlay: True
     start: 0x17B3B0
     vram: 0x801059A0
-    files:
-      - [0x17B3B0, "asm"]
-      - [0x1817F0, "bin"] # data
+    subsegments:
+      - [0x17B3B0, asm]
+      - [0x1817F0, bin] # data
 
-  - name: overlays/overlay15
+  - dir: overlays/overlay15
     type: code
     overlay: True
     start: 0x181950
     vram: 0x801059A0
-    files:
-      - [0x181950, "asm"]
-      - [0x18A560, "bin"] # data
+    subsegments:
+      - [0x181950, asm]
+      - [0x18A560, bin] # data
 
   # Toadstool Titan
-  - name: overlays/overlay16
+  - dir: overlays/overlay16
     type: code
     overlay: True
     start: 0x18ABD0
     vram: 0x801059A0
-    files:
-      - [0x18ABD0, "asm"]
-      - [0x18EB30, "asm"]
-      - [0x190D60, "bin"] # data
+    subsegments:
+      - [0x18ABD0, asm]
+      - [0x18EB30, asm]
+      - [0x190D60, bin] # data
 
-  - name: overlays/overlay17
+  - dir: overlays/overlay17
     type: code
     overlay: True
     start: 0x191240
     vram: 0x801059A0
-    files:
-      - [0x191240, "asm"]
-      - [0x19CAC0, "bin"] # data
+    subsegments:
+      - [0x191240, asm]
+      - [0x19CAC0, bin] # data
 
-  - name: overlays/overlay18
+  - dir: overlays/overlay18
     type: code
     overlay: True
     start: 0x19CEF0
     vram: 0x801059A0
-    files:
-      - [0x19CEF0, "asm"]
-      - [0x1A3BF0, "bin"] # data
+    subsegments:
+      - [0x19CEF0, asm]
+      - [0x1A3BF0, bin] # data
 
-  - name: overlays/overlay19
+  - dir: overlays/overlay19
     type: code
     overlay: True
     start: 0x1A3D80
     vram: 0x801059A0
-    files:
-      - [0x1A3D80, "asm"]
-      - [0x1AC270, "bin"] # data
+    subsegments:
+      - [0x1A3D80, asm]
+      - [0x1AC270, bin] # data
 
-  - name: overlays/overlay20
+  - dir: overlays/overlay20
     type: code
     overlay: True
     start: 0x1AC970
     vram: 0x801059A0
-    files:
-      - [0x1AC970, "asm"]
-      - [0x1B47C0, "bin"] # data
+    subsegments:
+      - [0x1AC970, asm]
+      - [0x1B47C0, bin] # data
 
-  - name: overlays/overlay21
+  - dir: overlays/overlay21
     type: code
     overlay: True
     start: 0x1B4F10
     vram: 0x801059A0
-    files:
-      - [0x1B4F10, "asm"]
-      - [0x1BA4F0, "bin"] # data
+    subsegments:
+      - [0x1B4F10, asm]
+      - [0x1BA4F0, bin] # data
 
-  - name: overlays/overlay22
+  - dir: overlays/overlay22
     type: code
     overlay: True
     start: 0x1BA850
     vram: 0x801059A0
-    files:
-      - [0x1BA850, "asm"]
-      - [0x1C3C50, "bin"] # data
+    subsegments:
+      - [0x1BA850, asm]
+      - [0x1C3C50, bin] # data
 
-  - name: overlays/overlay23
+  - dir: overlays/overlay23
     type: code
     overlay: True
     start: 0x1C4280
     vram: 0x801059A0
-    files:
-      - [0x1C4280, "asm"]
-      - [0x1CC400, "asm"]
-      - [0x1CC420, "bin"] # data
+    subsegments:
+      - [0x1C4280, asm]
+      - [0x1CC400, asm]
+      - [0x1CC420, bin] # data
 
-  - name: overlays/overlay24
+  - dir: overlays/overlay24
     type: code
     overlay: True
     start: 0x1CC730
     vram: 0x801059A0
-    files:
-      - [0x1CC730, "asm"]
-      - [0x1D1920, "asm"]
-      - [0x1D1940, "bin"] # data
+    subsegments:
+      - [0x1CC730, asm]
+      - [0x1D1920, asm]
+      - [0x1D1940, bin] # data
 
-  - name: overlays/overlay25
+  - dir: overlays/overlay25
     type: code
     overlay: True
     start: 0x1D1C40
     vram: 0x801059A0
-    files:
-      - [0x1D1C40, "asm"]
-      - [0x1D47F0, "bin"] # data
+    subsegments:
+      - [0x1D1C40, asm]
+      - [0x1D47F0, bin] # data
 
-  - name: overlays/overlay26
+  - dir: overlays/overlay26
     type: code
     overlay: True
     start: 0x1D4970
     vram: 0x801059A0
-    files:
-      - [0x1D4970, "asm"]
-      - [0x1D90E0, "bin"] # data
+    subsegments:
+      - [0x1D4970, asm]
+      - [0x1D90E0, bin] # data
 
-  - name: overlays/overlay27
+  - dir: overlays/overlay27
     type: code
     overlay: True
     start: 0x1D9550
     vram: 0x801059A0
-    files:
-      - [0x1D9550, "asm"]
-      - [0x1DE3D0, "bin"] # data
+    subsegments:
+      - [0x1D9550, asm]
+      - [0x1DE3D0, bin] # data
 
   # Snowball Summit
-  - name: overlays/overlay28
+  - dir: overlays/overlay28
     type: code
     overlay: True
     start: 0x1DE610
     vram: 0x801059A0
-    files:
-      - [0x1DE610, "asm"]
-      - [0x1E3510, "bin"] # data
+    subsegments:
+      - [0x1DE610, asm]
+      - [0x1E3510, bin] # data
 
-  - name: overlays/overlay29
+  - dir: overlays/overlay29
     type: code
     overlay: True
     start: 0x1E37C0
     vram: 0x801059A0
-    files:
-      - [0x1E37C0, "asm"]
-      - [0x1EEDE0, "bin"] # data
+    subsegments:
+      - [0x1E37C0, asm]
+      - [0x1EEDE0, bin] # data
 
-  - name: overlays/overlay30
+  - dir: overlays/overlay30
     type: code
     overlay: True
     start: 0x1EF420
     vram: 0x801059A0
-    files:
-      - [0x1EF420, "asm"]
-      - [0x1F3A60, "bin"] # data
+    subsegments:
+      - [0x1EF420, asm]
+      - [0x1F3A60, bin] # data
 
-  - name: overlays/overlay31
+  - dir: overlays/overlay31
     type: code
     overlay: True
     start: 0x1F3B90
     vram: 0x801059A0
-    files:
-      - [0x1F3B90, "asm"]
-      - [0x1FD760, "asm"]
-      - [0x1FE270, "bin"] # data
+    subsegments:
+      - [0x1F3B90, asm]
+      - [0x1FD760, asm]
+      - [0x1FE270, bin] # data
 
-  - name: overlays/overlay32
+  - dir: overlays/overlay32
     type: code
     overlay: True
     start: 0x1FE4D0
     vram: 0x801059A0
-    files:
-      - [0x1FE4D0, "asm"]
-      - [0x204DB0, "bin"] # data
+    subsegments:
+      - [0x1FE4D0, asm]
+      - [0x204DB0, bin] # data
 
-  - name: overlays/overlay33
+  - dir: overlays/overlay33
     type: code
     overlay: True
     start: 0x204F90
     vram: 0x801059A0
-    files:
-      - [0x204F90, "asm"]
-      - [0x20BC70, "bin"] # data
+    subsegments:
+      - [0x204F90, asm]
+      - [0x20BC70, bin] # data
 
-  - name: overlays/overlay34
+  - dir: overlays/overlay34
     type: code
     overlay: True
     start: 0x20BFA0
     vram: 0x801059A0
-    files:
-      - [0x20BFA0, "asm"]
-      - [0x2116C0, "bin"] # data
+    subsegments:
+      - [0x20BFA0, asm]
+      - [0x2116C0, bin] # data
 
-  - name: overlays/overlay35
+  - dir: overlays/overlay35
     type: code
     overlay: True
     start: 0x211AB0
     vram: 0x801059A0
-    files:
-      - [0x211AB0, "asm"]
-      - [0x216270, "bin"] # data
+    subsegments:
+      - [0x211AB0, asm]
+      - [0x216270, bin] # data
 
-  - name: overlays/overlay36
+  - dir: overlays/overlay36
     type: code
     overlay: True
     start: 0x216670
     vram: 0x801059A0
-    files:
-      - [0x216670, "asm"]
-      - [0x21CAC0, "asm"]
-      - [0x21DBF0, "bin"] # data
+    subsegments:
+      - [0x216670, asm]
+      - [0x21CAC0, asm]
+      - [0x21DBF0, bin] # data
 
-  - name: overlays/overlay37
+  - dir: overlays/overlay37
     type: code
     overlay: True
     start: 0x21E010
     vram: 0x801059A0
-    files:
-      - [0x21E010, "asm"]
-      - [0x2251D0, "bin"] # data
+    subsegments:
+      - [0x21E010, asm]
+      - [0x2251D0, bin] # data
 
-  - name: overlays/overlay38
+  - dir: overlays/overlay38
     type: code
     overlay: True
     start: 0x225740
     vram: 0x801059A0
-    files:
-      - [0x225740, "asm"]
-      - [0x22DDB0, "bin"] # data
+    subsegments:
+      - [0x225740, asm]
+      - [0x22DDB0, bin] # data
 
-  - name: overlays/overlay39
+  - dir: overlays/overlay39
     type: code
     overlay: True
     start: 0x22E100
     vram: 0x801059A0
-    files:
-      - [0x22E100, "asm"]
-      - [0x232620, "bin"] # data
+    subsegments:
+      - [0x22E100, asm]
+      - [0x232620, bin] # data
 
-  - name: overlays/overlay40
+  - dir: overlays/overlay40
     type: code
     overlay: True
     start: 0x232A10
     vram: 0x801059A0
-    files:
-      - [0x232A10, "asm"]
-      - [0x23C5C0, "bin"] # data
+    subsegments:
+      - [0x232A10, asm]
+      - [0x23C5C0, bin] # data
 
-  - name: overlays/overlay41
+  - dir: overlays/overlay41
     type: code
     overlay: True
     start: 0x23C8F0
     vram: 0x801059A0
-    files:
-      - [0x23C8F0, "asm"]
-      - [0x240880, "bin"] # data
+    subsegments:
+      - [0x23C8F0, asm]
+      - [0x240880, bin] # data
 
-  - name: overlays/overlay42
+  - dir: overlays/overlay42
     type: code
     overlay: True
     start: 0x240A10
     vram: 0x801059A0
-    files:
-      - [0x240A10, "asm"]
-      - [0x24A300, "bin"] # data
+    subsegments:
+      - [0x240A10, asm]
+      - [0x24A300, bin] # data
 
-  - name: overlays/overlay43
+  - dir: overlays/overlay43
     type: code
     overlay: True
     start: 0x24A760
     vram: 0x801059A0
-    files:
-      - [0x24A760, "asm"]
-      - [0x251AD0, "bin"] # data
+    subsegments:
+      - [0x24A760, asm]
+      - [0x251AD0, bin] # data
 
-  - name: overlays/overlay44
+  - dir: overlays/overlay44
     type: code
     overlay: True
     start: 0x251FF0
     vram: 0x801059A0
-    files:
-      - [0x251FF0, "asm"]
-      - [0x25D530, "bin"] # data
+    subsegments:
+      - [0x251FF0, asm]
+      - [0x25D530, bin] # data
 
-  - name: overlays/overlay45
+  - dir: overlays/overlay45
     type: code
     overlay: True
     start: 0x25E110
     vram: 0x801059A0
-    files:
-      - [0x25E110, "asm"]
-      - [0x2648B0, "bin"] # data
+    subsegments:
+      - [0x25E110, asm]
+      - [0x2648B0, bin] # data
 
-  - name: overlays/overlay46
+  - dir: overlays/overlay46
     type: code
     overlay: True
     start: 0x264B80
     vram: 0x801059A0
-    files:
-      - [0x264B80, "asm"]
-      - [0x269880, "bin"] # data
+    subsegments:
+      - [0x264B80, asm]
+      - [0x269880, bin] # data
 
-  - name: overlays/overlay47
+  - dir: overlays/overlay47
     type: code
     overlay: True
     start: 0x269BF0
     vram: 0x801059A0
-    files:
-      - [0x269BF0, "asm"]
-      - [0x270B00, "bin"] # data
+    subsegments:
+      - [0x269BF0, asm]
+      - [0x270B00, bin] # data
 
-  - name: overlays/overlay48
+  - dir: overlays/overlay48
     type: code
     overlay: True
     start: 0x270EF0
     vram: 0x801059A0
-    files:
-      - [0x270EF0, "asm"]
-      - [0x276160, "bin"] # data
+    subsegments:
+      - [0x270EF0, asm]
+      - [0x276160, bin] # data
 
-  - name: overlays/overlay49
+  - dir: overlays/overlay49
     type: code
     overlay: True
     start: 0x276470
     vram: 0x801059A0
-    files:
-      - [0x276470, "asm"]
-      - [0x282620, "bin"] # data
+    subsegments:
+      - [0x276470, asm]
+      - [0x282620, bin] # data
 
-  - name: overlays/overlay50
+  - dir: overlays/overlay50
     type: code
     overlay: True
     start: 0x283060
     vram: 0x801059A0
-    files:
-      - [0x283060, "asm"]
-      - [0x289C50, "bin"] # data
+    subsegments:
+      - [0x283060, asm]
+      - [0x289C50, bin] # data
 
-  - name: overlays/overlay51
+  - dir: overlays/overlay51
     type: code
     overlay: True
     start: 0x28A290
     vram: 0x801059A0
-    files:
-      - [0x28A290, "asm"]
-      - [0x290E70, "asm"]
-      - [0x290E90, "bin"] # data
+    subsegments:
+      - [0x28A290, asm]
+      - [0x290E70, asm]
+      - [0x290E90, bin] # data
 
-  - name: overlays/overlay52
+  - dir: overlays/overlay52
     type: code
     overlay: True
     start: 0x291020
     vram: 0x801059A0
-    files:
-      - [0x291020, "asm"]
-      - [0x29A7D0, "bin"] # data
+    subsegments:
+      - [0x291020, asm]
+      - [0x29A7D0, bin] # data
 
-  - name: overlays/overlay53
+  - dir: overlays/overlay53
     type: code
     overlay: True
     start: 0x29B1D0
     vram: 0x801059A0
-    files:
-      - [0x29B1D0, "asm"]
-      - [0x2A0C30, "bin"] # data
+    subsegments:
+      - [0x29B1D0, asm]
+      - [0x2A0C30, bin] # data
 
-  - name: overlays/overlay54
+  - dir: overlays/overlay54
     type: code
     overlay: True
     start: 0x2A1430
     vram: 0x801059A0
-    files:
-      - [0x2A1430, "asm"]
-      - [0x2A9850, "asm"]
-      - [0x2ACFE0, "bin"] # data
+    subsegments:
+      - [0x2A1430, asm]
+      - [0x2A9850, asm]
+      - [0x2ACFE0, bin] # data
 
-  - name: overlays/overlay55
+  - dir: overlays/overlay55
     type: code
     overlay: True
     start: 0x2AF250
     vram: 0x801059A0
-    files:
-      - [0x2AF250, "asm"]
-      - [0x2B4B20, "asm"]
-      - [0x2B56D0, "bin"] # data
+    subsegments:
+      - [0x2AF250, asm]
+      - [0x2B4B20, asm]
+      - [0x2B56D0, bin] # data
 
-  - name: overlays/overlay56
+  - dir: overlays/overlay56
     type: code
     overlay: True
     start: 0x2B5830
     vram: 0x801059A0
-    files:
-      - [0x2B5830, "asm"]
-      - [0x2BC550, "bin"] # data
+    subsegments:
+      - [0x2B5830, asm]
+      - [0x2BC550, bin] # data
 
-  - name: overlays/overlay57
+  - dir: overlays/overlay57
     type: code
     overlay: True
     start: 0x2BCE10
     vram: 0x801059A0
-    files:
-      - [0x2BCE10, "asm"]
-      - [0x2C0E70, "asm"]
-      - [0x2C5910, "bin"] # data
+    subsegments:
+      - [0x2BCE10, asm]
+      - [0x2C0E70, asm]
+      - [0x2C5910, bin] # data
 
-  - name: overlays/overlay58
+  - dir: overlays/overlay58
     type: code
     overlay: True
     start: 0x2C5B50
     vram: 0x801059A0
-    files:
-      - [0x2C5B50, "asm"]
-      - [0x2CE950, "bin"] # data
+    subsegments:
+      - [0x2C5B50, asm]
+      - [0x2CE950, bin] # data
 
-  - name: overlays/overlay59
+  - dir: overlays/overlay59
     type: code
     overlay: True
     start: 0x2CF3B0
     vram: 0x801059A0
-    files:
-      - [0x2CF3B0, "asm"]
-      - [0x2D3C70, "bin"] # data
+    subsegments:
+      - [0x2CF3B0, asm]
+      - [0x2D3C70, bin] # data
 
-  - name: overlays/overlay60
+  - dir: overlays/overlay60
     type: code
     overlay: True
     start: 0x2D3E70
     vram: 0x801059A0
-    files:
-      - [0x2D3E70, "asm"]
-      - [0x2D8030, "bin"] # data
+    subsegments:
+      - [0x2D3E70, asm]
+      - [0x2D8030, bin] # data
 
-  - name: overlays/overlay61
+  - dir: overlays/overlay61
     type: code
     overlay: True
     start: 0x2D8370
     vram: 0x801059A0
-    files:
-      - [0x2D8370, "asm"]
-      - [0x2DC0F0, "bin"] # data
+    subsegments:
+      - [0x2D8370, asm]
+      - [0x2DC0F0, bin] # data
 
-  - name: overlays/overlay62
+  - dir: overlays/overlay62
     type: code
     overlay: True
     start: 0x2DC4D0
     vram: 0x801059A0
-    files:
-      - [0x2DC4D0, "asm"]
-      - [0x2E0B70, "bin"] # data
+    subsegments:
+      - [0x2DC4D0, asm]
+      - [0x2E0B70, bin] # data
 
   # Swinging With Sharks
-  - name: overlays/minigames/swinging_with_sharks/
+  - dir: overlays/minigames/swinging_with_sharks
     type: code
     overlay: True
     start: 0x2E0D20
     vram: 0x801059A0
-    files:
-      - [0x2E0D20, "c", "overlays/minigames/swinging_with_sharks/swinging_with_sharks"]
-      - [0x2E6060, "bin"] # data
+    subsegments:
+      - [0x2E0D20, c, "swinging_with_sharks"]
+      - [0x2E6060, bin] # data
 
-  - name: overlays/overlay64
+  - dir: overlays/overlay64
     type: code
     overlay: True
     start: 0x2E6BE0
     vram: 0x801059A0
-    files:
-      - [0x2E6BE0, "asm"]
-      - [0x2ECF70, "bin"] # data
+    subsegments:
+      - [0x2E6BE0, asm]
+      - [0x2ECF70, bin] # data
 
-  - name: overlays/overlay65
+  - dir: overlays/overlay65
     type: code
     overlay: True
     start: 0x2ED2D0
     vram: 0x801059A0
-    files:
-      - [0x2ED2D0, "asm"]
-      - [0x2FB5E0, "bin"] # data
+    subsegments:
+      - [0x2ED2D0, asm]
+      - [0x2FB5E0, bin] # data
 
-  - name: overlays/overlay66
+  - dir: overlays/overlay66
     type: code
     overlay: True
     start: 0x2FC270
     vram: 0x801059A0
-    files:
-      - [0x2FC270, "asm"]
-      - [0x2FF5F0, "asm"]
-      - [0x300F10, "bin"] # data
+    subsegments:
+      - [0x2FC270, asm]
+      - [0x2FF5F0, asm]
+      - [0x300F10, bin] # data
 
-  - name: overlays/overlay67
+  - dir: overlays/overlay67
     type: code
     overlay: True
     start: 0x3010E0
     vram: 0x801059A0
-    files:
-      - [0x3010E0, "asm"]
-      - [0x306F70, "asm"]
-      - [0x308890, "bin"] # data
+    subsegments:
+      - [0x3010E0, asm]
+      - [0x306F70, asm]
+      - [0x308890, bin] # data
 
-  - name: overlays/overlay68
+  - dir: overlays/overlay68
     type: code
     overlay: True
     start: 0x308D10
     vram: 0x801059A0
-    files:
-      - [0x308D10, "asm"]
-      - [0x30DC30, "asm"]
-      - [0x30F550, "bin"] # data
+    subsegments:
+      - [0x308D10, asm]
+      - [0x30DC30, asm]
+      - [0x30F550, bin] # data
 
-  - name: overlays/overlay69
+  - dir: overlays/overlay69
     type: code
     overlay: True
     start: 0x30F940
     vram: 0x801059A0
-    files:
-      - [0x30F940, "asm"]
-      - [0x3151F0, "asm"]
-      - [0x316B10, "bin"] # data
+    subsegments:
+      - [0x30F940, asm]
+      - [0x3151F0, asm]
+      - [0x316B10, bin] # data
 
-  - name: overlays/overlay70
+  - dir: overlays/overlay70
     type: code
     overlay: True
     start: 0x316DF0
     vram: 0x801059A0
-    files:
-      - [0x316DF0, "asm"]
-      - [0x31AB90, "bin"] # data
+    subsegments:
+      - [0x316DF0, asm]
+      - [0x31AB90, bin] # data
 
-  - name: overlays/overlay71/
+  - dir: overlays/overlay71
     type: code
     overlay: True
     start: 0x31B3B0
     vram: 0x801059A0
-    files:
-      - [0x31B3B0, "c", "overlays/overlay71/overlay71_main"]
-      - [0x31B3E0, "c", "overlays/overlay71/overlay71"]
-      - [0x31B4F0, ".data", "overlays/overlay71/overlay71_main"]
+    subsegments:
+      - [0x31B3B0, c, "overlay71_main"]
+      - [0x31B3E0, c, "overlay71"]
+      - [0x31B4F0, .data, "overlay71_main"]
 
   # Chilly Waters
-  - name: overlays/board_chillywaters
+  - dir: overlays/board_chillywaters
     type: code
     overlay: True
     start: 0x31B510
     vram: 0x801059A0
-    files:
-      - [0x31B510, "c", "overlays/board_chillywaters/chillywaters_main"]
-      - [0x31B540, "c", "overlays/board_chillywaters/chillywaters"]
-      - [0x31B9F0, "c", "overlays/board_chillywaters/chillywaters2"]
-      - [0x332DC0, ".data", "overlays/board_chillywaters/chillywaters_main"]
-      - [0x332DF0, "data", "overlays/board_chillywaters/chillywaters2"]
-      - [0x335440, "rodata", "overlays/board_chillywaters/chillywaters2"]
+    subsegments:
+      - [0x31B510, c, "chillywaters_main"]
+      - [0x31B540, c, "chillywaters"]
+      - [0x31B9F0, c, "chillywaters2"]
+      - [0x332DC0, .data, "chillywaters_main"]
+      - [0x332DF0, data, "chillywaters2"]
+      - [0x335440, rodata, "chillywaters2"]
 
   # Deep Bloober Sea
-  - name: overlays/board_deepbloobersea
+  - dir: overlays/board_deepbloobersea
     type: code
     overlay: True
     start: 0x3355E0
     vram: 0x801059A0
-    files:
-      - [0x3355E0, "asm"]
-      - [0x335610, "asm"]
-      - [0x34C270, "bin"] # data
+    subsegments:
+      - [0x3355E0, asm]
+      - [0x335610, asm]
+      - [0x34C270, bin] # data
 
   # Spiny Desert
-  - name: overlays/board_spinydesert
+  - dir: overlays/board_spinydesert
     type: code
     overlay: True
     start: 0x34E810
     vram: 0x801059A0
-    files:
-      - [0x34E810, "c", "overlays/board_spinydesert/spinydesert_main"]
-      - [0x34E840, "c", "overlays/board_spinydesert/spinydesert"]
+    subsegments:
+      - [0x34E810, c, "spinydesert_main"]
+      - [0x34E840, c, "spinydesert"]
       # Possible split at 0x34EB90 if similar to Chilly Waters.
-      - [0x364F50, ".data", "overlays/board_spinydesert/spinydesert_main"]
-      - [0x364F80, "bin"] # data
+      - [0x364F50, .data, "spinydesert_main"]
+      - [0x364F80, bin] # data
 
   # Woody Woods
-  - name: overlays/board_woodywoods
+  - dir: overlays/board_woodywoods
     type: code
     overlay: True
     start: 0x367930
     vram: 0x801059A0
-    files:
-      - [0x367930, "asm"]
-      - [0x367960, "asm"]
-      - [0x37D6A0, "bin"] # data
+    subsegments:
+      - [0x367930, asm]
+      - [0x367960, asm]
+      - [0x37D6A0, bin] # data
 
   # Creepy Cavern
-  - name: overlays/board_creepycavern
+  - dir: overlays/board_creepycavern
     type: code
     overlay: True
     start: 0x37FF80
     vram: 0x801059A0
-    files:
-      - [0x37FF80, "asm"]
-      - [0x37FFB0, "asm"]
-      - [0x3975F0, "bin"] # data
+    subsegments:
+      - [0x37FF80, asm]
+      - [0x37FFB0, asm]
+      - [0x3975F0, bin] # data
 
   # Waluigi's Island
-  - name: overlays/board_waluigisisland
+  - dir: overlays/board_waluigisisland
     type: code
     overlay: True
     start: 0x39AD20
     vram: 0x801059A0
-    files:
-      - [0x39AD20, "asm"]
-      - [0x39AD50, "asm"]
-      - [0x3B08D0, "bin"] # data
+    subsegments:
+      - [0x39AD20, asm]
+      - [0x39AD50, asm]
+      - [0x3B08D0, bin] # data
 
-  - name: overlays/overlay78
+  - dir: overlays/overlay78
     type: code
     overlay: True
     start: 0x3B35F0
     vram: 0x801059A0
-    files:
-      - [0x3B35F0, "asm"]
-      - [0x3B3620, "asm"]
-      - [0x3B9420, "bin"] # data
+    subsegments:
+      - [0x3B35F0, asm]
+      - [0x3B3620, asm]
+      - [0x3B9420, bin] # data
 
-  - name: overlays/overlay79
+  - dir: overlays/overlay79
     type: code
     overlay: True
     start: 0x3B9670
     vram: 0x801059A0
-    files:
-      - [0x3B9670, "asm"]
-      - [0x3BFA00, "asm"]
-      - [0x3C20B0, "bin"] # data
+    subsegments:
+      - [0x3B9670, asm]
+      - [0x3BFA00, asm]
+      - [0x3C20B0, bin] # data
 
-  - name: overlays/overlay80
+  - dir: overlays/overlay80
     type: code
     overlay: True
     start: 0x3C27C0
     vram: 0x801059A0
-    files:
-      - [0x3C27C0, "asm"]
-      - [0x3C6170, "bin"] # data
+    subsegments:
+      - [0x3C27C0, asm]
+      - [0x3C6170, bin] # data
 
-  - name: overlays/overlay81
+  - dir: overlays/overlay81
     type: code
     overlay: True
     start: 0x3C6310
     vram: 0x801059A0
-    files:
-      - [0x3C6310, "asm"]
-      - [0x3C7DF0, "bin"] # data
+    subsegments:
+      - [0x3C6310, asm]
+      - [0x3C7DF0, bin] # data
 
-  - name: overlays/overlay82
+  - dir: overlays/overlay82
     type: code
     overlay: True
     start: 0x3C7EC0
     vram: 0x801059A0
-    files:
-      - [0x3C7EC0, "asm"]
-      - [0x3CA5F0, "bin"] # data
+    subsegments:
+      - [0x3C7EC0, asm]
+      - [0x3CA5F0, bin] # data
 
-  - name: overlays/overlay83
+  - dir: overlays/overlay83
     type: code
     overlay: True
     start: 0x3CA800
     vram: 0x801059A0
-    files:
-      - [0x3CA800, "asm"]
-      - [0x3CDBD0, "bin"] # data
+    subsegments:
+      - [0x3CA800, asm]
+      - [0x3CDBD0, bin] # data
 
-  - name: overlays/overlay84
+  - dir: overlays/overlay84
     type: code
     overlay: True
     start: 0x3CDEC0
     vram: 0x801059A0
-    files:
-      - [0x3CDEC0, "asm"]
-      - [0x3CFAE0, "bin"] # data
+    subsegments:
+      - [0x3CDEC0, asm]
+      - [0x3CFAE0, bin] # data
 
-  - name: overlays/overlay85
+  - dir: overlays/overlay85
     type: code
     overlay: True
     start: 0x3CFC80
     vram: 0x801059A0
-    files:
-      - [0x3CFC80, "asm"]
-      - [0x3D3A90, "bin"] # data
+    subsegments:
+      - [0x3CFC80, asm]
+      - [0x3D3A90, bin] # data
 
   # Character Animation Test
-  - name: overlays/overlay86
+  - dir: overlays/overlay86
     type: code
     overlay: True
     start: 0x3D3C80
     vram: 0x801059A0
-    files:
-      - [0x3D3C80, "asm"]
-      - [0x3D5160, "bin"] # data
+    subsegments:
+      - [0x3D3C80, asm]
+      - [0x3D5160, bin] # data
 
-  - name: overlays/overlay87
+  - dir: overlays/overlay87
     type: code
     overlay: True
     start: 0x3D5C30
     vram: 0x801059A0
-    files:
-      - [0x3D5C30, "asm"]
-      - [0x3D7040, "bin"] # data
+    subsegments:
+      - [0x3D5C30, asm]
+      - [0x3D7040, bin] # data
 
   # Intro Screens
-  - name: overlays/intro/
+  - dir: overlays/intro
     type: code
     overlay: True
     start: 0x3D7150
     vram: 0x801059A0
-    files:
-      - [0x3D7150, "c", "overlays/intro/intro_main"]
-      - [0x3D7180, "c", "overlays/intro/intro"]
-      - [0x3D7690, ".data", "overlays/intro/intro_main"]
-      - [0x3D76B0, ".data", "overlays/intro/intro"]
+    subsegments:
+      - [0x3D7150, c, "intro_main"]
+      - [0x3D7180, c, "intro"]
+      - [0x3D7690, .data, "intro_main"]
+      - [0x3D76B0, .data, "intro"]
+      - [auto, all_bss]
 
-  - name: overlays/overlay89
+  - dir: overlays/overlay89
     type: code
     overlay: True
     start: 0x3D76C0
     vram: 0x801059A0
-    files:
-      - [0x3D76C0, "asm"]
-      - [0x3D8680, "bin"] # data
+    subsegments:
+      - [0x3D76C0, asm]
+      - [0x3D8680, bin] # data
 
-  - name: overlays/overlay90
+  - dir: overlays/overlay90
     type: code
     overlay: True
     start: 0x3D8930
     vram: 0x801059A0
-    files:
-      - [0x3D8930, "asm"]
-      - [0x3D8960, "asm"]
-      - [0x3D8A70, "bin"] # data
+    subsegments:
+      - [0x3D8930, asm]
+      - [0x3D8960, asm]
+      - [0x3D8A70, bin] # data
 
-  - name: overlays/overlay91
+  - dir: overlays/overlay91
     type: code
     overlay: True
     start: 0x3D8A90
     vram: 0x801059A0
-    files:
-      - [0x3D8A90, "asm"]
-      - [0x3D8AC0, "asm"]
-      - [0x3EB7D0, "bin"] # data
+    subsegments:
+      - [0x3D8A90, asm]
+      - [0x3D8AC0, asm]
+      - [0x3EB7D0, bin] # data
 
-  - name: overlays/overlay92
+  - dir: overlays/overlay92
     type: code
     overlay: True
     start: 0x3EC560
     vram: 0x801059A0
-    files:
-      - [0x3EC560, "asm"]
-      - [0x3EC590, "asm"]
-      - [0x3FD130, "bin"] # data
+    subsegments:
+      - [0x3EC560, asm]
+      - [0x3EC590, asm]
+      - [0x3FD130, bin] # data
 
-  - name: overlays/overlay93
+  - dir: overlays/overlay93
     type: code
     overlay: True
     start: 0x3FE1C0
     vram: 0x801059A0
-    files:
-      - [0x3FE1C0, "asm"]
-      - [0x3FE1F0, "asm"]
-      - [0x40FC20, "bin"] # data
+    subsegments:
+      - [0x3FE1C0, asm]
+      - [0x3FE1F0, asm]
+      - [0x40FC20, bin] # data
 
-  - name: overlays/overlay94
+  - dir: overlays/overlay94
     type: code
     overlay: True
     start: 0x4108E0
     vram: 0x801059A0
-    files:
-      - [0x4108E0, "asm"]
-      - [0x410910, "asm"]
-      - [0x424BB0, "bin"] # data
+    subsegments:
+      - [0x4108E0, asm]
+      - [0x410910, asm]
+      - [0x424BB0, bin] # data
 
-  - name: overlays/overlay95
+  - dir: overlays/overlay95
     type: code
     overlay: True
     start: 0x426420
     vram: 0x801059A0
-    files:
-      - [0x426420, "asm"]
-      - [0x426450, "asm"]
-      - [0x436100, "bin"] # data
+    subsegments:
+      - [0x426420, asm]
+      - [0x426450, asm]
+      - [0x436100, bin] # data
 
-  - name: overlays/overlay96
+  - dir: overlays/overlay96
     type: code
     overlay: True
     start: 0x436E20
     vram: 0x801059A0
-    files:
-      - [0x436E20, "asm"]
-      - [0x436E50, "asm"]
-      - [0x445900, "bin"] # data
+    subsegments:
+      - [0x436E20, asm]
+      - [0x436E50, asm]
+      - [0x445900, bin] # data
 
-  - name: overlays/overlay97
+  - dir: overlays/overlay97
     type: code
     overlay: True
     start: 0x4461B0
     vram: 0x801059A0
-    files:
-      - [0x4461B0, "asm"]
-      - [0x4461E0, "asm"]
-      - [0x4551C0, "bin"] # data
+    subsegments:
+      - [0x4461B0, asm]
+      - [0x4461E0, asm]
+      - [0x4551C0, bin] # data
 
-  - name: overlays/overlay98
+  - dir: overlays/overlay98
     type: code
     overlay: True
     start: 0x4554C0
     vram: 0x801059A0
-    files:
-      - [0x4554C0, "asm"]
-      - [0x45A700, "asm"]
-      - [0x45CDB0, "bin"] # data
+    subsegments:
+      - [0x4554C0, asm]
+      - [0x45A700, asm]
+      - [0x45CDB0, bin] # data
 
-  - name: overlays/overlay99
+  - dir: overlays/overlay99
     type: code
     overlay: True
     start: 0x45D380
     vram: 0x801059A0
-    files:
-      - [0x45D380, "asm"]
-      - [0x460610, "bin"] # data
+    subsegments:
+      - [0x45D380, asm]
+      - [0x460610, bin] # data
 
-  - name: overlays/overlay100
+  - dir: overlays/overlay100
     type: code
     overlay: True
     start: 0x460790
     vram: 0x801059A0
-    files:
-      - [0x460790, "asm"]
-      - [0x463FF0, "bin"] # data
+    subsegments:
+      - [0x460790, asm]
+      - [0x463FF0, bin] # data
 
-  - name: overlays/overlay101
+  - dir: overlays/overlay101
     type: code
     overlay: True
     start: 0x464360
     vram: 0x801059A0
-    files:
-      - [0x464360, "asm"]
-      - [0x4672F0, "bin"] # data
+    subsegments:
+      - [0x464360, asm]
+      - [0x4672F0, bin] # data
 
-  - name: overlays/overlay102
+  - dir: overlays/overlay102
     type: code
     overlay: True
     start: 0x4675D0
     vram: 0x801059A0
-    files:
-      - [0x4675D0, "asm"]
-      - [0x467600, "asm"]
-      - [0x468310, "bin"] # data
+    subsegments:
+      - [0x4675D0, asm]
+      - [0x467600, asm]
+      - [0x468310, bin] # data
 
-  - name: overlays/overlay103
+  - dir: overlays/overlay103
     type: code
     overlay: True
     start: 0x4684F0
     vram: 0x801059A0
-    files:
-      - [0x4684F0, "asm"]
-      - [0x468520, "asm"]
-      - [0x468A70, "bin"] # data
+    subsegments:
+      - [0x4684F0, asm]
+      - [0x468520, asm]
+      - [0x468A70, bin] # data
 
-  - name: overlays/overlay104
+  - dir: overlays/overlay104
     type: code
     overlay: True
     start: 0x468A90
     vram: 0x801059A0
-    files:
-      - [0x468A90, "asm"]
-      - [0x468AC0, "asm"]
-      - [0x46BB50, "asm"]
-      - [0x46CB70, "bin"] # data
+    subsegments:
+      - [0x468A90, asm]
+      - [0x468AC0, asm]
+      - [0x46BB50, asm]
+      - [0x46CB70, bin] # data
 
-  - name: overlays/overlay105
+  - dir: overlays/overlay105
     type: code
     overlay: True
     start: 0x46CC10
     vram: 0x801059A0
-    files:
-      - [0x46CC10, "asm"]
-      - [0x473130, "asm"]
-      - [0x479470, "asm"]
-      - [0x47D880, "asm"]
-      - [0x47DD90, "asm"]
-      - [0x480120, "bin"] # data
+    subsegments:
+      - [0x46CC10, asm]
+      - [0x473130, asm]
+      - [0x479470, asm]
+      - [0x47D880, asm]
+      - [0x47DD90, asm]
+      - [0x480120, bin] # data
 
-  - name: overlays/overlay106
+  - dir: overlays/overlay106
     type: code
     overlay: True
     start: 0x481970
     vram: 0x801059A0
-    files:
-      - [0x481970, "asm"]
-      - [0x4822F0, "asm"]
-      - [0x4832D0, "asm"]
-      - [0x487F50, "asm"]
-      - [0x48BAB0, "bin"] # data
+    subsegments:
+      - [0x481970, asm]
+      - [0x4822F0, asm]
+      - [0x4832D0, asm]
+      - [0x487F50, asm]
+      - [0x48BAB0, bin] # data
 
-  - name: overlays/overlay107
+  - dir: overlays/overlay107
     type: code
     overlay: True
     start: 0x48BE30
     vram: 0x801059A0
-    files:
-      - [0x48BE30, "asm"]
-      - [0x48D950, "asm"]
-      - [0x492250, "asm"]
-      - [0x496990, "asm"]
-      - [0x49AF10, "bin"] # data
+    subsegments:
+      - [0x48BE30, asm]
+      - [0x48D950, asm]
+      - [0x492250, asm]
+      - [0x496990, asm]
+      - [0x49AF10, bin] # data
 
-  - name: overlays/overlay108
+  - dir: overlays/overlay108
     type: code
     overlay: True
     start: 0x49BD40
     vram: 0x801059A0
-    files:
-      - [0x49BD40, "asm"]
-      - [0x49DF30, "asm"]
-      - [0x4A7540, "asm"]
-      - [0x4AC200, "asm"]
-      - [0x4B0E80, "asm"]
-      - [0x4B1CC0, "bin"] # data
+    subsegments:
+      - [0x49BD40, asm]
+      - [0x49DF30, asm]
+      - [0x4A7540, asm]
+      - [0x4AC200, asm]
+      - [0x4B0E80, asm]
+      - [0x4B1CC0, bin] # data
 
-  - name: overlays/overlay109
+  - dir: overlays/overlay109
     type: code
     overlay: True
     start: 0x4B29E0
     vram: 0x801059A0
-    files:
-      - [0x4B29E0, "asm"]
-      - [0x4B4DC0, "asm"]
-      - [0x4B9A30, "asm"]
-      - [0x4C22A0, "bin"] # data
+    subsegments:
+      - [0x4B29E0, asm]
+      - [0x4B4DC0, asm]
+      - [0x4B9A30, asm]
+      - [0x4C22A0, bin] # data
 
-  - name: overlays/overlay110
+  - dir: overlays/overlay110
     type: code
     overlay: True
     start: 0x4C2BD0
     vram: 0x801059A0
-    files:
-      - [0x4C2BD0, "asm"]
-      - [0x4C47E0, "asm"]
-      - [0x4C8050, "asm"]
-      - [0x4CECF0, "bin"] # data
+    subsegments:
+      - [0x4C2BD0, asm]
+      - [0x4C47E0, asm]
+      - [0x4C8050, asm]
+      - [0x4CECF0, bin] # data
 
-  - name: overlays/overlay111
+  - dir: overlays/overlay111
     type: code
     overlay: True
     start: 0x4CF350
     vram: 0x801059A0
-    files:
-      - [0x4CF350, "asm"]
-      - [0x4D8E80, "asm"]
-      - [0x4DE0E0, "bin"] # data
+    subsegments:
+      - [0x4CF350, asm]
+      - [0x4D8E80, asm]
+      - [0x4DE0E0, bin] # data
 
   # Mini-Game Instructions Screen
-  - name: overlays/overlay112
+  - dir: overlays/overlay112
     type: code
     overlay: True
     start: 0x4DEB60
     vram: 0x801059A0
-    files:
-      - [0x4DEB60, "asm"]
-      - [0x4E0630, "asm"]
-      - [0x4E1510, "asm"]
-      - [0x4E1CB0, "asm"]
-      - [0x4E2670, "asm"]
-      - [0x4E2C50, "asm"]
-      - [0x4E3390, "asm"]
-      - [0x4E4B50, "asm"]
-      - [0x4E65C0, "bin"] # data
+    subsegments:
+      - [0x4DEB60, asm]
+      - [0x4E0630, asm]
+      - [0x4E1510, asm]
+      - [0x4E1CB0, asm]
+      - [0x4E2670, asm]
+      - [0x4E2C50, asm]
+      - [0x4E3390, asm]
+      - [0x4E4B50, asm]
+      - [0x4E65C0, bin] # data
 
   # Mini-Game Results Screen
-  - name: overlays/overlay113
+  - dir: overlays/overlay113
     type: code
     overlay: True
     start: 0x4E6DC0
     vram: 0x801059A0
-    files:
-      - [0x4E6DC0, "asm"]
-      - [0x4E8F60, "asm"]
-      - [0x4E9120, "asm"]
-      - [0x4EB420, "asm"]
-      - [0x4EBD50, "asm"]
-      - [0x4EBF10, "bin"] # data
+    subsegments:
+      - [0x4E6DC0, asm]
+      - [0x4E8F60, asm]
+      - [0x4E9120, asm]
+      - [0x4EB420, asm]
+      - [0x4EBD50, asm]
+      - [0x4EBF10, bin] # data
 
-  - name: overlays/overlay114
+  - dir: overlays/overlay114
     type: code
     overlay: True
     start: 0x4EC1B0
     vram: 0x801059A0
-    files:
-      - [0x4EC1B0, "asm"]
-      - [0x4ECDE0, "asm"]
-      - [0x4EDCB0, "asm"]
-      - [0x4F00D0, "bin"] # data
+    subsegments:
+      - [0x4EC1B0, asm]
+      - [0x4ECDE0, asm]
+      - [0x4EDCB0, asm]
+      - [0x4F00D0, bin] # data
 
-  - name: overlays/overlay115
+  - dir: overlays/overlay115
     type: code
     overlay: True
     start: 0x4F01F0
     vram: 0x801059A0
-    files:
-      - [0x4F01F0, "asm"]
-      - [0x4F1180, "asm"]
-      - [0x4F36C0, "bin"] # data
+    subsegments:
+      - [0x4F01F0, asm]
+      - [0x4F1180, asm]
+      - [0x4F36C0, bin] # data
 
-  - name: overlays/overlay116
+  - dir: overlays/overlay116
     type: code
     overlay: True
     start: 0x4F3780
     vram: 0x801059A0
-    files:
-      - [0x4F3780, "asm"]
-      - [0x4F4980, "asm"]
-      - [0x4F5AF0, "asm"]
-      - [0x4F66B0, "bin"] # data
+    subsegments:
+      - [0x4F3780, asm]
+      - [0x4F4980, asm]
+      - [0x4F5AF0, asm]
+      - [0x4F66B0, bin] # data
 
-  - name: overlays/overlay117
+  - dir: overlays/overlay117
     type: code
     overlay: True
     start: 0x4F6810
     vram: 0x801059A0
-    files:
-      - [0x4F6810, "asm"]
-      - [0x4F69B0, "bin"] # data
+    subsegments:
+      - [0x4F6810, asm]
+      - [0x4F69B0, bin] # data
 
   # Message Check
-  - name: overlays/debug_message_check/
+  - dir: overlays/debug_message_check
     type: code
     overlay: True
     start: 0x4F69F0
     vram: 0x801059A0
-    files:
-      - [0x4F69F0, "c"]
-      - [0x4F7550, "bin"] # data
+    subsegments:
+      - [0x4F69F0, c]
+      - [0x4F7550, bin] # data
 
   # Castle Grounds
-  - name: overlays/overlay119
+  - dir: overlays/overlay119
     type: code
     overlay: True
     start: 0x4F7E90
     vram: 0x801059A0
-    files:
-      - [0x4F7E90, "asm"]
-      - [0x4F7EC0, "asm"]
-      - [0x4F8140, "asm"]
-      - [0x501760, "bin"] # data
+    subsegments:
+      - [0x4F7E90, asm]
+      - [0x4F7EC0, asm]
+      - [0x4F8140, asm]
+      - [0x501760, bin] # data
 
   # Configuring gameplay ("warp pipe" in MP1 terminology)
-  - name: overlays/overlay120
+  - dir: overlays/overlay120
     type: code
     overlay: True
     start: 0x501C00
     vram: 0x801059A0
-    files:
-      - [0x501C00, "asm"]
-      - [0x506F20, "asm"]
-      - [0x508D50, "asm"]
-      - [0x5092C0, "asm"]
-      - [0x50B740, "asm"]
-      - [0x513B70, "asm"]
-      - [0x515670, "bin"] # data
+    subsegments:
+      - [0x501C00, asm]
+      - [0x506F20, asm]
+      - [0x508D50, asm]
+      - [0x5092C0, asm]
+      - [0x50B740, asm]
+      - [0x513B70, asm]
+      - [0x515670, bin] # data
 
   # Select save game screen
-  - name: overlays/overlay121
+  - dir: overlays/overlay121
     type: code
     overlay: True
     start: 0x516AE0
     vram: 0x801059A0
-    files:
-      - [0x516AE0, "asm"]
-      - [0x516B10, "asm"]
-      - [0x516D30, "asm"]
-      - [0x5238E0, "bin"] # data
+    subsegments:
+      - [0x516AE0, asm]
+      - [0x516B10, asm]
+      - [0x516D30, asm]
+      - [0x5238E0, bin] # data
 
   # Start Screen
-  - name: overlays/overlay122
+  - dir: overlays/overlay122
     type: code
     overlay: True
     start: 0x523FD0
     vram: 0x801059A0
-    files:
-      - [0x523FD0, "asm"]
-      - [0x524000, "asm"]
-      - [0x5242B0, "asm"]
-      - [0x524820, "asm"]
-      - [0x533180, "bin"] # data
+    subsegments:
+      - [0x523FD0, asm]
+      - [0x524000, asm]
+      - [0x5242B0, asm]
+      - [0x524820, asm]
+      - [0x533180, bin] # data
 
-  - name: overlays/overlay123
+  - dir: overlays/overlay123
     type: code
     overlay: True
     start: 0x5334D0
     vram: 0x801059A0
-    files:
-      - [0x5334D0, "asm"]
-      - [0x533500, "asm"]
-      - [0x535A80, "asm"]
-      - [0x53DCA0, "asm"]
-      - [0x540FE0, "bin"] # data
+    subsegments:
+      - [0x5334D0, asm]
+      - [0x533500, asm]
+      - [0x535A80, asm]
+      - [0x53DCA0, asm]
+      - [0x540FE0, bin] # data
 
-  - name: overlays/overlay124
+  - dir: overlays/overlay124
     type: code
     overlay: True
     start: 0x542220
     vram: 0x801059A0
-    files:
-      - [0x542220, "asm"]
-      - [0x5436A0, "asm"]
-      - [0x543FC0, "asm"]
-      - [0x544E70, "asm"]
-      - [0x5486A0, "asm"]
-      - [0x54CDB0, "bin"] # data
+    subsegments:
+      - [0x542220, asm]
+      - [0x5436A0, asm]
+      - [0x543FC0, asm]
+      - [0x544E70, asm]
+      - [0x5486A0, asm]
+      - [0x54CDB0, bin] # data
 
-  - name: overlays/overlay125
+  - dir: overlays/overlay125
     type: code
     overlay: True
     start: 0x54DD10
     vram: 0x801059A0
-    files:
-      - [0x54DD10, "asm"]
-      - [0x54F360, "asm"]
-      - [0x552C80, "bin"] # data
+    subsegments:
+      - [0x54DD10, asm]
+      - [0x54F360, asm]
+      - [0x552C80, bin] # data
 
-  # - name: overlays/overlay126
+  # - dir: overlays/overlay126
   #   type: code
   #   overlay: True
   #   start: 0x552F50
   #   vram: 0x801059A0
-  #   files:
-  #     - [0x552F50, "asm"]
-  #     - [0x552F50, "bin"] # data
+  #   subsegments:
+  #     - [0x552F50, asm]
+  #     - [0x552F50, bin] # data
 
-  - name: overlays/overlay127
+  - dir: overlays/overlay127
     type: code
     overlay: True
     start: 0x552F50
     vram: 0x801059A0
-    files:
-      - [0x552F50, "asm"]
-      - [0x556240, "bin"] # data
+    subsegments:
+      - [0x552F50, asm]
+      - [0x556240, bin] # data
 
-  - [0x00557620, "bin", "bin_557620"]
+  - [0x00557620, bin, "bin_557620"]
 
-  - [0x00557E20, "bin", "bin_mainfs"]
+  - [0x00557E20, bin, "bin_mainfs"]
 
-  - [0x01209850, "bin", "bin_strings_jp"]
-  - [0x0121CAA0, "bin", "bin_strings_en"]
-  - [0x012355C0, "bin", "bin_strings_de"]
-  - [0x0124D440, "bin", "bin_strings_fr"]
-  - [0x01261F90, "bin", "bin_strings_it"]
-  - [0x012765F0, "bin", "bin_strings_es"]
+  - [0x01209850, bin, "bin_strings_jp"]
+  - [0x0121CAA0, bin, "bin_strings_en"]
+  - [0x012355C0, bin, "bin_strings_de"]
+  - [0x0124D440, bin, "bin_strings_fr"]
+  - [0x01261F90, bin, "bin_strings_it"]
+  - [0x012765F0, bin, "bin_strings_es"]
 
-  - [0x0128CC60, "bin", "bin_hvq"]
+  - [0x0128CC60, bin, "bin_hvq"]
 
-  - [0x01881C40, "bin", "bin_audio_mbf0"]
-  - [0x01A56870, "bin", "bin_audio_sbf0"]
-  - [0x01EFD040, "bin", "bin_audio_fxd0"]
+  - [0x01881C40, bin, "bin_audio_mbf0"]
+  - [0x01A56870, bin, "bin_audio_sbf0"]
+  - [0x01EFD040, bin, "bin_audio_fxd0"]
   - [0x02000000]

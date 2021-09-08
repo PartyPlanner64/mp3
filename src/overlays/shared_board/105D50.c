@@ -44,7 +44,7 @@ s16 GetCurrentPlayerIndex() {
 /**
  * Returns a pointer to a player by index.
  */
-struct player *GetPlayerStruct(s32 index) {
+struct player* GetPlayerStruct(s32 index) {
     if (index < 0) {
         index = GetCurrentPlayerIndex();
     }

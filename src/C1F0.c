@@ -39,13 +39,13 @@ extern void func_800553A8(s16, s32, u16);
 extern void func_80055420(s16, s32, u8, u8, u8);
 extern void func_80055458(s16, s32, u16);
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000B5F0);
+INCLUDE_ASM(s32, "C1F0", func_8000B5F0);
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000B638);
+INCLUDE_ASM(s32, "C1F0", func_8000B638);
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000B690);
+INCLUDE_ASM(s32, "C1F0", func_8000B690);
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000B710);
+INCLUDE_ASM(s32, "C1F0", func_8000B710);
 
 // Potential file break, code above seems unrelated.
 
@@ -80,7 +80,7 @@ s16 func_8000B838(s32 dirAndFile) {
     return ret;
 }
 
-INCLUDE_ASM(s32, "code_C1F0", func_8000B880);
+INCLUDE_ASM(s32, "C1F0", func_8000B880);
 
 void func_8000BA00() {
     func_80056BAC();
@@ -88,7 +88,7 @@ void func_8000BA00() {
     D_800CD1DC = NULL;
 }
 
-INCLUDE_ASM(void, "code_C1F0", func_8000BA30);
+INCLUDE_ASM(void, "C1F0", func_8000BA30);
 
 void func_8000BB54(u16 spriteId) {
     func_8005532C((D_800CD1DC + spriteId)->unk4, 0, 0x8000);
