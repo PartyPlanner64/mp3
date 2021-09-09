@@ -345,7 +345,7 @@ segments:
       - [0xC9330, asm]
       - [0xC9690, asm]
       - [0xCA640, asm]
-      - [0xCCD20, asm]
+      - [0xCCD20, c]
       - [0xD1190, asm]
       - [0xD28F0, asm]
       - [0xD3450, asm]
