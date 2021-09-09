@@ -11,9 +11,10 @@ extern u16 D_800D530C;
 extern u16 D_800D5558;
 extern u8 D_800D6A58;
 
-static s32 D_80105F00_22E660;
-static s32 D_80105F04_2A1994;
-extern struct process *D_80105F10; // bss
+static s32 D_80105F00_22E660 = 0;
+static s32 D_80105F04_2A1994 = 0;
+
+static struct process *D_80105F10;
 
 extern void func_80105BA4_3D7354();
 extern void func_80105C80_3D7430();
