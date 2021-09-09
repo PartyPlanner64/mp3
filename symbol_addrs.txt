@@ -110,6 +110,9 @@ sqrtf = 0x80081240;
 _Printf = 0x80081A40;
 osGetCount = 0x800830A0;
 
+// 824C0.s, some issue with disassembly of this symbol.
+.L800CD1A0 = 0x800CD1A0;
+
 // shared_board/F5070
 PlayerHasEmptyItemSlot = 0x800E49DC; // type:func rom:0xF85FC
 FixUpPlayerItemSlots = 0x800E4A08; // type:func rom:0xF8628

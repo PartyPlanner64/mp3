@@ -83,7 +83,7 @@ clean:
 	rm -rf $(BUILD_DIR)
 
 clean-all:
-	rm -rf $(BUILD_DIR) asm assets
+	rm -rf $(BUILD_DIR) asm assets include/ld_addrs.h
 
 setup: clean submodules split
 	make -C tools
@@ -94,7 +94,6 @@ submodules:
 split:
 	rm -rf assets asm
 	$(SPLAT)
-	sed -i 's/\.L800CD1A0/D_800CD1A0/g' asm/824C0.s
 
 test: $(ROM)
 	$(EMULATOR) $<
