@@ -64,6 +64,7 @@ struct player {
     s8 item_space_count;
     s8 bank_space_count;
     /* 52 (0x34) 800D113C */ s8 game_guy_space_count;
+    s8 unk35;
 
     // s8 pad2[3];
 }; // sizeof == 56 | 0x38

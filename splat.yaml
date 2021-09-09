@@ -354,7 +354,7 @@ segments:
       - [0xDC0D0, asm]
       - [0xDC4E0, asm]
       - [0xDFD60, asm]
-      - [0xE3CD0, asm]
+      - [0xE3CD0, c]
       - [0xE78B0, asm]
       - [0xE7AE0, asm]
       - [0xE8BE0, bin] # data
