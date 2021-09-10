@@ -1328,7 +1328,7 @@ segments:
     start: 0x4554C0
     vram: 0x801059A0
     subsegments:
-      - [0x4554C0, asm]
+      - [0x4554C0, c]
       - [0x45A700, asm]
       - [0x45CDB0, bin] # data
 
