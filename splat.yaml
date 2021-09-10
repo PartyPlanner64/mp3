@@ -1628,7 +1628,7 @@ segments:
       - [0x5436A0, asm]
       - [0x543FC0, asm]
       - [0x544E70, asm]
-      - [0x5486A0, asm]
+      - [0x5486A0, c]
       - [0x54CDB0, bin] # data
 
   - dir: overlays/overlay125
