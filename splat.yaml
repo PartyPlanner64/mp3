@@ -1594,7 +1594,7 @@ segments:
       - [0x5238E0, bin] # data
 
   # Start Screen
-  - dir: overlays/overlay122
+  - dir: overlays/start_screen
     type: code
     overlay: True
     start: 0x523FD0
@@ -1603,7 +1603,7 @@ segments:
       - [0x523FD0, asm]
       - [0x524000, asm]
       - [0x5242B0, asm]
-      - [0x524820, asm]
+      - [0x524820, c]
       - [0x533180, bin] # data
 
   - dir: overlays/overlay123
