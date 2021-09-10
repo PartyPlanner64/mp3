@@ -1180,7 +1180,7 @@ segments:
     start: 0x3CA800
     vram: 0x801059A0
     subsegments:
-      - [0x3CA800, asm]
+      - [0x3CA800, c]
       - [0x3CDBD0, bin] # data
 
   - dir: overlays/overlay84
