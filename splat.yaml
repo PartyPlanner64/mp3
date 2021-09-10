@@ -1520,7 +1520,7 @@ segments:
     start: 0x4F01F0
     vram: 0x801059A0
     subsegments:
-      - [0x4F01F0, asm]
+      - [0x4F01F0, c]
       - [0x4F1180, asm]
       - [0x4F36C0, bin] # data
 
