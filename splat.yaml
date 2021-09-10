@@ -1638,7 +1638,7 @@ segments:
     vram: 0x801059A0
     subsegments:
       - [0x54DD10, asm]
-      - [0x54F360, asm]
+      - [0x54F360, c]
       - [0x552C80, bin] # data
 
   # - dir: overlays/overlay126
