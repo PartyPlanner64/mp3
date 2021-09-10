@@ -1459,7 +1459,7 @@ segments:
     subsegments:
       - [0x4C2BD0, asm]
       - [0x4C47E0, asm]
-      - [0x4C8050, asm]
+      - [0x4C8050, c]
       - [0x4CECF0, bin] # data
 
   - dir: overlays/overlay111
