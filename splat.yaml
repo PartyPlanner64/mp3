@@ -1356,7 +1356,7 @@ segments:
     start: 0x464360
     vram: 0x801059A0
     subsegments:
-      - [0x464360, asm]
+      - [0x464360, c]
       - [0x4672F0, bin] # data
 
   - dir: overlays/overlay102
