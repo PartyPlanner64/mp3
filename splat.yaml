@@ -1189,7 +1189,7 @@ segments:
     start: 0x3CDEC0
     vram: 0x801059A0
     subsegments:
-      - [0x3CDEC0, asm]
+      - [0x3CDEC0, c]
       - [0x3CFAE0, bin] # data
 
   - dir: overlays/overlay85
