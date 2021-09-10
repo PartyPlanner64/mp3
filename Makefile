@@ -38,6 +38,7 @@ PYTHON := python3
 N64CKSUM := tools/n64cksum
 SPLAT_YAML := splat.yaml
 SPLAT = $(PYTHON) tools/n64splat/split.py $(SPLAT_YAML)
+PATCHES = $(PYTHON) tools/patches.py
 EMULATOR = mupen64plus
 SHA1SUM = sha1sum
 
@@ -94,6 +95,7 @@ submodules:
 split:
 	rm -rf assets asm
 	$(SPLAT)
+	$(PATCHES)
 
 test: $(ROM)
 	$(EMULATOR) $<
