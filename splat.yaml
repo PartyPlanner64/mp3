@@ -1490,13 +1490,13 @@ segments:
       - [0x4E65C0, bin] # data
 
   # Mini-Game Results Screen
-  - dir: overlays/overlay113
+  - dir: overlays/minigame_results
     type: code
     overlay: True
     start: 0x4E6DC0
     vram: 0x801059A0
     subsegments:
-      - [0x4E6DC0, asm]
+      - [0x4E6DC0, c]
       - [0x4E8F60, asm]
       - [0x4E9120, asm]
       - [0x4EB420, asm]

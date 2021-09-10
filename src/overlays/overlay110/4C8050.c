@@ -168,7 +168,7 @@ extern s16 D_801123A4;
 
 INCLUDE_ASM(s32, "overlays/overlay110/4C8050", func_8010FC98_4CCEC8);
 #ifdef _NONMATCH
-void func_8010FC98_4CCEC8() {
+void xfunc_8010FC98_4CCEC8() {
     s16 temp_s4;
     s32 i;
     s32 temp_s1_2;
