@@ -45,3 +45,20 @@ filedata = filedata.replace('$a0, $a0, 0x1f90', '$a0, $a0, %lo(bin_strings_it_RO
 
 with open(strings_fn, 'w') as file:
     file.write(filedata)
+
+
+# Make it easy to patch out the save type check.
+c210file = "asm/nonmatchings/CE10/func_8000C210.s"
+with open(c210file, 'r') as file :
+    filedata = file.read()
+
+filedata = filedata.replace('/* CEC0 8000C2C0 080030B0 */  j         .L8000C2C0', """
+.ifdef MP_SAVETYPE_PATCH
+/* CEC0 8000C2C0 00000000 */  nop
+.else
+/* CEC0 8000C2C0 080030B0 */  j         .L8000C2C0
+.endif
+""")
+
+with open(c210file, 'w') as file:
+    file.write(filedata)

@@ -1,5 +1,6 @@
 #include "common.h"
 
+// Contains save type check that often hangs emulators
 INCLUDE_ASM(s32, "CE10", func_8000C210);
 
 INCLUDE_ASM(s32, "CE10", func_8000C4AC);
