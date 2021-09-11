@@ -4,7 +4,11 @@ extern void *D_80114BB8_5331E8;
 extern void *D_80114BC4_5331F4;
 extern void *D_80114BD0_533200;
 
-INCLUDE_ASM(s32, "overlays/start_screen/524820", func_801061F0_524820);
+void func_801061F0_524820() {
+    func_8010621C_52484C();
+    func_801067D4_524E04();
+    func_80107A4C_52607C();
+}
 
 INCLUDE_ASM(s32, "overlays/start_screen/524820", func_8010621C_52484C);
 
