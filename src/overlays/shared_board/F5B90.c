@@ -123,6 +123,9 @@ extern s32 D_801052B0; // arrow angle count
 extern s16 D_801052B8[]; // excluded hidden space indices
 extern s16 D_801054B6; // count of hidden space exclusions
 
+extern s16 D_801054B8[]; // list of star space indices
+extern s16 D_801054F8; // count of star space indices
+
 extern void *D_80105500[];
 
 extern s16 D_80105540[];
@@ -1267,7 +1270,15 @@ void func_800EBCFC_FF91C(s16 *space_indices) {
     D_801054B6 = count;
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800EBD54_FF974);
+/** Takes a list of the star space indices and stashes the list. */
+void func_800EBD54_FF974(s16 *space_indices) {
+    s32 count = 0;
+    while (*space_indices != -1) {
+        D_801054B8[count] = *space_indices++;
+        count++;
+    }
+    D_801054F8 = count;
+}
 
 // Refreshes cached space type data, prompting redraw of spaces.
 void func_800EBDAC_FF9CC() {
