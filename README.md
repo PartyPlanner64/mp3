@@ -17,7 +17,7 @@ since the major sections of the ROM are able to be shifted. For example, you can
 `intro.c` from the decompiled intro overlay and recompile a working ROM.
 
 If you want to try this, you need to do a few things:
-1. In splay.yaml, set `shiftable: True` in the options.
+1. In splat.yaml, set `shiftable: True` in the options.
 2. Clean and resplit the repo (standard setup, see above).
 3. Open the marioparty3.ld (not the one in `build/`, the one in the root).
     - Add `__romPos = 0x0;` as the first line within `SECTIONS`. (Workaround for [splat #97](https://github.com/ethteck/splat/issues/97))
