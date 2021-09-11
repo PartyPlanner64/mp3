@@ -224,7 +224,7 @@ void func_80047420() {
     D_800D6A40 = 0;
 }
 
-struct object_indirect *func_80047620(u16 arg0, u16 arg1, u16 arg2, s16 arg3, void *arg4) {
+struct object_indirect *func_80047620(u16 arg0, u16 arg1, u16 arg2, s16 arg3, struct unk80047620 *arg4) {
     struct object_indirect *objind;
     s32 i;
 

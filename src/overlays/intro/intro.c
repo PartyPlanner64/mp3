@@ -1,4 +1,5 @@
 #include "common.h"
+#include "../../47D60.h"
 
 extern s16 func_8000B838(s32);
 extern s32 func_8000BFEC(s16, s32, s32);
@@ -49,12 +50,7 @@ void func_80105ACC_3D727C() {
     func_801059D0_3D7180();
 }
 
-struct unk80105AF0 {
-    s8 unks[0x14];
-    void *unk14;
-};
-
-void func_80105AF0_3D72A0(struct unk80105AF0 *arg0) {
+void func_80105AF0_3D72A0(struct unk80047620 *arg0) {
     if (D_800D530C != 0 || D_80105F04_2A1994 != 0) {
         if (GetFadeStatus() == 0) {
             func_800620C8(0, 0, 0);

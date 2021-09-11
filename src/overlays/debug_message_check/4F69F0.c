@@ -1,6 +1,7 @@
 #include "common.h"
 #include "../../object.h"
 #include "../../process.h"
+#include "../../47D60.h"
 
 /* Message Check */
 
@@ -9,9 +10,9 @@ extern s16 D_800A1786;
 extern u8 D_800CD280;
 extern f32 D_800CE1C8;
 extern f32 D_800D138C;
+extern u16 D_800D530C;
 extern f32 D_800D6AC0;
 
-extern u16 D_80106500;
 
 extern void func_80019568(s32, f32, f32, f32);
 extern void func_8001C0C4(s32, s32, s32, f32);
@@ -19,8 +20,10 @@ extern void func_8004819C(s32);
 extern void D_8004B340();
 extern s32 GetFadeStatus();
 
+extern u16 D_80106500_4F7550;
 extern void func_80105B50_4F6BA0();
-extern s32 func_80106334_4F7384();
+extern void func_80106334_4F7384();
+void func_80106390_4F73E0();
 extern s32 func_801063BC_4F740C();
 extern s32 func_80105B8C_4F6BDC();
 
@@ -58,7 +61,7 @@ void func_801059A0_4F69F0() {
 
 void func_80105B50_4F6BA0() {
     func_80105B8C_4F6BDC();
-    D_80106500 = 1;
+    D_80106500_4F7550 = 1;
     func_8005F524();
     while (1) {
         SleepVProcess();
@@ -67,7 +70,13 @@ void func_80105B50_4F6BA0() {
 
 INCLUDE_ASM(s32, "overlays/debug_message_check/4F69F0", func_80105B8C_4F6BDC);
 
-INCLUDE_ASM(s32, "overlays/debug_message_check/4F69F0", func_80106334_4F7384);
+void func_80106334_4F7384(struct unk80047620 *arg0) {
+    if ((D_80106500_4F7550 != 0) || (D_800D530C != 0)) {
+        InitFadeOut(0, 8);
+        arg0->unk14 = &func_80106390_4F73E0;
+        func_8004A994(0x3C);
+    }
+}
 
 void func_80106390_4F73E0() {
     if (GetFadeStatus() == 0) {
