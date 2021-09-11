@@ -12,6 +12,9 @@ CHECK = 0
 GRUCODE_CFLAGS := -DF3DEX_GBI_2
 GRUCODE_ASFLAGS := --defsym F3DEX_GBI_2=1
 
+# Patches
+# PATCHES_ASFLAGS := --defsym MP_SAVETYPE_PATCH=1
+
 # Fail early if baserom does not exist
 ifeq ($(wildcard $(BASEROM)),)
 $(error Baserom `$(BASEROM)' not found.)
@@ -55,8 +58,8 @@ OBJCOPY := $(CROSS)objcopy
 
 CFLAGSCOMMON = -G 0 -quiet -mcpu=r4300 -mips2
 
-ASFLAGS    := -G 0 -I include -mips3 -mabi=32 $(GRUCODE_ASFLAGS)
-OLDASFLAGS := -G 0 -I include -mips2 $(GRUCODE_ASFLAGS)
+ASFLAGS    := -G 0 -I include -mips3 -mabi=32 $(GRUCODE_ASFLAGS) $(PATCHES_ASFLAGS)
+OLDASFLAGS := -G 0 -I include -mips2 $(GRUCODE_ASFLAGS) $(PATCHES_ASFLAGS)
 CFLAGS     := -O1 $(CFLAGSCOMMON)
 LDFLAGS    := -T undefined_syms.txt -T undefined_funcs.txt -T undefined_funcs_auto.txt -T undefined_syms_auto.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(LD_MAP) --no-check-sections
 
