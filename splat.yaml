@@ -32,7 +32,7 @@ segments:
     - [0xAE30, c, "decode"]
     - [0xBCA0, c]
     - [0xC1F0, c]
-    - [0xCE10, asm]
+    - [0xCE10, c]
     - [0xD7A0, asm]
     - [0xE560, asm]
     - [0xEFB0, asm]
