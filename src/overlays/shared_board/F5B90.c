@@ -120,6 +120,9 @@ extern s32 D_80105288;
 extern f32 D_80105290[]; // arrow angles
 extern s32 D_801052B0; // arrow angle count
 
+extern s16 D_801052B8[]; // excluded hidden space indices
+extern s16 D_801054B6; // count of hidden space exclusions
+
 extern void *D_80105500[];
 
 extern s16 D_80105540[];
@@ -1254,7 +1257,15 @@ s16 func_800EBCD4_FF8F4(s32 arg0) {
     return func_800EB5DC_FF1FC(2, arg0);
 }
 
-INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800EBCFC_FF91C);
+/** Takes a list of space indices that shouldn't have hidden blocks, and stashes the list. */
+void func_800EBCFC_FF91C(s16 *space_indices) {
+    s32 count = 0;
+    while (*space_indices != -1) {
+        D_801052B8[count] = *space_indices++;
+        count++;
+    }
+    D_801054B6 = count;
+}
 
 INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800EBD54_FF974);
 

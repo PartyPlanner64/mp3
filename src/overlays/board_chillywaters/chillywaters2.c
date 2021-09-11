@@ -24,7 +24,7 @@ extern s16 D_8011D2C0[];
 extern s32 D_8011D308;
 extern struct object *D_8011D314;
 extern struct object *D_8011D318;
-extern void *D_8011D31C;
+extern u16 *D_8011D31C_332E8C; // list of hidden block skip spaces.
 extern void *D_8011D320;
 extern struct coords_3d D_8011D3A0[];
 extern f32 *D_8011D3E0;
@@ -311,7 +311,7 @@ void func_80107CC4_31D834(void) {
     func_80019514(1, 0xFF, 0xFF, 0xFF);
     func_80019514(2, 0xC8, 0xC8, 0xC8);
     func_800F89D0(3, 0x23A, 5, 0);
-    func_800EBCFC(&D_8011D31C);
+    func_800EBCFC(&D_8011D31C_332E8C);
     func_800EBD54(&D_8011D320);
     spacedata = GetSpaceData(0x77);
     func_800ECB58(&(spacedata->coords), &(GetSpaceData(0x73)->coords), &subroutine_arg4);
