@@ -27,26 +27,33 @@
 import sys
 import re
 import subprocess
+import m2ctx
+import tempfile
 
 rootDir = sys.argv[1]
 cfile = sys.argv[2]
 lineNumber = max(0, int(sys.argv[3]) - 1)
 
-def run_mips_to_c(retType, funcPath, funcName):
+def run_mips_to_c(retType, funcPath, funcName, contextFile):
     asmPath = rootDir + "/asm/nonmatchings/" + funcPath + "/" + funcName + ".s"
     mipsToCPath = rootDir + "/tools/mips_to_c/mips_to_c.py"
     procArgs = [mipsToCPath]
+    procArgs.append("--context")
+    procArgs.append(contextFile)
     if retType == "void":
         procArgs.append("--void")
     procArgs.append(asmPath)
     subprocess.run(procArgs)
 
-with open(cfile, "r") as infile:
-    lines = infile.readlines()
-    while (lineNumber >= 0):
-        lineText = lines[lineNumber]
-        x = re.match("^/*INCLUDE_ASM\(([\w\s\*]+),\s\"([/\w]+)\",\s(\w+)", lineText)
-        if x:
-            run_mips_to_c(x.group(1), x.group(2), x.group(3))
-            break
-        lineNumber = lineNumber - 1
+with tempfile.NamedTemporaryFile() as tmp:
+    m2ctx.m2ctx(cfile, tmp.name)
+
+    with open(cfile, "r") as infile:
+        lines = infile.readlines()
+        while (lineNumber >= 0):
+            lineText = lines[lineNumber]
+            x = re.match("^/*INCLUDE_ASM\(([\w\s\*]+),\s\"([/\w]+)\",\s(\w+)", lineText)
+            if x:
+                run_mips_to_c(x.group(1), x.group(2), x.group(3), tmp.name)
+                break
+            lineNumber = lineNumber - 1
