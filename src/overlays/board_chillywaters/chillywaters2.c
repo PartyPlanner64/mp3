@@ -20,7 +20,7 @@ extern s16 D_80105702; // window id
 
 extern void *D_8011A8D8;
 extern s32 D_8011E280[];
-extern s16 D_8011D2C0[];
+extern s16 D_8011D2C0_332E30[]; // toad spaces
 extern s32 D_8011D308;
 extern struct object *D_8011D314;
 extern struct object *D_8011D318;
@@ -108,7 +108,10 @@ struct chain_args {
 
 extern s16 GetAbsSpaceIndexFromChainSpaceIndex(u16 chain_index, u16 space_index);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80105E80_31B9F0);
+// Get toad space index for current start space index.
+s16 func_80105E80_31B9F0() {
+    return D_8011D2C0_332E30[D_800CD058.star_spawn_indices[D_800CD058.current_star_spawn]];
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80105EA8_31BA18);
 
@@ -350,7 +353,7 @@ void func_80107CC4_31D834(void) {
     {
         s32 i = 0;
         for (i = 0; i < 8; i++) {
-            func_800EA6E0(i, D_8011D2C0[i]);
+            func_800EA6E0(i, D_8011D2C0_332E30[i]);
         }
     }
 
