@@ -113,9 +113,28 @@ s16 func_80105E80_31B9F0() {
     return D_8011D2C0_332E30[D_800CD058.star_spawn_indices[D_800CD058.current_star_spawn]];
 }
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80105EA8_31BA18);
+INCLUDE_ASM(void, "overlays/board_chillywaters/chillywaters2", func_80105EA8_31BA18);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80105FB0_31BB20);
+INCLUDE_ASM(void, "overlays/board_chillywaters/chillywaters2", func_80105FB0_31BB20);
+// void func_80105FB0_31BB20() {
+//     s8 temp_s0;
+//     s8 temp_v1;
+//     u8 temp_v0;
+
+//     temp_v0 = D_800CD058.current_star_spawn + 1;
+//     D_800CD058.current_star_spawn = temp_v0;
+//     if (temp_v0 >= 8) {
+//         temp_s0 = D_800CD058.unkD;
+//         D_800CD058.current_star_spawn = 0;
+//         func_80035FDC(4);
+//         func_80105EA8_31BA18();
+//         temp_v1 = D_800CD058.star_spawn_indices[0];
+//         if (temp_s0 == temp_v1) {
+//             D_800CD058.star_spawn_indices[0] = D_800CD058.unkE;
+//             D_800CD058.unkD = temp_v1;
+//         }
+//     }
+// }
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010603C_31BBAC);
 
