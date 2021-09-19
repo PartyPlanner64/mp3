@@ -20,6 +20,8 @@ extern s16 D_80105702; // window id
 
 extern void *D_8011A8D8;
 extern s32 D_8011E280[];
+extern s16 D_8011D2A0_332E10[]; // feature flags for stars
+extern s16 D_8011D2B0_332E20[]; // star spaces
 extern s16 D_8011D2C0_332E30[]; // toad spaces
 extern s32 D_8011D308;
 extern struct object *D_8011D314;
@@ -136,7 +138,17 @@ INCLUDE_ASM(void, "overlays/board_chillywaters/chillywaters2", func_80105FB0_31B
 //     }
 // }
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010603C_31BBAC);
+void func_8010603C_31BBAC() {
+    s32 i;
+    struct strCD058 *loc;
+    loc = &D_800CD058;
+
+    for (i = 0; i < 8; i++) {
+        func_80035FDC(D_8011D2A0_332E10[i]);
+    }
+    SetSpaceType(D_8011D2B0_332E20[loc->star_spawn_indices[loc->current_star_spawn]], 0xE);
+    func_8003602C(D_8011D2A0_332E10[loc->star_spawn_indices[loc->current_star_spawn]]);
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801060E0_31BC50);
 
