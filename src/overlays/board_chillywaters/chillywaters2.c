@@ -8,6 +8,7 @@
 extern s32 D_800A12D4;
 
 extern u8 D_800CB99C;
+extern s8 D_800CD067;
 extern u16 D_800CD0B4[];
 extern s16 D_800CDD58; // used with direction arrows
 extern u16 D_800CE198;
@@ -720,7 +721,14 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010A134_31FC
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010A3B8_31FF28);
 
-INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010A474_31FFE4);
+void func_8010A474_31FFE4()
+{
+    while (TRUE)
+    {
+        func_800F69F8(D_800CD058.current_player_index, func_800E4A7C(), 0x8000);
+        SleepVProcess();
+    }
+}
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010A4B4_320024);
 
