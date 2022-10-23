@@ -47,12 +47,12 @@ extern void *D_8011E718;
 extern void *D_8011E8B8;
 extern f64 D_8011F968;
 extern struct process *D_8011FAB8; // related to star tour
-extern struct object *D_8011FABC; // related to star tour
-extern void *D_8011FAC0; // used with direction arrows
-extern void *D_8011FAC4; // used with direction arrows
-extern void *D_8011FAC8; // used with direction arrows
-extern void *D_8011FACC; // used with direction arrows
-extern void *D_8011FAD0; // used with direction arrows
+extern struct object *D_8011FABC;  // related to star tour
+extern void *D_8011FAC0;           // used with direction arrows
+extern void *D_8011FAC4;           // used with direction arrows
+extern void *D_8011FAC8;           // used with direction arrows
+extern void *D_8011FACC;           // used with direction arrows
+extern void *D_8011FAD0;           // used with direction arrows
 extern void *D_8011FAEC;
 extern void *D_8011FB08;
 extern void *D_8011FB0C;
@@ -102,7 +102,8 @@ extern s32 func_80118B7C_32E6EC();
 // struct space_index_args {
 // };
 
-struct chain_args {
+struct chain_args
+{
     s16 chainl;
     s16 chainr;
     s16 flags;
@@ -111,7 +112,8 @@ struct chain_args {
 extern s16 GetAbsSpaceIndexFromChainSpaceIndex(u16 chain_index, u16 space_index);
 
 // Get toad space index for current start space index.
-s16 func_80105E80_31B9F0() {
+s16 func_80105E80_31B9F0()
+{
     return D_8011D2C0_332E30[D_800CD058.star_spawn_indices[D_800CD058.current_star_spawn]];
 }
 
@@ -138,12 +140,14 @@ INCLUDE_ASM(void, "overlays/board_chillywaters/chillywaters2", func_80105FB0_31B
 //     }
 // }
 
-void func_8010603C_31BBAC() {
+void func_8010603C_31BBAC()
+{
     s32 i;
     struct strCD058 *loc;
     loc = &D_800CD058;
 
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < 8; i++)
+    {
         func_80035FDC(D_8011D2A0_332E10[i]);
     }
     SetSpaceType(D_8011D2B0_332E20[loc->star_spawn_indices[loc->current_star_spawn]], 0xE);
@@ -235,7 +239,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801065D0_31C1
 //     D_800A12D4 = 1;
 //     func_80100130();
 //     func_80046558(D_8011FABC->unk3C->unk40->unk0);
-//     func_800D9B54(D_8011FABC);
+//     func_800D9B54_ED774(D_8011FABC);
 //     func_800D9AA4(D_8011FA78[D_800CD058.star_spawn_indices[D_800CD058.current_star_spawn]]]);
 //     func_800E60D8(temp_s1);
 //     func_800F8C74();
@@ -249,7 +253,8 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010698C_31C4
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80106EEC_31CA5C);
 
 // View board map
-void func_80106F60_31CAD0() {
+void func_80106F60_31CAD0()
+{
     D_800CDD58 = 1;
     D_800D037C = 0;
     func_80047B80(GetCurrentProcess(), 0x80);
@@ -260,7 +265,8 @@ void func_80106F60_31CAD0() {
 }
 
 // Exit the board map?
-void func_80106FE8_31CB58() {
+void func_80106FE8_31CB58()
+{
     D_800D037C = 0;
     func_80047B80(GetCurrentProcess(), 0x80);
     func_8010067C(gPlayers[D_800CD058.current_player_index].controller);
@@ -268,8 +274,10 @@ void func_80106FE8_31CB58() {
 }
 
 // setup arrows used during player direction decisions.
-void func_80107044_31CBB4() {
-    while (func_800E9AE0() != 0) {
+void func_80107044_31CBB4()
+{
+    while (func_800E9AE0() != 0)
+    {
         SleepVProcess();
     }
     SleepVProcess();
@@ -284,7 +292,8 @@ void func_80107044_31CBB4() {
 }
 
 // teardown arrows
-void func_80107114_31CC84() {
+void func_80107114_31CC84()
+{
     D_800CDD58 = 0;
     D_800D51F8 = 0;
     func_800E21F4(D_8011FAC0);
@@ -309,14 +318,16 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80107BB4_31D7
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80107BD4_31D744);
 
 // entrypoint 0
-void func_80107BF4_31D764() {
+void func_80107BF4_31D764()
+{
     D_800CD058.current_board_index = 0;
     InitObjSys(10, 0);
     func_80048228(0x47, 0, 0x192);
 }
 
 // entrypoint 1
-void func_80107C2C_31D79C(void) {
+void func_80107C2C_31D79C(void)
+{
     InitObjSys(10, 0);
 
     func_800ED91C(0, 0, 0);
@@ -337,7 +348,8 @@ void func_80107C2C_31D79C(void) {
 }
 
 // setup routine
-void func_80107CC4_31D834(void) {
+void func_80107CC4_31D834(void)
+{
     struct space_data *spacedata;
     struct coords_3d subroutine_arg4;
 
@@ -383,12 +395,14 @@ void func_80107CC4_31D834(void) {
 
     {
         s32 i = 0;
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 8; i++)
+        {
             func_800EA6E0(i, D_8011D2C0_332E30[i]);
         }
     }
 
-    if (func_80035F98(0xE) != 0) {
+    if (func_80035F98(0xE) != 0)
+    {
         func_8003602C(0xE);
         func_80105FB0_31BB20();
     }
@@ -406,7 +420,8 @@ void func_80107CC4_31D834(void) {
 }
 
 // entrypoint 2
-void func_80108014_31DB84(void) {
+void func_80108014_31DB84(void)
+{
     func_8004A520(0x18);
     D_800CE198 = 0x18;
     func_800F8D6C(0x18);
@@ -421,7 +436,8 @@ void func_80108014_31DB84(void) {
 }
 
 // entrypoint 3
-void func_80108098_31DC08() {
+void func_80108098_31DC08()
+{
     func_80012220(1);
     func_80107CC4_31D834();
     func_800FF41C(1);
@@ -449,7 +465,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108574_31E0
 //     temp_v0 = D_8011FB18[arg0];
 //     if (temp_v0 == NULL) {
 //         if (D_8011FB10 == NULL) {
-//             temp_s3 = func_800D90C8(0x1E, 0);
+//             temp_s3 = func_800D90C8_ECCE8(0x1E, 0);
 //             func_800D9714(temp_s3);
 //             D_8011FB10 = temp_s3;
 //             obj = temp_s3;
@@ -468,11 +484,13 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108574_31E0
 // }
 
 // draw bank coins
-void func_801086E0_31E250(void) {
+void func_801086E0_31E250(void)
+{
     s32 i;
 
     D_8011FB10 = NULL;
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 10; i++)
+    {
         D_8011FB18[i] = NULL;
         func_80108574_31E0E4(i);
     }
@@ -502,7 +520,8 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108CA4_31E8
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108CC8_31E838);
 
-void func_80108D28_31E898() {
+void func_80108D28_31E898()
+{
     func_80116484_32BFF4(&D_8011DA84, &D_8011DA98, &D_8011D578);
     EndProcess(NULL);
 }
@@ -511,16 +530,18 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108D60_31E8
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80108D98_31E908);
 
-void func_80108DD0_31E940() {
+void func_80108DD0_31E940()
+{
     struct player *player;
 
     player = GetPlayerStruct(-1);
-    if (GetAbsSpaceIndexFromChainSpaceIndex(player->reverse_chain_index, player->reverse_space_index) == 0x4B
-        && (player->flags2 & 0x80) == 0) {
+    if (GetAbsSpaceIndexFromChainSpaceIndex(player->reverse_chain_index, player->reverse_space_index) == 0x4B && (player->flags2 & 0x80) == 0)
+    {
         SetNextChainAndSpace(-1, 0xA, 0);
         player->flags2 &= 0xFE;
     }
-    else {
+    else
+    {
         func_80116484_32BFF4(&D_8011DB5C, &D_8011DB70, &D_8011D77C);
     }
     EndProcess(0);
@@ -568,15 +589,18 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80109784_31F2
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801097E4_31F354);
 
-void func_80109808_31F378() {
+void func_80109808_31F378()
+{
     func_80108C1C_31E78C(0x59, 2, 7);
 }
 
-void func_8010982C_31F39C() {
+void func_8010982C_31F39C()
+{
     func_80108C1C_31E78C(0x47, 2, 7);
 }
 
-void func_80109850_31F3C0() {
+void func_80109850_31F3C0()
+{
     func_80108C1C_31E78C(0x7C, 10, 2);
 }
 
@@ -584,7 +608,8 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80109874_31F3
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801098D4_31F444);
 
-void func_801098F8_31F468() {
+void func_801098F8_31F468()
+{
     func_80108C1C_31E78C(0x15, 5, 11);
 }
 
@@ -620,7 +645,8 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80109EF8_31FA
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80109F54_31FAC4);
 
-void func_8010A068_31FBD8() {
+void func_8010A068_31FBD8()
+{
     func_80116484_32BFF4(&D_8011E010, &D_8011E024, &D_8011DA58);
 }
 
@@ -753,7 +779,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //     else {
 //         spacedata = GetSpaceData(0x6A);
 //         func_8004AA88(0x125, D_8011FB0C);
-//         obj = func_800D90C8(0x33, NULL);
+//         obj = func_800D90C8_ECCE8(0x33, NULL);
 //         if (D_80121D80[D_800CD058] != 0) {
 //             func_8001ED54(obj->unk3C->unk40->unk0);
 //         }
@@ -1121,7 +1147,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //                             phi_s6_3 = phi_s6;
 //                             if (phi_s6 != -2) {
 //                                 D_800D037C = 0;
-//                                 D_8011FB58 = func_800D90C8(0x19, 0);
+//                                 D_8011FB58 = func_800D90C8_ECCE8(0x19, 0);
 //                                 func_800D9714(D_8011FB58);
 //                                 func_800D9B24(D_8011FB58);
 //                                 phi_s6_3 = phi_s6;
@@ -1150,7 +1176,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //                                 }
 //                                 func_800FFAEC(func_800FFA4C(phi_s2_2, 3, 5));
 //                                 SleepProcess(0x14);
-//                                 func_800D9B54(D_8011FB58);
+//                                 func_800D9B54_ED774(D_8011FB58);
 //                                 func_800ECC0C(&(GetPlayerStruct(-1)->obj->unk18));
 //                                 func_800F2304(-1, 5, 0);
 //                                 SleepProcess(5);
@@ -1200,7 +1226,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //     func_800ECC0C(subroutine_arg23 + 0x18);
 
 //     if (subroutine_arg25 == -1) {
-//         func_800D9B54(subroutine_arg23);
+//         func_800D9B54_ED774(subroutine_arg23);
 //     }
 
 //     if ((s16) subroutine_arg29 != -1) {
@@ -1256,7 +1282,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8010DE7C_3239
 //         phi_s4->unk24 = 0.0f;
 //         phi_s4->unk2C = 0.0f;
 
-//         func_800D9B54(phi_s4);
+//         func_800D9B54_ED774(phi_s4);
 //     }
 
 //     if (subroutine_arg2D != 0) {
@@ -1323,11 +1349,13 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801125BC_3281
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_801127D8_328348);
 
-void func_80112BCC_32873C() {
+void func_80112BCC_32873C()
+{
     s32 i;
 
     SleepProcess(10);
-    for (i = 1; i < 64; i++) {
+    for (i = 1; i < 64; i++)
+    {
         func_800F68E0(D_800CD058.current_player_index, func_800E4A7C(), 255.0f - (i * 3.984f));
         SleepVProcess();
     }
@@ -1367,7 +1395,7 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80112C88_3287
 //         break;
 //     }
 
-//     func_800D9B54(temp_s0);
+//     func_800D9B54_ED774(temp_s0);
 //     EndProcess(NULL);
 // }
 
@@ -1481,14 +1509,16 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80116BA0_32C7
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80116DAC_32C91C);
 
-void func_80116F0C_32CA7C() {
+void func_80116F0C_32CA7C()
+{
     void *data;
     s32 i;
 
     i = 0x3C;
     data = GetCurrentProcess()->user_data;
 
-    while (i != 0) {
+    while (i != 0)
+    {
         SleepVProcess();
         i--;
     }
@@ -1561,12 +1591,15 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80117C60_32D7
 
 INCLUDE_ASM(void, "overlays/board_chillywaters/chillywaters2", func_80118308_32DE78);
 
-void func_80118A98_32E608() {
+void func_80118A98_32E608()
+{
     struct player *player;
 
     player = GetPlayerStruct(-1);
-    if (D_800D41C0 != 0) {
-        if ((player->flags2 & 1) == 0) {
+    if (D_800D41C0 != 0)
+    {
+        if ((player->flags2 & 1) == 0)
+        {
             SleepProcess(0xA);
             func_80118308_32DE78();
         }
@@ -1577,15 +1610,17 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80118AE8_32E6
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80118B7C_32E6EC);
 
-struct object *func_80118D6C_32E8DC() {
+struct object *func_80118D6C_32E8DC()
+{
     struct object *temp_a0;
     struct object *temp_ret;
     struct object *temp_v0;
     struct object *temp_v0_2;
 
     temp_v0 = D_8011D318;
-    if (temp_v0 == NULL) {
-        temp_v0_2 = func_800D90C8(0x2E, 0);
+    if (temp_v0 == NULL)
+    {
+        temp_v0_2 = func_800D90C8_ECCE8(0x2E, 0);
         D_8011D318 = temp_v0_2;
         func_800D9714(temp_v0_2);
         func_80089A20(&(D_8011D318->coords), &(GetSpaceData(0x81)->coords));
@@ -1595,22 +1630,24 @@ struct object *func_80118D6C_32E8DC() {
         temp_a0->unk24 = 1.2f;
         temp_a0->unk2C = 1.2f;
         func_800D9AA4(temp_a0);
-        temp_ret = func_800D9B54(D_8011D314);
+        temp_ret = func_800D9B54_ED774(D_8011D314);
         D_8011D314 = NULL;
         return temp_ret;
     }
     return temp_v0;
 }
 
-void *func_80118E2C_32E99C() {
+void *func_80118E2C_32E99C()
+{
     struct object *temp_a0;
     struct object *temp_ret;
     struct object *temp_v0;
     struct object *temp_v0_2;
 
     temp_v0 = D_8011D314;
-    if (temp_v0 == NULL) {
-        temp_v0_2 = func_800D90C8(0x2D, 0);
+    if (temp_v0 == NULL)
+    {
+        temp_v0_2 = func_800D90C8_ECCE8(0x2D, 0);
         D_8011D314 = temp_v0_2;
         func_800D9714(temp_v0_2);
         func_80089A20(&(D_8011D314->coords), &(GetSpaceData(0x81)->coords));
@@ -1620,7 +1657,7 @@ void *func_80118E2C_32E99C() {
         temp_a0->unk24 = 1.2f;
         temp_a0->unk2C = 1.2f;
         func_800D9AA4(temp_a0);
-        temp_ret = func_800D9B54(D_8011D318);
+        temp_ret = func_800D9B54_ED774(D_8011D318);
         D_8011D318 = NULL;
         return temp_ret;
     }
@@ -1631,7 +1668,8 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80118EEC_32EA
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80119924_32F494);
 
-s32 func_80119A20_32F590(s32 arg0) {
+s32 func_80119A20_32F590(s32 arg0)
+{
     s32 temp_s1;
 
     temp_s1 = func_80119924_32F494(arg0++);
@@ -1646,10 +1684,11 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80119C54_32F7
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_80119D08_32F878);
 
-void func_8011A764_3302D4() {
+void func_8011A764_3302D4()
+{
     s32 temp_v0;
 
-    temp_v0 = func_800D90C8(0x36, 0);
+    temp_v0 = func_800D90C8_ECCE8(0x36, 0);
     D_8011FAEC = temp_v0;
     func_800D9B24(temp_v0);
 }
@@ -1658,8 +1697,9 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8011A794_3303
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8011A838_3303A8);
 
-void func_8011A8B8_330428() {
-    func_800D9B54(D_8011FAEC);
+void func_8011A8B8_330428()
+{
+    func_800D9B54_ED774(D_8011FAEC);
 }
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8011A8D8_330448);
@@ -1677,7 +1717,8 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8011BF3C_331A
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8011C470_331FE0);
 
 // entrypoint 4
-void func_8011C58C_3320FC() {
+void func_8011C58C_3320FC()
+{
     func_80012220(2);
     func_800124BC(1, &D_8011E8B8);
     func_80107CC4_31D834();
@@ -1689,7 +1730,8 @@ INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8011C5E0_3321
 
 INCLUDE_ASM(s32, "overlays/board_chillywaters/chillywaters2", func_8011C68C_3321FC);
 
-s32 func_8011C750_3322C0() {
+s32 func_8011C750_3322C0()
+{
     s32 temp_s0;
     s32 phi_v1;
     struct strCD058 *loc;
@@ -1698,7 +1740,8 @@ s32 func_8011C750_3322C0() {
     temp_s0 = loc->total_turns - loc->current_turn + 1;
 
     phi_v1 = PlayerHasEmptyItemSlot(-1);
-    if (phi_v1 == -1) {
+    if (phi_v1 == -1)
+    {
         phi_v1 = 3;
     }
 

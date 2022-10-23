@@ -112,6 +112,23 @@ osGetCount = 0x800830A0;
 
 // 824C0.s, some issue with disassembly of this symbol.
 .L800CD1A0 = 0x800CD1A0;
+func_800CD1A0 = 0x800CD1A0;
+
+// ROM addresses
+bin_hvq_ROM_START = 0x128CC60; // type:data rom:0x128CC60
+bin_strings_jp_ROM_START = 0x1209850; // type:data rom:0x1209850
+bin_strings_en_ROM_START = 0x121CAA0; // type:data rom:0x121CAA0
+bin_strings_fr_ROM_START = 0x124D440; // type:data rom:0x124D440
+bin_strings_de_ROM_START = 0x12355C0; // type:data rom:0x12355C0
+bin_strings_es_ROM_START = 0x12765F0; // type:data rom:0x12765F0
+bin_strings_it_ROM_START = 0x1261F90; // type:data rom:0x1261F90
+
+// Broken symbols like `jtbl_80111170_overlays/overlay42` are created unless we define these.
+// Seems like a bug in either the disassembler or splat.
+jtbl_80111170_overlays_overlay42 = 0x80111170;
+jtbl_8010C5D8_overlays_overlay68 = 0x8010C5D8;
+jtbl_8010CFE8_overlays_overlay69 = 0x8010CFE8;
+jtbl_801114D0_overlays_overlay124 = 0x801114D0;
 
 // shared_board/F5070
 PlayerHasEmptyItemSlot = 0x800E49DC; // type:func rom:0xF85FC

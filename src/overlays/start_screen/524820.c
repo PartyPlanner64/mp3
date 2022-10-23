@@ -1,10 +1,11 @@
 #include "common.h"
 
-extern void *D_80114BB8_5331E8;
+extern void *D_80114BB8;
 extern void *D_80114BC4_5331F4;
 extern void *D_80114BD0_533200;
 
-void func_801061F0_524820() {
+void func_801061F0_524820()
+{
     func_8010621C_52484C();
     func_801067D4_524E04();
     func_80107A4C_52607C();
@@ -152,10 +153,11 @@ INCLUDE_ASM(s32, "overlays/start_screen/524820", func_80107EBC_5264EC);
 
 INCLUDE_ASM(s32, "overlays/start_screen/524820", func_80107EF4_526524);
 
-void func_801080A8_5266D8() {
+void func_801080A8_5266D8()
+{
     func_801061F0_524820();
     func_80110F48_52F578();
-    func_80012508(0, &D_80114BB8_5331E8, &D_80114BC4_5331F4);
+    func_80012508(0, &D_80114BB8, &D_80114BC4_5331F4);
     func_800124BC(0, &D_80114BD0_533200);
     func_800E6630_FA250(&bin_hvq_ROM_START);
     func_80112944_530F74();
@@ -163,7 +165,8 @@ void func_801080A8_5266D8() {
     func_80114A2C_53305C();
 }
 
-void func_80108118_526748(s32 arg1, s32 arg2) {
+void func_80108118_526748(s32 arg1, s32 arg2)
+{
     func_80107140_525770(arg1, arg2, 0xA0, 0xC2, 0, 0, 4);
 }
 
