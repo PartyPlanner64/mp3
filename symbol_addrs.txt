@@ -1,5 +1,3 @@
-//DecodeNone = 0x8000A230;
-//DecodeLZ = 0x8000A2CC;
 HuDecode = 0x8000B000;
 
 GetRandomByte = 0x8000B16C;

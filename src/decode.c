@@ -1,7 +1,6 @@
 #include "common.h"
 
-struct decode_struct
-{
+struct decode_struct {
     u16 chunkLen;
     s16 pad;
     u8 *src;
@@ -9,8 +8,7 @@ struct decode_struct
     u32 len;
 };
 
-typedef enum
-{
+typedef enum {
     DECODE_NONE = 0,
     DECODE_LZ,       // lzss
     DECODE_SLIDE,    // yaz0/szs
@@ -22,19 +20,14 @@ typedef enum
 extern u8 D_800ABFF0[1024]; // src copy
 extern u8 D_800AC3F0[1024]; // window
 
-void HuDecodeNone(struct decode_struct *decode)
-{
+void HuDecodeNone(struct decode_struct *decode) {
     s32 copyLen;
 
-    while (decode->len)
-    {
-        if (decode->len < 1024)
-        {
+    while (decode->len) {
+        if (decode->len < 1024) {
             copyLen = (decode->len + 1) & 0xFFFFFFFE;
             decode->len = 0;
-        }
-        else
-        {
+        } else {
             copyLen = 1024;
             decode->len -= 1024;
         }
@@ -45,8 +38,7 @@ void HuDecodeNone(struct decode_struct *decode)
 }
 
 // Type 1 decompression.
-void HuDecodeLZ(struct decode_struct *decode)
-{
+void HuDecodeLZ(struct decode_struct *decode) {
     u16 flag = 0;
     u16 windowPos = 958;
     s32 winTemp;
@@ -60,13 +52,10 @@ void HuDecodeLZ(struct decode_struct *decode)
 
     bzero(&D_800AC3F0, 1024);
 
-    while (decode->len)
-    {
+    while (decode->len) {
         flag = flag >> 1;
-        if ((flag & 0x100) == 0)
-        {
-            if (decode->chunkLen >= 1024)
-            {
+        if ((flag & 0x100) == 0) {
+            if (decode->chunkLen >= 1024) {
                 func_8004DA40(decode->src, &D_800ABFF0, 1024);
                 decode->src += 1024;
                 decode->chunkLen = 0;
@@ -75,11 +64,9 @@ void HuDecodeLZ(struct decode_struct *decode)
 
             flag = 0xFF00 | (byte1 & 0xFF);
         }
-        if ((flag & 0x1))
-        {
+        if ((flag & 0x1)) {
             u32 read_val;
-            if (decode->chunkLen >= 1024)
-            {
+            if (decode->chunkLen >= 1024) {
                 func_8004DA40(decode->src, &D_800ABFF0, 1024);
                 decode->src += 1024;
                 decode->chunkLen = 0;
@@ -88,19 +75,15 @@ void HuDecodeLZ(struct decode_struct *decode)
             D_800AC3F0[windowPos++] = *(decode->dest++) = read_val;
             windowPos &= 0x3FF;
             decode->len--;
-        }
-        else
-        {
-            if (decode->chunkLen >= 1024)
-            {
+        } else {
+            if (decode->chunkLen >= 1024) {
                 func_8004DA40(decode->src, &D_800ABFF0, 1024);
                 decode->src += 1024;
                 decode->chunkLen = 0;
             }
             byte1 = D_800ABFF0[decode->chunkLen++];
 
-            if (decode->chunkLen >= 1024)
-            {
+            if (decode->chunkLen >= 1024) {
                 func_8004DA40(decode->src, &D_800ABFF0, 1024);
                 decode->src += 1024;
                 decode->chunkLen = 0;
@@ -110,8 +93,7 @@ void HuDecodeLZ(struct decode_struct *decode)
             byte1 = byte1 | ((len & 0xC0) << 2);
             len = 3 + (len & 0x3F);
 
-            for (i = 0; i < len; i++)
-            {
+            for (i = 0; i < len; i++) {
                 {
                     winTemp = windowPos++;
                     *(decode->dest++) = (copyVal = D_800AC3F0[(byte1 + i) & 0x3FF]);
@@ -125,36 +107,31 @@ void HuDecodeLZ(struct decode_struct *decode)
 }
 
 // Type 2 decompression.
-void HuDecodeSlide(struct decode_struct *decode)
-{
+void HuDecodeSlide(struct decode_struct *decode) {
     s32 codeWordBitsRemaining;
     s32 curCodeWord;
     u8 *destOrig;
 
     // Advance past the first 4 bytes.
-    if (decode->chunkLen >= 1024)
-    {
+    if (decode->chunkLen >= 1024) {
         func_8004DA40(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
     }
     decode->chunkLen++;
-    if (decode->chunkLen >= 1024)
-    {
+    if (decode->chunkLen >= 1024) {
         func_8004DA40(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
     }
     decode->chunkLen++;
-    if (decode->chunkLen >= 1024)
-    {
+    if (decode->chunkLen >= 1024) {
         func_8004DA40(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
     }
     decode->chunkLen++;
-    if (decode->chunkLen >= 1024)
-    {
+    if (decode->chunkLen >= 1024) {
         func_8004DA40(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
@@ -165,40 +142,34 @@ void HuDecodeSlide(struct decode_struct *decode)
     curCodeWord = 0;
     destOrig = decode->dest;
 
-    while (decode->len != 0)
-    {
+    while (decode->len != 0) {
         // Read a new code word.
-        if (codeWordBitsRemaining == 0)
-        {
+        if (codeWordBitsRemaining == 0) {
             {
                 u32 chunkByte1, chunkByte2, chunkByte3, chunkByte4;
 
-                if (decode->chunkLen >= 1024)
-                {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 chunkByte1 = D_800ABFF0[decode->chunkLen++];
 
-                if (decode->chunkLen >= 1024)
-                {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 chunkByte2 = D_800ABFF0[decode->chunkLen++];
 
-                if (decode->chunkLen >= 1024)
-                {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 chunkByte3 = D_800ABFF0[decode->chunkLen++];
 
-                if (decode->chunkLen >= 1024)
-                {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
@@ -210,14 +181,12 @@ void HuDecodeSlide(struct decode_struct *decode)
             }
         }
 
-        if (curCodeWord < 0)
-        {
+        if (curCodeWord < 0) {
             {
                 u32 nextByte;
 
                 // Copy the next byte from the source to the destination.
-                if (decode->chunkLen >= 1024)
-                {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
@@ -227,25 +196,21 @@ void HuDecodeSlide(struct decode_struct *decode)
                 *(decode->dest++) = nextByte;
                 decode->len--;
             }
-        }
-        else
-        {
+        } else {
             {
                 u32 back, back2, count;
                 u8 *ptr;
 
                 // Interpret the next two bytes as a distance to travel backwards and a
                 // a length to read.
-                if (decode->chunkLen >= 1024)
-                {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 back = D_800ABFF0[decode->chunkLen++];
 
-                if (decode->chunkLen >= 1024)
-                {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
@@ -256,10 +221,8 @@ void HuDecodeSlide(struct decode_struct *decode)
                 count = (back << 8) >> 12;
                 back2 &= 0xFFF;
                 ptr = decode->dest - back2;
-                if (count == 0)
-                {
-                    if (decode->chunkLen >= 1024)
-                    {
+                if (count == 0) {
+                    if (decode->chunkLen >= 1024) {
                         func_8004DA40(decode->src, &D_800ABFF0, 1024);
                         decode->src += 1024;
                         decode->chunkLen = 0;
@@ -267,21 +230,15 @@ void HuDecodeSlide(struct decode_struct *decode)
 
                     count = 0x12;
                     count += D_800ABFF0[decode->chunkLen++];
-                }
-                else
-                {
+                } else {
                     count += 2;
                 }
                 decode->len -= count;
 
-                while (count != 0)
-                {
-                    if (ptr - 1 < destOrig)
-                    {
+                while (count != 0) {
+                    if (ptr - 1 < destOrig) {
                         *(decode->dest++) = 0;
-                    }
-                    else
-                    {
+                    } else {
                         *(decode->dest++) = *(ptr - 1);
                     }
                     count--;
@@ -299,36 +256,31 @@ void HuDecodeSlide(struct decode_struct *decode)
 // Only difference from Type 2 is the handling for when the lookback
 // looks prior to the destOrig pointer. Since this just doesn't handle that
 // case, it's probably inferior to the Type 2 decoder.
-void HuDecodeFslide(struct decode_struct *decode)
-{
+void HuDecodeFslide(struct decode_struct *decode) {
     s32 codeWordBitsRemaining;
     s32 curCodeWord;
     u8 *destOrig;
 
     // Advance past the first 4 bytes.
-    if (decode->chunkLen >= 1024)
-    {
+    if (decode->chunkLen >= 1024) {
         func_8004DA40(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
     }
     decode->chunkLen++;
-    if (decode->chunkLen >= 1024)
-    {
+    if (decode->chunkLen >= 1024) {
         func_8004DA40(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
     }
     decode->chunkLen++;
-    if (decode->chunkLen >= 1024)
-    {
+    if (decode->chunkLen >= 1024) {
         func_8004DA40(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
     }
     decode->chunkLen++;
-    if (decode->chunkLen >= 1024)
-    {
+    if (decode->chunkLen >= 1024) {
         func_8004DA40(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
@@ -340,40 +292,34 @@ void HuDecodeFslide(struct decode_struct *decode)
 
     destOrig = decode->dest;
 
-    while (decode->len != 0)
-    {
+    while (decode->len != 0) {
         // Read a new code word.
-        if (codeWordBitsRemaining == 0)
-        {
+        if (codeWordBitsRemaining == 0) {
             {
                 u32 chunkByte1, chunkByte2, chunkByte3, chunkByte4;
 
-                if (decode->chunkLen >= 1024)
-                {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 chunkByte1 = D_800ABFF0[decode->chunkLen++];
 
-                if (decode->chunkLen >= 1024)
-                {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 chunkByte2 = D_800ABFF0[decode->chunkLen++];
 
-                if (decode->chunkLen >= 1024)
-                {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 chunkByte3 = D_800ABFF0[decode->chunkLen++];
 
-                if (decode->chunkLen >= 1024)
-                {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
@@ -385,14 +331,12 @@ void HuDecodeFslide(struct decode_struct *decode)
             }
         }
 
-        if (curCodeWord < 0)
-        {
+        if (curCodeWord < 0) {
             {
                 u32 nextByte;
 
                 // Copy the next byte from the source to the destination.
-                if (decode->chunkLen >= 1024)
-                {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
@@ -402,25 +346,21 @@ void HuDecodeFslide(struct decode_struct *decode)
                 *(decode->dest++) = nextByte;
                 decode->len--;
             }
-        }
-        else
-        {
+        } else {
             {
                 u32 back, back2, count;
                 u8 *ptr;
 
                 // Interpret the next two bytes as a distance to travel backwards and a
                 // a length to read.
-                if (decode->chunkLen >= 1024)
-                {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 back = D_800ABFF0[decode->chunkLen++];
 
-                if (decode->chunkLen >= 1024)
-                {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
@@ -431,10 +371,8 @@ void HuDecodeFslide(struct decode_struct *decode)
                 count = (back << 8) >> 12;
                 back2 &= 0xFFF;
                 ptr = decode->dest - back2;
-                if (count == 0)
-                {
-                    if (decode->chunkLen >= 1024)
-                    {
+                if (count == 0) {
+                    if (decode->chunkLen >= 1024) {
                         func_8004DA40(decode->src, &D_800ABFF0, 1024);
                         decode->src += 1024;
                         decode->chunkLen = 0;
@@ -442,15 +380,12 @@ void HuDecodeFslide(struct decode_struct *decode)
 
                     count = 0x12;
                     count += D_800ABFF0[decode->chunkLen++];
-                }
-                else
-                {
+                } else {
                     count += 2;
                 }
                 decode->len -= count;
 
-                while (count != 0)
-                {
+                while (count != 0) {
                     *(decode->dest++) = *(ptr - 1);
                     count--;
                     ptr++;
@@ -464,27 +399,22 @@ void HuDecodeFslide(struct decode_struct *decode)
 }
 
 // Type 5 decompression.
-void HuDecodeRLE(struct decode_struct *decode)
-{
+void HuDecodeRLE(struct decode_struct *decode) {
     s32 curCodeByte;
     s32 i;
     s32 byteValue;
 
-    while (decode->len != 0)
-    {
-        if (decode->chunkLen >= 1024)
-        {
+    while (decode->len != 0) {
+        if (decode->chunkLen >= 1024) {
             func_8004DA40(decode->src, &D_800ABFF0, 1024);
             decode->src += 1024;
             decode->chunkLen = 0;
         }
 
         curCodeByte = D_800ABFF0[decode->chunkLen++];
-        if (curCodeByte < 0x80)
-        {
+        if (curCodeByte < 0x80) {
             // No sign bit means we repeat the next byte n times.
-            if (decode->chunkLen >= 1024)
-            {
+            if (decode->chunkLen >= 1024) {
                 func_8004DA40(decode->src, &D_800ABFF0, 1024);
                 decode->src += 1024;
                 decode->chunkLen = 0;
@@ -492,20 +422,15 @@ void HuDecodeRLE(struct decode_struct *decode)
 
             byteValue = D_800ABFF0[decode->chunkLen++];
 
-            for (i = 0; i < curCodeByte; i++)
-            {
+            for (i = 0; i < curCodeByte; i++) {
                 *(decode->dest++) = byteValue;
             }
-        }
-        else
-        {
+        } else {
             // Having the sign bit means we read the next n bytes from the input.
             curCodeByte = curCodeByte - 0x80;
 
-            for (i = 0; i < curCodeByte; i++)
-            {
-                if (decode->chunkLen >= 1024)
-                {
+            for (i = 0; i < curCodeByte; i++) {
+                if (decode->chunkLen >= 1024) {
                     func_8004DA40(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
@@ -520,38 +445,36 @@ void HuDecodeRLE(struct decode_struct *decode)
     }
 }
 
-void HuDecode(void *src, void *dest, s32 len, EDecodeType decodeType)
-{
+void HuDecode(void *src, void *dest, s32 len, EDecodeType decodeType) {
     struct decode_struct decodeStruct;
     struct decode_struct *decodePtr = &decodeStruct;
     decodeStruct.src = (u8 *)src;
     decodeStruct.dest = (u8 *)dest;
     decodeStruct.len = len;
     decodeStruct.chunkLen = 1024;
-    switch (decodeType)
-    {
-    case DECODE_NONE:
-        HuDecodeNone(decodePtr);
-        break;
+    switch (decodeType) {
+        case DECODE_NONE:
+            HuDecodeNone(decodePtr);
+            break;
 
-    case DECODE_LZ:
-        HuDecodeLZ(decodePtr);
-        break;
+        case DECODE_LZ:
+            HuDecodeLZ(decodePtr);
+            break;
 
-    case DECODE_SLIDE:
-        HuDecodeSlide(decodePtr);
-        break;
+        case DECODE_SLIDE:
+            HuDecodeSlide(decodePtr);
+            break;
 
-    case DECODE_FSLIDE:
-    case DECODE_FSLIDE_2:
-        HuDecodeFslide(decodePtr);
-        break;
+        case DECODE_FSLIDE:
+        case DECODE_FSLIDE_2:
+            HuDecodeFslide(decodePtr);
+            break;
 
-    case DECODE_RLE:
-        HuDecodeRLE(decodePtr);
-        break;
+        case DECODE_RLE:
+            HuDecodeRLE(decodePtr);
+            break;
 
-    default:
-        break;
+        default:
+            break;
     }
 }
