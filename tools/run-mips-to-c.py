@@ -36,7 +36,7 @@ lineNumber = max(0, int(sys.argv[3]) - 1)
 
 def run_mips_to_c(retType, funcPath, funcName, contextFile):
     asmPath = rootDir + "/asm/nonmatchings/" + funcPath + "/" + funcName + ".s"
-    mipsToCPath = rootDir + "/tools/mips_to_c/mips_to_c.py"
+    mipsToCPath = rootDir + "/tools/mips_to_c/m2c.py"
     procArgs = [mipsToCPath]
     procArgs.append("--context")
     procArgs.append(contextFile)
