@@ -41,7 +41,7 @@ segments:
       - [0xCE10, c]
       - [0xD7A0, asm]
       - [0xE560, asm]
-      - [0xEFB0, asm]
+      - [0xEFB0, c, "stubbed"]
       - [0xEFC0, c]
       - [0xF610, asm]
       - [0x12E20, asm]
