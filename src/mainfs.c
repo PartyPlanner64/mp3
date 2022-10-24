@@ -2,7 +2,19 @@
 #include "heap_permanent.h"
 #include "heap_temporary.h"
 
-INCLUDE_ASM(s32, "mainfs", func_80009880);
+extern s16 D_800C9520[];
+extern s16 D_800D0590[];
+extern s16 D_800D10F8[];
+extern s16 D_800D1350[];
+extern s16 D_800D5546[];
+
+void func_80009880() {
+    s16 i;
+
+    for (i = 0; i < 4; ++i) {
+        D_800D5546[i] = D_800D1350[i] = D_800C9520[i] = D_800D0590[i] = D_800D10F8[i] = 0;
+    }
+}
 
 INCLUDE_ASM(s32, "mainfs", func_800098FC);
 
