@@ -27,7 +27,7 @@ segments:
     type: code
     start: 0x1000
     vram: 0x80000400
-    subalign: 8
+    subalign: 4
     subsegments:
       - [0x1000, asm]
       - [0x1060, asm]
@@ -48,7 +48,8 @@ segments:
       - [0x13F90, asm]
       - [0x14EA0, asm]
       - [0x19C30, asm]
-      - [0x1A580, c]
+      - [0x1A580, c, "1A580"]
+      - [0x1AC70, c]
       - [0x20A20, asm]
       - [0x22EB0, asm]
       - [0x30C40, asm]
@@ -309,6 +310,8 @@ segments:
       - [0x98310, bin]
       - [0xA7590, .rodata, "decode"]
       - [0xA75A8, bin]
+      - [0xA77B8, .rodata, "1A580"]
+      - [0xA77BC, bin]
 
   - dir: overlays/overlay130
     type: code

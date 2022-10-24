@@ -1,7 +1,7 @@
 #include "common.h"
 #include "../../process.h"
 #include "../../object.h"
-#include "../../1A580.h"
+#include "../../1AC70.h"
 
 INCLUDE_ASM(s32, "overlays/overlay110/4C8050", func_8010AE20_4C8050);
 
@@ -89,29 +89,29 @@ INCLUDE_ASM(s32, "overlays/overlay110/4C8050", func_8010F660_4CC890);
 
 INCLUDE_ASM(s32, "overlays/overlay110/4C8050", func_8010F910_4CCB40);
 
-extern void func_8001247C(s32, f32, f32, f32); // extern
-extern void func_80017954(s16, s32, u8, s16); // extern
-extern void func_8001C0C4(s16, s32, s32, s32); // extern
-extern void func_8001C150(s16, s32, s32, s32); // extern
-extern void func_8001C1A0(s16, s32, s32, s32); // extern
-extern void func_8001C258(s16, s32, s32); // extern
-extern void func_8001C5B4(s16, s16); // extern
-extern void func_8001C624(s16, u8, s32, s32, s32); // extern
-extern void func_8001C814(s16, s32, s32); // extern
-extern void func_8004AC10(s32, u8); // extern
-extern void func_80055670(s16); // extern
-extern void func_800E4F50_CCD20(s32); // extern
-extern void func_800E5040_CCE10(s32, s32); // extern
-extern void func_80106C78_4C3EA8(); // extern
-extern void func_80106CA8_4C3ED8(); // extern
-extern void func_80106CCC_4C3EFC(s32); // extern
+extern void func_8001247C(s32, f32, f32, f32);                     // extern
+extern void func_80017954(s16, s32, u8, s16);                      // extern
+extern void func_8001C0C4(s16, s32, s32, s32);                     // extern
+extern void func_8001C150(s16, s32, s32, s32);                     // extern
+extern void func_8001C1A0(s16, s32, s32, s32);                     // extern
+extern void func_8001C258(s16, s32, s32);                          // extern
+extern void func_8001C5B4(s16, s16);                               // extern
+extern void func_8001C624(s16, u8, s32, s32, s32);                 // extern
+extern void func_8001C814(s16, s32, s32);                          // extern
+extern void func_8004AC10(s32, u8);                                // extern
+extern void func_80055670(s16);                                    // extern
+extern void func_800E4F50_CCD20(s32);                              // extern
+extern void func_800E5040_CCE10(s32, s32);                         // extern
+extern void func_80106C78_4C3EA8();                                // extern
+extern void func_80106CA8_4C3ED8();                                // extern
+extern void func_80106CCC_4C3EFC(s32);                             // extern
 extern void func_8010724C_4C447C(void *, s32, s32, s32, s32, s32); // extern
-extern void func_80107480_4C46B0(void *, s32, s32, s32, s32); // extern
-extern void func_801074AC_4C46DC(s16); // extern
-extern void func_8010EF28_4CC158(s32); // extern
-extern void func_80110DB0_4CDFE0(s32, f32, f32, s32); // extern
-extern void func_801118F8_4CEB28(s32, s32); // extern
-extern void func_8011196C_4CEB9C(s32); // extern
+extern void func_80107480_4C46B0(void *, s32, s32, s32, s32);      // extern
+extern void func_801074AC_4C46DC(s16);                             // extern
+extern void func_8010EF28_4CC158(s32);                             // extern
+extern void func_80110DB0_4CDFE0(s32, f32, f32, s32);              // extern
+extern void func_801118F8_4CEB28(s32, s32);                        // extern
+extern void func_8011196C_4CEB9C(s32);                             // extern
 extern u8 D_800D0309;
 extern s32 D_80111AC4_4CECF4;
 extern struct coords_3d D_80111AD0_4CED00;
@@ -217,12 +217,12 @@ void xfunc_8010FC98_4CCEC8() {
 
     func_80055670(D_801123A4);
     func_8010F12C_4CC35C();
-    func_8001C5B4((s16) temp_s5->unk40->unk2, temp_s5->unk48->unk1A);
-    func_8001C814((s16) temp_s5->unk40->unk2, 2, 2);
-    func_8001C0C4((s16) temp_s5->unk40->unk2, 0, 0, 2220.0f);
+    func_8001C5B4((s16)temp_s5->unk40->unk2, temp_s5->unk48->unk1A);
+    func_8001C814((s16)temp_s5->unk40->unk2, 2, 2);
+    func_8001C0C4((s16)temp_s5->unk40->unk2, 0, 0, 2220.0f);
     func_8001C0C4(temp_s5->unk40->unk4, 0, -5.0f, 2220.0f);
-    func_8001C150((s16) temp_s5->unk40->unk2, 0, 0, 0);
-    func_8001C1A0((s16) temp_s5->unk40->unk2, 1.5f, 1.5f, 1.5f);
+    func_8001C150((s16)temp_s5->unk40->unk2, 0, 0, 0);
+    func_8001C1A0((s16)temp_s5->unk40->unk2, 1.5f, 1.5f, 1.5f);
     func_8001C1A0(temp_s5->unk40->unk4, 1.5f, 1.5f, 1.5f);
     SleepVProcess();
     func_8010F0A0_4CC2D0();
@@ -234,28 +234,28 @@ void xfunc_8010FC98_4CCEC8() {
     func_8010E5C4_4CB7F4(temp_s7, 0, 400.0f, 2120.0f, 0x3C, 0);
     D_80111B8C_4CEDBC = 0;
     SleepProcess(0x14);
-    func_8001C624((s16) temp_fp, (temp_s5->unk48->unk0 + D_800D03F8)->unk2, 0, 0xA, 2);
+    func_8001C624((s16)temp_fp, (temp_s5->unk48->unk0 + D_800D03F8)->unk2, 0, 0xA, 2);
     func_80107480_4C46B0(temp_s5, 0, 180.0f, 0, 8);
     SleepProcess(0x14);
     func_80106C78_4C3EA8();
     func_80106CCC_4C3EFC(0x5A7E);
     func_80106CA8_4C3ED8();
-    func_8001C624((s16) temp_fp, (temp_s5->unk48->unk8 + D_800D03F8)->unk2, 0, 0xA, 0);
-    func_801074AC_4C46DC((s16) temp_fp);
-    func_8001C624((s16) temp_fp, (temp_s5->unk48->unk0 + D_800D03F8)->unk2, 0, 0xA, 2);
+    func_8001C624((s16)temp_fp, (temp_s5->unk48->unk8 + D_800D03F8)->unk2, 0, 0xA, 0);
+    func_801074AC_4C46DC((s16)temp_fp);
+    func_8001C624((s16)temp_fp, (temp_s5->unk48->unk0 + D_800D03F8)->unk2, 0, 0xA, 2);
     func_80107480_4C46B0(temp_s5, 0, 0, 0, 0xA);
-    func_8001C624((s16) temp_fp, (temp_s5->unk48->unk16 + D_800D03F8)->unk2, 0, 0xA, 2);
+    func_8001C624((s16)temp_fp, (temp_s5->unk48->unk16 + D_800D03F8)->unk2, 0, 0xA, 2);
     func_801118F8_4CEB28(0, 0x1F);
     func_8010724C_4C447C(temp_s5, 0, 0, 2930.0f, 0x28, 0);
     func_8011196C_4CEB9C(0);
-    func_8001C624((s16) temp_fp, (temp_s5->unk48->unk0 + D_800D03F8)->unk2, 0, 0xA, 2);
+    func_8001C624((s16)temp_fp, (temp_s5->unk48->unk0 + D_800D03F8)->unk2, 0, 0xA, 2);
     SleepProcess(0x14);
     func_8004AC10(0x2C6, D_800D0309);
-    func_8001C624((s16) temp_fp, (temp_s5->unk48->unk4 + D_800D03F8)->unk2, 0, 0xA, 0);
-    func_80017954((s16) temp_fp, 2, D_800D0309, D_80112330_282E00);
+    func_8001C624((s16)temp_fp, (temp_s5->unk48->unk4 + D_800D03F8)->unk2, 0, 0xA, 0);
+    func_80017954((s16)temp_fp, 2, D_800D0309, D_80112330_282E00);
     func_8010E5C4_4CB7F4(temp_s7, 0, 400.0f, 2500.0f, 0x14, 0);
-    func_801074AC_4C46DC((s16) temp_fp);
-    func_8001C624((s16) temp_fp, (temp_s5->unk48->unk6 + D_800D03F8)->unk2, 0, 0xA, 2);
+    func_801074AC_4C46DC((s16)temp_fp);
+    func_8001C624((s16)temp_fp, (temp_s5->unk48->unk6 + D_800D03F8)->unk2, 0, 0xA, 2);
     func_80110270_4CD4A0();
     SleepVProcess();
 

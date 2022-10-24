@@ -5,6 +5,20 @@ GetRandomByte = 0x8000B16C;
 ReadMainFS = 0x80009C10;
 FreeMainFS = 0x80009E6C;
 
+HuMemInit = 0x80019980;
+HuMemAlloc = 0x800199F8;
+HuMemAllocTag = 0x80019A14;
+HuMemFree = 0x80019A98;
+HuMemBlockFree = 0x80019AF0;
+HuMemFreeAllWithTag = 0x80019B34;
+HuMemSetDirty = 0x80019CDC;
+HuMemFreeAll = 0x80019CEC;
+HuMemCleanUp = 0x80019D64;
+HuMemGetSizeTag = 0x80019DB0;
+HuMemGetSize = 0x80019E04;
+HuMemSetTag = 0x80019E40;
+HuMemDebugCheck = 0x80019E84;
+
 // heap.c
 MakeHeap = 0x800360D0;
 Malloc = 0x800360F0;
@@ -101,7 +115,7 @@ strlen = 0x8007BD70;
 memcpy = 0x8007BD94;
 
 rmonPrintf_func_8007BE50 = 0x8007BE50;
-osSyncPrintf_func_8007BE80 = 0x8007BE80;
+osSyncPrintf = 0x8007BE80;
 osSyncPrintf_func_8007BEC0 = 0x8007BEC0;
 
 osCreateMesgQueue = 0x8007BF00;
@@ -125,9 +139,17 @@ sqrtf = 0x80081240;
 _Printf = 0x80081A40;
 osGetCount = 0x800830A0;
 
+gHuMemIsDirty = 0x800A08A0;
+
 // 824C0.s, some issue with disassembly of this symbol.
 .L800CD1A0 = 0x800CD1A0;
 func_800CD1A0 = 0x800CD1A0;
+
+gLastMallocBlock = 0x800D03F4;
+gFreeFunc = 0x800D135C;
+gLastFreedBlock = 0x800D1238;
+gMallocFunc = 0x800D556C;
+gFirstMallocBlock = 0x800D6B68;
 
 // ROM addresses
 bin_hvq_ROM_START = 0x128CC60; // type:data rom:0x128CC60

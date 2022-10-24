@@ -169,8 +169,7 @@ void func_80047420() {
         objind = &D_800A1770[i];
         if ((u16)objind->unk0 == 1) {
             phi_s1_2 = phi_s1 + 1;
-        }
-        else {
+        } else {
             temp_a0 = objind->unk40;
             if (temp_a0 != NULL) {
                 FreeTemp(temp_a0);
@@ -183,7 +182,7 @@ void func_80047420() {
             temp_s1 = i + 1;
             phi_s1_2 = temp_s1;
             if (temp_a0_3 != NULL) {
-                func_80019A98(temp_a0_3);
+                HuMemFree(temp_a0_3);
                 phi_s1_2 = temp_s1;
             }
         }
@@ -220,7 +219,7 @@ void func_80047420() {
     FreeTemp(D_800A177C);
     D_800A177C = NULL;
 
-    func_80019B34(0x7918);
+    HuMemFreeAllWithTag(0x7918);
     D_800D6A40 = 0;
 }
 
@@ -242,8 +241,7 @@ struct object_indirect *func_80047620(u16 arg0, u16 arg1, u16 arg2, s16 arg3, st
         for (i = 0; i < arg1; i++) {
             *(objind->unk40 + i) = -1;
         }
-    }
-    else {
+    } else {
         objind->unk40 = NULL;
         objind->unk3C = 0;
     }
@@ -251,16 +249,14 @@ struct object_indirect *func_80047620(u16 arg0, u16 arg1, u16 arg2, s16 arg3, st
     if (arg2 != 0) {
         objind->unk48 = MallocTemp(arg2 * 2);
         objind->unk44 = arg2;
-    }
-    else {
+    } else {
         objind->unk48 = NULL;
         objind->unk44 = 0;
     }
 
     if (arg3 >= 0) {
         func_80047CDC(arg3, objind);
-    }
-    else {
+    } else {
         objind->unkC = arg3;
         objind->unkE = 0;
     }
@@ -400,11 +396,8 @@ s32 func_8004819C(s32 arg0) {
         return 0;
     }
 
-    func_80048228(
-        D_800D2010[D_800A1768].overlayIndex,
-        D_800D2010[D_800A1768].entrypointIndex,
-        D_800D2010[D_800A1768].unk6
-    );
+    func_80048228(D_800D2010[D_800A1768].overlayIndex, D_800D2010[D_800A1768].entrypointIndex,
+                  D_800D2010[D_800A1768].unk6);
     return 1;
 }
 

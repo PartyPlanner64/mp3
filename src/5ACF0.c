@@ -175,7 +175,6 @@ INCLUDE_ASM(s32, "5ACF0", func_8005A6B0);
 //     //return phi_return;
 // }
 
-
 INCLUDE_ASM(s16, "5ACF0", func_8005A968, s16 arg0, s16 arg1, s16 arg2, s16 arg3, s32 arg4, s32 arg5);
 // s16 func_8005A968(s16 arg0, s16 arg1, s16 arg2, s16 arg3, u16 arg5) {
 //     s16 temp_fp;
@@ -342,12 +341,12 @@ INCLUDE_ASM(s16, "5ACF0", func_8005A968, s16 arg0, s16 arg1, s16 arg2, s16 arg3,
 //     if ((subroutine_arg7 & 8) == 0) {
 //         (*temp_s2->unk84)->unk4 = phi_s4;
 //         (*temp_s2->unk84)->unk6 = arg3;
-//         func_80019A98(**temp_s2->unk84);
+//         HuMemFree(**temp_s2->unk84);
 //         temp_s6 = phi_s4;
 //         temp_s5 = arg3;
 //         temp_lo = temp_s6 * temp_s5;
 //         temp_s0_4 = (s32) (temp_lo + (temp_lo >> 0x1F)) >> 1;
-//         temp_v0_7 = func_800199F8(temp_s0_4);
+//         temp_v0_7 = HuMemAlloc(temp_s0_4);
 //         window->unkDC = temp_v0_7;
 //         **temp_s2->unk84 = temp_v0_7;
 //         func_80087A40(window->unkDC, 0xFF, temp_s0_4);
@@ -476,8 +475,7 @@ void func_8005BEE0(s16 winId, s16 arg1) {
 
     if (arg1 == 0) {
         func_800553A8(window->unk6C, 0, 0x8000);
-    }
-    else {
+    } else {
         func_8005532C(window->unk6C, 0, 0x8000);
     }
     func_80055458(window->unk6C, 0, arg1 & 0xFFFF);
@@ -575,8 +573,7 @@ void func_800600C0(s16 winId, s32 arg1) {
     window = &D_800CC69C[winId];
     if (arg1 != 0) {
         window->unk38 |= 0x10;
-    }
-    else {
+    } else {
         window->unk38 &= ~0x10;
     }
 }
@@ -592,7 +589,6 @@ INCLUDE_ASM(s32, "5ACF0", func_8006010C);
 // }
 
 void func_80060144() {
-
 }
 
 s8 func_8006014C(s32 winId) {

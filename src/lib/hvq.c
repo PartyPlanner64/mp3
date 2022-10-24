@@ -218,7 +218,7 @@ INCLUDE_ASM(void, "lib/hvq", func_80069E68, struct hvq_mps *hvqMps);
 //     s8 ibyte;
 
 //     if (func_80087B20(hvqMps, &D_800A7F50) != 0) {
-//         osSyncPrintf_func_8007BE80(&D_800A7F5C);
+//         osSyncPrintf(&D_800A7F5C);
 //         return;
 //     }
 

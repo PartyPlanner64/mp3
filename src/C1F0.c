@@ -54,7 +54,7 @@ void func_8000B7A0() {
     u16 i;
 
     func_80052330();
-    D_800CD1DC = func_800199F8(sizeof(struct strCD1DC) * 0x100);
+    D_800CD1DC = HuMemAlloc(sizeof(struct strCD1DC) * 0x100);
     D_800C951C = 0x100;
     D_800CB8BC = 0;
 
@@ -84,7 +84,7 @@ INCLUDE_ASM(s32, "C1F0", func_8000B880);
 
 void func_8000BA00() {
     func_80056BAC();
-    func_80019A98(D_800CD1DC);
+    HuMemFree(D_800CD1DC);
     D_800CD1DC = NULL;
 }
 

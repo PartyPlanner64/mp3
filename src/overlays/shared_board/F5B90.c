@@ -685,7 +685,7 @@ void func_800E7130_FAD50() {
         cur->unk0 = 0;
         cur->unk1 = 0;
         cur->unk2 = -1;
-        cur->unk4 = func_800199F8(0x1800);
+        cur->unk4 = HuMemAlloc(0x1800);
         cur->unk8 = NULL;
         cur++;
     }
@@ -715,7 +715,7 @@ void func_800E71EC_FAE0C() {
         cur->unk0 = 0;
         cur->unk2 = -1;
         if (cur->unk4 != NULL) {
-            func_80019A98(cur->unk4);
+            HuMemFree(cur->unk4);
             cur->unk4 = NULL;
         }
         cur++;

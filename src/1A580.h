@@ -3,35 +3,44 @@
 
 #include <ultra64.h>
 
-struct strD03F8 {
-    s8 unk0;
-    s8 unk1;
-    u8 unk2;
-    s8 unk3;
+typedef struct HuMallocHeader {
+    void *data;
     u8 unk4;
-    s8 unk5;
-    s8 unk6;
-    s8 unk7;
-    s16 unk8;
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-    s8 unks10to40[0x30];
+    s16 tag;
+    s32 size;
+    s32 unkC;
+    struct HuMallocHeader *prev;
+    struct HuMallocHeader *next;
+} HuMallocHeader;
 
-    f32 unk40;
-    f32 unk44;
-    f32 unk48;
-    f32 unk4C;
-    f32 unk50;
-    f32 unk54;
+typedef HuMallocHeader *(*HuAllocFunc)(u32 size);
+typedef void (*HuFreeFunc)(void *ptr);
 
-    s8 unks58toB0[0x58];
+extern s16 gHuMemIsDirty;
+extern s16 D_800A08A2;
 
-    s32 unkB0;
-    struct strD03F8 *unkB4;
-    s32 unkB8;
-    s32 unkBC;
-}; // sizeof == 0xC0
-extern struct strD03F8 *D_800D03F8;
+extern s16 D_800C993C;
+extern void *D_800C9950[];
+
+extern HuMallocHeader *gLastMallocBlock;
+extern HuFreeFunc gFreeFunc;
+extern HuMallocHeader *gLastFreedBlock;
+extern u8 D_800D1FF0;
+extern s32 D_800D20AC;
+extern void *D_800D2140[];
+extern HuAllocFunc gMallocFunc;
+extern HuMallocHeader *gFirstMallocBlock;
+
+void HuMemInit(HuAllocFunc malloc, HuFreeFunc free);
+void HuMemAlloc(s32 size);
+void *HuMemAllocTag(s32 size, s16 tag);
+void HuMemFree(void *data);
+void HuMemBlockFree(HuMallocHeader *block);
+void HuMemFreeAllWithTag(s16 tag);
+void func_80019C00_1A800(void *data);
+void func_80019C68_1A868(s16 arg0);
+void HuMemSetDirty(void);
+void HuMemFreeAll(void);
+void HuMemCleanUp(void);
 
 #endif /* _1A580_H */
