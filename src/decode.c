@@ -31,7 +31,7 @@ void HuDecodeNone(struct decode_struct *decode) {
             copyLen = 1024;
             decode->len -= 1024;
         }
-        func_8004DA40(decode->src, decode->dest, copyLen);
+        HuRomDmaRead(decode->src, decode->dest, copyLen);
         decode->src += copyLen;
         decode->dest += copyLen;
     }
@@ -56,7 +56,7 @@ void HuDecodeLZ(struct decode_struct *decode) {
         flag = flag >> 1;
         if ((flag & 0x100) == 0) {
             if (decode->chunkLen >= 1024) {
-                func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                 decode->src += 1024;
                 decode->chunkLen = 0;
             }
@@ -67,7 +67,7 @@ void HuDecodeLZ(struct decode_struct *decode) {
         if ((flag & 0x1)) {
             u32 read_val;
             if (decode->chunkLen >= 1024) {
-                func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                 decode->src += 1024;
                 decode->chunkLen = 0;
             }
@@ -77,14 +77,14 @@ void HuDecodeLZ(struct decode_struct *decode) {
             decode->len--;
         } else {
             if (decode->chunkLen >= 1024) {
-                func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                 decode->src += 1024;
                 decode->chunkLen = 0;
             }
             byte1 = D_800ABFF0[decode->chunkLen++];
 
             if (decode->chunkLen >= 1024) {
-                func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                 decode->src += 1024;
                 decode->chunkLen = 0;
             }
@@ -114,25 +114,25 @@ void HuDecodeSlide(struct decode_struct *decode) {
 
     // Advance past the first 4 bytes.
     if (decode->chunkLen >= 1024) {
-        func_8004DA40(decode->src, &D_800ABFF0, 1024);
+        HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
     }
     decode->chunkLen++;
     if (decode->chunkLen >= 1024) {
-        func_8004DA40(decode->src, &D_800ABFF0, 1024);
+        HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
     }
     decode->chunkLen++;
     if (decode->chunkLen >= 1024) {
-        func_8004DA40(decode->src, &D_800ABFF0, 1024);
+        HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
     }
     decode->chunkLen++;
     if (decode->chunkLen >= 1024) {
-        func_8004DA40(decode->src, &D_800ABFF0, 1024);
+        HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
     }
@@ -149,28 +149,28 @@ void HuDecodeSlide(struct decode_struct *decode) {
                 u32 chunkByte1, chunkByte2, chunkByte3, chunkByte4;
 
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 chunkByte1 = D_800ABFF0[decode->chunkLen++];
 
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 chunkByte2 = D_800ABFF0[decode->chunkLen++];
 
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 chunkByte3 = D_800ABFF0[decode->chunkLen++];
 
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
@@ -187,7 +187,7 @@ void HuDecodeSlide(struct decode_struct *decode) {
 
                 // Copy the next byte from the source to the destination.
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
@@ -204,14 +204,14 @@ void HuDecodeSlide(struct decode_struct *decode) {
                 // Interpret the next two bytes as a distance to travel backwards and a
                 // a length to read.
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 back = D_800ABFF0[decode->chunkLen++];
 
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
@@ -223,7 +223,7 @@ void HuDecodeSlide(struct decode_struct *decode) {
                 ptr = decode->dest - back2;
                 if (count == 0) {
                     if (decode->chunkLen >= 1024) {
-                        func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                        HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                         decode->src += 1024;
                         decode->chunkLen = 0;
                     }
@@ -263,25 +263,25 @@ void HuDecodeFslide(struct decode_struct *decode) {
 
     // Advance past the first 4 bytes.
     if (decode->chunkLen >= 1024) {
-        func_8004DA40(decode->src, &D_800ABFF0, 1024);
+        HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
     }
     decode->chunkLen++;
     if (decode->chunkLen >= 1024) {
-        func_8004DA40(decode->src, &D_800ABFF0, 1024);
+        HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
     }
     decode->chunkLen++;
     if (decode->chunkLen >= 1024) {
-        func_8004DA40(decode->src, &D_800ABFF0, 1024);
+        HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
     }
     decode->chunkLen++;
     if (decode->chunkLen >= 1024) {
-        func_8004DA40(decode->src, &D_800ABFF0, 1024);
+        HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
         decode->src += 1024;
         decode->chunkLen = 0;
     }
@@ -299,28 +299,28 @@ void HuDecodeFslide(struct decode_struct *decode) {
                 u32 chunkByte1, chunkByte2, chunkByte3, chunkByte4;
 
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 chunkByte1 = D_800ABFF0[decode->chunkLen++];
 
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 chunkByte2 = D_800ABFF0[decode->chunkLen++];
 
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 chunkByte3 = D_800ABFF0[decode->chunkLen++];
 
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
@@ -337,7 +337,7 @@ void HuDecodeFslide(struct decode_struct *decode) {
 
                 // Copy the next byte from the source to the destination.
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
@@ -354,14 +354,14 @@ void HuDecodeFslide(struct decode_struct *decode) {
                 // Interpret the next two bytes as a distance to travel backwards and a
                 // a length to read.
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
                 back = D_800ABFF0[decode->chunkLen++];
 
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }
@@ -373,7 +373,7 @@ void HuDecodeFslide(struct decode_struct *decode) {
                 ptr = decode->dest - back2;
                 if (count == 0) {
                     if (decode->chunkLen >= 1024) {
-                        func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                        HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                         decode->src += 1024;
                         decode->chunkLen = 0;
                     }
@@ -406,7 +406,7 @@ void HuDecodeRLE(struct decode_struct *decode) {
 
     while (decode->len != 0) {
         if (decode->chunkLen >= 1024) {
-            func_8004DA40(decode->src, &D_800ABFF0, 1024);
+            HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
             decode->src += 1024;
             decode->chunkLen = 0;
         }
@@ -415,7 +415,7 @@ void HuDecodeRLE(struct decode_struct *decode) {
         if (curCodeByte < 0x80) {
             // No sign bit means we repeat the next byte n times.
             if (decode->chunkLen >= 1024) {
-                func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                 decode->src += 1024;
                 decode->chunkLen = 0;
             }
@@ -431,7 +431,7 @@ void HuDecodeRLE(struct decode_struct *decode) {
 
             for (i = 0; i < curCodeByte; i++) {
                 if (decode->chunkLen >= 1024) {
-                    func_8004DA40(decode->src, &D_800ABFF0, 1024);
+                    HuRomDmaRead(decode->src, &D_800ABFF0, 1024);
                     decode->src += 1024;
                     decode->chunkLen = 0;
                 }

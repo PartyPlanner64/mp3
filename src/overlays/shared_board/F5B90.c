@@ -36,8 +36,8 @@ extern s32 D_80100F90;
 
 extern s32 D_801011FC;
 
-extern u32 *D_80101240; // pointer to hvq dir offsets (table)
-extern u32 *D_80101244; // pointer to hvq file offsets (table)
+extern u32 *D_80101240;                 // pointer to hvq dir offsets (table)
+extern u32 *D_80101244;                 // pointer to hvq file offsets (table)
 extern struct hvq_metadata *D_80101248; // pointer to current hvq metadata
 extern s8 D_8010124C;
 extern f32 D_80101250;
@@ -56,8 +56,8 @@ extern void (*D_80102C58[])(); // function pointers given by board.
 
 extern u8 D_80102D36;
 extern void *D_80102DB0; // hvq rom offset copied here
-extern s32 D_80102DB4; // hvq directory count
-extern s32 D_80102DB8; // hvq current file table ROM offset
+extern s32 D_80102DB4;   // hvq directory count
+extern s32 D_80102DB8;   // hvq current file table ROM offset
 extern s16 D_80102DC0;
 extern s16 D_80102DC2;
 extern s16 D_80102DC4;
@@ -118,13 +118,13 @@ extern struct event_list_entry *D_80105280;
 extern struct event_list_entry *D_80105284;
 extern s32 D_80105288;
 extern f32 D_80105290[]; // arrow angles
-extern s32 D_801052B0; // arrow angle count
+extern s32 D_801052B0;   // arrow angle count
 
 extern s16 D_801052B8[]; // excluded hidden space indices
-extern s16 D_801054B6; // count of hidden space exclusions
+extern s16 D_801054B6;   // count of hidden space exclusions
 
 extern s16 D_801054B8[]; // list of star space indices
-extern s16 D_801054F8; // count of star space indices
+extern s16 D_801054F8;   // count of star space indices
 
 extern void *D_80105500[];
 
@@ -199,8 +199,7 @@ void func_800E22DC_F5EFC(s16 arg0, s16 arg1) {
     if (arg1 == GetCurrentPlayerIndex()) {
         D_80102C50 = arg1;
         D_80102C52 = arg0;
-    }
-    else {
+    } else {
         D_80102C50 = arg0;
         D_80102C52 = arg1;
     }
@@ -460,14 +459,14 @@ void func_800E6630_FA250(void *hvqRomOffset) {
     D_80102DB0 = hvqRomOffset;
 
     hvqInitial = MallocTemp(sizeof(struct hvq_table_initial));
-    func_8004DA40(hvqRomOffset, hvqInitial, sizeof(struct hvq_table_initial));
+    HuRomDmaRead(hvqRomOffset, hvqInitial, sizeof(struct hvq_table_initial));
     D_80102DB4 = hvqInitial->count;
     FreeTemp(hvqInitial);
 
     dirsSize = D_80102DB4 * 4;
     hvqDirs = MallocTemp(dirsSize);
     D_80101240 = hvqDirs;
-    func_8004DA40(hvqRomOffset + 4, hvqDirs, dirsSize);
+    HuRomDmaRead(hvqRomOffset + 4, hvqDirs, dirsSize);
 
     D_80102DCC = MallocTemp(0x300);
     D_80101248 = NULL;
@@ -496,14 +495,14 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E6720_FA340);
 //     D_80105990 = bgIndex;
 //     D_80102DB8 = D_80102DB0 + D_80101240[bgIndex];
 //     hvqInitial = (struct hvq_table_initial *)MallocTemp(sizeof(struct hvq_table_initial));
-//     func_8004DA40(D_80102DB8, hvqInitial, sizeof(struct hvq_table_initial));
+//     HuRomDmaRead(D_80102DB8, hvqInitial, sizeof(struct hvq_table_initial));
 //     fileCount = hvqInitial->count;
 //     FreeTemp(hvqInitial);
 //     fileTableSize = (fileCount + 1) * 4;
 //     D_80101244 = (u32 *)MallocTemp(fileTableSize);
-//     func_8004DA40(D_80102DB8 + 4, D_80101244, fileTableSize);
+//     HuRomDmaRead(D_80102DB8 + 4, D_80101244, fileTableSize);
 //     D_80101248 = (struct hvq_metadata *)MallocTemp(sizeof(struct hvq_metadata));
-//     func_8004DA40(D_80102DB8 + D_80101244[0], D_80101248, sizeof(struct hvq_metadata));
+//     HuRomDmaRead(D_80102DB8 + D_80101244[0], D_80101248, sizeof(struct hvq_metadata));
 //     D_80103450.x = D_80101248->cameraEyePosX;
 //     D_80103450.y = D_80101248->cameraEyePosZ;
 //     D_80103450.z = D_80101248->cameraEyePosY;
@@ -514,7 +513,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E6720_FA340);
 //     D_80101248->lookatPointZ *= 5.0f;
 //     D_80101248->lookatPointY *= 5.0f;
 //     D_80103138 = MallocTemp(func_800E7330_FAF50(0));
-//     func_8004DA40(D_80102DB8 + D_80101244[1], D_80103138, func_800E7330_FAF50(0));
+//     HuRomDmaRead(D_80102DB8 + D_80101244[1], D_80103138, func_800E7330_FAF50(0));
 //     D_80102DC4 = 0;
 //     D_80102DC2 = 0;
 //     D_80102DC6 = (D_80101248->tileWidth * D_80101248->tileCountX) / 2; // not confirmed
@@ -574,7 +573,7 @@ INCLUDE_ASM(s32, "overlays/shared_board/F5B90", func_800E6C80_FA8A0);
 //     while (TRUE) {
 //         osRecvMesg(&D_80103468, &msg, 1);
 //         if (msg != NULL) {
-//             func_8004DA40(msg->unk10, msg->unk8, msg->unkC);
+//             HuRomDmaRead(msg->unk10, msg->unk8, msg->unkC);
 //             osSendMesg(&D_80104880, msg, 0);
 //             continue;
 //         }
@@ -858,8 +857,7 @@ void func_800E9A54_FD674(s8 arg0) {
 void func_800E9A60_FD680(s16 arg0) {
     if (arg0 != 0) {
         D_80102DC0 |= 8;
-    }
-    else {
+    } else {
         D_80102DC0 &= 0xFFF7;
     }
 }
@@ -867,8 +865,7 @@ void func_800E9A60_FD680(s16 arg0) {
 void func_800E9A94_FD6B4(s16 arg0) {
     if (arg0 != 0) {
         D_80102DC0 |= 0x10;
-    }
-    else {
+    } else {
         D_80102DC0 &= 0xFFEF;
     }
 }
@@ -977,8 +974,7 @@ s32 func_800EA4F0_FE110(s16 param_1) {
     for (i = 0; i < 16; i++) {
         if (ptr[i] != 0) {
             D_80105220[i] = ReadMainFS(ptr[i]);
-        }
-        else {
+        } else {
             D_80105220[i] = NULL;
         }
     }
@@ -1131,8 +1127,7 @@ void func_800EB8BC_FF4DC() {
 
             space->sx = fval;
             space->sz = fval;
-        }
-        while (!(fval <= fOrig) && D_801012C0 != NULL);
+        } while (!(fval <= fOrig) && D_801012C0 != NULL);
     }
 
     EndProcess(NULL);
@@ -1224,14 +1219,12 @@ s32 func_800EBAC8_FF6E8(s16 space_index, s16 activation_type) {
                         event_list->event_fn();
                         break;
 
-                    case 2:
-                        {
-                            struct process *cur_process = GetCurrentProcess();
-                            struct process *space_process = InitProcess(event_list->event_fn, 0x4800, 0, 0);
-                            LinkChildProcess(cur_process, space_process);
-                            WaitForChildProcess();
-                        }
-                        break;
+                    case 2: {
+                        struct process *cur_process = GetCurrentProcess();
+                        struct process *space_process = InitProcess(event_list->event_fn, 0x4800, 0, 0);
+                        LinkChildProcess(cur_process, space_process);
+                        WaitForChildProcess();
+                    } break;
                 }
 
                 ret = ret | D_80105288;

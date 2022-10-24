@@ -35,6 +35,10 @@ InitObjSys = 0x80047160;
 InitProcess = 0x80047EA0;
 EndProcess = 0x80048008;
 
+HuStartDma = 0x8004D9F8;
+HuRomDmaRead = 0x8004DA40;
+HuRomDmaCodeRead = 0x8004DB14;
+
 // process.c
 InitProcessSys = 0x8004EB20;
 LinkProcess = 0x8004EB34;
@@ -70,6 +74,19 @@ longjmp = 0x80066564;
 osEepromWrite = 0x80072020;
 __osPackEepWriteData = 0x800721D4;
 __osEepStatus = 0x8007227C;
+
+osCreatePiManager = 0x800726A0;
+
+__osEPiRawStartDma = 0x80072950;
+
+osEPiStartDma = 0x80072B40;
+
+osCartRomInit = 0x80072BE0;
+
+osInvalDCache = 0x80078BA0;
+osInvalICache = 0x80078C50;
+osWritebackDCache = 0x80078CD0;
+osWritebackDCacheAll = 0x80078D50;
 
 osVirtualToPhysical = 0x800792D0;
 cosf = 0x80079330;
