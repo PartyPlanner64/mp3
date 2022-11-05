@@ -1,4 +1,6 @@
 #include "common.h"
+#include "../../process.h"
+#include "../../47D60.h"
 
 INCLUDE_ASM(s32, "overlays/overlay124/5486A0", func_8010BE20_5486A0);
 

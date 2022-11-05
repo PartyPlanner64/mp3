@@ -60,7 +60,11 @@ INCLUDE_ASM(s32, "36650", func_80035DA4);
 
 INCLUDE_ASM(s32, "36650", func_80035E3C);
 
-INCLUDE_ASM(s32, "36650", func_80035E60);
+u8 *func_80035E60(s16 arg0) {
+    u8 *temp_v0 = func_80035C90(arg0);
+    *temp_v0 = *temp_v0; // ?
+    return temp_v0;
+}
 
 INCLUDE_ASM(s32, "36650", func_80035E88);
 
@@ -85,8 +89,7 @@ s32 func_80035F98(s32 feature) {
 
     if (feature >= 0) {
         b = feature;
-    }
-    else {
+    } else {
         b = feature + 7;
     }
 
