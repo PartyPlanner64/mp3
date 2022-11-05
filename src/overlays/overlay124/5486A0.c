@@ -23,7 +23,9 @@ INCLUDE_ASM(s32, "overlays/overlay124/5486A0", func_8010D998_54A218);
 
 INCLUDE_ASM(s32, "overlays/overlay124/5486A0", func_8010DE50_54A6D0);
 
-INCLUDE_ASM(s32, "overlays/overlay124/5486A0", func_8010DEDC_54A75C);
+void func_8010DEDC_54A75C(s32 *arg0, s32 arg1) {
+    *arg0 = arg1;
+}
 
 INCLUDE_ASM(s32, "overlays/overlay124/5486A0", func_8010DEE4_54A764);
 
