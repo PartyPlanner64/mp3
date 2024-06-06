@@ -2,7 +2,14 @@
 
 A WIP decomp of Mario Party 3.
 
-Note: This repository does not include the game ROM. You must provide the ROM yourself to build.
+# Dependencies
+
+1. Backup of Mario Party 3 in Big Endian (.z64) format
+*Note: This repository does not include the game ROM. You must provide the ROM yourself to build.*
+2. Python3 and PIP
+*https://pip.pypa.io/en/stable/installation/*
+3. PIP packages: rabbitizer, spimdisasm, tqdm, pyyaml, colorama, intervaltree, n64img
+`sudo pip3 install rabbitizer spimdisasm tqdm pyyaml colorama n64img`
 
 # To use
 
