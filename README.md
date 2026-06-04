@@ -1,6 +1,9 @@
 # mp3
 
-A WIP decomp of Mario Party 3.
+A partial decomp of Mario Party 3.
+
+> [!IMPORTANT]
+> This repository is archived. Active community work is occurring at https://github.com/mariopartyrd/marioparty3
 
 # Dependencies
 
